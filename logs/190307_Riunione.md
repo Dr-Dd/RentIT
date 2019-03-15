@@ -13,10 +13,10 @@ Inoltre è stato assegnato un ruolo ad ognuna delle varie tecnologie che si util
 
 MVC | Strumento
 --- | ---------
-MODEL | PostgreSQL
+MODEL | PostgreSQL/AWS
 VIEW | Xamarin 
-CONTROLLER | Java 
-__*IMPORTANTE: Stiamo notando difficoltà nel gestire il server tramite java, principalmente perché fare così vorrebbe dire creare delle binding Java all'interno di Xamarin (e non l'utilità di fare una cosa del genere è dubbia), discutere alla prossima riunione*__
+CONTROLLER | Java__*__ 
+__*\*IMPORTANTE: Stiamo notando difficoltà nel gestire il server tramite java, principalmente perché fare così vorrebbe dire creare delle binding Java all'interno di Xamarin (e non l'utilità di fare una cosa del genere è dubbia), discutere alla prossima riunione*__
 
 Si è anche decisa la dimensione del timebox da seguire per ogni iterazione, oltre che gli obiettivi per il prossimo incontro 
 
