@@ -1,5 +1,5 @@
 Ciao! Se stai leggendo questo, allora sei sulla repo legata alla feature di login della nostra applicazione.
 
-Ti consiglio caldamente di crearti una tuo branch personale (di questo stesso branch) da usare come punto di riferimento per i prossimi `commit` che vorrai mandare (`push`) upstream.
+Ti consiglio caldamente di crearti un tuo branch personale (di questo stesso branch) da usare come punto di riferimento per i prossimi `commit` che vorrai mandare (`push`) upstream.
 
-E sarò sincero, volevo un commit su questo branch solo per farlo visualizzare su SourceTree!
+E sarò sincero, inizialmente volevo un commit su questo branch solo per farlo visualizzare su SourceTree!
