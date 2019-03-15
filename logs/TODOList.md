@@ -14,3 +14,4 @@ Documentazione che ho trovato utile:
         - https://www.youtube.com/watch?v=SWYqp7iY_Tc
         - https://www.youtube.com/watch?v=9GKpbI1siow&list=PLpcSpRrAaOarEpNz71TSfNVd0eQmsZSgN
     + _La guida di Milicchio per consolidare le conoscenze acquisite:_ https://fmilicchio.bitbucket.io/repositories.html
+    + _La guida ufficiale @ Git-scm **(il capitolo 2 vi dice tutto ciò di cui avete bisogno!)**:_ https://git-scm.com/book/en/v2
