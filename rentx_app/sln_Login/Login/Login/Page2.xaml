@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Login.Page2"
+             BackgroundColor="#607D8B">
+    <ContentPage.Content>
+        <StackLayout Margin="5">
+            
+            <Label Text="      L'iscrizione è andata a buon fine     
+                          Ti abbiamo inviato una mail di conferma"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" 
+                TextColor="#CDDC39"  
+                Font="20"   />
+            <Button
+                x:Name="Back"
+                Text="torna al menù"
+                Clicked="Back_Clicked"
+                BackgroundColor="#CDDC39"
+                HorizontalOptions="CenterAndExpand"
+                VerticalOptions="StartAndExpand"/>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Login.Page1"
+             BackgroundColor="#607D8B">
+    <ContentPage.Content>
+        <Grid Margin="16">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="10*"/>
+            </Grid.RowDefinitions>
+            <Label
+                Grid.Row="0"
+                x:Name="welcome"
+                TextColor="#CDDC39"
+                Font="20"
+                FontSize="Large"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"
+                
+            />
+            <Button
+                Grid.Row="1"
+                Text="Logout"
+                HorizontalOptions="CenterAndExpand"
+                BackgroundColor="#CDDC39"
+                VerticalOptions="Center"
+                Clicked="Button_Clicked"
+                />
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,15 @@
+C:\Users\ricca\source\repos\Login\Login\Login\obj\Debug\netstandard2.0\Login.csprojAssemblyReference.cache
+C:\Users\ricca\source\repos\Login\Login\Login\obj\Debug\netstandard2.0\App.xaml.g.cs
+C:\Users\ricca\source\repos\Login\Login\Login\obj\Debug\netstandard2.0\MainPage.xaml.g.cs
+C:\Users\ricca\source\repos\Login\Login\Login\obj\Debug\netstandard2.0\Login.csproj.CoreCompileInputs.cache
+C:\Users\ricca\source\repos\Login\Login\Login\obj\Debug\netstandard2.0\Login.AssemblyInfoInputs.cache
+C:\Users\ricca\source\repos\Login\Login\Login\obj\Debug\netstandard2.0\Login.AssemblyInfo.cs
+C:\Users\ricca\source\repos\Login\Login\Login\obj\Debug\netstandard2.0\Login.dll
+C:\Users\ricca\source\repos\Login\Login\Login\obj\Debug\netstandard2.0\Login.pdb
+C:\Users\ricca\source\repos\Login\Login\Login\bin\Debug\netstandard2.0\Login.deps.json
+C:\Users\ricca\source\repos\Login\Login\Login\bin\Debug\netstandard2.0\Login.dll
+C:\Users\ricca\source\repos\Login\Login\Login\bin\Debug\netstandard2.0\Login.pdb
+C:\Users\ricca\source\repos\Login\Login\Login\obj\Debug\netstandard2.0\XamlC.stamp
+C:\Users\ricca\source\repos\Login\Login\Login\obj\Debug\netstandard2.0\Page1.xaml.g.cs
+C:\Users\ricca\source\repos\Login\Login\Login\obj\Debug\netstandard2.0\Iscrizione.xaml.g.cs
+C:\Users\ricca\source\repos\Login\Login\Login\obj\Debug\netstandard2.0\Page2.xaml.g.cs

@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Login"
+             x:Class="Login.MainPage"
+             BackgroundColor="#607D8B">
+    <ContentPage.Content>
+        <Grid Margin="25">
+   
+            <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+
+        </Grid.RowDefinitions>
+        <Label
+                Grid.Row="0"
+                Text="Rent[it]"
+                HorizontalOptions="CenterAndExpand"
+                VerticalOptions="CenterAndExpand"
+                FontSize="Large"
+                Font="60"
+                TextColor="White"/>
+        
+        <StackLayout Grid.Row="1">
+            <Entry 
+                    x:Name="usr"
+                    Placeholder="Username"
+                    
+                    PlaceholderColor="White"/>
+            <Entry 
+                    x:Name="psw"
+                    Placeholder="Password"
+                    PlaceholderColor="White"
+                    IsPassword="True"/>
+            <Label 
+                    x:Name="Valide"
+                    Text="Credenziali non valide"
+                    IsVisible="False"
+                    TextColor="Red"/>
+
+        </StackLayout>
+
+        <Button Text="LOG IN"
+                Grid.Row="2"
+                VerticalOptions="CenterAndExpand"
+                BackgroundColor="#CDDC39"
+                Margin="80,0,80,0"
+                Clicked="SignInProcedure"
+                />
+        <Button Text="iscriviti"
+                Grid.Row="3"
+                VerticalOptions="EndAndExpand"
+                Margin="80,0,80,0"
+                Clicked="Iscriviti"
+                Font="micro"
+                BackgroundColor="Transparent"
+                />
+
+    </Grid>
+
+    </ContentPage.Content>
+</ContentPage>
