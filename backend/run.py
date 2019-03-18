@@ -17,10 +17,16 @@ db = SQLAlchemy(app)
 
 class Utente(db.Model):
   id = db.Column(db.Integer, primary_key=True, unique=True, nullable=False)
-  username = db.Column(db.String(30), nullable=False, unique=True)
+  name = db.Column(db.String(30), nullable=False)
+  surname = db.Column(db.String(30), nullable=False)
   email = db.Column(db.String(50), nullable=False, unique=True)
   password = db.Column(db.String(30), nullable=False)
 
+def __init__(self,name,surname,email,password):
+  self.name=name
+  self.surname=surname
+  self.email=email
+  self.password=password
 
 # Creazione tabelle
 db.create_all()
@@ -38,10 +44,11 @@ def index():
 # REGISTRAZIONE UTENTE
 @app.route('/registrazione', methods=['POST'])
 def registrazione():
-  username = request.json['username']
+  name = request.json['name']
+  surname = request.json['surname']
   email = request.json['email']
   password = request.json['password']
-  utente = Utente(username=username, email=email, password=password)
+  utente = Utente(name=name, surname=surname, email=email, password=password)
   db.session.add(utente)
   try:
       db.session.commit()
@@ -67,7 +74,7 @@ def get_pwd(username):
 @auth.login_required
 def prodotti():
   return jsonify({'message': 'Elenco prodotti'})
-
+'''
 @app.route('/delete', methods = ['DELETE'])
 @auth.login_required
 def cancella():
@@ -83,10 +90,9 @@ def cancella():
       return jsonify({'messaggio': 'L\'utente non è presente nel DB'})
   else:
     return jsonify({'messaggio': 'L\'utente non è presente nel DB'}), 404
-
-
+'''
 
 
 
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True,port='5000')
