@@ -14,7 +14,7 @@ auth = HTTPBasicAuth()
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///tmp/test.db'
 db = SQLAlchemy(app)
 
-
+# Creazione Tabella
 class Utente(db.Model):
   id = db.Column(db.Integer, primary_key=True, unique=True, nullable=False)
   name = db.Column(db.String(30), nullable=False)
@@ -22,11 +22,11 @@ class Utente(db.Model):
   email = db.Column(db.String(50), nullable=False, unique=True)
   password = db.Column(db.String(30), nullable=False)
 
-def __init__(self,name,surname,email,password):
-  self.name=name
-  self.surname=surname
-  self.email=email
-  self.password=password
+  def __init__(self,name,surname,email,password):
+    self.name=name
+    self.surname=surname
+    self.email=email
+    self.password=password
 
 # Creazione tabelle
 db.create_all()
@@ -62,18 +62,24 @@ TESTING
 '''
 
 @auth.get_password
-def get_pwd(username):
-  utente = Utente.query.filter_by(username=username).first_or_404()
+def get_pwd(email):
+  utente = Utente.query.filter_by(email=email).first_or_404()
   if(utente is not None):
     return utente.password
   else:
-    return jsonify({'messaggio': 'Utente non autorizzato perché non presente nel DB'})
+    return jsonify({'messaggio': 'Utente non iscritto. Iscriviti per poter effettuare il login'})
 
 
-@app.route('/prodotti', methods = ['GET'])
-@auth.login_required
-def prodotti():
-  return jsonify({'message': 'Elenco prodotti'})
+@app.route('/login', methods = ['POST'])
+def login():
+  email = request.json['email']
+  password = request.json['password']
+  if(password == get_pwd(email)):
+    return jsonify({'messaggio': 'Login effettuato'}), 200
+  else:
+    return jsonify({'messaggio': 'email o password errati'}), 500
+  
+
 '''
 @app.route('/delete', methods = ['DELETE'])
 @auth.login_required
