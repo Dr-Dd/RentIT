@@ -22,4 +22,8 @@ _**(o a meno che non doveste cambiare solo qualche stupidaggine)**_
 
 Detto ciò consiglio pure di fare piccoli `commit`, il più spesso possibile (meglio un `commit` in più che un pezzo di codice in meno)
 
+## Pushare o non pushare, questo è il problema
+Ogni volta che vi trovate a pushare un progetto, cartella, file ecc. ecc. su remoto, fate attenzione ad eventuali temp, dotfiles, e file di configurazione legati al pc su cui sviluppate. Questi potrebbero essere difficili da "pulire" dalla propria repo locale. Per ovviare a ciò, controllate se il .gitignore include già la configurazione legata al vostro editor preferito (ad esempio, visual studio), e pushate il tutto assieme.
+Ecco un utilissimo tool che compone .gitignore differenti: https://www.gitignore.io/
+
 Buon lavoro e a presto!!! 
