@@ -20,7 +20,7 @@ namespace LoginDB.Views
         protected async override void OnAppearing()
         {
             base.OnAppearing();
-            listView.ItemsSource = await App.TodoManager.GetTasksAsync();
+            //listView.ItemsSource = await App.TodoManager.GetTasksAsync();
         }
 
         
