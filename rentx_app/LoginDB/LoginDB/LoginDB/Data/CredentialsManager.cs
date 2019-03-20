@@ -26,7 +26,7 @@ namespace LoginDB.Data
             return restService.DeleteUserAsync(id);
         }
 
-        public Task<String> AreCredentialsValid(Credentials cr)
+        public Task<string> AreCredentialsValid(Credentials cr)
         {
             return restService.AreCredentialsValid(cr);
         }

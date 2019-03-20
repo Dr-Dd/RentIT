@@ -10,6 +10,6 @@ namespace LoginDB.Data
     {
         Task SaveUserAsync(Utente user);
         Task DeleteUserAsync(int ID);
-        Task<String> AreCredentialsValid(Credentials cr);
+        Task<string> AreCredentialsValid(Credentials cr);
     }
 }
