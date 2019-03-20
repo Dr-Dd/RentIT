@@ -52,10 +52,10 @@ def registrazione():
   db.session.add(utente)
   try:
       db.session.commit()
-      return jsonify({'messaggio': 'Untente registrato correttamente'})
+      return 'Untente registrato correttamente'
   except IntegrityError:
       db.session.rollback()
-      return jsonify({'messaggio': 'Username o Email già presenti nel DB'})
+      return 'Username o Email già presenti nel DB'
       
 '''
 TESTING
@@ -63,11 +63,11 @@ TESTING
 
 @auth.get_password
 def get_pwd(email):
-  utente = Utente.query.filter_by(email=email).first_or_404()
+  utente = Utente.query.filter_by(email=email).first()
   if(utente is not None):
     return utente.password
   else:
-    return jsonify({'messaggio': 'Utente non iscritto. Iscriviti per poter effettuare il login'})
+    return 'Utente non iscritto. Iscriviti per poter effettuare il login'
 
 
 @app.route('/login', methods = ['POST'])
@@ -75,9 +75,9 @@ def login():
   email = request.json['email']
   password = request.json['password']
   if(password == get_pwd(email)):
-    return jsonify({'messaggio': 'Login effettuato'}), 200
+    return 'Login effettuato'
   else:
-    return jsonify({'messaggio': 'email o password errati'}), 500
+    return 'email o password errati'
   
 
 '''
@@ -101,4 +101,4 @@ def cancella():
 
 
 if __name__ == "__main__":
-    app.run(debug=True,port='5000')
+    app.run(debug=True,port='5000',host='0.0.0.0')
