@@ -2,7 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="LoginDB.Views.TilePage">
-    <ListView x:Name="listView" Margin="20" ItemSelected="OnItemSelected">
+             <!-- This ListView had Item selected, but produces an error on compile time -->
+    <ListView x:Name="listView" Margin="20">
         <ListView.ItemTemplate>
             <DataTemplate>
                 <ViewCell>
