@@ -2,6 +2,7 @@ from flask import Flask, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from flask_httpauth import HTTPBasicAuth
 from sqlalchemy.exc import IntegrityError
+from sqlalchemy.sql import select
 from werkzeug.security import generate_password_hash, check_password_hash
 import json
 
@@ -23,11 +24,11 @@ class Utente(db.Model):
   email = db.Column(db.String(50), nullable=False, unique=True)
   password = db.Column(db.String(30), nullable=False)
 
-def __init__(self,name,surname,email,password):
-  self.name=name
-  self.surname=surname
-  self.email=email
-  self.password=password
+  def __init__(self,name,surname,email,password):
+    self.name=name
+    self.surname=surname
+    self.email=email
+    self.password=password
 
 class Prodotto(db.Model):
   id = db.Column(db.Integer, primary_key = True, unique = True, nullable = False)
@@ -38,7 +39,7 @@ class Prodotto(db.Model):
   utenteB = db.Column(db.String(50), nullable = True)
   price = db.Column(db.Integer, nullable = False)
 
-  def __init__ (self, code, name, category, utenteA, UtenteB, price):
+  def __init__ (self, code, name, category, utenteA, utenteB, price):
     self.code = code
     self.name = name
     self.category = category
@@ -59,7 +60,9 @@ INIZIO ENDPOINTS API
 def index():
   return jsonify({'messaggio': 'Fratè ti devi registrare. DAJE!'})
 
-# REGISTRAZIONE UTENTE
+'''
+UTENTE
+'''
 @app.route('/registrazione', methods=['POST'])
 def registrazione():
   name = request.json['name']
@@ -75,13 +78,9 @@ def registrazione():
       db.session.rollback()
       return 'Username o Email già presenti nel DB'
       
-'''
-TESTING
-'''
-
 @auth.get_password
-def get_pwd(username):
-  utente = Utente.query.filter_by(username=username).first_or_404()
+def get_pwd(email):
+  utente = Utente.query.filter_by(email=email).first_or_404()
   if(utente is not None):
     return utente.password
   else:
@@ -96,19 +95,13 @@ def login():
   else:
     return 'email o password errati'
 
-#DA IMPLEMENTARE
-@app.route('/prodotti', methods = ['GET'])
-@auth.login_required
-def prodotti():
-  return 'Elenco prodotti'
-
 
 @app.route('/delete', methods = ['DELETE'])
-
-def cancella():
+def delete():
   email = request.json['email']
+  password = request.json['password']
   utente = Utente.query.filter_by(email=email).first()
-  if(utente is not None):
+  if(utente is not None and utente.password == password):
     db.session.delete(utente)
     try:
       db.session.commit()
@@ -119,7 +112,33 @@ def cancella():
   else:
     return 'L\'utente non è presente nel DB'
 
+'''
+PRODDOTTI
+'''
 
+@app.route('/inserisci', methods=['POST'])
+def inserisci_prodotto():
+  code = request.json['code']
+  name = request.json['name']
+  category = request.json['category']
+  utenteA = request.json['utenteA']
+  utenteB = request.json['utenteB']
+  price = request.json['price']
+  prodotto = Prodotto(code=code, name=name, category=category, utenteA=utenteA, utenteB=utenteB, price=price)
+  db.session.add(prodotto)
+  try:
+      db.session.commit()
+      return 'Prodotto registrato correttamente'
+  except IntegrityError:
+      db.session.rollback()
+      return 'Prodotto già presente nel DB'
+
+
+@app.route('/prodotti', methods = ['GET'])
+def prodotti():
+  code = request.json['code']
+  prodotto = Prodotto.query.filter_by(code=code).first()
+  print(prodotto)
 
 
 if __name__ == "__main__":
