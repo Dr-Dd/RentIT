@@ -15,6 +15,7 @@ namespace LoginDB.Views
         public LoginPage()
         {
             InitializeComponent();
+            BindingContext = new LoginPageViewModel();
         }
 
         async void OnSignInProcedure(object sender, EventArgs e)

@@ -15,7 +15,7 @@
             </Grid.RowDefinitions>
             <Label
                 Grid.Row="0"
-                Text="Rent[it]"
+                Text="{Binding Title}"
                 HorizontalOptions="CenterAndExpand"
                 VerticalOptions="CenterAndExpand"
                 FontSize="Large"
@@ -25,23 +25,23 @@
             <StackLayout Grid.Row="1">
                 <Entry 
                     x:Name="mail"
-                    Placeholder="Mail"
-                    PlaceholderColor="White"/>
+                    Placeholder="{Binding MailPlaceholder}"
+                    PlaceholderColor="{Binding TextColor}"/>
                 <Entry 
                     x:Name="psw"
-                    Placeholder="Password"
-                    PlaceholderColor="White"
-                    IsPassword="True"/>
+                    Placeholder="{Binding PwdPlaceholder}"
+                    PlaceholderColor="{Binding TextColor}"
+                    IsPassword="{Binding IsPwdTextPassword}"/>
                 <Label
                     x:Name="risposta"
-                    IsVisible="false"
-                    TextColor="Red"/>
+                    IsVisible="{Binding IsUsrMsgVisible}"
+                    TextColor="{Binding ErrorMessageColor}"/>
                </StackLayout>
 
-            <Button Text="LOG IN"
+            <Button Text="{Binding LoginButtonText}"
                 Grid.Row="2"
                 VerticalOptions="CenterAndExpand"
-                BackgroundColor="#CDDC39"
+                BackgroundColor="{Binding LoginButtonBackgroundColor}"
                 Margin="80,0,80,0"
                 Clicked="OnSignInProcedure"
                 />
