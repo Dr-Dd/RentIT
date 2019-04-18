@@ -7,67 +7,83 @@ namespace LoginDB.Views
     // visuale andrebbero spostati in un dizionario della view, riferirsi a Carlo
     public class LoginPageViewModel : INotifyPropertyChanged
     {
-        private string title = "Rent[IT]";
-        public string Title { get { return title; } }
+        /* Vars */
+        private string _password;
+        private string _email;
+        // Should be in the view
+        private string _title = "Rent[IT]";
+        // Should be in the view
+        private string _mailPlaceholder = "Mail";
+        // Should be in the view
+        private string _pwdPlaceholder = "Password";
+        // Should be in the view
+        private string _textColor = "White";
+        private string _errorMessageColor = "Red";
+        private bool _isPwdTextPassword = true;
+        // Should be in the view
+        private string _loginButtonText = "LOG IN";
+        private string _userMessage;
+        private bool _isUsrMsgVisible = false;
+        // Should be in the view
+        private string _loginButtonBackgroundColor = "#CDDC39";
 
-        private string mailPlaceholder = "Mail";
-        public string MailPlaceholder { get { return mailPlaceholder; } }
+        /* Constructor */
+        public LoginPageViewModel()
+        {
+        }
 
-        private string pwdPlaceholder = "Password";
-        public string PwdPlaceholder { get { return pwdPlaceholder; } }
+        /* (Get/Set)ters */
+        public string Title { get { return _title; } }
 
-        private string textColor = "White";
-        public string TextColor { get { return textColor; } }
+        public string MailPlaceholder { get { return _mailPlaceholder; } }
 
-        private string errorMessageColor = "Red";
-        public string ErrorMessageColor { get { return errorMessageColor; } }
+        public string PwdPlaceholder { get { return _pwdPlaceholder; } }
 
-        private bool isPwdTextPassword = true;
+        public string TextColor { get { return _textColor; } }
+
+        public string ErrorMessageColor { get { return _errorMessageColor; } }
+
         public bool IsPwdTextPassword
         {
-            get { return isPwdTextPassword; }
+            get { return _isPwdTextPassword; }
             // TODO: Feature che mostra la password momentaneamente (isPassword = false)
             // per questo c'è il setter
-            set { isPwdTextPassword = value; }
+            set { _isPwdTextPassword = value; }
         }
 
         // TODO: Questo è un messaggio che viene usato solo in caso di errore, con 
         // testo presentato in base alla situazione, progettarlo meglio
-        private string userMessage;
         public string UserMessage
         {
-            get { return userMessage; }
+            get { return _userMessage; }
             set
             {
-                userMessage = value;
+                _userMessage = value;
             }
         }
 
         // TODO: Questo valore deve diventare true nel caso si verifichino degli
         // errori, progettare l'interfaccia di segnalazione errori
-        private bool isUsrMsgVisible = false;
         public bool IsUsrMsgVisible
         {
             get { return IsUsrMsgVisible; }
             set
             {
-                isUsrMsgVisible = value;
+                _isUsrMsgVisible = value;
             }
         }
 
-        private string loginButtonText = "LOG IN";
-        public string LoginButtonText { get { return loginButtonText; } }
+        public string LoginButtonText { get { return _loginButtonText; } }
 
-        private string loginButtonBackgroundColor = "#CDDC39";
-        public string LoginButtonBackgroundColor { get { return loginButtonText; } }
+        public string LoginButtonBackgroundColor { get { return _loginButtonText; } }
 
-        public LoginPageViewModel()
-        {
-        }
-
-        //TODO: Implement propertyChange methods
+        /* MISCELLANEOUS */
+        //TODO: Implement propertyChange methods 
+        //NB: This isn't really needed since we can use 
+        // ***'RaisePropertyChanged(() => Value)'***
         public event PropertyChangedEventHandler PropertyChanged;
 
+        
         void OnPropertyChanged([CallerMemberName] string name = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
