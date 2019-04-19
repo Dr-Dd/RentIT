@@ -10,22 +10,10 @@ namespace LoginDB.Views
         /* Vars */
         private string _password;
         private string _email;
-        // Should be in the view
-        private string _title = "Rent[IT]";
-        // Should be in the view
-        private string _mailPlaceholder = "Mail";
-        // Should be in the view
-        private string _pwdPlaceholder = "Password";
-        // Should be in the view
-        private string _textColor = "White";
         private string _errorMessageColor = "Red";
         private bool _isPwdTextPassword = true;
-        // Should be in the view
-        private string _loginButtonText = "LOG IN";
         private string _userMessage;
         private bool _isUsrMsgVisible = false;
-        // Should be in the view
-        private string _loginButtonBackgroundColor = "#CDDC39";
 
         /* Constructor */
         public LoginPageViewModel()
@@ -33,14 +21,6 @@ namespace LoginDB.Views
         }
 
         /* (Get/Set)ters */
-        public string Title { get { return _title; } }
-
-        public string MailPlaceholder { get { return _mailPlaceholder; } }
-
-        public string PwdPlaceholder { get { return _pwdPlaceholder; } }
-
-        public string TextColor { get { return _textColor; } }
-
         public string ErrorMessageColor { get { return _errorMessageColor; } }
 
         public bool IsPwdTextPassword
@@ -72,10 +52,6 @@ namespace LoginDB.Views
                 _isUsrMsgVisible = value;
             }
         }
-
-        public string LoginButtonText { get { return _loginButtonText; } }
-
-        public string LoginButtonBackgroundColor { get { return _loginButtonText; } }
 
         /* MISCELLANEOUS */
         //TODO: Implement propertyChange methods 
