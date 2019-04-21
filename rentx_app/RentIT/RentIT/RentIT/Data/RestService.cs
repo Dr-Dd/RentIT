@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using RentIT.Models;
 using Newtonsoft.Json;
+using RentIT.Views;
 
 namespace RentIT.Data
 {

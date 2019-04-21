@@ -15,7 +15,7 @@
             </Grid.RowDefinitions>
             <Label
                 Grid.Row="0"
-                Text="Rent[IT]"
+                Text="Rent[it]"
                 HorizontalOptions="CenterAndExpand"
                 VerticalOptions="CenterAndExpand"
                 FontSize="Large"
@@ -31,12 +31,12 @@
                     x:Name="psw"
                     Placeholder="Password"
                     PlaceholderColor="White"
-                    IsPassword="{Binding IsPwdTextPassword}"/>
+                    IsPassword="True"/>
                 <Label
                     x:Name="risposta"
-                    IsVisible="{Binding IsUsrMsgVisible}"
-                    TextColor="{Binding ErrorMessageColor}"/>
-               </StackLayout>
+                    IsVisible="false"
+                    TextColor="Red"/>
+            </StackLayout>
 
             <Button Text="LOG IN"
                 Grid.Row="2"

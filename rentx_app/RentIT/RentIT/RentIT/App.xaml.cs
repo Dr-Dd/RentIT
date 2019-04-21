@@ -11,9 +11,9 @@ namespace RentIT
     {
         public static CredentialsManager CredManager { get; private set; }
 
-
         public App()
         {
+            InitializeComponent();
             CredManager = new CredentialsManager(new RestService());
             MainPage = new NavigationPage(new LoginPage());
         }
