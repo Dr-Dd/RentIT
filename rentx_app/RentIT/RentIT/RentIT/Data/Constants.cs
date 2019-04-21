@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace RentIT
+namespace RentIT.Views
 {
     public static class Constants
     {
