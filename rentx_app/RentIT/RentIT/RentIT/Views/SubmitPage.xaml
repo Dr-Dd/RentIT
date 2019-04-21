@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RentIT.Views.SubmitPage"
+             BackgroundColor="#607D8B">
+    <ContentPage.Content>
+        <Grid Margin="25">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Label
+                Text="Inserisci i tuoi Dati"
+                Grid.Row="0"
+                HorizontalTextAlignment="Center"
+                VerticalOptions="End"
+                TextColor="#CDDC39"
+                Margin="0,0,0,50"
+                FontSize="Large"
+                Font="27"/>
+            <StackLayout Grid.Row="1">
+                <Entry 
+                    x:Name="name"
+                    Placeholder="Nome"
+                    Text="{Binding Path=name}"
+                    PlaceholderColor="White"/>
+                <Entry 
+                    x:Name="surname"
+                    Placeholder="Cognome"
+                    Text="{Binding Path=surname}"
+                    PlaceholderColor="White"/>
+                <Entry 
+                    x:Name="email"
+                    Placeholder="Email"
+                    Text="{Binding Path=email}"
+                    PlaceholderColor="White"/>
+                <Entry 
+                    x:Name="password"
+                    Placeholder="Password"
+                    Text="{Binding Path=password}"
+                    PlaceholderColor="White"
+                    IsPassword="True"/>
+                <Label 
+                    x:Name="blankField"
+                    Text="Non hai riempito uno o più campi"
+                    IsVisible="False"
+                    TextColor="Red"/>
+                <Label 
+                    x:Name="emailIsUsed"
+                    Text="email già in uso, effettua il login"
+                    IsVisible="False"
+                    TextColor="Red"/>
+            </StackLayout>
+            <Button Grid.Row="2"
+                    Text="submit"
+                    VerticalOptions="StartAndExpand"
+                    HorizontalOptions="CenterAndExpand"
+                    BackgroundColor="#CDDC39"
+                    Clicked="OnSubmitClicked"/>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
