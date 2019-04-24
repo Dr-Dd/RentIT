@@ -4,49 +4,32 @@
              x:Class="RentIT.Views.LoginPage"
              BackgroundColor="#607D8B">
     <ContentPage.Content>
-        <Grid Margin="25">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="2*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-            <Label
-                Grid.Row="0"
-                Text="Rent[it]"
-                HorizontalOptions="CenterAndExpand"
-                VerticalOptions="CenterAndExpand"
-                FontSize="Large"
-                Font="60"
-                TextColor="White"/>
-            <StackLayout Grid.Row="1">
-                <Entry 
-                    x:Name="mail"
-                    Placeholder="Mail"
-                    PlaceholderColor="White"/>
-                <Entry 
-                    x:Name="psw"
-                    Placeholder="Password"
-                    PlaceholderColor="White"
-                    IsPassword="True"/>
-                <Label
-                    x:Name="risposta"
-                    IsVisible="false"
-                    TextColor="Red"/>
-            </StackLayout>
-            <Button Text="LOG IN"
-                Grid.Row="2"
-                VerticalOptions="CenterAndExpand"
-                BackgroundColor="#CDDC39"
-                Margin="80,0,80,0"
-                Clicked="OnSignInProcedure" />
-            <Button Text="iscriviti"
-                Grid.Row="3"
-                VerticalOptions="EndAndExpand"
-                Margin="80,0,80,0"
-                Clicked="OnSubmitProcedure"
-                Font="micro"
-                BackgroundColor="Transparent" />
-        </Grid>
+        <StackLayout >
+            <Label Text="Rent[it]"
+                   HorizontalOptions="CenterAndExpand"
+                   VerticalOptions="CenterAndExpand"
+                   FontSize="Large"
+                   Font="60"
+                   Margin="10" 
+                   TextColor="White"/>
+            <Entry Placeholder="Mail"
+                   VerticalOptions="CenterAndExpand"
+                   PlaceholderColor="White"/>
+            <Entry Placeholder="Password"
+                   VerticalOptions="CenterAndExpand"
+                   PlaceholderColor="White"
+                   IsPassword="True"/>
+            <Button Text="SIGN IN"
+                    VerticalOptions="CenterAndExpand"
+                    BackgroundColor="#CDDC39"
+                    Command="{Binding SignInCommand}" 
+                    Padding="10" />
+            <Button Text="SIGN UP"
+                    VerticalOptions="CenterAndExpand"
+                    Command="{Binding SubmitCommand}"
+                    Font="micro"
+                    Padding="10" 
+                    BackgroundColor="Transparent" />
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -28,6 +28,8 @@ namespace RentIT
             navService.RegisterViewMapping(typeof(SubmitPageViewModel),
                 typeof(SubmitPage));
 
+            MainPage = mainPage;
+
         }
 
         protected override void OnStart()

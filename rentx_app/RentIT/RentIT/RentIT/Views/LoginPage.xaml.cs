@@ -33,15 +33,15 @@ namespace RentIT.Views
                 // Setta nella variabile cred il testo di psw e mail
                 // *PROVENIENTI DA UN NAMESPACE RESO VISIBILE SU XAML*
                 // ===*** DA SETTARE VIA PROPERTIES ***==
-                password = psw.Text,
-                email = mail.Text
+                //password = psw.Text,
+                //email = mail.Text
             };
             // Attende l'output di validazione delle credenziali
             var content = await App.CredManager.AreCredentialsValid(cred);
             // Printa quindi l'output di risposta (e la rende visibile)
             // ===*** DA SETTARE VIA PROPERTIES ***===
-            risposta.Text = content;
-            risposta.IsVisible = true; 
+            //risposta.Text = content;
+            //risposta.IsVisible = true; 
         }
 
         async void OnSubmitProcedure(object sender, EventArgs e)
@@ -67,7 +67,13 @@ namespace RentIT.Views
 
             if (_vm != null)
                 await _vm.Init();
+
+            MessagingCenter.Subscribe<LoginPageViewModel, string>(this, "LoginVmMessage", (sender, arg) =>
+            {
+                DisplayAlert("WARNING", arg, "OK");
+            });
         }
+
     } 
  }
     
