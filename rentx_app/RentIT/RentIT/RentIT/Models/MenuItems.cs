@@ -10,6 +10,6 @@ namespace RentIT.Models
 
         public String Icon { get; set; }
 
-        public String TypeTarget { get; set; }
+        public Type TypeTarget { get; set; }
     }
 }

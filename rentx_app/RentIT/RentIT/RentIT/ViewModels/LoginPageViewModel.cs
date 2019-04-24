@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
+
 namespace RentIT.ViewModels
 {
     // TODO: Notare come gli aspetti quali colore, e qualunque cosa sia di tipologia

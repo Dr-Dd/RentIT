@@ -157,4 +157,7 @@
       <Name>RentIT</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\outline_person_black_18dp.png" />
+  </ItemGroup>
 </Project>
