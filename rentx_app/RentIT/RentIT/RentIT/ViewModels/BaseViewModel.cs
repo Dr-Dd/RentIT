@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace RentIT.ViewModels
 {
+    /**
+     * SuperClasse ViewModel ereditata da tutti gli altri ViewModel.
+     * Notare l'overloading di classe, che può avere o meno un parametro */
     public abstract class BaseViewModel : INotifyPropertyChanged
     {
         protected INavService NavService { get; private set; }

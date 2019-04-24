@@ -1,4 +1,6 @@
 ﻿using RentIT.Models;
+using RentIT.Services;
+using RentIT.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +18,7 @@ namespace RentIT.Views
 		public SubmitPage ()
 		{
 			InitializeComponent ();
+            BindingContext = new SubmitPageViewModel(DependencyService.Get<INavService>());
 		}
 
         async void OnSubmitClicked(object sender, EventArgs e)

@@ -1,5 +1,7 @@
 ﻿using RentIT.Data;
+using RentIT.Services;
 using RentIT.Views;
+using RentIT.ViewModels;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -13,9 +15,19 @@ namespace RentIT
 
         public App()
         {
-            InitializeComponent();
             CredManager = new CredentialsManager(new RestService());
-            MainPage = new NavigationPage(new LoginPage());
+
+            var mainPage = new NavigationPage(new LoginPage());
+            var navService = DependencyService.Get<INavService>() as XamarinFormsNavService;
+
+            navService.XamarinFormsNav = mainPage.Navigation;
+
+            navService.RegisterViewMapping(typeof(LoginPageViewModel),
+                typeof(LoginPage));
+
+            navService.RegisterViewMapping(typeof(SubmitPageViewModel),
+                typeof(SubmitPage));
+
         }
 
         protected override void OnStart()

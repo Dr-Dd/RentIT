@@ -11,7 +11,11 @@ using Xamarin.Forms;
 
 [assembly: Dependency(typeof(XamarinFormsNavService))]
 namespace RentIT.Services
-{
+{ 
+    /**
+     * Implementazione di interfaccia di navigazione, presa dalla documentazione
+     * Xamarin (Mastering Xamarin Forms), per approfondimenti riferirsi al 
+     * testo */
     public class XamarinFormsNavService : INavService
     {
         readonly IDictionary<Type, Type> _map = new Dictionary<Type, Type>();
