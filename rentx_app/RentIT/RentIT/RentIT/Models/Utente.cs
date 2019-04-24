@@ -14,7 +14,10 @@ namespace RentIT.Models
 
         public Boolean isBlankfield()
         {
-            return this.name == null || this.surname == null || this.email == null || this.password == null;
+            return this.name == null || 
+                this.surname == null || 
+                this.email == null || 
+                this.password == null;
         }
      }
 }

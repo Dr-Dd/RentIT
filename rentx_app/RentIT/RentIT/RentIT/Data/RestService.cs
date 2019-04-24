@@ -11,7 +11,7 @@ using RentIT.Views;
 
 namespace RentIT.Data
 {
-    public class RestService: IRestService
+    public class RestService : IRestService
     {
         HttpClient client;
 
@@ -41,7 +41,6 @@ namespace RentIT.Data
                 if (response.IsSuccessStatusCode)
                 {
                     Debug.WriteLine("funziona");
-                    
                 }
 
             }
@@ -74,11 +73,11 @@ namespace RentIT.Data
             }
         }
 
-        public async Task<String> AreCredentialsValid(Credentials cr)
+        public async Task<string> AreCredentialsValid(Credentials cr)
         {
             // RestUrl = http://5.249.151.26:5000/
             var uri = new Uri(string.Format(Constants.RestUrl,"login"));
-            String result= null;
+            string result= null;
 
            try
             {
