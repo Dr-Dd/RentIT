@@ -1,10 +1,6 @@
 ﻿using RentIT.Models;
+using RentIT.ViewModels;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -13,19 +9,23 @@ namespace RentIT.Views
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class SearchPage : MasterDetailPage
 	{
-        public List<MenuItems> MenuList { get; set; }
+        SearchPageViewModel _vm
+        {
+            get { return BindingContext as SearchPageViewModel; }
+        }
 
 		public SearchPage ()
 		{
 			InitializeComponent ();
 
-            MenuList = new List<MenuItems>();
+            BindingContext = new SearchPageViewModel(DependencyService.Get<INavService>())
 
-            var loginPage = new MenuItems() { Title = "Login", Icon = "outline_persom_black_18dp.png", TypeTarget = typeof(LoginPage) };
-
-            MenuList.Add(loginPage);
-
-            navigationDrawerList.ItemsSource = MenuList;
+            var loginPage = new MenuEntry()
+            {
+                Title = "Login",
+                Icon = "outline_person_black_18dp.png",
+                TypeTarget = typeof(LoginPage)
+            };
 
             Detail = new NavigationPage((Page)Activator.CreateInstance(typeof(SearchPageDetail)));
 
@@ -39,7 +39,7 @@ namespace RentIT.Views
 
         private void OnMenuItemSelected (object sender, SelectedItemChangedEventArgs e)
         {
-            var item = (MenuItems)e.SelectedItem;
+            var item = (MenuEntry)e.SelectedItem;
             Type page = item.TypeTarget;
 
             Detail = new NavigationPage((Page)Activator.CreateInstance(page));

@@ -18,7 +18,8 @@
                           RowHeight="55"
                           SeparatorVisibility="Default"
                           BackgroundColor="Gold"
-                          ItemSelected="OnMenuItemSelected">
+                          ItemSelected="OnMenuItemSelected"
+                          ItemsSource="{Binding MenuList}">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>

@@ -28,6 +28,12 @@ namespace RentIT
             navService.RegisterViewMapping(typeof(SubmitPageViewModel),
                 typeof(SubmitPage));
 
+            navService.RegisterViewMapping(typeof(SearchPageViewModel),
+                typeof(SearchPage));
+
+            navService.RegisterViewMapping(typeof(SearchPageDetailViewModel),
+                typeof(SearchPageDetail));
+
             MainPage = mainPage;
 
         }
