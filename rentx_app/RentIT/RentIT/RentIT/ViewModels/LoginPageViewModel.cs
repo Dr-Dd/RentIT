@@ -6,6 +6,7 @@ using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
+
 namespace RentIT.ViewModels
 {
     public class LoginPageViewModel : BaseViewModel

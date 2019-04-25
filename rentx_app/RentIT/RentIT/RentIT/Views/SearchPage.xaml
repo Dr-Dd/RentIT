@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RentIT.Views.SearchPage">
+    <MasterDetailPage.Master>
+        <ContentPage Title="Menu"
+                     BackgroundColor="#607D8B">
+            <StackLayout Orientation="Vertical">
+                <StackLayout>
+                    <Label Text="{Binding Header}"/>
+
+                    <Image Source="{Binding Image}" Aspect="Fill"/>
+
+                    <Label Text="{Binding Footer}"/>
+                </StackLayout>
+
+                <ListView x:Name="navigationDrawerList"
+                          RowHeight="55"
+                          SeparatorVisibility="Default"
+                          BackgroundColor="Gold"
+                          ItemSelected="OnMenuItemSelected">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout VerticalOptions="FillAndExpand"
+                                             Orientation="Horizontal"
+                                             Padding="20,10,0,10"
+                                             Spacing="20">
+
+                                    <Image Source="{Binding Icon}"
+                                           WidthRequest="40"
+                                           HeightRequest="40"
+                                           VerticalOptions="Start"/>
+
+                                    <Label Text="{Binding Title}"
+                                           FontSize="Small"
+                                           VerticalOptions="End"
+                                           TextColor="#607D8B"/>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>       
+        </ContentPage>
+    </MasterDetailPage.Master>
+    
+    <MasterDetailPage.Detail>
+        <NavigationPage>
+            
+        </NavigationPage>
+    </MasterDetailPage.Detail>
+</MasterDetailPage>
