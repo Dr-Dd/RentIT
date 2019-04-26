@@ -59,7 +59,7 @@ namespace RentIT.ViewModels
 
         async Task ExecuteSignInCommand(Utente utente)
         {
-            MessagingCenter.Send<LoginPageViewModel, string>(this, "LoginVmMessage", "Il metodo non è ancora stato implementato.");
+            MessagingCenter.Send(this, "ATTENZIONE ATTENZIONE", "Il metodo non è ancora stato implementato.");
         }
 
         /**
