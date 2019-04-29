@@ -1,10 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="RentIT.Views.SearchPage">
+             x:Class="RentIT.Views.SearchPage"
+             NavigationPage.HasNavigationBar="False"
+             Title="Benvenuto in RentIT"
+             >
+    <MasterDetailPage.ToolbarItems>
+        <ToolbarItem Icon="outline_person_black_18dp.png" Command="" Priority="1"/>
+       
+    </MasterDetailPage.ToolbarItems>
     <MasterDetailPage.Master>
         <ContentPage Title="Menu"
                      BackgroundColor="#607D8B">
+
             <StackLayout Orientation="Vertical">
                 <StackLayout>
                     <Label Text="{Binding Header}"/>
@@ -17,7 +25,7 @@
                 <ListView x:Name="navigationDrawerList"
                           RowHeight="55"
                           SeparatorVisibility="Default"
-                          BackgroundColor="Gold"
+                          BackgroundColor="#607D8B"
                           ItemSelected="OnMenuItemSelected"
                           ItemsSource="{Binding MenuList}">
                     <ListView.ItemTemplate>

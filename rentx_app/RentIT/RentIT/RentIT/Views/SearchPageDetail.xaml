@@ -4,9 +4,9 @@
              x:Class="RentIT.Views.SearchPageDetail">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <SearchBar HorizontalOptions="CenterAndExpand"
+                       VerticalOptions="CenterAndExpand"
+                       />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
