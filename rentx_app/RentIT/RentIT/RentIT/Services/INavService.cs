@@ -7,6 +7,10 @@ using RentIT.ViewModels;
 
 namespace RentIT.Services
 {
+    /**
+     * Implementazione di interfaccia di navigazione, presa dalla documentazione
+     * Xamarin (Mastering Xamarin Forms), per approfondimenti riferirsi al 
+     * testo */
     public interface INavService
     {
         bool CanGoBack { get; }

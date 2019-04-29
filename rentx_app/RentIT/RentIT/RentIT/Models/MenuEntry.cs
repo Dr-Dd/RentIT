@@ -4,11 +4,11 @@ using System.Text;
 
 namespace RentIT.Models
 {
-    public class MenuItems
+    public class MenuEntry
     {
-        public String Title { get; set; }
+        public string Title { get; set; }
 
-        public String Icon { get; set; }
+        public string Icon { get; set; }
 
         public Type TypeTarget { get; set; }
     }

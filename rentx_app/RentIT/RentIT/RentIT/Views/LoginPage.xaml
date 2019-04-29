@@ -2,7 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="RentIT.Views.LoginPage"
-             BackgroundColor="#607D8B">
+             BackgroundColor="#607D8B"
+             NavigationPage.HasNavigationBar="True">
     <ContentPage.Content>
         <Grid Margin="25">
             <Grid.RowDefinitions>
@@ -39,12 +40,12 @@
                 VerticalOptions="CenterAndExpand"
                 BackgroundColor="#CDDC39"
                 Margin="80,0,80,0"
-                Clicked="OnSignInProcedure" />
+                Command="SignInCommand" />
             <Button Text="iscriviti"
                 Grid.Row="3"
                 VerticalOptions="EndAndExpand"
                 Margin="80,0,80,0"
-                Clicked="OnSubmitProcedure"
+                Command="SubmitCommand"
                 Font="micro"
                 BackgroundColor="Transparent" />
         </Grid>
