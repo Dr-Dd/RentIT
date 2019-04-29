@@ -1,5 +1,6 @@
 ﻿using RentIT.Models;
 using RentIT.ViewModels;
+using RentIT.Services;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -17,6 +18,8 @@ namespace RentIT.Views
 		public SearchPage ()
 		{
 			InitializeComponent ();
+
+            BindingContext = new SearchPageViewModel(DependencyService.Get<INavService>());
 
             var loginPage = new MenuEntry()
             {
