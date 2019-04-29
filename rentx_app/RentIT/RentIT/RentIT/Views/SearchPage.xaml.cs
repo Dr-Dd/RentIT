@@ -13,15 +13,15 @@ namespace RentIT.Views
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class SearchPage : MasterDetailPage
 	{
-        public List<MenuItems> MenuList { get; set; }
+        public List<MenuEntry> MenuList { get; set; }
 
 		public SearchPage ()
 		{
 			InitializeComponent ();
 
-            MenuList = new List<MenuItems>();
+            MenuList = new List<MenuEntry>();
 
-            var loginPage = new MenuItems() { Title = "Login", Icon = "outline_persom_black_18dp.png", TypeTarget = typeof(LoginPage) };
+            var loginPage = new MenuEntry() { Title = "Login", Icon = "outline_persom_black_18dp.png", TypeTarget = typeof(LoginPage) };
 
             MenuList.Add(loginPage);
 
@@ -39,7 +39,7 @@ namespace RentIT.Views
 
         private void OnMenuItemSelected (object sender, SelectedItemChangedEventArgs e)
         {
-            var item = (MenuItems)e.SelectedItem;
+            var item = (MenuEntry)e.SelectedItem;
             Type page = item.TypeTarget;
 
             Detail = new NavigationPage((Page)Activator.CreateInstance(page));
