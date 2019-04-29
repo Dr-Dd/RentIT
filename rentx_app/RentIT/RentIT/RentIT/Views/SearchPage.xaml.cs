@@ -32,6 +32,7 @@ namespace RentIT.Views
                 Icon = "outline_person_black_18dp.png",
                 TypeTarget = typeof(LoginPage)
             };
+ 
 
             Detail = new NavigationPage((Page)Activator.CreateInstance(typeof(SearchPageDetail)));
 

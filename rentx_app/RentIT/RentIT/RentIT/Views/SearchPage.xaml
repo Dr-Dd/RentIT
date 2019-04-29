@@ -4,7 +4,7 @@
              x:Class="RentIT.Views.SearchPage"
              NavigationPage.HasNavigationBar="False"
              >
-    
+
     <MasterDetailPage.ToolbarItems>
         <ToolbarItem Icon="outline_person_black_18dp.png" Command="" Priority="1"/>
     </MasterDetailPage.ToolbarItems>
@@ -57,7 +57,8 @@
     </MasterDetailPage.Master>
     
     <MasterDetailPage.Detail>
-        <NavigationPage>
-        </NavigationPage>
+        <ContentPage>
+            
+        </ContentPage>
     </MasterDetailPage.Detail>
 </MasterDetailPage>
