@@ -22,7 +22,8 @@ namespace RentIT
         {
             CredManager = new CredentialsManager(new RestService());
 
-            var mainPage = new NavigationPage(new LoginPage());
+            //Cambiare l'istanza oggetto per modificare la pagina iniziale e ricordarsi di aggiornare il get del kernel
+            var mainPage = new NavigationPage(new SearchPage());
 
             // Inizializiamo il kernel
             Kernel = new StandardKernel(
@@ -31,7 +32,7 @@ namespace RentIT
 
             Kernel.Load(platformModules);
 
-            mainPage.BindingContext = Kernel.Get<LoginPageViewModel>();
+            mainPage.BindingContext = Kernel.Get<SearchPageViewModel>();
 
             MainPage = mainPage;
         }
