@@ -17,7 +17,7 @@ namespace RentIT
         {
             CredManager = new CredentialsManager(new RestService());
 
-            var mainPage = new NavigationPage(new LoginPage());
+            var mainPage = new NavigationPage(new SearchPage());
             var navService = DependencyService.Get<INavService>() as XamarinFormsNavService;
 
             navService.XamarinFormsNav = mainPage.Navigation;
@@ -27,6 +27,8 @@ namespace RentIT
 
             navService.RegisterViewMapping(typeof(SubmitPageViewModel),
                 typeof(SubmitPage));
+
+            MainPage = mainPage;
 
         }
 

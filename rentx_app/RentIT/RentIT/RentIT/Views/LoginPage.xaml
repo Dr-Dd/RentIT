@@ -39,12 +39,12 @@
                 VerticalOptions="CenterAndExpand"
                 BackgroundColor="#CDDC39"
                 Margin="80,0,80,0"
-                Clicked="OnSignInProcedure" />
+                Command="SignInCommand" />
             <Button Text="iscriviti"
                 Grid.Row="3"
                 VerticalOptions="EndAndExpand"
                 Margin="80,0,80,0"
-                Clicked="OnSubmitProcedure"
+                Command="SubmitCommand"
                 Font="micro"
                 BackgroundColor="Transparent" />
         </Grid>
