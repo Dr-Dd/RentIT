@@ -5,6 +5,9 @@ using RentIT.ViewModels;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Ninject.Modules;
+using Ninject;
+using RentIT.Modules;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace RentIT
@@ -13,21 +16,24 @@ namespace RentIT
     {
         public static CredentialsManager CredManager { get; private set; }
 
-        public App()
+        public IKernel Kernel { get; set; }
+
+        public App(params INinjectModule[] platformModules)
         {
             CredManager = new CredentialsManager(new RestService());
 
             var mainPage = new NavigationPage(new LoginPage());
-            var navService = DependencyService.Get<INavService>() as XamarinFormsNavService;
 
-            navService.XamarinFormsNav = mainPage.Navigation;
+            // Inizializiamo il kernel
+            Kernel = new StandardKernel(
+                new RentITCoreModule(),
+                new RentITNavModule(mainPage.Navigation));
 
-            navService.RegisterViewMapping(typeof(LoginPageViewModel),
-                typeof(LoginPage));
+            Kernel.Load(platformModules);
 
-            navService.RegisterViewMapping(typeof(SubmitPageViewModel),
-                typeof(SubmitPage));
+            mainPage.BindingContext = Kernel.Get<LoginPageViewModel>();
 
+            MainPage = mainPage;
         }
 
         protected override void OnStart()

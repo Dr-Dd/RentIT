@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 using Foundation;
+using RentIT.iOS.Modules;
 using UIKit;
 
 namespace RentIT.iOS
@@ -23,7 +24,7 @@ namespace RentIT.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             global::Xamarin.Forms.Forms.Init();
-            LoadApplication(new App());
+            LoadApplication(new App(new RentITPlatformModule()));
 
             return base.FinishedLaunching(app, options);
         }

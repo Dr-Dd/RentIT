@@ -18,8 +18,6 @@ namespace RentIT.Views
 		{
 			InitializeComponent ();
 
-            BindingContext = new SearchPageViewModel(DependencyService.Get<INavService>())
-
             var loginPage = new MenuEntry()
             {
                 Title = "Login",

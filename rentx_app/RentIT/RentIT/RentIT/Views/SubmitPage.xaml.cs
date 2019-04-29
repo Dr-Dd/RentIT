@@ -18,7 +18,6 @@ namespace RentIT.Views
 		public SubmitPage ()
 		{
 			InitializeComponent ();
-            BindingContext = new SubmitPageViewModel(DependencyService.Get<INavService>());
 		}
 
         async void OnSubmitClicked(object sender, EventArgs e)
