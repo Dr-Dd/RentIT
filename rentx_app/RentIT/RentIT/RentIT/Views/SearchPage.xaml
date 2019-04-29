@@ -3,16 +3,18 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="RentIT.Views.SearchPage"
              NavigationPage.HasNavigationBar="False"
-             Title="Benvenuto in RentIT"
              >
+    
     <MasterDetailPage.ToolbarItems>
         <ToolbarItem Icon="outline_person_black_18dp.png" Command="" Priority="1"/>
-       
     </MasterDetailPage.ToolbarItems>
+    
     <MasterDetailPage.Master>
+        
         <ContentPage Title="Menu"
-                     BackgroundColor="#607D8B">
-
+                     BackgroundColor="#607D8B"
+                     >
+                     
             <StackLayout Orientation="Vertical">
                 <StackLayout>
                     <Label Text="{Binding Header}"/>
@@ -42,9 +44,9 @@
                                            VerticalOptions="Start"/>
 
                                     <Label Text="{Binding Title}"
-                                           FontSize="Small"
+                                           FontSize="Medium"
                                            VerticalOptions="End"
-                                           TextColor="#607D8B"/>
+                                           TextColor="#CDDC39"/>
                                 </StackLayout>
                             </ViewCell>
                         </DataTemplate>
@@ -56,7 +58,6 @@
     
     <MasterDetailPage.Detail>
         <NavigationPage>
-            
         </NavigationPage>
     </MasterDetailPage.Detail>
 </MasterDetailPage>

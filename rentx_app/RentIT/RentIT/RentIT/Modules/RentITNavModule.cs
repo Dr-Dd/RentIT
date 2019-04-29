@@ -23,11 +23,16 @@ namespace RentIT.Modules
             var navService = new XamarinFormsNavService();
             navService.XamarinFormsNav = _xfNav;
 
+            // Ricordarsi di aggiungere sempre alla mappa ogni ViewModel-View
             navService.RegisterViewMapping(typeof(LoginPageViewModel),
                 typeof(LoginPage));
 
             navService.RegisterViewMapping(typeof(SubmitPageViewModel),
                 typeof(SubmitPage));
+
+            navService.RegisterViewMapping(typeof(SearchPageViewModel),
+                typeof(SearchPage));
+
 
             Bind<INavService>()
                 .ToMethod(x => navService)
