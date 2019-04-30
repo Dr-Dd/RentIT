@@ -56,8 +56,7 @@
                     Text="submit"
                     VerticalOptions="StartAndExpand"
                     HorizontalOptions="CenterAndExpand"
-                    BackgroundColor="#CDDC39"
-                    Clicked="OnSubmitClicked"/>
+                    BackgroundColor="#CDDC39" />
         </Grid>
     </ContentPage.Content>
 </ContentPage>
