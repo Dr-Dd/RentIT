@@ -41,12 +41,13 @@ namespace RentIT.ViewModels
 
         public override async Task Init()
         {
-            // TODO: non è ben chiaro cosa serva all'avvio dell'applicazione
+            // TODO: non è ben chiaro cosa serva all'avvio della pagina (forse nulla)
         }
 
         /**
          * Comando di log in, NB: IL PARAMETRO UTENTE E' TEMPORANEO, un 
-         * segnaposto insomma*/
+         * segnaposto insomma
+         */
         Command<Utente> _signInCommand;
         public Command<Utente> SignInCommand
         {
@@ -63,7 +64,8 @@ namespace RentIT.ViewModels
         }
 
         /**
-         * Comando di registrazione (sign up), vedi sotto */
+         * Comando di registrazione (sign up), vedi sotto 
+         */
         Command _submitCommand;
         public Command SubmitCommand
         {
@@ -78,7 +80,8 @@ namespace RentIT.ViewModels
          * Task di avvio del processo di registrazione,
          * non amo molto il nome della funzione, ma lo accetto
          * lo stesso visto che in futuro cambierà (e' una procedura 
-         * di sign up (registrazione), non di submit (trasmissione di info) */
+         * di sign up (registrazione), non di submit (trasmissione di info) 
+         */
         async Task ExecuteSubmitCommand()
         {
             await NavService.NavigateTo<SubmitPageViewModel>();
