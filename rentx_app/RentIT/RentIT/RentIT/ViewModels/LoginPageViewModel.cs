@@ -61,6 +61,7 @@ namespace RentIT.ViewModels
         async Task ExecuteSignInCommand(Utente utente)
         {
             MessagingCenter.Send(this, "ATTENZIONE ATTENZIONE", "Il metodo non è ancora stato implementato.");
+            // TODO: Qui va fatto gestito il sistema di autenticazione
         }
 
         /**
