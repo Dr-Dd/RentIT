@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using RentIT.Services;
 using RentIT.Services.Authentication;
+using RentIT.Models.User;
 
 namespace RentIT.ViewModels
 {
@@ -63,7 +64,18 @@ namespace RentIT.ViewModels
         async Task ExecuteLogInCommand(Utente utente)
         {
             IsBusy = true;
+
             var authResponse = await _authService.LoginAsync(_email, _password);
+            if (authResponse.HasSucceded)
+            {
+                await NavService.NavigateTo<SearchPageViewModel>();
+                // await NavService.GoBack();
+            }
+            else
+            {
+                await App.Current.MainPage.DisplayAlert("Errore", authResponse.ResponseMessage, "Ok");
+            }
+
             IsBusy = false;
         }
 
