@@ -11,8 +11,6 @@ namespace RentIT.Services.Authentication
     {
         bool IsUserAuthenticated { get; }
 
-        Task<Utente> IscriviUtenteAsync(Utente user);
-        
         Task<AuthenticationResponse> LoginAsync(string email, string password);
 
         Task<bool> LogoutAsync();

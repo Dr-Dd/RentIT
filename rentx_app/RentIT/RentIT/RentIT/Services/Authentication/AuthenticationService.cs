@@ -25,22 +25,7 @@ namespace RentIT.Services.Authentication
 
         public bool IsUserAuthenticated => !string.IsNullOrEmpty(AppSettings.AccessToken);  // determina see l'utente è attualmente loggato
 
-
-        //meotodo per iscrivere un utente che prende i dati e li invia com json al db 
-        //da definire cosa ritorna e le eccezioni 
-
-        public Task<Utente> IscriviUtenteAsync(Utente user)
-        {
-            // RestUrl = http://5.249.151.26:5000/Auth
-            var builder = new UriBuilder(Constants.AuthEndpointIscrizione());
-            var uri = builder.ToString();
-
-            string token=""; 
-
-            return requestService.PostAsync<Utente>(uri, user, token);
-         }
         
-
         //metodo per effettuare il login 
         //prende in imput email e password e ritorna l'utente corrsipondente nel db , compresi dati e token che vengono storati localmente 
         public async Task<AuthenticationResponse> LoginAsync(string email, string password)
