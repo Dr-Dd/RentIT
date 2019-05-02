@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace RentIT.Models
+namespace RentIT.Models.User
 {
     public class Utente
     {

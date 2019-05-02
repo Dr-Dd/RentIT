@@ -9,6 +9,7 @@ using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
+using Newtonsoft.Json.Serialization;
 
 namespace RentIT.Services.Request
 {
@@ -20,6 +21,7 @@ namespace RentIT.Services.Request
         {
             serializerSettings = new JsonSerializerSettings
             {
+                ContractResolver = new CamelCasePropertyNamesContractResolver(),
                 DateTimeZoneHandling = DateTimeZoneHandling.Utc,
                 NullValueHandling = NullValueHandling.Ignore
             };
@@ -29,42 +31,51 @@ namespace RentIT.Services.Request
 
         public async Task<TResult> GetAsync<TResult>(string uri, string token="")
         {
-            var httpClient = CreateHttpClient(token);
-            var response = await httpClient.GetAsync(uri);
+            HttpClient httpClient = CreateHttpClient(token);
+            HttpResponseMessage response = await httpClient.GetAsync(uri);
 
             await HandleResponse(response);
 
             var serialized = await response.Content.ReadAsStringAsync();
-            var result = JsonConvert.DeserializeObject<TResult>(serialized, serializerSettings);
+            TResult result = JsonConvert.DeserializeObject<TResult>(serialized, serializerSettings);
 
             return result;
         }
 
-        
-
-        public async Task<TResult> PostAsync<TResult>(string uri, TResult data, string token="")
+        public Task<TResult> PostAsync<TResult>(string uri, TResult data,string token="")
         {
-            var httpClient = CreateHttpClient(token);
-            var serialized = JsonConvert.SerializeObject(data, serializerSettings);
-            var response = await httpClient.PostAsync(uri, new StringContent(serialized, Encoding.UTF8, "application/json"));
-
-            await HandleResponse(response);
-
-            var responseData = await response.Content.ReadAsStringAsync();
-
-            return JsonConvert.DeserializeObject<TResult>(responseData, serializerSettings);
+            return PostAsync<TResult, TResult>(uri, data);
         }
 
-       
-        public async Task<TResult> PutAsync<TResult>(string uri, TResult data, string token="")
+
+        public async Task<TResult> PostAsync<TRequest,TResult>(string uri, TRequest data, string token="")
         {
-            var httpClient = CreateHttpClient(token);
-            var serialized = await Task.Run(() => JsonConvert.SerializeObject(data, serializerSettings));
-            var response = await httpClient.PutAsync(uri, new StringContent(serialized, Encoding.UTF8, "application/json"));
+            HttpClient httpClient = CreateHttpClient(token);
+            var serialized = JsonConvert.SerializeObject(data, serializerSettings);
+            HttpResponseMessage response = await httpClient.PostAsync(uri, new StringContent(serialized, Encoding.UTF8, "application/json"));
 
             await HandleResponse(response);
 
-            var responseData = await response.Content.ReadAsStringAsync();
+            string responseData = await response.Content.ReadAsStringAsync();
+
+            return await Task.Run(() => JsonConvert.DeserializeObject<TResult>(responseData, serializerSettings));
+        }
+
+        public Task<TResult> PutAsync<TResult>(string uri, TResult data,string token="")
+        {
+            return PutAsync<TResult, TResult>(uri, data);
+        }
+
+
+        public async Task<TResult> PutAsync<TRequest,TResult>(string uri, TRequest data, string token="")
+        {
+            HttpClient httpClient = CreateHttpClient(token);
+            var serialized = await Task.Run(() => JsonConvert.SerializeObject(data, serializerSettings));
+            HttpResponseMessage response = await httpClient.PutAsync(uri, new StringContent(serialized, Encoding.UTF8, "application/json"));
+
+            await HandleResponse(response);
+
+            string responseData = await response.Content.ReadAsStringAsync();
 
             return await Task.Run(() => JsonConvert.DeserializeObject<TResult>(responseData, serializerSettings));
         }
