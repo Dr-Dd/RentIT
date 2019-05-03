@@ -21,19 +21,21 @@
                 Font="60"
                 TextColor="White"/>
             <StackLayout Grid.Row="1">
-                <Entry 
+                <Entry
                     x:Name="mail"
-                    Placeholder="Mail"
-                    PlaceholderColor="White"/>
+                    Placeholder="Email"
+                    PlaceholderColor="White"
+                    TextColor="White"/>
                 <Entry 
                     x:Name="psw"
                     Placeholder="Password"
                     PlaceholderColor="White"
+                    TextColor="White"
                     IsPassword="True"/>
                 <Label
                     x:Name="risposta"
                     IsVisible="false"
-                    TextColor="Red"/>
+                    TextColor="White"/>
             </StackLayout>
             <Button Text="LOG IN"
                 Grid.Row="2"
