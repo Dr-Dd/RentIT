@@ -20,12 +20,17 @@
                                    VerticalOptions="Center"
                                    Placeholder="Cerca qualcosa"
                                    PlaceholderColor="#BDBDBD"/>
-                        <SearchBar Margin="0,0,0,0"
-                       HorizontalOptions="StartAndExpand"
-                       VerticalOptions="StartAndExpand"
-                       Placeholder="Indirizzo, Città"
-                       PlaceholderColor="#BDBDBD"
+                        <SearchBar x:Name="citySearchBar"
+                                   TextChanged="CitySearchBar_TextChanged"
+                                   Margin="0,0,0,0"
+                                   HorizontalOptions="StartAndExpand"
+                                   VerticalOptions="StartAndExpand"
+                                   Placeholder="Indirizzo, Città"
+                                   PlaceholderColor="#BDBDBD"
                        />
+                        <ListView x:Name="suggestionListView"
+                                  HeightRequest="30"
+                                  ItemTapped="SuggestionListView_ItemTapped"/>
                     </StackLayout>
                 </Frame>
             </StackLayout>
