@@ -24,7 +24,7 @@ namespace RentIT.Views
 			InitializeComponent ();
 		}
 
-        /**Fa si che vengano suggerite delle città nel momento in cui si inizia digitare sulla tastiera*//
+        /**Fa si che vengano suggerite delle città nel momento in cui si inizia digitare sulla tastiera**/
         private void CitySearchBar_TextChanged(object sender, TextChangedEventArgs e)
         {
             var keyword = citySearchBar.Text;
