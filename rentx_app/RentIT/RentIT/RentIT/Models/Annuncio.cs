@@ -21,7 +21,5 @@ namespace RentIt.Models
 
         public DateTime Data { get; set; }
 
-        public string Icon { get; set; }
-
     }
 }

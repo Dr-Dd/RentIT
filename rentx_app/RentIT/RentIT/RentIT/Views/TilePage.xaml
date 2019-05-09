@@ -21,8 +21,8 @@
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="2*"/>
                         <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition.Width="*"/>
+                        <ColumnDefinition.Width="*"/>
                     </Grid.ColumnDefinitions>
 
                     <Image Grid.Row="0" Grid.Column="0" Source="{Binding Icon}"/>
@@ -36,7 +36,7 @@
                            Grid.Column="2" 
                            Text="{Binding NomeAffittuario}" 
                            FontFamily="Quicksand-Regular.ttf#Quicksand-Medium"
-                           HorizontalOptions="Center"
+                           HorizontalOptions="#607D8B"
                            TextColor="#607D8B"/>
                     <Label Grid.Row="0" 
                            Grid.Column="3" 
@@ -50,7 +50,7 @@
                            FontFamily="Quicksand-Medium.ttf#Quicksand-Medium"
                            TextColor="#607D8B"/>
                     <Label Text="{Binding Descrizione}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="5"
-                           FontFamily="Quicksand-Light.ttf#Quicksand-Light" TextColor="#BDBDBD"/>
+                           FontFamily="Quicksand-Light.ttf#Quicksand-Light" TextColor="BDBDBD"/>
                     <Label Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
                         Text="{Binding Data}" TextColor="#607D8B" FontFamily="Quicksand-Medium.ttf#Quicksand-Medium"
                            HorizontalOptions="StartAndExpand"/>

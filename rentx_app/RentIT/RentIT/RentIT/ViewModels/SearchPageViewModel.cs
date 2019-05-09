@@ -42,13 +42,6 @@ namespace RentIT.ViewModels
                     Icon = "outline_person_black_18dp.png",
                     TypeTarget = typeof(LoginPage)
                 });
-
-                MenuList.Add(new MenuEntry()
-                {
-                    Title = "Tile Page",
-                    Icon = "outline_person_black_18dp.png",
-                    TypeTarget = typeof(TilePage)
-                });
             });
         }
     }
