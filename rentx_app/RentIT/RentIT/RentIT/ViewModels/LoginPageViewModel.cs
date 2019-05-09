@@ -1,4 +1,5 @@
 ﻿using RentIT.Models;
+using RentIT.Models.User;
 using RentIT.Services;
 using System;
 using System.ComponentModel;
