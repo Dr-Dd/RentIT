@@ -45,6 +45,7 @@
 
                                     <Label Text="{Binding Title}"
                                            FontSize="Medium"
+                                           FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
                                            VerticalOptions="End"
                                            TextColor="#CDDC39"/>
                                 </StackLayout>
