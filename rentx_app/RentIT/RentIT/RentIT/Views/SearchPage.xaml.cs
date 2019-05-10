@@ -25,15 +25,21 @@ namespace RentIT.Views
         public SearchPage()
         {
             InitializeComponent();
-
+            /**
             var loginPage = new MenuEntry()
             {
                 Title = "Login",
                 Icon = "outline_person_black_18dp.png",
                 TypeTarget = typeof(LoginPage)
             };
- 
 
+            var tilePage = new MenuEntry()
+            {
+                Title = "TilePage",
+                Icon = "outline_person_black_18dp.png",
+                TypeTarget = typeof(TilePage)
+            };
+            **/
             Detail = new NavigationPage((Page)Activator.CreateInstance(typeof(SearchPageDetail)));
 
         }
@@ -43,7 +49,7 @@ namespace RentIT.Views
             var item = (MenuEntry)e.SelectedItem;
             Type page = item.TypeTarget;
 
-            await Navigation.PushAsync((Page)Activator.CreateInstance(page));
+            await NavService.NavigateTo<page>();
             IsPresented = true;
         }
 

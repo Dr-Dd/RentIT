@@ -3,13 +3,16 @@ using System.Collections.Generic;
 using System.Text;
 
 
-namespace RentIt.Models
+namespace RentIT.Models
 {
-    class Annuncio
+    /**Momentanea**/
+    public class Annuncio
     {
         public string NomeOggetto { get; set; }
 
         public string Descrizione { get; set; }
+
+        public string PercorsoImmagine { get; set; }
 
         public decimal Prezzo { get; set; }
 

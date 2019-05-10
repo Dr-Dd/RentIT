@@ -24,7 +24,7 @@ namespace RentIT.Views
 			InitializeComponent ();
 		}
 
-        /**Fa si che vengano suggerite delle città nel momento in cui si inizia digitare sulla tastiera**/
+        /**Fa si che vengano suggerite delle città nel momento in cui si inizia digitare sulla tastiera (Momentanei)**/
         private void CitySearchBar_TextChanged(object sender, TextChangedEventArgs e)
         {
             var keyword = citySearchBar.Text;
@@ -34,7 +34,7 @@ namespace RentIT.Views
             suggestionListView.ItemsSource = suggestions;
         }
 
-        /**Una volta selezionata la città la imposta come testo della barra di ricerca**/
+        /**Una volta selezionata la città la imposta come testo della barra di ricerca (Momentanei)**/
         private void SuggestionListView_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             citySearchBar.Text = e.Item.ToString();
