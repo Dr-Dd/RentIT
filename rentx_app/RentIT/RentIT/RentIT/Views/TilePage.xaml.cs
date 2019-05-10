@@ -14,13 +14,26 @@ namespace RentIT.Views
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class TilePage : ContentPage
 	{
-
+        /**
+         * Ancora una volta, questo non andrebbe usato, la presenza di un hamburger menu
+         * però costringe alla sua implementazione (altrimenti la pagina non può venire "avviata"
+         */
+        TilePageViewModel _vm
+        {
+            get { return BindingContext as TilePageViewModel;  }
+        }
 
         public TilePage ()
 		{
 			InitializeComponent ();
-            string Cazzo = "Dio è na merda";
 		}
 
+        protected override async void OnAppearing()
+        {
+            base.OnAppearing();
+            if (_vm != null)
+                await _vm.Init();
+
+        }
     }
 }

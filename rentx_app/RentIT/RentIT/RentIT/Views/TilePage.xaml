@@ -7,6 +7,7 @@
     <ContentPage.Content>
         <StackLayout>
             <Label Text="{Binding Cazzo}" TextColor="Black"/>
+            <!--
             <ListView x:Name="ListaAnnunci" 
               ItemsSource="{Binding Annunci}" 
               SeparatorVisibility="Default"
@@ -66,6 +67,16 @@
                                 </Grid>
                             </StackLayout>
                         </Frame>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            -->
+            <ListView x:Name="Stringhe"
+                      ItemsSource="Test"
+                      >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Label Text="{Binding .}"/>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
