@@ -19,6 +19,7 @@ namespace RentIT.Views
         public TilePage ()
 		{
 			InitializeComponent ();
+            string Cazzo = "Dio è na merda";
 		}
 
     }

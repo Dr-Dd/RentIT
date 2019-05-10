@@ -2,19 +2,19 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="RentIT.Views.TilePage"
-             Title="Oggeti cercati">
+             Title="Oggeti cercati"
+             BackgroundColor="#CFD8DC">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="TEST" TextColor="Black"/>
-            <ListView x:Name="TileView" 
+            <Label Text="{Binding Cazzo}" TextColor="Black"/>
+            <ListView x:Name="ListaAnnunci" 
               ItemsSource="{Binding Annunci}" 
-              BackgroundColor="WhiteSmoke"
               SeparatorVisibility="Default"
-              RowHeight="100">
+              >
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <ViewCell>
-                            <Frame>
+                        <Frame>
+                            <StackLayout>
                                 <Grid>
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="*"/>
@@ -28,20 +28,19 @@
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
-
                                     <Image Grid.Row="0" Grid.Column="0" Source="{Binding PercorsoImmagine}"/>
                                     <Label Grid.Row="0" 
-                           Grid.Column="1" 
-                           Text="{Binding NomeOggetto}" 
-                           HorizontalOptions="Start" 
-                           FontFamily="Quicksand-Regular.ttf#Quicksand-Regular"
-                           TextColor="#607D8B"/>
+                                                Grid.Column="1" 
+                                                Text="{Binding NomeOggetto}" 
+                                                HorizontalOptions="Start" 
+                                                FontFamily="Quicksand-Regular.ttf#Quicksand-Regular"
+                                                TextColor="#607D8B"/>
                                     <Label Grid.Row="0" 
-                           Grid.Column="2" 
-                           Text="{Binding NomeAffittuario}" 
-                           FontFamily="Quicksand-Regular.ttf#Quicksand-Medium"
-                           HorizontalOptions="#607D8B"
-                           TextColor="#607D8B"/>
+                                                Grid.Column="2" 
+                                                Text="{Binding NomeAffittuario}" 
+                                                FontFamily="Quicksand-Regular.ttf#Quicksand-Medium"
+                                                HorizontalOptions="Center"
+                                                TextColor="#607D8B"/>
                                     <Label Grid.Row="0" 
                            Grid.Column="3" 
                            Text="{Binding CognomeAffittuario}" 
@@ -54,20 +53,21 @@
                            FontFamily="Quicksand-Medium.ttf#Quicksand-Medium"
                            TextColor="#607D8B"/>
                                     <Label Text="{Binding Descrizione}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="5"
-                           FontFamily="Quicksand-Light.ttf#Quicksand-Light" TextColor="BDBDBD"/>
+                           FontFamily="Quicksand-Light.ttf#Quicksand-Light" TextColor="#BDBDBD"/>
                                     <Label Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
                         Text="{Binding Data}" TextColor="#607D8B" FontFamily="Quicksand-Medium.ttf#Quicksand-Medium"
                            HorizontalOptions="StartAndExpand"/>
                                     <Frame>
-                                        <Label Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="2" 
+                                        <StackLayout>
+                                            <Label Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="2" 
                                            Text="{Binding Prezzo}" HorizontalOptions="CenterAndExpand" FontFamily="Quicksand-Medium.ttf#Quicksand-Medium"/>
+                                        </StackLayout>
                                     </Frame>
                                 </Grid>
-                            </Frame>
-                        </ViewCell>
+                            </StackLayout>
+                        </Frame>
                     </DataTemplate>
                 </ListView.ItemTemplate>
-
             </ListView>
         </StackLayout>
     </ContentPage.Content>

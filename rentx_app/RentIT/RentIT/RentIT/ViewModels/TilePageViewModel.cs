@@ -1,22 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
+using System.Threading.Tasks;
 using RentIT.Models;
+using RentIT.Services;
 
 namespace RentIT.ViewModels
 {
     public class TilePageViewModel : BaseViewModel
     {
-        readonly static string test = "TEST";
-        public string Test
-        {
-            get { return test; }
-            set
-            {
-                test = value;
-                OnPropertyChanged();
-            }
-        }
 
         ObservableCollection<Annuncio> _annunci;
         public ObservableCollection<Annuncio> Annunci
@@ -54,7 +47,7 @@ namespace RentIT.ViewModels
                     NomeAffittuario = "Gigi",
                     CognomeAffittuario = "Finizio",
                     Posizione = "4Km da te",
-                    Data = DateTime.now
+                    Data = DateTime.Now
                 });
 
                 Annunci.Add(new Annuncio()
@@ -66,7 +59,7 @@ namespace RentIT.ViewModels
                     NomeAffittuario = "Gigi",
                     CognomeAffittuario = "Finizio",
                     Posizione = "4Km da te",
-                    Data = DateTime.now
+                    Data = DateTime.Now
                 });
             });
         }

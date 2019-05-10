@@ -49,7 +49,7 @@ namespace RentIT.Views
             var item = (MenuEntry)e.SelectedItem;
             Type page = item.TypeTarget;
 
-            await NavService.NavigateTo<page>();
+            await Navigation.PushAsync((Page)Activator.CreateInstance(page));
             IsPresented = true;
         }
 
