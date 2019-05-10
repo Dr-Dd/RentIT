@@ -10,6 +10,7 @@ namespace RentIT.Models
 
         public string Icon { get; set; }
 
-        public Type TypeTarget { get; set; }
+        // Orrore vi dico, orrore!
+        public string ViewModelName { get; set; }
     }
 }

@@ -41,14 +41,14 @@ namespace RentIT.ViewModels
                 {
                     Title = "LogIn",
                     Icon = "outline_person_black_18dp.png",
-                    TypeTarget = typeof(LoginPage)
+                    ViewModelName = "Login"
                 });
 
                 MenuList.Add(new MenuEntry()
                 {
                     Title = "TilePage",
                     Icon = "outline_person_black_18dp.png",
-                    TypeTarget = typeof(TilePage)
+                    ViewModelName =  "TilePage"
                 });
             });
         }
@@ -72,13 +72,34 @@ namespace RentIT.ViewModels
             //TODO else apre la pagina utente che deve ancora essere creata
         }
 
-        Command<T> _navigateCommand;
-        public Command<T> NaviagateCommand
+        Command<string> _navigateCommand;
+        public Command<string> NavigateCommand
         {
             get
             {
-                return _navigateCommand ??(
-                    _navigateCommand = new Command<VM>(async () => await ExecuteNaviagateTo))
+                return _navigateCommand
+                    ?? (new Command<string>(async (vmn) => await ExecuteNavigateCommand(vmn)));
+            }
+        }
+
+        /**
+         * Attenzione a guardare in maniera prolungata questa funzione,
+         * rischia di causare cecità e ulcere (ma vi assicuro che non c'è
+         * un metodo più semplice, e no, non possiamo usare degli enum
+         * visto che si usa xaml siamo costretti
+         * a legarci alle stringhe, ricordatevi sempre di modificare questa funzione
+         * per aggiungere pagine)
+         */ 
+        async Task ExecuteNavigateCommand(string viewModelName)
+        {
+            switch(viewModelName)
+            {
+                case "Login":
+                    await NavService.NavigateTo<LoginPageViewModel>();
+                    break;
+                case "TilePage":
+                    await NavService.NavigateTo<TilePageViewModel>();
+                    break;
             }
         }
     }

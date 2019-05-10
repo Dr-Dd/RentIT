@@ -6,15 +6,17 @@
              >
 
     <MasterDetailPage.ToolbarItems>
-        <ToolbarItem Icon="outline_person_black_18dp.png" Clicked="ToolbarItem_Clicked" Priority="1"/>
+        <ToolbarItem Icon="outline_person_black_18dp.png" 
+                     Command="{Binding LoginCommand}"
+                     Priority="1"/>
     </MasterDetailPage.ToolbarItems>
-    
+
     <MasterDetailPage.Master>
-        
+
         <ContentPage Title="Menu"
                      BackgroundColor="#607D8B"
                      >
-                     
+
             <StackLayout Orientation="Vertical">
                 <StackLayout>
                     <Label Text="{Binding Header}"/>
@@ -28,7 +30,7 @@
                           RowHeight="55"
                           SeparatorVisibility="Default"
                           BackgroundColor="#607D8B"
-                          ItemSelected="OnMenuItemSelected"
+                          ItemTapped="Views_ItemTapped"
                           ItemsSource="{Binding MenuList}">
                     <ListView.ItemTemplate>
                         <DataTemplate>
@@ -53,13 +55,13 @@
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
-            </StackLayout>       
+            </StackLayout>
         </ContentPage>
     </MasterDetailPage.Master>
-    
+
     <MasterDetailPage.Detail>
         <ContentPage>
-            
+
         </ContentPage>
     </MasterDetailPage.Detail>
 </MasterDetailPage>

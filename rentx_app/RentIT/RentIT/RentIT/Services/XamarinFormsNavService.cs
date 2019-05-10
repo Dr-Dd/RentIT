@@ -54,7 +54,7 @@ namespace RentIT.Services
                     .NavigationStack.Last().BindingContext)).Init();
             }
         }
-
+ 
         public async Task NavigateTo<TVM, TParameter>(TParameter parameter)
             where TVM : BaseViewModel
         {

@@ -25,37 +25,17 @@ namespace RentIT.Views
         public SearchPage()
         {
             InitializeComponent();
-            /**
-            var loginPage = new MenuEntry()
-            {
-                Title = "Login",
-                Icon = "outline_person_black_18dp.png",
-                TypeTarget = typeof(LoginPage)
-            };
-
-            var tilePage = new MenuEntry()
-            {
-                Title = "TilePage",
-                Icon = "outline_person_black_18dp.png",
-                TypeTarget = typeof(TilePage)
-            };
-            **/
             Detail = new NavigationPage((Page)Activator.CreateInstance(typeof(SearchPageDetail)));
 
         }
 
-        private async void OnMenuItemSelected(object sender, SelectedItemChangedEventArgs e)
+        private async void Views_ItemTapped(object sender, ItemTappedEventArgs e)
         {
-            var item = (MenuEntry)e.SelectedItem;
-            Type page = item.TypeTarget;
+            var item = (MenuEntry)e.Item;
+            string vmn  = item.ViewModelName;
 
-            await Navigation.PushAsync((Page)Activator.CreateInstance(page));
-            IsPresented = true;
-        }
-
-        private void ToolbarItem_Clicked(object sender, EventArgs e)
-        {
-            Navigation.PushAsync(new LoginPage());
+            _vm.NavigateCommand.Execute(vmn);
+            navigationDrawerList.SelectedItem = null;
         }
 
         /* L'override di questo metodo è necessario poichè non è possibile
