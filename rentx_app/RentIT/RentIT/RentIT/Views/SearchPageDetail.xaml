@@ -1,12 +1,56 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="RentIT.Views.SearchPageDetail">
+             x:Class="RentIT.Views.SearchPageDetail"
+             BackgroundColor="#CFD8DC">
     <ContentPage.Content>
-        <StackLayout Orientation="Vertical">
-            <SearchBar HorizontalOptions="CenterAndExpand"
-                       VerticalOptions="CenterAndExpand"
+        <Grid Margin="10" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="2*"/>
+            </Grid.RowDefinitions>
+            <StackLayout Grid.Row="1">
+                <Frame BorderColor="#607D8B" Margin="2,0,2,0" BackgroundColor="WhiteSmoke" >
+                    <StackLayout >
+                        <Label Text="CHE COSA STAI CERCANDO?" FontSize="Medium" TextColor="#607D8B"
+                               HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand" Margin="0,0,0,10">
+                            <Label.FontFamily>
+                                <OnPlatform x:TypeArguments="x:String">
+                                    <On Platform="Android" Value="Quicksand-Bold.ttf#Quicksand-Bold"/>
+                                </OnPlatform>
+                            </Label.FontFamily>
+                        </Label>
+                        <SearchBar Margin="0,0,0,0"
+                                   HorizontalOptions="StartAndExpand"
+                                   VerticalOptions="Center"
+                                   Placeholder="Cerca qualcosa"
+                                   PlaceholderColor="#BDBDBD"/>
+                        <SearchBar x:Name="citySearchBar"
+                                   TextChanged="CitySearchBar_TextChanged"
+                                   Margin="0,0,0,0"
+                                   HorizontalOptions="StartAndExpand"
+                                   VerticalOptions="StartAndExpand"
+                                   Placeholder="Indirizzo, Città"
+                                   PlaceholderColor="#BDBDBD"
                        />
-        </StackLayout>
+                        <ListView x:Name="suggestionListView"
+                                  HeightRequest="30"
+                                  ItemTapped="SuggestionListView_ItemTapped"/>
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+            <Button Grid.Row="2"
+                    Text="+ Aggiungi Annuncio"
+                    VerticalOptions="StartAndExpand"
+                    HorizontalOptions="CenterAndExpand"
+                    Margin="0,0,0,0"
+                    BackgroundColor="WhiteSmoke"
+                    TextColor="#607D8B"
+                    FontSize="Medium"
+                    FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
+                    BorderWidth="1"
+                    BorderColor="#607D8B"/>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

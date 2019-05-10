@@ -20,6 +20,7 @@ namespace RentIT.Views
 			InitializeComponent ();
 		}
 
+        /* TODO: Anti-pattern, va cambiata tutta quanta
         async void OnSubmitClicked(object sender, EventArgs e)
         {
             var utente = (Utente)BindingContext;
@@ -30,5 +31,6 @@ namespace RentIT.Views
                 await Navigation.PopAsync();
             }
         }
+        */
     }
 }

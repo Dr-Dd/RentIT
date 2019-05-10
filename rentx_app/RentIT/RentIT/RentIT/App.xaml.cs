@@ -1,5 +1,4 @@
-﻿using RentIT.Data;
-using RentIT.Services;
+﻿using RentIT.Services;
 using RentIT.Views;
 using RentIT.ViewModels;
 using System;
@@ -8,22 +7,25 @@ using Xamarin.Forms.Xaml;
 using Ninject.Modules;
 using Ninject;
 using RentIT.Modules;
+using RentIT.Services.Authentication;
+using RentIT.Services.Request;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace RentIT
 {
     public partial class App : Application
     {
-        public static CredentialsManager CredManager { get; private set; }
+        public static AuthenticationService AuthService { get; private set; }
 
         public IKernel Kernel { get; set; }
 
         public App(params INinjectModule[] platformModules)
         {
-            CredManager = new CredentialsManager(new RestService());
+            AuthService = new AuthenticationService(new RequestService());
 
             //Cambiare l'istanza oggetto per modificare la pagina iniziale e ricordarsi di aggiornare il get del kernel
             var mainPage = new NavigationPage(new SearchPage());
+
 
             // Inizializiamo il kernel
             Kernel = new StandardKernel(
