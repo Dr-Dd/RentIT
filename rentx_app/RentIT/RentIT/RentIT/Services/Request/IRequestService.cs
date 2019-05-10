@@ -11,6 +11,10 @@ namespace RentIT.Services.Request
 
         Task<TResult> PostAsync<TResult>(string uri, TResult data, string token);
 
+        Task<TResult> PostAsync<TRequest, TResult>(string uri, TRequest data,string token);
+
+        Task<TResult> PutAsync<TRequest, TResult>(string uri, TRequest data,string token);
+
         Task<TResult> PutAsync<TResult>(string uri, TResult data, string token);
 
         Task DeleteAsync(string uri, string token);

@@ -28,6 +28,17 @@ namespace RentIT.ViewModels
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+
+        bool _isBusy;
+        public bool IsBusy
+        {
+            get { return _isBusy; }
+            set
+            {
+                _isBusy = value;
+                OnPropertyChanged();
+            }
+        }
     }
 
     public abstract class BaseViewModel<TParameter> : BaseViewModel

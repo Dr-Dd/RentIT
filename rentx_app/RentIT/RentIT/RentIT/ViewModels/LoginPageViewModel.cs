@@ -1,20 +1,25 @@
 ﻿using RentIT.Models;
+using RentIT.Models.User;
 using RentIT.Services;
 using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using Xamarin.Forms;
-
+using RentIT.Services;
+using RentIT.Services.Authentication;
+using RentIT.Models.User;
 
 namespace RentIT.ViewModels
 {
     public class LoginPageViewModel : BaseViewModel
     {
-        public LoginPageViewModel(INavService navService) : base(navService)
+        readonly AuthenticationService _authService;
+        public LoginPageViewModel(INavService navService, AuthenticationService authService) : base(navService)
         {
             // TODO: Ancora non è ben chiaro cosa andrebbe costruito, 
             // probabilmente servirebbe creare QUI il credentialsManager
+            _authService = authService;
         }
 
         string _email;
@@ -48,20 +53,32 @@ namespace RentIT.ViewModels
          * Comando di log in, NB: IL PARAMETRO UTENTE E' TEMPORANEO, un 
          * segnaposto insomma
          */
-        Command<Utente> _signInCommand;
-        public Command<Utente> SignInCommand
+        Command<Utente> _logInCommand;
+        public Command<Utente> LogInCommand
         {
             get
             {
-                return _signInCommand
-                    ?? (_signInCommand = new Command<Utente>(async (utente) => await ExecuteSignInCommand(utente)));
+                return _logInCommand
+                    ?? (_logInCommand = new Command<Utente>(async (utente) => await ExecuteLogInCommand(utente)));
             }
         }
 
-        async Task ExecuteSignInCommand(Utente utente)
+        async Task ExecuteLogInCommand(Utente utente)
         {
-            MessagingCenter.Send(this, "ATTENZIONE ATTENZIONE", "Il metodo non è ancora stato implementato.");
-            // TODO: Qui va fatto gestito il sistema di autenticazione
+            IsBusy = true;
+
+            var authResponse = await _authService.LoginAsync(_email, _password);
+            if (authResponse.HasSucceded)
+            {
+                await NavService.NavigateTo<SearchPageViewModel>();
+                // await NavService.GoBack();
+            }
+            else
+            {
+                await App.Current.MainPage.DisplayAlert("Errore", authResponse.ResponseMessage, "Ok");
+            }
+
+            IsBusy = false;
         }
 
         /**

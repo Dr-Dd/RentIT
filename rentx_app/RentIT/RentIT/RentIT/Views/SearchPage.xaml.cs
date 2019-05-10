@@ -53,6 +53,11 @@ namespace RentIT.Views
             IsPresented = true;
         }
 
+        private void ToolbarItem_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new LoginPage());
+        }
+
         /* L'override di questo metodo è necessario poichè non è possibile
          * avviare attraverso qualche comando la login page, prima pagina
          * del programma (ecco perché ci serve '_vm')*/

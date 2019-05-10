@@ -16,12 +16,7 @@ namespace RentIT
 
 
 
-        public static string AuthEndpointIscrizione()
-        {
-            return string.Format(Constants.defaultAuthenticationEndpoint, "Iscrizione");
-        }
-
-        public static string AuthEndpointLogin()
+          public static string AuthEndpointLogin()
         {
             return string.Format(Constants.defaultAuthenticationEndpoint, "Login");
         }
@@ -31,9 +26,14 @@ namespace RentIT
             return string.Format(Constants.defaultAuthenticationEndpoint, "Logout");
         }
 
-        public static string AuthEndpointModifyData()
+        public static string UserEndpointIscrizione()
         {
-            return string.Format(Constants.defaultAuthenticationEndpoint, "Modifica");
+            return string.Format(Constants.defaultUserEndpoint, "Iscrizione");
+        }
+
+        public static string UserEndpointModifyData()
+        {
+            return string.Format(Constants.defaultUserEndpoint, "Modifica");
         }
 
         public static string ItemEndpoint()

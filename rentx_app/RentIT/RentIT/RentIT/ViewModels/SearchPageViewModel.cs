@@ -4,6 +4,7 @@ using RentIT.Views;
 using System;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
+using Xamarin.Forms;
 
 namespace RentIT.ViewModels
 {
@@ -50,6 +51,25 @@ namespace RentIT.ViewModels
                     TypeTarget = typeof(TilePage)
                 });
             });
+        }
+
+        Command _loginCommand;
+        public Command LoginCommand
+        {
+            get
+            {
+                return _loginCommand ?? (
+                    _loginCommand = new Command(async () => await ExecuteLoginCommand()));
+            }
+        }
+
+        async Task ExecuteLoginCommand()
+        {
+            if (AppSettings.AccessToken.Equals(string.Empty))
+            {
+                await NavService.NavigateTo<LoginPageViewModel>();
+            }
+            //TODO else apre la pagina utente che deve ancora essere creata
         }
     }
 }

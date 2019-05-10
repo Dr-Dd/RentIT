@@ -1,4 +1,5 @@
-﻿using RentIT.Models;
+﻿
+using RentIT.Models.User;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -10,11 +11,7 @@ namespace RentIT.Services.Authentication
     {
         bool IsUserAuthenticated { get; }
 
-        Utente AuthenticatedUser { get; }
-
-        Task<Models.Utente> IscriviUtenteAsync(Utente user);
-        
-        Task<Models.Utente> LoginAsync(string email, string password);
+        Task<AuthenticationResponse> LoginAsync(string email, string password);
 
         Task<bool> LogoutAsync();
     }
