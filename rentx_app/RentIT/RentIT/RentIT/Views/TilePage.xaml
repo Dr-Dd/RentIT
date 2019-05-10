@@ -4,71 +4,72 @@
              x:Class="RentIT.Views.TilePage"
              Title="Oggeti cercati">
     <ContentPage.Content>
-    <StackLayout>
-        <Label Text="TEST" TextColor="Black"/>
-        <ListView x:Name="TileView" 
+        <StackLayout>
+            <Label Text="TEST" TextColor="Black"/>
+            <ListView x:Name="TileView" 
               ItemsSource="{Binding Annunci}" 
               BackgroundColor="WhiteSmoke"
               SeparatorVisibility="Default"
               RowHeight="100">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>
-                        <Frame>
-                            <Grid>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="*"/>
-                                    <RowDefinition Height="2*"/>
-                                    <RowDefinition Height="*"/>
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="2*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition.Width="*"/>
-                                    <ColumnDefinition.Width="*"/>
-                                </Grid.ColumnDefinitions>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Frame>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="2*"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="2*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
 
-                                <Image Grid.Row="0" Grid.Column="0" Source="{Binding PercorsoImmagine}"/>
-                                <Label Grid.Row="0" 
+                                    <Image Grid.Row="0" Grid.Column="0" Source="{Binding PercorsoImmagine}"/>
+                                    <Label Grid.Row="0" 
                            Grid.Column="1" 
                            Text="{Binding NomeOggetto}" 
                            HorizontalOptions="Start" 
                            FontFamily="Quicksand-Regular.ttf#Quicksand-Regular"
                            TextColor="#607D8B"/>
-                                <Label Grid.Row="0" 
+                                    <Label Grid.Row="0" 
                            Grid.Column="2" 
                            Text="{Binding NomeAffittuario}" 
                            FontFamily="Quicksand-Regular.ttf#Quicksand-Medium"
                            HorizontalOptions="#607D8B"
                            TextColor="#607D8B"/>
-                                <Label Grid.Row="0" 
+                                    <Label Grid.Row="0" 
                            Grid.Column="3" 
                            Text="{Binding CognomeAffittuario}" 
                            FontFamily="Quicksand-Medium.ttf#Quicksand-Medium"
                            HorizontalOptions="Start"
                            TextColor="#607D8B"/>
-                                <Label Grid.Row="0" 
+                                    <Label Grid.Row="0" 
                            Grid.Column="4" 
                            Text="{Binding Posizione}" 
                            FontFamily="Quicksand-Medium.ttf#Quicksand-Medium"
                            TextColor="#607D8B"/>
-                                <Label Text="{Binding Descrizione}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="5"
+                                    <Label Text="{Binding Descrizione}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="5"
                            FontFamily="Quicksand-Light.ttf#Quicksand-Light" TextColor="BDBDBD"/>
-                                <Label Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
+                                    <Label Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
                         Text="{Binding Data}" TextColor="#607D8B" FontFamily="Quicksand-Medium.ttf#Quicksand-Medium"
                            HorizontalOptions="StartAndExpand"/>
-                                <Frame>
-                                    <Label Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="2" 
+                                    <Frame>
+                                        <Label Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="2" 
                                            Text="{Binding Prezzo}" HorizontalOptions="CenterAndExpand" FontFamily="Quicksand-Medium.ttf#Quicksand-Medium"/>
-                                </Frame>
-                            </Grid>
-                        </Frame>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        
-    </ListView>
-    </StackLayout>
+                                    </Frame>
+                                </Grid>
+                            </Frame>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+
+            </ListView>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>
+    
