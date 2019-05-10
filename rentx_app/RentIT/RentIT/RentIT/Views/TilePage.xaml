@@ -1,18 +1,75 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="RentIT.Views.TilePage">
-             <!-- This ListView had Item selected, but produces an error on compile time -->
-    <ListView x:Name="listView" Margin="20">
-        <ListView.ItemTemplate>
-            <DataTemplate>
-                <ViewCell>
-                    <StackLayout Padding="20,0,0,0" HorizontalOptions="StartAndExpand" Orientation="Horizontal">
-                        <Label Text="{Binding Name}" VerticalTextAlignment="Center" />
-                        <Image Source="check.png" IsVisible="{Binding Done}" />
-                    </StackLayout>
-                </ViewCell>
-            </DataTemplate>
-        </ListView.ItemTemplate>
-    </ListView>
+             x:Class="RentIT.Views.TilePage"
+             Title="Oggeti cercati"
+             BackgroundColor="#CFD8DC">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="{Binding Cazzo}" TextColor="Black"/>
+            <ListView x:Name="ListaAnnunci" 
+              ItemsSource="{Binding Annunci}" 
+              SeparatorVisibility="Default"
+              >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame>
+                            <StackLayout>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="2*"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="2*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Image Grid.Row="0" Grid.Column="0" Source="{Binding PercorsoImmagine}"/>
+                                    <Label Grid.Row="0" 
+                                                Grid.Column="1" 
+                                                Text="{Binding NomeOggetto}" 
+                                                HorizontalOptions="Start" 
+                                                FontFamily="Quicksand-Regular.ttf#Quicksand-Regular"
+                                                TextColor="#607D8B"/>
+                                    <Label Grid.Row="0" 
+                                                Grid.Column="2" 
+                                                Text="{Binding NomeAffittuario}" 
+                                                FontFamily="Quicksand-Regular.ttf#Quicksand-Medium"
+                                                HorizontalOptions="Center"
+                                                TextColor="#607D8B"/>
+                                    <Label Grid.Row="0" 
+                           Grid.Column="3" 
+                           Text="{Binding CognomeAffittuario}" 
+                           FontFamily="Quicksand-Medium.ttf#Quicksand-Medium"
+                           HorizontalOptions="Start"
+                           TextColor="#607D8B"/>
+                                    <Label Grid.Row="0" 
+                           Grid.Column="4" 
+                           Text="{Binding Posizione}" 
+                           FontFamily="Quicksand-Medium.ttf#Quicksand-Medium"
+                           TextColor="#607D8B"/>
+                                    <Label Text="{Binding Descrizione}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="5"
+                           FontFamily="Quicksand-Light.ttf#Quicksand-Light" TextColor="#BDBDBD"/>
+                                    <Label Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
+                        Text="{Binding Data}" TextColor="#607D8B" FontFamily="Quicksand-Medium.ttf#Quicksand-Medium"
+                           HorizontalOptions="StartAndExpand"/>
+                                    <Frame>
+                                        <StackLayout>
+                                            <Label Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="2" 
+                                           Text="{Binding Prezzo}" HorizontalOptions="CenterAndExpand" FontFamily="Quicksand-Medium.ttf#Quicksand-Medium"/>
+                                        </StackLayout>
+                                    </Frame>
+                                </Grid>
+                            </StackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
 </ContentPage>
+    

@@ -6,9 +6,7 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using Xamarin.Forms;
-using RentIT.Services;
 using RentIT.Services.Authentication;
-using RentIT.Models.User;
 
 namespace RentIT.ViewModels
 {

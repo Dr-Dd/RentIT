@@ -33,6 +33,12 @@ namespace RentIT.Modules
             navService.RegisterViewMapping(typeof(SearchPageViewModel),
                 typeof(SearchPage));
 
+            navService.RegisterViewMapping(typeof(SearchPageDetailViewModel),
+                typeof(SearchPageDetail));
+
+            navService.RegisterViewMapping(typeof(TilePageViewModel),
+                typeof(TilePage));
+
 
             Bind<INavService>()
                 .ToMethod(x => navService)

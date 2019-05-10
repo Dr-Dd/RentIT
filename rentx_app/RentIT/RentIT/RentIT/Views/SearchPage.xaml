@@ -6,7 +6,7 @@
              >
 
     <MasterDetailPage.ToolbarItems>
-        <ToolbarItem Icon="outline_person_black_18dp.png" Command="{Binding LoginCommand}" Priority="1"/>
+        <ToolbarItem Icon="outline_person_black_18dp.png" Clicked="ToolbarItem_Clicked" Priority="1"/>
     </MasterDetailPage.ToolbarItems>
     
     <MasterDetailPage.Master>

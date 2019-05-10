@@ -15,6 +15,7 @@ namespace RentIT.Modules
             Bind<SearchPageViewModel>().ToSelf();
             Bind<SearchPageDetailViewModel>().ToSelf();
             Bind<SubmitPageViewModel>().ToSelf();
+            Bind<TilePageViewModel>().ToSelf();
         }
     }
 }

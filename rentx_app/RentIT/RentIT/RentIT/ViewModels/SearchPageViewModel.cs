@@ -39,9 +39,16 @@ namespace RentIT.ViewModels
             {
                 MenuList.Add(new MenuEntry()
                 {
-                    Title = "Login",
+                    Title = "LogIn",
                     Icon = "outline_person_black_18dp.png",
                     TypeTarget = typeof(LoginPage)
+                });
+
+                MenuList.Add(new MenuEntry()
+                {
+                    Title = "TilePage",
+                    Icon = "outline_person_black_18dp.png",
+                    TypeTarget = typeof(TilePage)
                 });
             });
         }
