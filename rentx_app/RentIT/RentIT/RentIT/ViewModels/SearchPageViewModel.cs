@@ -64,5 +64,15 @@ namespace RentIT.ViewModels
             }
             //TODO else apre la pagina utente che deve ancora essere creata
         }
+
+        Command<T> _navigateCommand;
+        public Command<T> NaviagateCommand
+        {
+            get
+            {
+                return _navigateCommand ??(
+                    _navigateCommand = new Command<VM>(async () => await ExecuteNaviagateTo))
+            }
+        }
     }
 }
