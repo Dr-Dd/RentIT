@@ -39,7 +39,7 @@ namespace RentIT.Services.Authentication
                 Email = email,
                 Password = password,
             };
-            string token = "";
+            string token = AppSettings.AccessToken;
 
             AuthenticationResponse authenticationInfo = await  requestService.PostAsync<AuthenticationRequest,AuthenticationResponse>(uri, auth , token);
             if (authenticationInfo.HasSucceded == true)

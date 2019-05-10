@@ -18,7 +18,7 @@ namespace RentIT.Services.User
 
         }
 
-        public Task<Utente> SignUpAsync(Utente user)
+        public Task<SignUpResponse> SignUpAsync(Utente user)
         {
             // RestUrl = http://5.249.151.26:5000/
             var builder = new UriBuilder(Constants.UserEndpointIscrizione());
@@ -26,7 +26,7 @@ namespace RentIT.Services.User
 
             string token = "";
 
-            return requestService.PostAsync<Utente>(uri, user, token);
+            return requestService.PostAsync<Utente,SignUpResponse>(uri, user, token);
         }
     }
 }
