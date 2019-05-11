@@ -14,9 +14,13 @@ namespace RentIT.Views
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class TilePage : ContentPage
 	{
+
+
         public TilePage ()
 		{
 			InitializeComponent ();
+            string Cazzo = "Dio è na merda";
 		}
+
     }
 }
