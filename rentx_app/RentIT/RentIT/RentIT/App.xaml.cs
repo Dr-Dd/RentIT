@@ -21,11 +21,8 @@ namespace RentIT
 
         public App(params INinjectModule[] platformModules)
         {
-            AuthService = new AuthenticationService(new RequestService());
-
             //Cambiare l'istanza oggetto per modificare la pagina iniziale e ricordarsi di aggiornare il get del kernel
             var mainPage = new NavigationPage(new SearchPage());
-
 
             // Inizializiamo il kernel
             Kernel = new StandardKernel(

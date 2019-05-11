@@ -29,17 +29,13 @@ namespace RentIT.Views
 
         }
 
-        private async void OnMenuItemSelected(object sender, SelectedItemChangedEventArgs e)
+        private async void Views_ItemTapped(object sender, ItemTappedEventArgs e)
         {
-            var item = (MenuEntry)e.SelectedItem;
-            Type page = item.TypeTarget;
+            var item = (MenuEntry)e.Item;
+            string vmn  = item.ViewModelName;
 
-            await Navigation.PushAsync((Page)Activator.CreateInstance(page));
-        }
-
-        private void ToolbarItem_Clicked(object sender, EventArgs e)
-        {
-            Navigation.PushAsync(new LoginPage());
+            _vm.NavigateCommand.Execute(vmn);
+            navigationDrawerList.SelectedItem = null;
         }
 
         /* L'override di questo metodo è necessario poichè non è possibile

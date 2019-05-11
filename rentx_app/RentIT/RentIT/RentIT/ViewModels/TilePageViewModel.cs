@@ -36,32 +36,32 @@ namespace RentIT.ViewModels
         {
             Annunci.Clear();
 
-            await Task.Factory.StartNew(() =>
+            // Crasha qui, per una funzione di test, ormai ho perso la speranza 
+            // Carlo papaccio avevi dimenticato la viewCell !!!
+            Annunci.Add(new Annuncio()
             {
-                Annunci.Add(new Annuncio()
-                {
-                    NomeOggetto = "Tosaerba",
-                    Descrizione = "Tosaerba BOSCHIA potente alimentato a merda di piccione",
-                    Prezzo = 13,
-                    PercorsoImmagine = "tosaerba.jpg",
-                    NomeAffittuario = "Gigi",
-                    CognomeAffittuario = "Finizio",
-                    Posizione = "4Km da te",
-                    Data = DateTime.Now
-                });
+                NomeOggetto = "Tosaerba",
+                Descrizione = "Tosaerba BOSCHIA potente alimentato a merda di piccione",
+                Prezzo = 13,
+                PercorsoImmagine = "tosaerba.jpg",
+                NomeAffittuario = "Gigi",
+                CognomeAffittuario = "Finizio",
+                Posizione = "4Km da te",
+                Data = DateTime.Now
+            });
 
-                Annunci.Add(new Annuncio()
-                {
-                    NomeOggetto = "Tosaerba",
-                    Descrizione = "Tosaerba BOSCHIA potente alimentato a merda di piccione",
-                    Prezzo = 13,
-                    PercorsoImmagine = "tosaerba.jpg",
-                    NomeAffittuario = "Gigi",
-                    CognomeAffittuario = "Finizio",
-                    Posizione = "4Km da te",
-                    Data = DateTime.Now
-                });
+            Annunci.Add(new Annuncio()
+            {
+                NomeOggetto = "Tosaerba",
+                Descrizione = "Tosaerba BOSCHIA potente alimentato a merda di piccione",
+                Prezzo = 13,
+                PercorsoImmagine = "tosaerba.jpg",
+                NomeAffittuario = "Gigi",
+                CognomeAffittuario = "Finizio",
+                Posizione = "4Km da te",
+                Data = DateTime.Now
             });
         }
     }
 }
+
