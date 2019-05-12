@@ -44,28 +44,28 @@ namespace RentIT.ViewModels
             Annunci.Clear();
 
             // Crasha qui, per una funzione di test, ormai ho perso la speranza 
-            // Carlo papaccio avevi dimenticato la viewCell !!!
+            // Carlo papaccio avevi dimenticato la viewCell !!
+
+            //Chiedo scusa signore Lidone!!
             Annunci.Add(new Annuncio()
             {
                 NomeOggetto = "Tosaerba",
-                Descrizione = "Tosaerba BOSCHIA potente alimentato a merda di piccione",
+                Descrizione = "Tosaerba BOSCHIA potente, alimentato a escrementi di piccione",
                 Prezzo = 13,
                 PercorsoImmagine = "tosaerba.jpg",
-                NomeAffittuario = "Gigi",
-                CognomeAffittuario = "Finizio",
-                Posizione = "4Km da te",
+                NomeAffittuario = "Gigi Finizio",
+                Posizione = "4 Km da te",
                 Data = DateTime.Now
             });
 
             Annunci.Add(new Annuncio()
             {
                 NomeOggetto = "Tosaerba",
-                Descrizione = "Tosaerba BOSCHIA potente alimentato a merda di piccione",
+                Descrizione = "Tosaerba BOSCHIA potente, alimentato a escermenti di piccione",
                 Prezzo = 13,
                 PercorsoImmagine = "tosaerba.jpg",
-                NomeAffittuario = "Gigi",
-                CognomeAffittuario = "Finizio",
-                Posizione = "4Km da te",
+                NomeAffittuario = "Gigi Finizio",
+                Posizione = "4 Km da te",
                 Data = DateTime.Now
             });
 
