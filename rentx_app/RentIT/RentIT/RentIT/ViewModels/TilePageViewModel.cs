@@ -34,6 +34,13 @@ namespace RentIT.ViewModels
 
         async Task LoadEntries()
         {
+            if (IsBusy)
+            {
+                return;
+            }
+
+            IsBusy = true;
+
             Annunci.Clear();
 
             // Crasha qui, per una funzione di test, ormai ho perso la speranza 
@@ -61,6 +68,8 @@ namespace RentIT.ViewModels
                 Posizione = "4Km da te",
                 Data = DateTime.Now
             });
+
+            IsBusy = false;
         }
     }
 }

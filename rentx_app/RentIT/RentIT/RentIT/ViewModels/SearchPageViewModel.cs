@@ -10,47 +10,29 @@ namespace RentIT.ViewModels
 {
     public class SearchPageViewModel : BaseViewModel
     {
-        ObservableCollection<MenuEntry> _menuList;
-        public ObservableCollection<MenuEntry> MenuList
-        {
-            get { return _menuList; }
-            set
+        ObservableCollection<MenuEntry> _menuList =
+            new ObservableCollection<MenuEntry>
             {
-                _menuList = value;
-                OnPropertyChanged();
-            }
-        }
-
-        public SearchPageViewModel(INavService navService): base(navService)
-        {
-            MenuList = new ObservableCollection<MenuEntry>();
-        }
-
-        public override async Task Init()
-        {
-            await LoadEntries();
-        }
-
-        async Task LoadEntries()
-        {
-            MenuList.Clear();
-
-            await Task.Factory.StartNew(() =>
-            {
-                MenuList.Add(new MenuEntry()
+                new MenuEntry()
                 {
                     Title = "LogIn",
                     Icon = "outline_person_black_18dp.png",
                     ViewModelName = "Login"
-                });
-
-                MenuList.Add(new MenuEntry()
+                },
+                new MenuEntry()
                 {
                     Title = "TilePage",
                     Icon = "outline_person_black_18dp.png",
                     ViewModelName =  "TilePage"
-                });
-            });
+                }
+            };
+        public ObservableCollection<MenuEntry> MenuList
+        {
+            get { return _menuList; }
+        }
+
+        public SearchPageViewModel(INavService navService) : base(navService)
+        {
         }
 
         Command _loginCommand;
@@ -89,10 +71,10 @@ namespace RentIT.ViewModels
          * visto che si usa xaml siamo costretti
          * a legarci alle stringhe, ricordatevi sempre di modificare questa funzione
          * per aggiungere pagine)
-         */ 
+         */
         async Task ExecuteNavigateCommand(string viewModelName)
         {
-            switch(viewModelName)
+            switch (viewModelName)
             {
                 case "Login":
                     await NavService.NavigateTo<LoginPageViewModel>();
@@ -101,6 +83,10 @@ namespace RentIT.ViewModels
                     await NavService.NavigateTo<TilePageViewModel>();
                     break;
             }
+        }
+
+        public override async Task Init()
+        {
         }
     }
 }
