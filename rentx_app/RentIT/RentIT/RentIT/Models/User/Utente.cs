@@ -6,18 +6,22 @@ namespace RentIT.Models.User
 {
     public class Utente
     {
-        public int  id { get; set; }
-        public string name { get; set; }
-        public string surname { get; set; }
-        public string email { get; set; }
-        public string password { get; set; }
+        // tutti i campi effettivi di una classe Utente , da decidere bene quali sono 
+        private string Name { get; set; }
+        private string Surname { get; set; }
+        private string Email { get; set; }
+        private string Password { get; set; }
+        private string NumeroTel;
+        private string Address;
+        private string Img;
+        
 
-        public Boolean isBlankfield()
+        /*public Boolean isBlankfield()
         {
             return this.name == null || 
                 this.surname == null || 
                 this.email == null || 
                 this.password == null;
-        }
+        }*/
      }
 }
