@@ -33,7 +33,7 @@
                                 </Grid.ColumnDefinitions>
                                 <Image Grid.Row="0" 
                                    Grid.Column="0" 
-                                   Source="{Binding PercorsoImmagine}"/>
+                                   Source="{Binding PercorsoImmagine}" />
                                 <Label Grid.Row="0"                                               
                                    Grid.Column="1"                                               
                                    Text="{Binding NomeOggetto}"                                               

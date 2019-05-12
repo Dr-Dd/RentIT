@@ -54,32 +54,30 @@ namespace RentIT.ViewModels
             //TODO else apre la pagina utente che deve ancora essere creata
         }
 
-        Command<string> _navigateCommand;
-        public Command<string> NavigateCommand
+        Command<EnumMenuEntry> _navigateCommand;
+        public Command<EnumMenuEntry> NavigateCommand
         {
             get
             {
                 return _navigateCommand
-                    ?? (new Command<string>(async (vmn) => await ExecuteNavigateCommand(vmn)));
+                    ?? (new Command<EnumMenuEntry>(async (vn) => await ExecuteNavigateCommand(vn)));
             }
         }
 
         /**
-         * Attenzione a guardare in maniera prolungata questa funzione,
-         * rischia di causare cecità e ulcere (ma vi assicuro che non c'è
-         * un metodo più semplice, e no, non possiamo usare degli enum
-         * visto che si usa xaml siamo costretti
-         * a legarci alle stringhe, ricordatevi sempre di modificare questa funzione
-         * per aggiungere pagine)
+         * L'ho migliorata poco poco...mi sono reso conto di aver detto
+         * una stronzata nella mia stanchezza. Ancora una volta, però,
+         * risulta essere una funzione molto brutta, l'ideale sarebbe
+         * istanziare un metodo generico che accetta tipi definiti a runtime
          */
-        async Task ExecuteNavigateCommand(string viewModelName)
+        async Task ExecuteNavigateCommand(EnumMenuEntry viewName)
         {
-            switch (viewModelName)
+            switch (viewName)
             {
-                case "Login":
+                case EnumMenuEntry.loginPage:
                     await NavService.NavigateTo<LoginPageViewModel>();
                     break;
-                case "TilePage":
+                case EnumMenuEntry.tilePage:
                     await NavService.NavigateTo<TilePageViewModel>();
                     break;
             }
