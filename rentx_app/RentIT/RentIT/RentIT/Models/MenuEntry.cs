@@ -11,6 +11,6 @@ namespace RentIT.Models
         public string Icon { get; set; }
 
         // Orrore vi dico, orrore!
-        public string ViewModelName { get; set; }
+        public EnumMenuEntry ViewName { get; set; }
     }
 }

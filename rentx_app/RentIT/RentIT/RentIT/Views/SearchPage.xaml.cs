@@ -32,9 +32,9 @@ namespace RentIT.Views
         private async void Views_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             var item = (MenuEntry)e.Item;
-            string vmn  = item.ViewModelName;
+            EnumMenuEntry vn  = item.ViewName;
 
-            _vm.NavigateCommand.Execute(vmn);
+            _vm.NavigateCommand.Execute(vn);
             navigationDrawerList.SelectedItem = null;
         }
 

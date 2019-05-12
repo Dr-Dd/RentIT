@@ -17,13 +17,13 @@ namespace RentIT.ViewModels
                 {
                     Title = "LogIn",
                     Icon = "outline_person_black_18dp.png",
-                    ViewModelName = "Login"
+                    ViewName = EnumMenuEntry.loginPage
                 },
                 new MenuEntry()
                 {
                     Title = "TilePage",
                     Icon = "outline_person_black_18dp.png",
-                    ViewModelName =  "TilePage"
+                    ViewName =  EnumMenuEntry.tilePage
                 }
             };
         public ObservableCollection<MenuEntry> MenuList
