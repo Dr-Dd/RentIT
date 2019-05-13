@@ -43,13 +43,13 @@
                     BorderWidth="1"
                     BorderColor="#607D8B"
                     Margin="80,0,80,0"
-                    Command="SignInCommand" />
+                    Command="{Binding LogInCommand}" />
             <Button Text="iscriviti"
                     TextColor="#607D8B"
                     Grid.Row="3"
                     VerticalOptions="EndAndExpand"
                     Margin="80,0,80,0"
-                    Command="SubmitCommand" 
+                    Command="{Binding SubmitCommand}" 
                     Font="micro" 
                     FontFamily="Quicksand-Bold.ttf#Quicksand-Bold" 
                     BackgroundColor="Transparent" />
