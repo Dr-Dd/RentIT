@@ -24,6 +24,12 @@ namespace RentIT.ViewModels
                     Title = "TilePage",
                     Icon = "outline_person_black_18dp.png",
                     ViewName =  EnumMenuEntry.tilePage
+                },
+                new MenuEntry()
+                {
+                    Title = "Submit",
+                    Icon = "outline_person_black_18dp.png",
+                    ViewName = EnumMenuEntry.submitPage
                 }
             };
         public ObservableCollection<MenuEntry> MenuList
@@ -79,6 +85,9 @@ namespace RentIT.ViewModels
                     break;
                 case EnumMenuEntry.tilePage:
                     await NavService.NavigateTo<TilePageViewModel>();
+                    break;
+                case EnumMenuEntry.submitPage:
+                    await NavService.NavigateTo<SubmitPageViewModel>();
                     break;
             }
         }

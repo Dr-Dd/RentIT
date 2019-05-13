@@ -11,7 +11,8 @@ namespace RentIT
     public enum EnumMenuEntry
     {
         loginPage,
-        tilePage
+        tilePage,
+        submitPage
         //Riempire con le entry necessarie
     }
 }
