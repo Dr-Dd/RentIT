@@ -12,6 +12,7 @@
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
+                <Image Grid.Row="0" BackgroundColor="#CFD8DC" Source="logo.jpg"/>
                 <StackLayout Grid.Row="1">
                     <Frame BorderColor="#607D8B"
                            BackgroundColor="WhiteSmoke">

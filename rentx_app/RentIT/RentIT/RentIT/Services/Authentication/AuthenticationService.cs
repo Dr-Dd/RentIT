@@ -54,14 +54,23 @@ namespace RentIT.Services.Authentication
         //metodo per effettuare il logout , viene cancellato l'utente salvato localmente 
         public async Task<bool> LogoutAsync()
         {
-            //gestisci logout 
+            //gestisci logout eliminando nel db la entry corrispondente all'id inviato ,dalla tabella id-token
 
-            AppSettings.RemoveUserId();
-           
-            AppSettings.RemoveAccessToken();
-            
+            // RestUrl = http://5.249.151.26:5000/Auth
+            var builder = new UriBuilder(Constants.AuthEndpointLogout());
+            builder.Path = "/"+AppSettings.UserId.ToString();
+            string uri = builder.ToString();
 
-            return await Task.FromResult(true);
+            AuthenticationResponse logOutInfo = await requestService.DeleteAsync<AuthenticationResponse>(uri, AppSettings.AccessToken);
+
+            if (logOutInfo.HasSucceded == true)
+            {
+                AppSettings.RemoveAccessToken();
+                AppSettings.RemoveUserId();
+            }
+
+
+            return logOutInfo.HasSucceded;
         }
 
         

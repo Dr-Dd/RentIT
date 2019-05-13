@@ -80,10 +80,16 @@ namespace RentIT.Services.Request
             return await Task.Run(() => JsonConvert.DeserializeObject<TResult>(responseData, serializerSettings));
         }
 
-        public async Task DeleteAsync(string uri, string token = "")
+        public async Task<TResult> DeleteAsync<TResult>(string uri, string token = "")
         {
             HttpClient httpClient = CreateHttpClient(token);
-            await httpClient.DeleteAsync(uri);
+            HttpResponseMessage response =  await httpClient.DeleteAsync(uri);
+
+            await HandleResponse(response);
+
+            string responseData = await response.Content.ReadAsStringAsync();
+
+            return await Task.Run(() => JsonConvert.DeserializeObject<TResult>(responseData, serializerSettings));
         }
 
         HttpClient CreateHttpClient(string token="")

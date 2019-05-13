@@ -17,7 +17,7 @@ namespace RentIT.Services.Request
 
         Task<TResult> PutAsync<TResult>(string uri, TResult data, string token);
 
-        Task DeleteAsync(string uri, string token);
+        Task<TResult> DeleteAsync<TResult>(string uri, string token);
 
     }
 }
