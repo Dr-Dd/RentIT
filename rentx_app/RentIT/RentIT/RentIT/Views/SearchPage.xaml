@@ -19,11 +19,7 @@
 
             <StackLayout Orientation="Vertical">
                 <StackLayout>
-                    <Label Text="{Binding Header}"/>
-
-                    <Image Source="{Binding Image}" Aspect="Fill"/>
-
-                    <Label Text="{Binding Footer}"/>
+                    <Image Source="logo.jpg" Aspect="AspectFit" Margin="10,20,10,20"/>
                 </StackLayout>
 
                 <ListView x:Name="navigationDrawerList"

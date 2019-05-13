@@ -31,5 +31,6 @@ namespace RentIT.ViewModels
         {
             Utente = utente;
         }
+        
     }
 }

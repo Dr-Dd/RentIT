@@ -12,7 +12,8 @@ namespace RentIT
     {
         loginPage,
         tilePage,
-        submitPage
+        submitPage,
+        utentePage
         //Riempire con le entry necessarie
     }
 }

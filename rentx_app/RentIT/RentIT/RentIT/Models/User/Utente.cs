@@ -13,7 +13,7 @@ namespace RentIT.Models.User
         private string Password { get; set; }
         private string NumeroTel;
         private string Address;
-        private string Img;
+        private string Img { get; set; }
         
 
         /*public Boolean isBlankfield()
