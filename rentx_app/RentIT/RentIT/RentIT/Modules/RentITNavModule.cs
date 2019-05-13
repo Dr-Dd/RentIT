@@ -38,6 +38,8 @@ namespace RentIT.Modules
 
             navService.RegisterViewMapping(typeof(TilePageViewModel),
                 typeof(TilePage));
+            navService.RegisterViewMapping(typeof(UtentePageViewModel),
+                typeof(UtentePage));
 
 
             Bind<INavService>()

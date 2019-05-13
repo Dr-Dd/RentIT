@@ -15,7 +15,7 @@ namespace RentIT.ViewModels
             {
                 new MenuEntry()
                 {
-                    Title = "LogIn",
+                    Title = "Login",
                     Icon = "outline_person_black_18dp.png",
                     ViewName = EnumMenuEntry.loginPage
                 },
@@ -30,8 +30,17 @@ namespace RentIT.ViewModels
                     Title = "Submit",
                     Icon = "outline_person_black_18dp.png",
                     ViewName = EnumMenuEntry.submitPage
+                },
+                new MenuEntry()
+                {
+                    Title = "Utente",
+                    Icon = "outline_person_black_18dp.png",
+                    ViewName = EnumMenuEntry.utentePage
                 }
             };
+
+        String Image = "logo.jpg";
+
         public ObservableCollection<MenuEntry> MenuList
         {
             get { return _menuList; }
@@ -88,6 +97,9 @@ namespace RentIT.ViewModels
                     break;
                 case EnumMenuEntry.submitPage:
                     await NavService.NavigateTo<SubmitPageViewModel>();
+                    break;
+                case EnumMenuEntry.utentePage:
+                    await NavService.NavigateTo<UtentePageViewModel>();
                     break;
             }
         }

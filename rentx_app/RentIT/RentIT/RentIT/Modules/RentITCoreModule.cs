@@ -18,6 +18,7 @@ namespace RentIT.Modules
             Bind<SearchPageDetailViewModel>().ToSelf();
             Bind<SubmitPageViewModel>().ToSelf();
             Bind<TilePageViewModel>().ToSelf();
+            Bind<UtentePageViewModel>().ToSelf();
 
             var requestService = new RequestService();
             var authService = new AuthenticationService(requestService);
