@@ -6,7 +6,7 @@
              >
 
     <MasterDetailPage.ToolbarItems>
-        <ToolbarItem Icon="outline_person_black_18dp.png" 
+        <ToolbarItem Icon="user_icon.png"
                      Command="{Binding LoginCommand}"
                      Priority="1"/>
     </MasterDetailPage.ToolbarItems>
@@ -14,8 +14,7 @@
     <MasterDetailPage.Master>
 
         <ContentPage Title="Menu"
-                     BackgroundColor="#607D8B"
-                     >
+                     BackgroundColor="#607D8B">
 
             <StackLayout Orientation="Vertical">
                 <StackLayout>

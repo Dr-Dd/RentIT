@@ -22,11 +22,16 @@
 
             <Image Grid.Row="0"
                    Grid.Column="0"
-                   Source="{Binding Img}"/>
+                   Source="{Binding Utente.Img}"
+                   Aspect="AspectFit"
+                   Margin="20,10,20,10"/>
             <Label Grid.Row="0"
                    Grid.Column="1"
-                   Text="{Binding Name}"
+                   Text="{Binding Utente.Name}"
                    FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
+                   HorizontalOptions="CenterAndExpand"
+                   VerticalOptions="CenterAndExpand"
+                   LineBreakMode="HeadTruncation"
                    TextColor="#607D8B"
                    FontSize="Medium"/>
             <Button Grid.Row="1"
@@ -39,29 +44,30 @@
                     BorderColor="#607D8B"
                     BackgroundColor="WhiteSmoke"
                     HorizontalOptions="FillAndExpand"
-                    Margin="20,0,20,0"/>
+                    Margin="25,30,25,30"/>
             <Button Grid.Row="2"
                     Grid.Column="0"
                     Grid.ColumnSpan="2"
-                    Text="AGGIUNGI ANNUNCIO"
+                    Text="I MIEI AFFITTI"
                     TextColor="#607D8B"
                     FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
                     BorderWidth="1"
                     BorderColor="#607D8B"
                     BackgroundColor="WhiteSmoke"
                     HorizontalOptions="FillAndExpand"
-                    Margin="20,0,20,0"/>
+                    Margin="25,30,25,30"/>
             <Button Grid.Row="3"
                     Grid.Column="0"
                     Grid.ColumnSpan="2"
-                    Text="OGGETTI AFFITTATI"
+                    Text="LOGOUT"
                     TextColor="#607D8B"
-                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="EndAndExpand"
+                    HorizontalOptions="CenterAndExpand"
                     FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
                     BorderWidth="1"
                     BorderColor="#607D8B"
                     BackgroundColor="WhiteSmoke"
-                    Margin="20,0,20,0"/>
+                    Margin="80,20,80,20"/>
         </Grid>
     </ContentPage.Content>
 </ContentPage>

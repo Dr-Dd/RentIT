@@ -29,7 +29,16 @@ namespace RentIT.ViewModels
 
         public async override Task Init(Utente utente)
         {
-            Utente = utente;
+            LoadMockData();
+        }
+
+        public async Task LoadMockData()
+        {
+            Utente = new Utente()
+            {
+                Name = "Gigi Finizio",
+                Img = "outline_person_black_18dp.jpg"
+            };
         }
         
     }
