@@ -37,7 +37,7 @@ namespace RentIT.ViewModels
             Utente = new Utente()
             {
                 Name = "Gigi Finizio",
-                Img = "outline_person_black_18dp.jpg"
+                Img = "meme.png"
             };
         }
         
