@@ -84,6 +84,8 @@ namespace RentIT.ViewModels
          * una stronzata nella mia stanchezza. Ancora una volta, però,
          * risulta essere una funzione molto brutta, l'ideale sarebbe
          * istanziare un metodo generico che accetta tipi definiti a runtime
+         * E ATTENZIONE AL FATTO CHE IL METODO CONTIENE DEI CAMPI ASSOLUTAMENTE
+         * MOMENTANEI
          */
         async Task ExecuteNavigateCommand(EnumMenuEntry viewName)
         {

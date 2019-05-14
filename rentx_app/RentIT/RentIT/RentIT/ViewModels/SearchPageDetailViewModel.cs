@@ -7,13 +7,9 @@ using Xamarin.Forms;
 
 namespace RentIT.ViewModels
 {
-    internal class SearchPageDetailViewModel : BaseViewModel
+    public class SearchPageDetailViewModel : BaseViewModel
     {
         public SearchPageDetailViewModel(INavService navService) : base(navService)
-        {
-        }
-
-        public async override Task Init()
         {
         }
 
@@ -36,7 +32,7 @@ namespace RentIT.ViewModels
             else
             {
                 // TODO: da implementare quando si avrà una "AddAnnuncioPage"
-                //await NavService.NavigateTo<AddAnnuncioViewModel, Utente>(utente);
+                /* await NavService.NavigateTo<AddAnnuncioViewModel, Utente>(utente); */
             }
         }
 
@@ -53,6 +49,10 @@ namespace RentIT.ViewModels
         private async Task ExecuteSearchCommand(SearchQuery query)
         {
             await NavService.NavigateTo<TilePageViewModel, SearchQuery>(query);
+        }
+
+        public async override Task Init()
+        {
         }
     }
 }

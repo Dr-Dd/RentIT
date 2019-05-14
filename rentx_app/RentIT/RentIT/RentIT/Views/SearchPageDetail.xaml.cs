@@ -13,6 +13,7 @@ namespace RentIT.Views
     public partial class SearchPageDetail : ContentPage
     {
 
+        // TODO: ANTI-PATTERN, va spostato nel viewModel
         /**Lista di città rudimentale per provare un suggerimento dinamico**/
         private List<string> cities = new List<string>()
         {
@@ -24,6 +25,7 @@ namespace RentIT.Views
 			InitializeComponent ();
 		}
 
+        // TODO: ANTI-PATTERN, va spostato nel viewModel
         /**Fa si che vengano suggerite delle città nel momento in cui si inizia digitare sulla tastiera (Momentanei)**/
         private void CitySearchBar_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -34,6 +36,7 @@ namespace RentIT.Views
             suggestionListView.ItemsSource = suggestions;
         }
 
+        // TODO: ANTI-PATTERN, va spostato nel viewModel
         /**Una volta selezionata la città la imposta come testo della barra di ricerca (Momentanei)**/
         private void SuggestionListView_ItemTapped(object sender, ItemTappedEventArgs e)
         {

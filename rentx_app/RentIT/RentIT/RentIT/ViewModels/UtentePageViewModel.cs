@@ -29,9 +29,10 @@ namespace RentIT.ViewModels
 
         public async override Task Init(Utente utente)
         {
-            LoadMockData();
+            await LoadMockData();
         }
 
+        // Funzione con dati sample
         public async Task LoadMockData()
         {
             Utente = new Utente()

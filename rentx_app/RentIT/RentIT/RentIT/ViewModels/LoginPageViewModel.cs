@@ -12,7 +12,7 @@ namespace RentIT.ViewModels
 {
     public class LoginPageViewModel : BaseViewModel
     {
-        readonly AuthenticationService _authService;
+        readonly IAuthenticationService _authService;
         public LoginPageViewModel(INavService navService, AuthenticationService authService) : base(navService)
         {
             // TODO: Ancora non è ben chiaro cosa andrebbe costruito, 
