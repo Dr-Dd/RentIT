@@ -14,9 +14,22 @@ namespace RentIT.Views
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class TilePage : ContentPage
 	{
+        TilePageViewModel _vm
+        {
+            get { return BindingContext as TilePageViewModel; }
+        }
+
         public TilePage ()
 		{
 			InitializeComponent ();
 		}
+
+        async void Annuncio_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            var annuncio = (Annuncio)e.Item;
+            _vm.ViewAnnuncio.Execute(annuncio);
+
+            listaAnnunci.SelectedItem = null;
+        }
     }
 }

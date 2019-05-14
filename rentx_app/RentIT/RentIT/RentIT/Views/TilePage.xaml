@@ -5,86 +5,70 @@
              Title="Oggeti cercati"
              BackgroundColor="#White">
     <ContentPage.Content>
-        <StackLayout VerticalOptions="FillAndExpand"
-                     HorizontalOptions="FillAndExpand"
-                     Orientation="Vertical"
-                     Margin="10,0,10,0"
-                     >
-            <ListView x:Name="ListaAnnunci" 
-                      ItemsSource="{Binding Annunci}" 
-                      SeparatorVisibility="Default"
-                      RowHeight="150"
-                      SeparatorColor="#607D8B">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <Grid>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="2*"/>
-                                    <RowDefinition Height="2*"/>
-                                    <RowDefinition Height="2*"/>
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="2*"/>
-                                    <ColumnDefinition Width="3*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-                                <Image Grid.Row="0" 
+        <ListView x:Name="listaAnnunci" 
+                  ItemsSource="{Binding Annunci}" 
+                  SeparatorVisibility="Default"
+                  RowHeight="150"
+                  SeparatorColor="#607D8B"
+                  ItemTapped="Annuncio_ItemTapped">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="2*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Image Grid.Row="0" 
+                                   Grid.RowSpan="3"
                                    Grid.Column="0" 
                                    Source="{Binding PercorsoImmagine}" />
-                                <Label Grid.Row="0"                                               
+                            <Label Grid.Row="0"                                               
                                    Grid.Column="1"                                               
                                    Text="{Binding NomeOggetto}"                                               
-                                   HorizontalOptions="Start"
-                                   VerticalOptions="CenterAndExpand"           
+                                   VerticalTextAlignment="End"
                                    FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"                                               
                                    FontSize="Medium"                                         
                                    TextColor="#607D8B"/>
-                                <Label Grid.Row="0" 
+                            <Label Grid.Row="0" 
                                    Grid.Column="2" 
-                                   Grid.ColumnSpan="2"
                                    Text="{Binding NomeAffittuario}" 
+                                   HorizontalTextAlignment="End"
+                                   VerticalTextAlignment="End"
                                    FontFamily="Quicksand-Regular.ttf#Quicksand-Medium"
-                                   VerticalOptions="Center"
-                                   HorizontalOptions="End"
-                                   TextColor="#607D8B"/>
-                                <Label Grid.Row="2" 
-                                   Grid.Column="3" 
-                                   Text="{Binding Posizione}" 
-                                   FontFamily="Quicksand-Medium.ttf#Quicksand-Medium"
                                    TextColor="#607D8B"
-                                   VerticalOptions="Center"
-                                   HorizontalOptions="Center"/>
-                                <Label Text="{Binding Descrizione}" 
+                                   Margin="0,0,20,0"/>
+                            <Label Text="{Binding Descrizione}" 
                                    Grid.Row="1" 
-                                   Grid.Column="0" 
-                                   Grid.ColumnSpan="5"
+                                   Grid.Column="1" 
+                                   Grid.ColumnSpan="2"
                                    FontFamily="Quicksand-Light.ttf#Quicksand-Light" 
                                    TextColor="#607D8B"/>
-                                <Label Grid.Row="2" 
-                                   Grid.Column="0" 
-                                   Grid.ColumnSpan="2"
-                                   Text="{Binding Data}" 
+                            <Label Grid.Row="2" 
+                                   Grid.Column="1" 
+                                   Text="{Binding Data, StringFormat='{0:dd/MM/yyyy}'}" 
+                                   VerticalTextAlignment="Center"
                                    TextColor="#607D8B" 
+                                   FontFamily="Quicksand-Medium.ttf#Quicksand-Medium"/>
+                            <Label Grid.Row="2" 
+                                   Grid.Column="2"         
+                                   Text="{Binding Prezzo, StringFormat='{0:F0}€'}" 
+                                   HorizontalTextAlignment="End"
+                                   VerticalTextAlignment="Center"
                                    FontFamily="Quicksand-Medium.ttf#Quicksand-Medium"
-                                   HorizontalOptions="StartAndExpand"
-                                   VerticalOptions="CenterAndExpand"/>
-                                <Label Grid.Row="2" 
-                                        Grid.Column="4"         
-                                        Text="{Binding Prezzo}" 
-                                        HorizontalOptions="EndAndExpand" 
-                                        VerticalOptions="Center"
-                                        FontFamily="Quicksand-Medium.ttf#Quicksand-Medium"
-                                       TextColor="#607D8B"
-                                   />
-                            </Grid>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-        </StackLayout>
+                                   TextColor="#607D8B"
+                                   Margin="0,0,20,0"/>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </ContentPage.Content>
 </ContentPage>
     

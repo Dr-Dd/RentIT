@@ -68,6 +68,7 @@
                     HorizontalOptions="CenterAndExpand"
                     BackgroundColor="WhiteSmoke" 
                     BorderWidth="1"
+                    Command="{Binding SignInCommand}"
                     FontSize="Medium"
                     BorderColor="#607D8B"
                     TextColor="#607D8B"
