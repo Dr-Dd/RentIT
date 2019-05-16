@@ -7,10 +7,9 @@
     <ContentPage.Content>
         <ListView x:Name="listaAnnunci" 
                   ItemsSource="{Binding Annunci}" 
-                  SeparatorVisibility="Default"
                   RowHeight="150"
-                  SeparatorColor="#607D8B"
-                  ItemTapped="Annuncio_ItemTapped">
+                  ItemTapped="Annuncio_ItemTapped"
+                  CachingStrategy="RecycleElement">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
