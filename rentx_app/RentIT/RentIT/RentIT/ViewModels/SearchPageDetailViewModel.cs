@@ -48,7 +48,7 @@ namespace RentIT.ViewModels
 
         private async Task ExecuteSearchCommand(SearchQuery query)
         {
-            await NavService.NavigateTo<TilePageViewModel, SearchQuery>(query);
+            await NavService.NavigateTo<AnnunciPageViewModel, SearchQuery>(query);
         }
 
         public async override Task Init()

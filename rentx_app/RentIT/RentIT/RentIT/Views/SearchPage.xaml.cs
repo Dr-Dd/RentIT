@@ -29,13 +29,24 @@ namespace RentIT.Views
 
         }
 
-        private async void Views_ItemTapped(object sender, ItemTappedEventArgs e)
+        async void Login_Tapped(object sender, EventArgs e)
         {
-            var item = (MenuEntry)e.Item;
-            EnumMenuEntry vn  = item.ViewName;
+            _vm.LoginCommand.Execute(null);
+        }
 
-            _vm.NavigateCommand.Execute(vn);
-            navigationDrawerList.SelectedItem = null;
+        async void AnnunciPage_Tapped(object sender, EventArgs e)
+        {
+            _vm.AnnunciPageCommand.Execute(null);
+        }
+
+        async void Submit_Tapped(object sender, EventArgs e)
+        {
+            _vm.SubmitCommand.Execute(null);
+        }
+
+        async void Utente_Tapped(object sender, EventArgs e)
+        {
+            _vm.UtenteCommand.Execute(null);
         }
 
         /* L'override di questo metodo è necessario poichè non è possibile

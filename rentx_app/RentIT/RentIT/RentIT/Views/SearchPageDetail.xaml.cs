@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RentIT.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,10 @@ namespace RentIT.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class SearchPageDetail : ContentPage
     {
+        SearchPageDetailViewModel _vm
+        {
+            get { return _vm as SearchPageDetailViewModel }
+        }
 
         // TODO: ANTI-PATTERN, va spostato nel viewModel
         /**Lista di città rudimentale per provare un suggerimento dinamico**/
@@ -41,6 +46,14 @@ namespace RentIT.Views
         private void SuggestionListView_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             citySearchBar.Text = e.Item.ToString();
+        }
+
+        protected async override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            if (_vm != null)
+                await _vm.Init();
         }
     }
 }

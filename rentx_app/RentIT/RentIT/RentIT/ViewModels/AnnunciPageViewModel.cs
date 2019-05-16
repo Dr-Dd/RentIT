@@ -9,7 +9,7 @@ using Xamarin.Forms;
 
 namespace RentIT.ViewModels
 {
-    public class TilePageViewModel : BaseViewModel<SearchQuery>
+    public class AnnunciPageViewModel : BaseViewModel<SearchQuery>
     {
 
         ObservableCollection<Annuncio> _annunci;
@@ -23,7 +23,7 @@ namespace RentIT.ViewModels
             }
         }
 
-        public TilePageViewModel(INavService navService) : base(navService)
+        public AnnunciPageViewModel(INavService navService) : base(navService)
         {
             Annunci = new ObservableCollection<Annuncio>();
         }
@@ -44,10 +44,7 @@ namespace RentIT.ViewModels
 
             Annunci.Clear();
 
-            // Crasha qui, per una funzione di test, ormai ho perso la speranza 
-            // Carlo papaccio avevi dimenticato la viewCell !!
-
-            //Chiedo scusa signore Lidone!!
+            // TODO: Aggiungere persistenza database
             Annunci.Add(new Annuncio()
             {
                 NomeOggetto = "Tosaerba",

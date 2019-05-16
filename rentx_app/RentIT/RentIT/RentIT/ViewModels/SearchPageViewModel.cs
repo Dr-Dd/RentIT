@@ -10,41 +10,6 @@ namespace RentIT.ViewModels
 {
     public class SearchPageViewModel : BaseViewModel
     {
-        ObservableCollection<MenuEntry> _menuList =
-            new ObservableCollection<MenuEntry>
-            {
-                new MenuEntry()
-                {
-                    Title = "Login",
-                    Icon = "outline_person_black_18dp.png",
-                    ViewName = EnumMenuEntry.loginPage
-                },
-                new MenuEntry()
-                {
-                    Title = "TilePage",
-                    Icon = "outline_person_black_18dp.png",
-                    ViewName =  EnumMenuEntry.tilePage
-                },
-                new MenuEntry()
-                {
-                    Title = "Submit",
-                    Icon = "outline_person_black_18dp.png",
-                    ViewName = EnumMenuEntry.submitPage
-                },
-                new MenuEntry()
-                {
-                    Title = "Utente",
-                    Icon = "outline_person_black_18dp.png",
-                    ViewName = EnumMenuEntry.utentePage
-                }
-            };
-
-        String Image = "logo.jpg";
-
-        public ObservableCollection<MenuEntry> MenuList
-        {
-            get { return _menuList; }
-        }
 
         public SearchPageViewModel(INavService navService) : base(navService)
         {
@@ -66,44 +31,59 @@ namespace RentIT.ViewModels
             {
                 await NavService.NavigateTo<LoginPageViewModel>();
             }
-            //TODO else apre la pagina utente che deve ancora essere creata
+            else //apre la pagina utente se già loggato
+            {
+                await NavService.NavigateTo<UtentePageViewModel>();
+            }
         }
 
-        Command<EnumMenuEntry> _navigateCommand;
-        public Command<EnumMenuEntry> NavigateCommand
+
+        Command _annunciPageCommand;
+        public Command AnnunciPageCommand
         {
             get
             {
-                return _navigateCommand
-                    ?? (new Command<EnumMenuEntry>(async (vn) => await ExecuteNavigateCommand(vn)));
+                return _annunciPageCommand ?? (
+                    _annunciPageCommand = new Command(async () => await ExecuteAnnunciPageCommand()));
             }
         }
 
-        /**
-         * L'ho migliorata poco poco...mi sono reso conto di aver detto
-         * una stronzata nella mia stanchezza. Ancora una volta, però,
-         * risulta essere una funzione molto brutta, l'ideale sarebbe
-         * istanziare un metodo generico che accetta tipi definiti a runtime
-         * E ATTENZIONE AL FATTO CHE IL METODO CONTIENE DEI CAMPI ASSOLUTAMENTE
-         * MOMENTANEI
-         */
-        async Task ExecuteNavigateCommand(EnumMenuEntry viewName)
+        async Task ExecuteAnnunciPageCommand()
         {
-            switch (viewName)
+            await NavService.NavigateTo<AnnunciPageViewModel>();
+        }
+
+
+        Command _submitCommand;
+        public Command SubmitCommand
+        {
+            get
             {
-                case EnumMenuEntry.loginPage:
-                    await NavService.NavigateTo<LoginPageViewModel>();
-                    break;
-                case EnumMenuEntry.tilePage:
-                    await NavService.NavigateTo<TilePageViewModel>();
-                    break;
-                case EnumMenuEntry.submitPage:
-                    await NavService.NavigateTo<SubmitPageViewModel>();
-                    break;
-                case EnumMenuEntry.utentePage:
-                    await NavService.NavigateTo<UtentePageViewModel>();
-                    break;
+                return _submitCommand ?? (
+                    _submitCommand = new Command(async () => await ExecuteSubmitCommand()));
             }
+        }
+
+
+        async Task ExecuteSubmitCommand()
+        {
+            await NavService.NavigateTo<SubmitPageViewModel>();
+        }
+
+        Command _utenteCommand;
+        public Command UtenteCommand
+        {
+            get
+            {
+                return _utenteCommand ?? (
+                    _utenteCommand = new Command(async () => await ExecuteUtenteCommand()));
+            }
+        }
+
+
+        async Task ExecuteUtenteCommand()
+        {
+            await NavService.NavigateTo<UtentePageViewModel>();
         }
 
         public override async Task Init()
