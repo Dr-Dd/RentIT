@@ -138,9 +138,7 @@ namespace RentIT.ViewModels
 
         async Task ExecuteViewAnnuncio(Annuncio annuncio)
         {
-            // TODO: Implementare una view "AnnuncioDetail"
-            /* await NavService.NavigateTo<AnnuncioDetailViewModel, Annuncio>(annuncio); */
-            // Ricordarsi che il suo ViewModel deve implementare BaseViewModel<Annuncio>
+            await NavService.NavigateTo<DettaglioAnnuncioViewModel, Annuncio>(annuncio);
         }
 
         public async override Task Init(SearchQuery query)

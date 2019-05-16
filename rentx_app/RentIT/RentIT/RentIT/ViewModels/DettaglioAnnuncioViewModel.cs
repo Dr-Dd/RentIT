@@ -11,7 +11,7 @@ namespace RentIT.ViewModels
      * Classe segnaposto, probabilmente in futuro ci sarà bisogno 
      * di implementare l'aggiunta di un oggetto tramite API
      */
-    public class AnnuncioDetailViewModel : BaseViewModel<Annuncio>
+    public class DettaglioAnnuncioViewModel : BaseViewModel<Annuncio>
     {
         Annuncio _annuncio;
         public Annuncio Annuncio
@@ -24,7 +24,7 @@ namespace RentIT.ViewModels
             }
         }
 
-        public AnnuncioDetailViewModel(INavService navService) : base(navService)
+        public DettaglioAnnuncioViewModel(INavService navService) : base(navService)
         {
         }
 

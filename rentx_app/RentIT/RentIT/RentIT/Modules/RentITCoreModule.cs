@@ -20,7 +20,7 @@ namespace RentIT.Modules
             Bind<SubmitPageViewModel>().ToSelf();
             Bind<AnnunciPageViewModel>().ToSelf();
             Bind<UtentePageViewModel>().ToSelf();
-            Bind<AnnuncioDetailViewModel>().ToSelf();
+            Bind<DettaglioAnnuncioViewModel>().ToSelf();
 
             // E' importante fare il binding di tutti i servizi che
             // non servono in quantità molteplice nelle injection

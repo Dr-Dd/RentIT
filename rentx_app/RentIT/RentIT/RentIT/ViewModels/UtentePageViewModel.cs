@@ -9,6 +9,14 @@ namespace RentIT.ViewModels
 {
     /**
      * Classe segnaposto, ancora da definire meglio
+     * 
+     * IMPORTANTE:
+     * Qui probabilmente sarebbe più intelligente utilizzare il
+     * token per ricavare le informazioni dal database persistente,
+     * se utilizzassimo l'approccio di passare l'utente da view a view,
+     * probabilmente finiremo per riempire quasi tutti i viewModel con un
+     * Utente (e avremo bisogno di un metodo generico con 3 parametri,
+     * contro i due utilizzati ora)
      */
     public class UtentePageViewModel : BaseViewModel<Utente>
     {
