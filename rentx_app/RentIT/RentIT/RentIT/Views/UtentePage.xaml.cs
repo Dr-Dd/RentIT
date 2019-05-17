@@ -13,22 +13,9 @@ namespace RentIT.Views
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class UtentePage : ContentPage
 	{
-        UtentePageViewModel _vm
-        {
-            get { return BindingContext as UtentePageViewModel; }
-        }
-
         public UtentePage ()
 		{
 			InitializeComponent ();
 		}
-
-        protected override async void OnAppearing()
-        {
-            base.OnAppearing();
-
-            if (_vm != null)
-                await _vm.Init();
-        }
     }
 }

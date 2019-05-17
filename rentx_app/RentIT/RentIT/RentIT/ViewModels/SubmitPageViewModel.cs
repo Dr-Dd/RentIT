@@ -6,11 +6,10 @@ using Xamarin.Forms;
 
 namespace RentIT.ViewModels
 {
-    internal class SubmitPageViewModel : BaseViewModel
+    public class SubmitPageViewModel : BaseViewModel
     {
-        private INavService navService;
-        readonly UserService _userService;
-
+        // Non c'è bisogno di creare il navService, visto che è creato dal BaseViewModel
+        readonly IUserService _userService;
         public SubmitPageViewModel(INavService navService, UserService userService) : base(navService)
         {
             _userService = userService;

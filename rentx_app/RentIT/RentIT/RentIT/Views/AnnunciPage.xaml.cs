@@ -12,14 +12,14 @@ using Xamarin.Forms.Xaml;
 namespace RentIT.Views
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class TilePage : ContentPage
+	public partial class AnnunciPage : ContentPage
 	{
-        TilePageViewModel _vm
+        AnnunciPageViewModel _vm
         {
-            get { return BindingContext as TilePageViewModel; }
+            get { return BindingContext as AnnunciPageViewModel; }
         }
 
-        public TilePage ()
+        public AnnunciPage ()
 		{
 			InitializeComponent ();
 		}

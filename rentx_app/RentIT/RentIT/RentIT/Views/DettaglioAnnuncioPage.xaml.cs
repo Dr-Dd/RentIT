@@ -1,7 +1,4 @@
-﻿using RentIT.Models;
-using RentIT.Services;
-using RentIT.ViewModels;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,11 +10,11 @@ using Xamarin.Forms.Xaml;
 namespace RentIT.Views
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class SubmitPage : ContentPage
+	public partial class DettaglioAnnuncioPage : ContentPage
 	{
-		public SubmitPage ()
+		public DettaglioAnnuncioPage ()
 		{
 			InitializeComponent ();
 		}
-    }
+	}
 }
