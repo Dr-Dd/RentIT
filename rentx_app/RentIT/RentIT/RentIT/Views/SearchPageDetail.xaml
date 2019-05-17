@@ -10,9 +10,9 @@
                 <RowDefinition Height="2*"/>
                 <RowDefinition Height="2*"/>
             </Grid.RowDefinitions>
-            <Image Grid.Row="0" Source="RentIt.png"/>
+            <Image Grid.Row="0" Source="RentBanner.png" Margin="20,20,20,20"/>
             <StackLayout Grid.Row="1">
-                <Frame BorderColor="#607D8B" Margin="5,0,5,0" BackgroundColor="WhiteSmoke" >
+                <Frame BorderColor="#607D8B" Margin="5,40,5,10" BackgroundColor="WhiteSmoke" >
                     <StackLayout>
                         <Label Text="CHE COSA STAI CERCANDO?" FontSize="Medium" TextColor="#607D8B"
                                HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand" Margin="0,0,0,10">
@@ -43,9 +43,7 @@
             </StackLayout>
             <Button Grid.Row="2"
                     Text="+ AGGIUNGI ANNUNCIO"
-                    VerticalOptions="Start"
-                    HorizontalOptions="Center"
-                    Margin="5,0,5,0"
+                    Margin="5,80,5,120"
                     BackgroundColor="WhiteSmoke"
                     TextColor="#607D8B"
                     FontSize="Medium"

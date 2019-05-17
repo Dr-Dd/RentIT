@@ -17,7 +17,7 @@
 
             <StackLayout Orientation="Vertical">
                 <StackLayout>
-                    <Image Source="logo.jpg" Aspect="AspectFit" Margin="10,20,10,20"/>
+                    <Image Source="RentBanner.png" Aspect="AspectFit" Margin="10,20,10,20"/>
                 </StackLayout>
 
                 <TableView x:Name="navigationDrawer"
