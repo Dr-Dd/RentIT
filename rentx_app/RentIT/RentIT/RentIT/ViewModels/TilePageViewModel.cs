@@ -126,6 +126,62 @@ namespace RentIT.ViewModels
                 Data = DateTime.Now
             });
 
+            Annunci.Add(new Annuncio()
+            {
+                NomeOggetto = "Tosaerba",
+                Descrizione = "Tosaerba BOSCHIA potente, alimentato a escermenti di piccione",
+                Prezzo = 13,
+                PercorsoImmagine = "tosaerba.jpg",
+                NomeAffittuario = "Gigi Finizio",
+                Posizione = "4 Km da te",
+                Data = DateTime.Now
+            });
+
+
+            Annunci.Add(new Annuncio()
+            {
+                NomeOggetto = "Tosaerba",
+                Descrizione = "Tosaerba BOSCHIA potente, alimentato a escermenti di piccione",
+                Prezzo = 13,
+                PercorsoImmagine = "tosaerba.jpg",
+                NomeAffittuario = "Gigi Finizio",
+                Posizione = "4 Km da te",
+                Data = DateTime.Now
+            });
+
+            Annunci.Add(new Annuncio()
+            {
+                NomeOggetto = "Tosaerba",
+                Descrizione = "Tosaerba BOSCHIA potente, alimentato a escermenti di piccione",
+                Prezzo = 13,
+                PercorsoImmagine = "tosaerba.jpg",
+                NomeAffittuario = "Gigi Finizio",
+                Posizione = "4 Km da te",
+                Data = DateTime.Now
+            });
+
+            Annunci.Add(new Annuncio()
+            {
+                NomeOggetto = "Tosaerba",
+                Descrizione = "Tosaerba BOSCHIA potente, alimentato a escermenti di piccione",
+                Prezzo = 13,
+                PercorsoImmagine = "tosaerba.jpg",
+                NomeAffittuario = "Gigi Finizio",
+                Posizione = "4 Km da te",
+                Data = DateTime.Now
+            });
+
+            Annunci.Add(new Annuncio()
+            {
+                NomeOggetto = "Tosaerba",
+                Descrizione = "Tosaerba BOSCHIA potente, alimentato a escermenti di piccione",
+                Prezzo = 13,
+                PercorsoImmagine = "tosaerba.jpg",
+                NomeAffittuario = "Gigi Finizio",
+                Posizione = "4 Km da te",
+                Data = DateTime.Now
+            });
+
             IsBusy = false;
         }
 
