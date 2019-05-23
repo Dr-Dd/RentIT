@@ -4,9 +4,9 @@
              xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
              x:Class="RentIT.Views.DettaglioAnnuncioPage">
     <ContentPage.Content>
-        <Grid>
+        <Grid Margin="20,20,20,20">
             <Grid.RowDefinitions>
-                <RowDefinition Height="25"/>
+                <RowDefinition Height="100"/>
                 <RowDefinition Height="2*"/>
                 <RowDefinition Height="50"/>
                 <RowDefinition Height="2*"/>
@@ -20,8 +20,8 @@
                          Grid.Row="0"
                          Grid.Column="0">
                 <controls:CircleImage Source="meme.png" 
-                                      WidthRequest="20"
-                                      HeightRequest="20"/>
+                                      WidthRequest="80"
+                                      HeightRequest="80"/>
                 <Label Text="{Binding Annuncio.NomeAffittuario}"
                        FontSize="Small"
                        FontAttributes="Bold"

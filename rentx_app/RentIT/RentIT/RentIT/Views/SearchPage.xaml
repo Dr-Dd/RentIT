@@ -5,7 +5,7 @@
              NavigationPage.HasNavigationBar="False" >
 
     <MasterDetailPage.ToolbarItems>
-        <ToolbarItem Icon="user_icon.png"
+        <ToolbarItem Icon="accountButton1.png"
                      Command="{Binding LoginCommand}"
                      Priority="1"/>
     </MasterDetailPage.ToolbarItems>
