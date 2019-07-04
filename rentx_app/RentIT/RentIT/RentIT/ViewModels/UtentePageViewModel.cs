@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using Xamarin.Forms;
 
 namespace RentIT.ViewModels
 {
@@ -49,6 +50,20 @@ namespace RentIT.ViewModels
                 Img = "meme.png"
             };
         }
-        
+
+        Command _modificaCommand;
+        public Command ModificaCommand
+        {
+            get
+            {
+                return _modificaCommand
+                    ?? (_modificaCommand = new Command(async () => await ExecuteModificaCommandAsync()));
+            }
+        }
+
+        async Task ExecuteModificaCommandAsync()
+        {
+            await NavService.NavigateTo<ModificaDatiViewModel>();
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using Ninject.Modules;
+﻿using App.Views;
+using Ninject.Modules;
 using RentIT.Services;
 using RentIT.ViewModels;
 using RentIT.Views;
@@ -44,6 +45,9 @@ namespace RentIT.Modules
 
             navService.RegisterViewMapping(typeof(DettaglioAnnuncioViewModel),
                 typeof(DettaglioAnnuncioPage));
+
+            navService.RegisterViewMapping(typeof(ModificaDatiViewModel),
+                typeof(ModificaDati));
 
             Bind<INavService>()
                 .ToMethod(x => navService)

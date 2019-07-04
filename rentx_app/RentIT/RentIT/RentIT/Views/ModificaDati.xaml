@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="App.Views.ModificaDati"
+             Title="Modifica Dati">
+    <ContentPage.Content>
+        <Grid Margin="25">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="4*"/>
+            </Grid.RowDefinitions>
+            <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="Center" Grid.Row="0">
+                <Label Text="SCEGLI UN'OPZIONE"
+                       TextColor="#607D8B"
+                       FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
+                       FontSize="Medium"/>
+            </StackLayout>
+            <StackLayout HorizontalOptions="FillAndExpand"  Grid.Row="1" >
+            <Button Text="Modifica Password"
+                    TextColor="#607D8B"
+                    FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
+                    BorderWidth="1"
+                    BorderColor="#607D8B"
+                    BackgroundColor="WhiteSmoke"
+                    HorizontalOptions="FillAndExpand"
+                    Margin="0,60,0,30"/>
+                    <!-- Da Sistemare per attaccare la pagina -->
+            <Button Text="Modifica Email"
+                    TextColor="#607D8B"
+                    FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
+                    BorderWidth="1"
+                    BorderColor="#607D8B"
+                    BackgroundColor="WhiteSmoke"
+                    HorizontalOptions="FillAndExpand"
+                    Margin="0,0,0,30"/>
+                    <!-- Da Sistemare per attaccare la pagina -->
+            <Button Text="Elimina Account"
+                    TextColor="#607D8B"
+                    FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
+                    BorderWidth="1"
+                    BorderColor="#607D8B"
+                    BackgroundColor="WhiteSmoke"
+                    HorizontalOptions="FillAndExpand"
+                    Margin="0,0,0,30"/>
+                    <!-- Da Sistemare per attaccare la pagina -->              
+        </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

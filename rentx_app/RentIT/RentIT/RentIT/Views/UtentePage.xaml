@@ -47,7 +47,8 @@
                     BorderColor="#607D8B"
                     BackgroundColor="WhiteSmoke"
                     HorizontalOptions="FillAndExpand"
-                    Margin="25,30,25,30"/>
+                    Margin="25,30,25,30"
+                    Command="{Binding ModificaCommand}"/>
             <Button Grid.Row="2"
                     Grid.Column="0"
                     Grid.ColumnSpan="2"
