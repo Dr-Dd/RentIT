@@ -18,6 +18,8 @@ namespace RentIT.Models
 
         public string NomeAffittuario { get; set; }
 
+        public string NomeRichiedente { get; set; }
+
         public string Posizione { get; set; }
 
         public DateTime Data { get; set; }
