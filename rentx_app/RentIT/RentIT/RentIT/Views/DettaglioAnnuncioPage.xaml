@@ -39,21 +39,11 @@
                    FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
                    TextColor="#607D8B"
                    Margin="0,0,20,0"/>
-            <ContentView Grid.Row="1"
-                         Grid.Column="0"
-                         Grid.ColumnSpan="2">
-                <carousel:CarouselViewControl>
-                    <carousel:CarouselViewControl.ItemTemplate>
-                        <DataTemplate>
-                            <ContentView>
-                                <Image Source="{Binding Annuncio.PercorsoImmagine}" Aspect="AspectFit"/>
-                            </ContentView>
-                        </DataTemplate>
-                    </carousel:CarouselViewControl.ItemTemplate>
-                </carousel:CarouselViewControl>
-            </ContentView>
-            <Image Source="{Binding Annuncio.PercorsoImmagine}"
-                   />
+            <Image Source="{Binding Annuncio.PercorsoImmagine}" 
+                   Aspect="AspectFit"
+                   Grid.Row="1"
+                   Grid.Column="0"
+                   Grid.ColumnSpan="2"/>
             <Label Text="{Binding Annuncio.NomeOggetto}"
                    Grid.Row="2"
                    Grid.Column="0"
