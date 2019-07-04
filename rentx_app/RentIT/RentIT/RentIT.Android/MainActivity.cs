@@ -7,6 +7,7 @@ using Android.Views;
 using Android.Widget;
 using Android.OS;
 using RentIT.Droid.Modules;
+using CarouselView.FormsPlugin.Android;
 
 namespace RentIT.Droid
 {
@@ -17,10 +18,16 @@ namespace RentIT.Droid
         {
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
+            InitControls();
 
             base.OnCreate(savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             LoadApplication(new App(new RentITPlatformModule()));
+        }
+
+        private void InitControls()
+        {
+            CarouselViewRenderer.Init();
         }
     }
 }
