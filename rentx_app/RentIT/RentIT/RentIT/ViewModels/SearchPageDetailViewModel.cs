@@ -12,37 +12,35 @@ namespace RentIT.ViewModels
         public SearchPageDetailViewModel(INavService navService) : base(navService)
         {
         }
- 
-        Command _aggiungiAnnuncioCommand;
-        public Command AggiungiAnnuncioCommand
+
+        Command _addAnnuncio;
+        public Command AddAnnuncio
         {
             get
             {
-                return _aggiungiAnnuncioCommand
-                    ?? (_aggiungiAnnuncioCommand = new Command(async () => await ExecuteAddAnnuncioCommandAsync()));
+                return _addAnnuncio
+                    ?? (_addAnnuncio = new Command(async () => await ExecuteAddAnnuncioCommandAsync()));
             }
         }
 
-        //Riaggiungere utente quando sarà implementato il login e la gestione degli utenti
         async Task ExecuteAddAnnuncioCommandAsync()
         {
-            
             await NavService.NavigateTo<AggiungiAnnuncioPageViewModel>();
-
-            //Commentato solo per visualizzare la pagina e vedere se è corretta
-            //Molto probabilmente verrà usato il codice qui sotto
-
-            /*if (AppSettings.AccessToken.Equals(String.Empty))
-            {
-                await NavService.NavigateTo<LoginPageViewModel>();
-            }
-            else
-            {
-                // TODO: da implementare quando si avrà una "AddAnnuncioPage"
-                /* await NavService.NavigateTo<AddAnnuncioViewModel, Utente>(utente);
-             }*/
-            
         }
+
+        //Commentato solo per visualizzare la pagina e vedere se è corretta
+        //Molto probabilmente verrà usato il codice qui sotto
+
+        //if (AppSettings.AccessToken.Equals(String.Empty))
+        //{
+        //  await NavService.NavigateTo<LoginPageViewModel>();
+        //}
+        //else
+        //{
+        // TODO: da implementare quando si avrà una "AddAnnuncioPage"
+        /* await NavService.NavigateTo<AddAnnuncioViewModel, Utente>(utente);
+     }*/
+
 
         Command<SearchQuery> _search;
         public Command<SearchQuery> Search

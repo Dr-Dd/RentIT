@@ -50,7 +50,7 @@
                     FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
                     BorderWidth="1"
                     BorderColor="#607D8B"
-                    Command="{Binding AggiungiAnnuncioCommand}"/>
+                    Command="{Binding AddAnnuncio}"/>
         </Grid>
     </ContentPage.Content>
 </ContentPage>

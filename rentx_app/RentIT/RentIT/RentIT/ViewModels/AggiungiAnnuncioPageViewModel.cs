@@ -11,7 +11,6 @@ namespace RentIT.ViewModels
     {
         public AggiungiAnnuncioPageViewModel(INavService navService) : base(navService)
         {
-            
         }
 
         public async override Task Init()

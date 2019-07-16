@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace App.Views
+namespace RentIT.Views
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class ModificaDati : ContentPage

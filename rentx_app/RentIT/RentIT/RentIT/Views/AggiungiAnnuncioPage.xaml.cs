@@ -12,6 +12,10 @@ namespace RentIT.Views
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class AggiungiAnnuncioPage : ContentPage
 	{
+        AggiungiAnnuncioPageViewModel _vm
+        {
+            get { return _vm as AggiungiAnnuncioPageViewModel; }
+        }
 
         public AggiungiAnnuncioPage()
         {

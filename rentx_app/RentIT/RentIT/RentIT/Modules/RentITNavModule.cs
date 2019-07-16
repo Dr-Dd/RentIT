@@ -1,4 +1,4 @@
-﻿using App.Views;
+﻿
 using Ninject.Modules;
 using RentIT.Services;
 using RentIT.ViewModels;
