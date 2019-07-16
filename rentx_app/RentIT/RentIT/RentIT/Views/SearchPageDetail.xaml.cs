@@ -17,10 +17,10 @@ namespace RentIT.Views
          * Per qualche motivo, settare il Binding Context della detail
          * page fa crashare l'app, da indagare
          */
-        //SearchPageDetailViewModel _vm
-        //{
-        //    get { return _vm as SearchPageDetailViewModel;  }
-        //}
+        SearchPageDetailViewModel _vm
+        {
+            get { return _vm as SearchPageDetailViewModel;  }
+        }
 
         // TODO: ANTI-PATTERN, va spostato nel viewModel
         /**Lista di città rudimentale per provare un suggerimento dinamico**/
@@ -52,6 +52,7 @@ namespace RentIT.Views
             citySearchBar.Text = e.Item.ToString();
         }
 
+        
         /**
          * Vedi commento in testa alla pagina
          */

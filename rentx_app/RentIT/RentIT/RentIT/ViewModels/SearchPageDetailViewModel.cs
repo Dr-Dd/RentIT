@@ -12,28 +12,36 @@ namespace RentIT.ViewModels
         public SearchPageDetailViewModel(INavService navService) : base(navService)
         {
         }
-
-        Command<Utente> _addAnnuncio;
-        public Command<Utente> AddAnnuncio
+ 
+        Command _aggiungiAnnuncioCommand;
+        public Command AggiungiAnnuncioCommand
         {
             get
             {
-                return _addAnnuncio
-                    ?? (new Command<Utente>(async (utente) => await ExecuteAddAnnuncioCommand(utente)));
+                return _aggiungiAnnuncioCommand
+                    ?? (_aggiungiAnnuncioCommand = new Command(async () => await ExecuteAddAnnuncioCommandAsync()));
             }
         }
 
-        async Task ExecuteAddAnnuncioCommand(Utente utente)
+        //Riaggiungere utente quando sarà implementato il login e la gestione degli utenti
+        async Task ExecuteAddAnnuncioCommandAsync()
         {
-            if (AppSettings.AccessToken.Equals(String.Empty))
+            
+            await NavService.NavigateTo<AggiungiAnnuncioPageViewModel>();
+
+            //Commentato solo per visualizzare la pagina e vedere se è corretta
+            //Molto probabilmente verrà usato il codice qui sotto
+
+            /*if (AppSettings.AccessToken.Equals(String.Empty))
             {
                 await NavService.NavigateTo<LoginPageViewModel>();
             }
             else
             {
                 // TODO: da implementare quando si avrà una "AddAnnuncioPage"
-                /* await NavService.NavigateTo<AddAnnuncioViewModel, Utente>(utente); */
-            }
+                /* await NavService.NavigateTo<AddAnnuncioViewModel, Utente>(utente);
+             }*/
+            
         }
 
         Command<SearchQuery> _search;

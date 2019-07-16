@@ -14,7 +14,7 @@
             <StackLayout Grid.Row="1">
                 <Frame BorderColor="#607D8B" Margin="5,40,5,10" BackgroundColor="WhiteSmoke" >
                     <StackLayout>
-                        <Label Text="CHE COSA STAI CERCANDO?" FontSize="Medium" TextColor="#607D8B"
+                        <Label x:Name="prova" Text="CHE COSA STAI CERCANDO?" FontSize="Medium" TextColor="#607D8B"
                                HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand" Margin="0,0,0,10">
                             <Label.FontFamily>
                                 <OnPlatform x:TypeArguments="x:String">
@@ -49,7 +49,8 @@
                     FontSize="Medium"
                     FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
                     BorderWidth="1"
-                    BorderColor="#607D8B"/>
+                    BorderColor="#607D8B"
+                    Command="{Binding AggiungiAnnuncioCommand}"/>
         </Grid>
     </ContentPage.Content>
 </ContentPage>
