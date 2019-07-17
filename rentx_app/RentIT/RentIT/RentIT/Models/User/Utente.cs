@@ -16,12 +16,6 @@ namespace RentIT.Models.User
         private string Img { get; set; }
         
 
-        /*public Boolean isBlankfield()
-        {
-            return this.name == null || 
-                this.surname == null || 
-                this.email == null || 
-                this.password == null;
-        }*/
+   
      }
 }

@@ -25,7 +25,7 @@ namespace RentIT.Services.Authentication
 
         public bool IsUserAuthenticated => !string.IsNullOrEmpty(AppSettings.AccessToken);  // determina see l'utente è attualmente loggato
 
-        
+
         //metodo per effettuare il login 
         //prende in imput email e password e ritorna l'utente corrsipondente nel db , compresi dati e token che vengono storati localmente 
         public async Task<AuthenticationResponse> LoginAsync(string email, string password)
@@ -39,9 +39,8 @@ namespace RentIT.Services.Authentication
                 Email = email,
                 Password = password,
             };
-            string token = AppSettings.AccessToken;
 
-            AuthenticationResponse authenticationInfo = await  requestService.PostAsync<AuthenticationRequest,AuthenticationResponse>(uri, auth , token);
+            AuthenticationResponse authenticationInfo = await  requestService.PostAsync<AuthenticationRequest,AuthenticationResponse>(uri, auth);
             if (authenticationInfo.HasSucceded == true)
             {
                 AppSettings.UserId = authenticationInfo.UserId;
@@ -73,6 +72,12 @@ namespace RentIT.Services.Authentication
             return logOutInfo.HasSucceded;
         }
 
-        
+        public int GetCurrentUserId()
+        {
+            return AppSettings.UserId;
+        }
+
+
+
     }
 }

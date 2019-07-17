@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using App.Models.User;
 using RentIT.Models.User;
+using RentIT.Services.Authentication;
 using RentIT.Services.Request;
 
 namespace RentIT.Services.User
@@ -11,11 +13,11 @@ namespace RentIT.Services.User
     {
 
         private readonly IRequestService requestService;
+        
 
         public UserService(IRequestService requestService)
         {
             this.requestService = requestService;
-
         }
 
         public Task<SignUpResponse> SignUpAsync(SignUpRequest request)
@@ -24,9 +26,34 @@ namespace RentIT.Services.User
             var builder = new UriBuilder(Constants.UserEndpointIscrizione());
             var uri = builder.ToString();
 
-            string token = "";
+            return requestService.PostAsync<SignUpRequest,SignUpResponse>(uri, request);
+        }
 
-            return requestService.PostAsync<SignUpRequest,SignUpResponse>(uri, request, token);
+        public Task<Utente> GetCurrentProfileAsync()
+        {
+
+            var builder = new UriBuilder(Constants.UserEndpointCurrentData());
+            builder.Path = "/" + AppSettings.UserId.ToString();
+            var uri = builder.ToString();
+
+            return requestService.GetAsync<Utente>(uri,AppSettings.AccessToken);
+        }
+
+        public async Task UploadUserImageAsync(string imageAsBase64)
+        {
+
+
+            var builder = new UriBuilder(Constants.UserEndpointUpImage());
+            builder.Path = "/" + AppSettings.UserId.ToString();
+            var uri = builder.ToString();
+
+            var imageModel = new ImageModel
+            {
+                Data = imageAsBase64
+            };
+
+            await requestService.PutAsync(uri, imageModel,AppSettings.AccessToken);
+            //await CacheHelper.RemoveFromCache(profile.PhotoUrl);  
         }
     }
 }
