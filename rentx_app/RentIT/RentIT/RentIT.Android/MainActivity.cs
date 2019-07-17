@@ -8,16 +8,22 @@ using Android.Widget;
 using Android.OS;
 using RentIT.Droid.Modules;
 using CarouselView.FormsPlugin.Android;
+using System.IO;
+using System.Threading.Tasks;
+using Android.Content;
 
 namespace RentIT.Droid
 {
     [Activity(Label = "RentIT", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
+        public static MainActivity Instance { get; private set; }
         protected override void OnCreate(Bundle savedInstanceState)
         {
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
+
+            Instance = this;
             
 
             base.OnCreate(savedInstanceState);
@@ -29,6 +35,31 @@ namespace RentIT.Droid
         private void InitControls()
         {
             CarouselViewRenderer.Init();
+        }
+
+        //Lettura immagini dalla galleria
+        public static readonly int PickImageId = 1000;
+
+        public TaskCompletionSource<Stream> PickImageTaskCompletionSource { set; get; }
+
+        protected override void OnActivityResult(int requestCode, Result resultCode, Intent intent)
+        {
+            base.OnActivityResult(requestCode, resultCode, intent);
+
+            if (requestCode == PickImageId)
+            {
+                if ((resultCode == Result.Ok) && (intent != null))
+                {
+                    Android.Net.Uri uri = intent.Data;
+                    Stream stream = ContentResolver.OpenInputStream(uri);
+
+                    PickImageTaskCompletionSource.SetResult(stream);
+                }
+                else
+                {
+                    PickImageTaskCompletionSource.SetResult(null);
+                }
+            }
         }
     }
 }

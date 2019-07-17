@@ -3,12 +3,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="RentIT.Views.AggiungiAnnuncioPage">
     <ContentPage.Content>
-        <StackLayout>
-            <Grid>
+        <StackLayout VerticalOptions="FillAndExpand">
+            <Grid HorizontalOptions="CenterAndExpand"
+                  VerticalOptions="CenterAndExpand">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
-                    <RowDefinition Height="3*"/>
+                    <RowDefinition Height="7*"/>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
@@ -25,13 +26,16 @@
                    Placeholder="prezzo"/>
             <Frame Grid.Row="3"
                    BorderColor="#607D8B">
-                <Image Source="" Aspect="AspectFill"/>
+                <Image x:Name="image" Aspect="AspectFill"/>
             </Frame>
-            <Button Grid.Row="4"
+            <Button x:Name="pickPictureButton"
+                    Grid.Row="4"
                     Text="+ Inserisci immagine"
+                    TextColor="#607D8B"
                     BorderWidth="1"
                     BorderColor="#607D8B"
-                    Margin="80,0,80,0"/>
+                    Margin="80,0,80,0"
+                    Clicked="Pick_Image_Button_Clicked"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

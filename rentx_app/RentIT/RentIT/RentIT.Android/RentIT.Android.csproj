@@ -71,6 +71,7 @@
   <ItemGroup>
     <Compile Include="MainActivity.cs" />
     <Compile Include="Modules\RentITPlatformModule.cs" />
+    <Compile Include="PicturePickerImplementation.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
