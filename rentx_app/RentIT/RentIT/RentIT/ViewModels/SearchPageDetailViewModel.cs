@@ -13,7 +13,7 @@ namespace RentIT.ViewModels
         {
         }
 
-        Command _addAnnuncio;
+        /*Command _addAnnuncio;
         public Command AddAnnuncio
         {
             get
@@ -21,12 +21,12 @@ namespace RentIT.ViewModels
                 return _addAnnuncio
                     ?? (_addAnnuncio = new Command(async () => await ExecuteAddAnnuncioCommandAsync()));
             }
-        }
+        }*/
 
-        async Task ExecuteAddAnnuncioCommandAsync()
+        /*async Task ExecuteAddAnnuncioCommandAsync()
         {
-            await NavService.NavigateTo<AggiungiAnnuncioPageViewModel>();
-        }
+            await NavService.NavigateTo<AggiungiAnnuncioViewModel>();
+        }*/
 
         //Commentato solo per visualizzare la pagina e vedere se è corretta
         //Molto probabilmente verrà usato il codice qui sotto

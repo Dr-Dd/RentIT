@@ -7,9 +7,9 @@ using RentIT.Services;
 
 namespace RentIT.ViewModels
 {
-    public class AggiungiAnnuncioPageViewModel : BaseViewModel
+    public class AggiungiAnnuncioViewModel : BaseViewModel
     {
-        public AggiungiAnnuncioPageViewModel(INavService navService) : base(navService)
+        public AggiungiAnnuncioViewModel(INavService navService) : base(navService)
         {
         }
 

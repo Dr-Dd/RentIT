@@ -49,7 +49,7 @@ namespace RentIT.Modules
             navService.RegisterViewMapping(typeof(ModificaDatiViewModel),
                 typeof(ModificaDati));
 
-            navService.RegisterViewMapping(typeof(AggiungiAnnuncioPageViewModel),
+            navService.RegisterViewMapping(typeof(AggiungiAnnuncioViewModel),
                 typeof(AggiungiAnnuncioPage));
 
             Bind<INavService>()
