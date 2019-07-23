@@ -52,6 +52,12 @@ namespace RentIT.Modules
             navService.RegisterViewMapping(typeof(AggiungiAnnuncioViewModel),
                 typeof(AggiungiAnnuncioPage));
 
+            navService.RegisterViewMapping(typeof(ModificaPasswordViewModel),
+                typeof(ModificaPassword));
+
+            navService.RegisterViewMapping(typeof(ModificaEmailViewModel),
+                typeof(ModificaEmail));
+
             Bind<INavService>()
                 .ToMethod(x => navService)
                 .InSingletonScope();

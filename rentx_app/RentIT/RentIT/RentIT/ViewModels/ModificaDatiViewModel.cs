@@ -1,4 +1,5 @@
 ﻿using RentIT.Services;
+using RentIT.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +18,39 @@ namespace RentIT.ViewModels
 
         public override async Task Init()
         {
+
+        }
+
+        /**Comando per passare alla pagina di modifica password*/
+        Command _modificaPasswordCommand;
+        public Command ModificaPasswordCommand
+        {
+            get
+            {
+                return _modificaPasswordCommand
+                    ?? (_modificaPasswordCommand = new Command(async () => await ExecuteModificaPasswordCommand()));
+            }
+        }
+
+        async Task ExecuteModificaPasswordCommand()
+        {
+            await NavService.NavigateTo<ModificaPasswordViewModel>();
+        }
+
+        /**Comando per passare alla pagina di modifica email**/
+        Command _modificaEmailCommand;
+        public Command ModificaEmailCommand
+        {
+            get
+            {
+                return _modificaEmailCommand
+                    ?? (_modificaEmailCommand = new Command(async () => await ExecuteModificaEmailCommand()));
+            }
+        }
+
+        async Task ExecuteModificaEmailCommand()
+        {
+            await NavService.NavigateTo<ModificaEmailViewModel>();
         }
     }
 }
