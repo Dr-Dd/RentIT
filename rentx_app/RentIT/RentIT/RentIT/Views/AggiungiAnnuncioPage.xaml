@@ -3,39 +3,58 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="RentIT.Views.AggiungiAnnuncioPage">
     <ContentPage.Content>
-        <StackLayout VerticalOptions="FillAndExpand">
-            <Grid HorizontalOptions="CenterAndExpand"
-                  VerticalOptions="CenterAndExpand">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="7*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-            </Grid>
-
-            <Entry Grid.Row="0"
+        <ScrollView>
+            <StackLayout VerticalOptions="FillAndExpand">
+                <Grid HorizontalOptions="CenterAndExpand"
+                  VerticalOptions="Start">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="2*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                </Grid>
+                <Label Grid.Row="0"
+                   Text="Inserisci annuncio"
+                   Margin="75,0,0,0"
+                   FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
+                   FontSize="25"
+                   TextColor="#607D8B"/>
+                <Entry Grid.Row="1"
                    x:Name="nomeOggetto"
                    Placeholder="nome oggetto"/>
-            <Entry Grid.Row="1"
+                <Entry Grid.Row="2"
                    x:Name="descrizioneOggetto"
                    Placeholder="descrizione"/>
-            <Entry Grid.Row="2"
+                <Entry Grid.Row="3"
                    x:Name="prezzo"
                    Placeholder="prezzo"/>
-            <Frame Grid.Row="3"
-                   BorderColor="#607D8B">
-                <Image x:Name="image" Aspect="AspectFill"/>
-            </Frame>
-            <Button x:Name="pickPictureButton"
-                    Grid.Row="4"
+                <Frame Grid.Row="4"
+                   BorderColor="#607D8B"
+                   Margin="10,0,10,0"
+                   ScaleY="0.5">
+                   <Image x:Name="image"/>
+                </Frame>
+                <Button x:Name="pickPictureButton"
+                    Grid.Row="5"
                     Text="+ Inserisci immagine"
                     TextColor="#607D8B"
                     BorderWidth="1"
                     BorderColor="#607D8B"
-                    Margin="80,0,80,0"
-                    Clicked="Pick_Image_Button_Clicked"/>
-        </StackLayout>
+                    Margin="70,0,70,0"
+                    Clicked="Pick_Image_Button_Clicked"
+                    BackgroundColor="WhiteSmoke"/>
+                <Button Grid.Row="6"
+                        Text="Aggiungi annuncio"
+                        TextColor="#607D8B"
+                        BorderWidth="1"
+                        BorderColor="#607D8B"
+                        Margin="70,0,70,0"
+                        BackgroundColor="WhiteSmoke"/>
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

@@ -14,7 +14,6 @@ namespace RentIT.Views
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class AggiungiAnnuncioPage : ContentPage
 	{
-        private View stack;
 
         AggiungiAnnuncioViewModel _vm
         {
@@ -26,6 +25,7 @@ namespace RentIT.Views
             InitializeComponent();
         }
 
+        /**Metodo che consente la selezione di un' immagine dalla galleria**/
         private async void Pick_Image_Button_Clicked(object sender, EventArgs e)
         {
             pickPictureButton.IsEnabled = false;
