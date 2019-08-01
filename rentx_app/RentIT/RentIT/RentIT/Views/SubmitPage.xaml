@@ -8,16 +8,23 @@
             <Grid Margin="25" VerticalOptions="Center">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
-                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="4*"/>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
-                <Image Grid.Row="0" BackgroundColor="#CFD8DC" Source="logo.jpg"/>
                 <StackLayout Grid.Row="1">
                     <Frame BorderColor="#607D8B"
                            BackgroundColor="WhiteSmoke">
-                        <StackLayout>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
                             <Label
+                                Grid.Row="0"
                                 Text="INSERISCI I TUOI DATI" 
                                 HorizontalOptions="CenterAndExpand"
                                 TextColor="#607D8B"
@@ -25,29 +32,33 @@
                                 FontSize="Large"
                                 FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"/>
                             <Entry 
+                                Grid.Row="1"
                                 x:Name="name"
                                 Placeholder="Nome"
                                 Text="{Binding Path=name}"
                                 FontFamily="Quicksand-Light.ttf#Quicksand-Light"
                                 PlaceholderColor="#BDBDBD"/>
-                            <Entry 
+                            <Entry
+                                Grid.Row="2"
                                 x:Name="surname"
-                                Placeholder="Cognome"
+                                Placeholder="Surname"
                                 Text="{Binding Path=surname}"
                                 FontFamily="Quicksand-Light.ttf#Quicksand-Light"
                                 PlaceholderColor="#BDBDBD"/>
                             <Entry 
+                                Grid.Row="3"
                                 x:Name="email"
                                 Placeholder="Email"
                                 Text="{Binding Path=email}"
                                 FontFamily="Quicksand-Light.ttf#Quicksand-Light"
                                 PlaceholderColor="#BDBDBD"/>
-                            <Entry 
-                                x:Name="password"
-                                Placeholder="Password"
-                                FontFamily="Quicksand-Light.ttf#Quicksand-Light"
-                                Text="{Binding Path=password}"
-                                PlaceholderColor="#BDBDBD"
+                            <Entry
+                               Grid.Row="4"
+                               x:Name="password"
+                               Placeholder="Password"
+                               Text="{Binding Path=password}"
+                               FontFamily="Quicksand-Light.ttf#Quicksand-Light"
+                               PlaceholderColor="#BDBDBD"
                                 IsPassword="True"/>
                             <Label 
                                 x:Name="blankField"
@@ -59,7 +70,7 @@
                                 Text="email già in uso, effettua il login"
                                 IsVisible="False"
                                 TextColor="Red"/>
-                        </StackLayout>
+                        </Grid>
                     </Frame>
                 </StackLayout>
             <Button Grid.Row="3"
