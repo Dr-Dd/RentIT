@@ -7,8 +7,8 @@
         <ListView x:Name="listaAnnunci" 
                   ItemsSource="{Binding Annunci}" 
                   RowHeight="150"
-                  CachingStrategy="RecycleElement">
-                  <!--ItemTapped="Annuncio_ItemTapped"-->
+                  CachingStrategy="RecycleElement"
+                  ItemTapped="GestioneAnnuncio_ItemTapped">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>

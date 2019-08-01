@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RentIT.Views.GestioneAnnuncioPage">
+    <ContentPage.Content>
+        <Grid Margin="20,20,20,20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="50"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Image Source="{Binding Annuncio.PercorsoImmagine}" 
+                   Aspect="AspectFit"
+                   Grid.Row="1"
+                   Grid.Column="0"
+                   Grid.ColumnSpan="2"/>
+            <Entry Text="{Binding Annuncio.NomeOggetto}"
+                   Grid.Row="2"
+                   Grid.Column="0"
+                   FontAttributes="Bold"
+                   VerticalOptions="Center"
+                   FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
+                   TextColor="#607D8B"
+                   FontSize="Large" 
+                   Margin="20,0,0,0"/>
+            <Entry Text="{Binding Annuncio.Prezzo, StringFormat='{0:F0}€'}"
+                   Grid.Row="2"
+                   Grid.Column="1"
+                   VerticalOptions="Center"
+                   HorizontalOptions="End"
+                   FontAttributes="Bold"
+                   FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
+                   TextColor="#85bb65"
+                   FontSize="Medium"
+                   Margin="0,0,20,0"/>
+            <Frame BorderColor="#607D8B" 
+                   Grid.Row="3"
+                   Grid.Column="0"
+                   Grid.ColumnSpan="2"
+                   Margin="2,0,2,0" 
+                   BackgroundColor="WhiteSmoke">
+                <Entry Text="{Binding Annuncio.Descrizione}"
+                       FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
+                       TextColor="#607D8B"
+                       FontSize="Medium"/>
+            </Frame>
+            <Button Text="MODIFICA"
+                    Grid.Row="4"
+                    Grid.Column="0"
+                    TextColor="#607D8B"
+                    FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
+                    BackgroundColor="WhiteSmoke"
+                    VerticalOptions="CenterAndExpand"
+                    BorderWidth="1"
+                    BorderColor="#607D8B"/>
+            <Button Text="RIMUOVI"
+                    Grid.Row="4"
+                    Grid.Column="1"
+                    TextColor="#607D8B"
+                    FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
+                    BackgroundColor="WhiteSmoke"
+                    VerticalOptions="CenterAndExpand"
+                    BorderWidth="1"
+                    BorderColor="#607D8B"/>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

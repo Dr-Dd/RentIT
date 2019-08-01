@@ -1,4 +1,6 @@
-﻿using System;
+﻿using RentIT.Models;
+using RentIT.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,9 +14,22 @@ namespace RentIT.Views
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class AnnunciUtentePage : ContentPage
 	{
-		public AnnunciUtentePage ()
-		{
-			InitializeComponent ();
-		}
-	}
+        AnnunciUtenteViewModel _vm
+        {
+            get { return BindingContext as AnnunciUtenteViewModel; }
+        }
+
+        public AnnunciUtentePage()
+        {
+            InitializeComponent();
+        }
+
+        async void GestioneAnnuncio_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            var annuncio = (Annuncio)e.Item;
+            _vm.ViewGestioneAnnuncio.Execute(annuncio);
+
+            listaAnnunci.SelectedItem = null;
+        }
+    }
 }

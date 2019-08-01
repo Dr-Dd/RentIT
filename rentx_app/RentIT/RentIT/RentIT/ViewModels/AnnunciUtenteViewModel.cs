@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
 using System.Threading.Tasks;
+using Xamarin.Forms;
 
 
 //Da modificare
@@ -179,6 +180,21 @@ namespace RentIT.ViewModels
             });
 
             IsBusy = false;
+        }
+
+        Command<Annuncio> _viewGestioneAnnuncio;
+        public Command<Annuncio> ViewGestioneAnnuncio
+        {
+            get
+            {
+                return _viewGestioneAnnuncio
+                    ?? (new Command<Annuncio>(async (annuncio) => await ExecuteViewGestioneAnnuncio(annuncio)));
+            }
+        }
+
+        async Task ExecuteViewGestioneAnnuncio(Annuncio annuncio)
+        {
+            await NavService.NavigateTo<GestioneAnnuncioViewModel, Annuncio>(annuncio);
         }
 
         public async override Task Init(SearchQuery query)
