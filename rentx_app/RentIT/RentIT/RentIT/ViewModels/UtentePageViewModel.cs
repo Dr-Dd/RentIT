@@ -61,9 +61,25 @@ namespace RentIT.ViewModels
             }
         }
 
+        Command _annunciUtenteCommand;
+        public Command AnnunciUtenteCommand
+        {
+            get
+            {
+                return _annunciUtenteCommand
+                    ?? (_modificaCommand = new Command(async () => await ExecuteAnnunciUtenteCommandAsync()));
+            }
+        }
+
         async Task ExecuteModificaCommandAsync()
         {
             await NavService.NavigateTo<ModificaDatiViewModel>();
         }
+
+        async Task ExecuteAnnunciUtenteCommandAsync()
+        {
+            await NavService.NavigateTo<AnnunciUtenteViewModel>();
+        }
+
     }
 }
