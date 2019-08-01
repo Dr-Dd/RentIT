@@ -5,6 +5,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import it.rentx.backend.models.Utente;
+import it.rentx.backend.repository.UtenteRepository;
 
 @Service
 public class UtenteService {
@@ -20,4 +21,5 @@ public class UtenteService {
 		utente.setPassword(encoded_password);
 		return utente;
 	}
+	
 }

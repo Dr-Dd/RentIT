@@ -7,5 +7,6 @@ import it.rentx.backend.models.Utente;
 
 @Repository
 public interface UtenteRepository extends JpaRepository<Utente, Long>{
-
+	
+	public Utente findByEmail(String email);
 }
