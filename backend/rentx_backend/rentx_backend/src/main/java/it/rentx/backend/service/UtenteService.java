@@ -22,4 +22,8 @@ public class UtenteService {
 		return utente;
 	}
 	
+	public Boolean checkPassword(String pwd_db, String pwd_body) {
+		return this.passwordEncoder.matches(pwd_body, pwd_db);
+	}
+	
 }

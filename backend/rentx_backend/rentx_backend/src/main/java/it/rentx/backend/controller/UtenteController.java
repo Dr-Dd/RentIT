@@ -31,5 +31,18 @@ public class UtenteController {
 			return ResponseEntity.badRequest().body(new Risposta("Errore nell'iscrizione dell'utente", "403"));
 	}
 	
+	@PostMapping("/utente/login")
+	public ResponseEntity<Risposta> loginUtente(@Validated @RequestBody Utente utente) {
+		Utente utente_db = this.utenteRepository.findByEmail(utente.getEmail());
+		if(utente_db != null) { //Ho trovato l'utente devo confrontare le password
+			if(this.utenteService.checkPassword(utente_db.getPassword(), utente.getPassword()))
+				return ResponseEntity.ok().body(new Risposta("Utente loggato correttamente", "200"));
+		 	else
+		 		return ResponseEntity.badRequest().body(new Risposta("Email o Password errati", "401"));
+		} else {
+			return ResponseEntity.badRequest().body(new Risposta("Email non trovata", "401"));
+		}
+	}
+	
 
 }
