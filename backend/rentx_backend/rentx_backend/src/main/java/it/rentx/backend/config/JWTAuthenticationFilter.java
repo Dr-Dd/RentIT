@@ -12,9 +12,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.AuthenticationCredentialsNotFoundException;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
@@ -45,7 +44,7 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 			Utente credenziali = new ObjectMapper().readValue(req.getInputStream(), Utente.class);
 			return authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(credenziali.getEmail(), credenziali.getPassword(), new ArrayList<>()));
 		} catch (IOException e) {
-			throw new AuthenticationCredentialsNotFoundException("Non trovati");
+            throw new BadCredentialsException("Credenziali non valide");
 		}
 	}
 	
@@ -66,7 +65,7 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 		out.write("\"hasSucceded\": \"true\",\n");
 		out.write("\"userId\":" + "\"" + userId + "\",\n");
 		out.write("\"Access Token\":" + "\"" + token + "\",\n");
-		out.write("\"ResponseMessage\":" + "\"Non so cosa cazzo ti serve ;)\"");
+		out.write("\"ResponseMessage\":" + "\"Token creato con successo\"");
 		out.write("}");
 	}
 
