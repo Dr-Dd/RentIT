@@ -14,5 +14,7 @@ namespace RentIT.Services.Authentication
         Task<AuthenticationResponse> LoginAsync(string email, string password);
 
         Task<bool> LogoutAsync();
+
+        int GetCurrentUserId();
     }
 }

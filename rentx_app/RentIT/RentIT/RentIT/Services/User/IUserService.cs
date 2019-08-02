@@ -12,5 +12,9 @@ namespace RentIT.Services.User
     {
         Task<SignUpResponse> SignUpAsync(SignUpRequest request);
 
+        Task<Utente> GetCurrentProfileAsync();
+
+        Task UploadUserImageAsync(string imageAsBase64);
+
     }
 }

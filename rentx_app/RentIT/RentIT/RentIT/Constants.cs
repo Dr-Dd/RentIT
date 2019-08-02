@@ -36,6 +36,21 @@ namespace RentIT
             return string.Format(Constants.defaultUserEndpoint, "Modifica");
         }
 
+        public static string UserEndpointCurrentData()
+        {
+            return string.Format(Constants.defaultUserEndpoint, "Profile");
+        }
+
+        public static string UserEndpointUpImage()
+        {
+            return string.Format(Constants.defaultUserEndpoint, "AddImage");
+        }
+
+        public static string UserEndpointGetImage()
+        {
+            return string.Format(Constants.defaultUserEndpoint, "Image");
+        }
+
         public static string ItemEndpoint()
         {
             return defaultItemEndpoint;
