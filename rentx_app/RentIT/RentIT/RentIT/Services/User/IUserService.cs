@@ -1,4 +1,5 @@
 ﻿
+using App.Models.User;
 using RentIT.Models.User;
 using System;
 using System.Collections.Generic;
@@ -16,5 +17,6 @@ namespace RentIT.Services.User
 
         Task UploadUserImageAsync(string imageAsBase64);
 
+        Task<ImageModel> GetUserImage();
     }
 }

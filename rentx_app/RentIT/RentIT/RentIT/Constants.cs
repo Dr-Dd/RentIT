@@ -12,7 +12,7 @@ namespace RentIT
         const string defaultAuthenticationEndpoint = "http://5.249.151.26:5000/Auth/{0}";
         const string defaultItemEndpoint = "http://5.249.151.26:5000/Item/{0}";
         const string defaultProductEndpoint = "http://5.249.151.26:5000/Product/{0}";
-        const string defaultUserEndpoint = "http://5.249.151.26:5000/User/{0}";
+        const string defaultUserEndpoint = "http://5.249.151.26:5000/Utente/{0}";
 
 
 
