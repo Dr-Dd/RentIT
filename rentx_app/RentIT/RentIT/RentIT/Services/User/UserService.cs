@@ -33,7 +33,6 @@ namespace RentIT.Services.User
         {
 
             var builder = new UriBuilder(Constants.UserEndpointCurrentData());
-            builder.Path = "/" + AppSettings.UserId.ToString();
             var uri = builder.ToString();
 
             return requestService.GetAsync<Utente>(uri,AppSettings.AccessToken);

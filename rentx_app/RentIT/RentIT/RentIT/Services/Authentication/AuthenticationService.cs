@@ -28,7 +28,7 @@ namespace RentIT.Services.Authentication
 
         //metodo per effettuare il login 
         //prende in imput email e password e ritorna l'utente corrsipondente nel db , compresi dati e token che vengono storati localmente 
-        public async Task<AuthenticationResponse> LoginAsync(string email, string password)
+        public async Task<AuthenticationResponse> LoginAsync(string _email, string _password)
         {
             // RestUrl = http://5.249.151.26:5000/Auth
             var builder = new UriBuilder(Constants.AuthEndpointLogin());
@@ -36,15 +36,15 @@ namespace RentIT.Services.Authentication
 
             var auth = new AuthenticationRequest
             {
-                Email = email,
-                Password = password,
+                email = _email,
+                password = _password,
             };
 
             AuthenticationResponse authenticationInfo = await  requestService.PostAsync<AuthenticationRequest,AuthenticationResponse>(uri, auth);
-            if (authenticationInfo.HasSucceded == true)
+            if (authenticationInfo.hasSucceded)
             {
-                AppSettings.UserId = authenticationInfo.UserId;
-                AppSettings.AccessToken = authenticationInfo.AccessToken;
+                AppSettings.UserId = authenticationInfo.userId;
+                AppSettings.AccessToken = authenticationInfo.accessToken;
             }
             return authenticationInfo;
         }
@@ -54,22 +54,20 @@ namespace RentIT.Services.Authentication
         public async Task<bool> LogoutAsync()
         {
             //gestisci logout eliminando nel db la entry corrispondente all'id inviato ,dalla tabella id-token
-
-            // RestUrl = http://5.249.151.26:5000/Auth
+            
             var builder = new UriBuilder(Constants.AuthEndpointLogout());
-            builder.Path = "/"+AppSettings.UserId.ToString();
             string uri = builder.ToString();
 
             AuthenticationResponse logOutInfo = await requestService.DeleteAsync<AuthenticationResponse>(uri, AppSettings.AccessToken);
 
-            if (logOutInfo.HasSucceded == true)
+            if (logOutInfo.hasSucceded == true)
             {
                 AppSettings.RemoveAccessToken();
                 AppSettings.RemoveUserId();
             }
 
 
-            return logOutInfo.HasSucceded;
+            return logOutInfo.hasSucceded;
         }
 
         public int GetCurrentUserId()

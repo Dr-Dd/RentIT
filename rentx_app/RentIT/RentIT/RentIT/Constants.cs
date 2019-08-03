@@ -7,48 +7,50 @@ namespace RentIT
     public static class Constants
     {
         // URL of REST service
-        public static string RestUrl = "http://5.249.151.26:5000/{0}";
-        // defual Endpoints for api
-        const string defaultAuthenticationEndpoint = "http://5.249.151.26:5000/Auth/{0}";
-        const string defaultItemEndpoint = "http://5.249.151.26:5000/Item/{0}";
-        const string defaultProductEndpoint = "http://5.249.151.26:5000/Product/{0}";
-        const string defaultUserEndpoint = "http://5.249.151.26:5000/User/{0}";
+        public static string RestUrl = "http://192.168.1.173:8080/{0}";
+        // defaul Endpoints for api
+        const string defaultAuthenticationEndpoint = "http://192.168.1.173:8080/auth/{0}";
+        const string defaultItemEndpoint = "http://192.168.1.173:8080/item/{0}";
+        const string defaultProductEndpoint = "http://192.168.1.173:8080/product/{0}";
+        //utente minuscolo
+        const string defaultUserEndpoint = "http://192.168.1.173:8080/utente/{0}";
 
 
 
           public static string AuthEndpointLogin()
         {
-            return string.Format(Constants.defaultAuthenticationEndpoint, "Login");
+            return string.Format(Constants.RestUrl, "login");
         }
 
         public static string AuthEndpointLogout()
         {
-            return string.Format(Constants.defaultAuthenticationEndpoint, "Logout");
+            return string.Format(Constants.defaultAuthenticationEndpoint, "logout");
         }
 
         public static string UserEndpointIscrizione()
         {
-            return string.Format(Constants.defaultUserEndpoint, "Iscrizione");
+            //qui anche registrazione invece di iscrizione
+            return string.Format(Constants.defaultUserEndpoint, "registrazione");
         }
 
         public static string UserEndpointModifyData()
         {
-            return string.Format(Constants.defaultUserEndpoint, "Modifica");
+            return string.Format(Constants.defaultUserEndpoint, "modifica");
         }
 
         public static string UserEndpointCurrentData()
         {
-            return string.Format(Constants.defaultUserEndpoint, "Profile");
+            return string.Format(Constants.defaultUserEndpoint, "profile");
         }
 
         public static string UserEndpointUpImage()
         {
-            return string.Format(Constants.defaultUserEndpoint, "AddImage");
+            return string.Format(Constants.defaultUserEndpoint, "addImage");
         }
 
         public static string UserEndpointGetImage()
         {
-            return string.Format(Constants.defaultUserEndpoint, "Image");
+            return string.Format(Constants.defaultUserEndpoint, "image");
         }
 
         public static string ItemEndpoint()
