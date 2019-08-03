@@ -1,6 +1,7 @@
 ﻿using RentIT.Models.User;
 using RentIT.Services;
 using RentIT.Services.Authentication;
+using RentIT.Services.User;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -9,18 +10,7 @@ using Xamarin.Forms;
 
 namespace RentIT.ViewModels
 {
-    /**
-     * Classe segnaposto, ancora da definire meglio
-     * 
-     * IMPORTANTE:
-     * Qui probabilmente sarebbe più intelligente utilizzare il
-     * token per ricavare le informazioni dal database persistente,
-     * se utilizzassimo l'approccio di passare l'utente da view a view,
-     * probabilmente finiremo per riempire quasi tutti i viewModel con un
-     * Utente (e avremo bisogno di un metodo generico con 3 parametri,
-     * contro i due utilizzati ora)
-     */
-    public class UtentePageViewModel : BaseViewModel<Utente>
+    public class UtentePageViewModel : BaseViewModel
     {
         Utente _utente;
         public Utente Utente
@@ -34,26 +24,22 @@ namespace RentIT.ViewModels
         }
 
         readonly IAuthenticationService _authService;
-        public UtentePageViewModel(INavService navService, AuthenticationService authService) : base(navService)
+        readonly IUserService _userService;
+        public UtentePageViewModel(INavService navService, AuthenticationService authService, UserService userService) : base(navService)
         {
             _authService = authService;
+            _userService = userService;
         }
 
-        public async override Task Init(Utente utente)
+        public async override Task Init()
         {
-            await LoadMockData();
+            //Questa pagina non è più raggiungibile senza che l'utente sia loggato quindi non c'è bisogno di quel controllo
+            Utente = await _userService.GetCurrentProfileAsync();
+            //Bisogna aggiungere il metodo per caricare l'immagine di profilo che è in un service diverso
+            //Utente.Img = await _imgService.GetCurrentProfileImgAsync();
         }
 
-        // Funzione con dati sample
-        public async Task LoadMockData()
-        {
-            Utente = new Utente()
-            {
-                Name = "Gigi Finizio",
-                Img = "meme.png"
-            };
-        }
-
+        //Comando per modificare i dati
         Command _modificaCommand;
         public Command ModificaCommand
         {
@@ -69,6 +55,7 @@ namespace RentIT.ViewModels
             await NavService.NavigateTo<ModificaDatiViewModel>();
         }
 
+        //Comando per visualizzare tutti gli annunci dell'utente
         Command _annunciUtenteCommand;
         public Command AnnunciUtenteCommand
         {
@@ -84,6 +71,7 @@ namespace RentIT.ViewModels
             await NavService.NavigateTo<AnnunciUtenteViewModel>();
         }
 
+        //Comando per eseguire il log out
         Command _logOutCommand;
         public Command LogOutCommand
         {
