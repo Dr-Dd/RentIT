@@ -21,6 +21,8 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import com.auth0.jwt.JWT;
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import it.rentx.backend.models.Utente;
@@ -31,6 +33,7 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 	private AuthenticationManager authenticationManager;
 	
 	private UtenteRepository utenteRepository;
+	
 
 	public JWTAuthenticationFilter(AuthenticationManager authenticationManager, UtenteRepository utenteRepository) {
         this.authenticationManager = authenticationManager;
@@ -38,14 +41,21 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
     }
 	
 	@Override
-	public Authentication attemptAuthentication(HttpServletRequest req, HttpServletResponse res) throws AuthenticationException{
+	public Authentication attemptAuthentication(HttpServletRequest req, HttpServletResponse res) {
 		
 		try {
 			Utente credenziali = new ObjectMapper().readValue(req.getInputStream(), Utente.class);
-			return authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(credenziali.getEmail(), credenziali.getPassword(), new ArrayList<>()));
+			Utente utente = this.utenteRepository.findByEmail(credenziali.getEmail());
+			if(utente != null)
+				return authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(credenziali.getEmail(), credenziali.getPassword(), new ArrayList<>()));
+			else {
+				System.out.println("Utente non esiste");
+				return null;
+			}
 		} catch (IOException e) {
             throw new BadCredentialsException("Credenziali non valide");
 		}
+
 	}
 	
 	@Override

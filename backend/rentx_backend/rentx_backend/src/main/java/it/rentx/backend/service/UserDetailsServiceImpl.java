@@ -1,4 +1,4 @@
-package it.rentx.backend.controller;
+package it.rentx.backend.service;
 
 import static java.util.Collections.emptyList;
 

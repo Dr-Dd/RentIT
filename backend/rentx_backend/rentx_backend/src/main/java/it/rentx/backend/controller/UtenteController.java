@@ -27,7 +27,7 @@ public class UtenteController {
     public ResponseEntity<Risposta> registrazioneUtente(@RequestBody Utente utente) {
         utente.setPassword(bCryptPasswordEncoder.encode(utente.getPassword()));
         utenteRepository.save(utente);
-        return ResponseEntity.ok().body(new Risposta("Utente registrato correttamente", "true"));
+        return ResponseEntity.ok().body(new Risposta("true","","Utente iscritto correttamente"));
     }
 	
 
