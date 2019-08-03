@@ -1,5 +1,6 @@
 ﻿using RentIT.Models.User;
 using RentIT.Services;
+using RentIT.Services.Authentication;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -32,8 +33,10 @@ namespace RentIT.ViewModels
             }
         }
 
-        public UtentePageViewModel(INavService navService) : base(navService)
+        readonly IAuthenticationService _authService;
+        public UtentePageViewModel(INavService navService, AuthenticationService authService) : base(navService)
         {
+            _authService = authService;
         }
 
         public async override Task Init(Utente utente)
@@ -61,19 +64,19 @@ namespace RentIT.ViewModels
             }
         }
 
+        async Task ExecuteModificaCommandAsync()
+        {
+            await NavService.NavigateTo<ModificaDatiViewModel>();
+        }
+
         Command _annunciUtenteCommand;
         public Command AnnunciUtenteCommand
         {
             get
             {
                 return _annunciUtenteCommand
-                    ?? (_modificaCommand = new Command(async () => await ExecuteAnnunciUtenteCommandAsync()));
+                    ?? (_annunciUtenteCommand = new Command(async () => await ExecuteAnnunciUtenteCommandAsync()));
             }
-        }
-
-        async Task ExecuteModificaCommandAsync()
-        {
-            await NavService.NavigateTo<ModificaDatiViewModel>();
         }
 
         async Task ExecuteAnnunciUtenteCommandAsync()
@@ -81,5 +84,33 @@ namespace RentIT.ViewModels
             await NavService.NavigateTo<AnnunciUtenteViewModel>();
         }
 
+        Command _logOutCommand;
+        public Command LogOutCommand
+        {
+            get
+            {
+                return _logOutCommand
+                    ?? (_logOutCommand = new Command(async () => await ExecuteLogOutCommandAsync()));
+            }
+        }
+
+        async Task ExecuteLogOutCommandAsync()
+        {
+            IsBusy = true;
+
+            var response = await _authService.LogoutAsync();
+            if (response)
+            {
+                await NavService.ClearBackStack();
+                await NavService.NavigateTo<SearchPageViewModel>();
+            }
+            else
+            {
+                await App.Current.MainPage.DisplayAlert("Errore", "Impossibile effettuare il log out", "Ok");
+            }
+
+            IsBusy = false;
+
+        }
     }
 }

@@ -72,7 +72,8 @@
                     BorderWidth="1"
                     BorderColor="#607D8B"
                     BackgroundColor="WhiteSmoke"
-                    Margin="80,20,80,20"/>
+                    Margin="80,20,80,20"
+                    Command="{Binding LogOutCommand}"/>
         </Grid>
     </ContentPage.Content>
 </ContentPage>
