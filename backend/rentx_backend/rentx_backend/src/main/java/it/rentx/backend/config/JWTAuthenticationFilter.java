@@ -66,8 +66,8 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 		out.write("{");
 		out.write("\"hasSucceded\": \"true\",\n");
 		out.write("\"userId\":" + "\"" + userId + "\",\n");
-		out.write("\"Access Token\":" + "\"" + token + "\",\n");
-		out.write("\"ResponseMessage\":" + "\"Token creato con successo\"");
+		out.write("\"accessToken\":" + "\"" + token + "\",\n");
+		out.write("\"responseMessage\":" + "\"Token creato con successo\"");
 		out.write("}");
 	}
 
