@@ -47,33 +47,29 @@ namespace RentIT.ViewModels
             // TODO: non è ben chiaro cosa serva all'avvio della pagina (forse nulla)
         }
 
-        /**
-         * Comando di log in, NB: IL PARAMETRO UTENTE E' TEMPORANEO, un 
-         * segnaposto insomma
-         */
-        Command<Utente> _logInCommand;
-        public Command<Utente> LogInCommand
+        //Comando di log in
+        Command _logInCommand;
+        public Command LogInCommand
         {
             get
             {
                 return _logInCommand
-                    ?? (_logInCommand = new Command<Utente>(async (utente) => await ExecuteLogInCommand(utente)));
+                    ?? (_logInCommand = new Command(async () => await ExecuteLogInCommand()));
             }
         }
 
-        async Task ExecuteLogInCommand(Utente utente)
+        async Task ExecuteLogInCommand()
         {
             IsBusy = true;
-
             var authResponse = await _authService.LoginAsync(_email, _password);
-            if (authResponse.HasSucceded)
+            if (authResponse.hasSucceded)
             {
+                await NavService.ClearBackStack();
                 await NavService.NavigateTo<SearchPageViewModel>();
-                // await NavService.GoBack();
             }
             else
             {
-                await App.Current.MainPage.DisplayAlert("Errore", authResponse.ResponseMessage, "Ok");
+                await App.Current.MainPage.DisplayAlert("Errore", authResponse.responseMessage, "Ok");
             }
 
             IsBusy = false;

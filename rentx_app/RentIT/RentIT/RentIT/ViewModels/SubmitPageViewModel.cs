@@ -64,14 +64,14 @@ namespace RentIT.ViewModels
         }
 
 
-        /*comando di registrazione. Anche qui utente è temporaneo*/
-        Command<Utente> _signInCommand;
-        public Command<Utente> SignInCommand
+        /*comando di registrazione*/
+        Command _signInCommand;
+        public Command SignInCommand
         {
             get
             {
                 return _signInCommand
-                    ?? (_signInCommand = new Command<Utente>(async (utente) => await ExecuteSignInCommand()));
+                    ?? (_signInCommand = new Command(async () => await ExecuteSignInCommand()));
             }
         }
 
@@ -80,21 +80,21 @@ namespace RentIT.ViewModels
             IsBusy = true;
             var signUpRequest = new SignUpRequest
             {
-                Name = Name,
-                Surname = Surname,
-                Email = Email,
-                Password = Password
+                name = Name,
+                surname = Surname,
+                email = Email,
+                password = Password
             };
-           
             var signUpResponse = await _userService.SignUpAsync(signUpRequest);
-            if (signUpResponse.HasSucceded)
+            if (signUpResponse.hasSucceded)
             {
                 //c'è da fare il login da qui?
+                await NavService.ClearBackStack();
                 await NavService.NavigateTo<SearchPageViewModel>();
             }
             else
             {
-                await App.Current.MainPage.DisplayAlert("Errore", signUpResponse.ResponseMessage, "Ok");
+                await App.Current.MainPage.DisplayAlert("Errore", signUpResponse.responseMessage, "Ok");
             }
 
             IsBusy = false;
