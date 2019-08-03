@@ -25,12 +25,16 @@
                        BackgroundColor="WhiteSmoke">
                     <StackLayout >
                         <Entry Placeholder="Email" 
+                               x:Name="Email"
                                PlaceholderColor="#BDBDBD" 
-                               TextColor="Black"/>
+                               TextColor="Black"
+                               Text="{Binding Path=Email}"/>
                         <Entry Placeholder="Password" 
+                               x:Name="Password"
                                PlaceholderColor="#BDBDBD" 
                                TextColor="Black" 
-                               IsPassword="True"/>
+                               IsPassword="True"
+                               Text="{Binding Path=Password}"/>
                     </StackLayout>
                 </Frame>
             </StackLayout>
