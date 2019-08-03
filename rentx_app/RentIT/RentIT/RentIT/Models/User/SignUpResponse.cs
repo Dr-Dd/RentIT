@@ -6,7 +6,7 @@ namespace RentIT.Models.User
 {
     public class SignUpResponse
     {
-        public bool HasSucceded { get; set; }
-        public string ResponseMessage { get; set; }
+        public bool hasSucceded { get; set; }
+        public string responseMessage { get; set; }
     }
 }

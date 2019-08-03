@@ -3,12 +3,12 @@
     public class AuthenticationResponse
 
     {
-        public bool HasSucceded { get; set; }
+        public bool hasSucceded { get; set; }
 
-        public int UserId { get; set; }
+        public int userId { get; set; }
 
-        public string AccessToken { get; set; }
+        public string accessToken { get; set; }
 
-        public string ResponseMessage { get; set; }
+        public string responseMessage { get; set; }
     }
 }
