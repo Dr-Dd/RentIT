@@ -35,28 +35,28 @@
                                 Grid.Row="1"
                                 x:Name="name"
                                 Placeholder="Nome"
-                                Text="{Binding Path=name}"
+                                Text="{Binding Path=Name}"
                                 FontFamily="Quicksand-Light.ttf#Quicksand-Light"
                                 PlaceholderColor="#BDBDBD"/>
                             <Entry
                                 Grid.Row="2"
                                 x:Name="surname"
                                 Placeholder="Surname"
-                                Text="{Binding Path=surname}"
+                                Text="{Binding Path=Surname}"
                                 FontFamily="Quicksand-Light.ttf#Quicksand-Light"
                                 PlaceholderColor="#BDBDBD"/>
                             <Entry 
                                 Grid.Row="3"
                                 x:Name="email"
                                 Placeholder="Email"
-                                Text="{Binding Path=email}"
+                                Text="{Binding Path=Email}"
                                 FontFamily="Quicksand-Light.ttf#Quicksand-Light"
                                 PlaceholderColor="#BDBDBD"/>
                             <Entry
                                Grid.Row="4"
                                x:Name="password"
                                Placeholder="Password"
-                               Text="{Binding Path=password}"
+                               Text="{Binding Path=Password}"
                                FontFamily="Quicksand-Light.ttf#Quicksand-Light"
                                PlaceholderColor="#BDBDBD"
                                 IsPassword="True"/>
