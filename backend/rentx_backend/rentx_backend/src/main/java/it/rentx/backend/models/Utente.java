@@ -1,18 +1,23 @@
 package it.rentx.backend.models;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "utente")
+@SequenceGenerator(name = "seq", initialValue = 1)
 public class Utente {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq")
 	private long id;
 	
 	@Column(name = "name_utente", nullable = false)
@@ -33,13 +38,26 @@ public class Utente {
 	@Column(name = "address_utente")
 	private String address;
 	
+	@OneToOne(mappedBy = "utente", cascade = CascadeType.ALL, fetch = FetchType.LAZY, optional = false)
+	private Image image;
+	
 	public Utente() {}
 	
-	public Utente(String name, String surname, String email, String password, String numero, String address) {
+	public Utente(String name, String surname, String email, String password, String numero, String address, Image image) {
 		this.name = name;
 		this.surname = surname;
 		this.email = email;
 		this.password = password;
+		this.numero = numero;
+		this.address = address;
+		this.image = image;
+	}
+	
+	public Utente(Long id, String name, String surname, String email, String numero, String address) {
+		this.id = id;
+		this.name = name;
+		this.surname = surname;
+		this.email = email;
 		this.numero = numero;
 		this.address = address;
 	}
@@ -99,6 +117,16 @@ public class Utente {
 	public void setAddress(String address) {
 		this.address = address;
 	}
+
+	public Image getImage() {
+		return image;
+	}
+
+	public void setImage(Image image) {
+		this.image = image;
+	}
+	
+	
 	
 	
 	
