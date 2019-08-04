@@ -5,6 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -43,6 +44,17 @@ public class UtenteController {
     	Utente u = this.utenteRepository.findByEmail(email_utente);
     	Utente u_risultato = new Utente(u.getId(), u.getName(), u.getSurname(), u.getEmail(), u.getNumero(), u.getAddress());
     	return u_risultato;
+    }
+    
+    @PutMapping("/modifica")
+    public ResponseEntity<Risposta> modificaUtente(@RequestHeader("Authorization") String token, @RequestBody Utente dati_utente) {
+    	Utente utente_da_modificare = this.utenteRepository.findByEmail(this.utenteService.estrazioneEmailDaToken(token));
+    	utente_da_modificare.setNumero(dati_utente.getNumero());
+    	utente_da_modificare.setAddress(dati_utente.getAddress());
+    	
+    	this.utenteRepository.save(utente_da_modificare);
+    	
+    	return ResponseEntity.ok().body(new Risposta("true", utente_da_modificare.getId(), "", "Dati modificati correttamente."));
     }
 	
 
