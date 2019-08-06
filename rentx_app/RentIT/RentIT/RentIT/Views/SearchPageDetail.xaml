@@ -61,7 +61,7 @@
                     FontSize="Medium"
                     FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
                     BorderColor="#607D8B"
-                    Clicked="Button_Clicked"/>
+                    Command="{Binding AddAnnuncio}" />
         </Grid>
     </ContentPage.Content>
 </ContentPage>

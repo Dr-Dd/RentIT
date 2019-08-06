@@ -34,9 +34,6 @@ namespace RentIT.Modules
             navService.RegisterViewMapping(typeof(SearchPageViewModel),
                 typeof(SearchPage));
 
-            navService.RegisterViewMapping(typeof(SearchPageDetailViewModel),
-                typeof(SearchPageDetail));
-
             navService.RegisterViewMapping(typeof(AnnunciPageViewModel),
                 typeof(AnnunciPage));
 
