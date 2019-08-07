@@ -10,10 +10,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-@Entity
-@Table(name = "image_utente")
-public class Image {
 
+@Entity
+@Table(name = "image") // <-- Era 'image_utente', ma chiaramente
+public class Image {  // mi sembrava sensato che un'immagine potesse essere
+					   // sia di Utente che di Annuncio...fatemi sapere!!
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
@@ -22,6 +23,10 @@ public class Image {
     @JoinColumn(name = "id_utente")
 	private Utente utente;
 	
+	@OneToOne(fetch = FetchType.LAZY) // Vedi sopra
+    @JoinColumn(name = "id_annuncio")
+	private Annuncio annuncio;
+
 	@Column(name = "image_utente")
 	private Byte[] image;
 	
@@ -46,6 +51,14 @@ public class Image {
 
 	public void setUtente(Utente utente) {
 		this.utente = utente;
+	}
+
+	public Annuncio getAnnuncio() {
+		return annuncio;
+	}
+
+	public void setAnnuncio(Annuncio annuncio) {
+		this.annuncio = annuncio;
 	}
 
 	public Byte[] getImage() {
