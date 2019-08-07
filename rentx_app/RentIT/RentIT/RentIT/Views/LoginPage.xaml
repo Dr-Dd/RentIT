@@ -5,54 +5,63 @@
              NavigationPage.HasNavigationBar="True"
              BackgroundColor="#CFD8DC">
     <ContentPage.Content>
-        <Grid Margin="25">
+        <Grid>
             <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
                 <RowDefinition Height="2*"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="10*"/>
+                <ColumnDefinition Width="10*"/>
+                <ColumnDefinition Width="60*"/>
+                <ColumnDefinition Width="10*"/>
+                <ColumnDefinition Width="10*"/>
+            </Grid.ColumnDefinitions>
             <Label Grid.Row="0"
-                   Text="Rent[IT]"
+                   Grid.Column="1"
+                   Grid.ColumnSpan="3"
+                   Text="Inserisci le tue credenziali"
                    HorizontalOptions="CenterAndExpand"
                    VerticalOptions="CenterAndExpand"
                    FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
-                   FontSize="60"
+                   FontSize="Medium"
                    TextColor="#607D8B"/>
-            <StackLayout Grid.Row="1">
-                <Frame BorderColor="#607D8B" 
-                       Margin="2,0,2,0" 
+            <Frame Grid.Row="1"
+                       Grid.Column="1"
+                       Grid.ColumnSpan="3"
+                       BorderColor="#607D8B" 
                        BackgroundColor="WhiteSmoke">
-                    <StackLayout >
-                        <Entry Placeholder="Email" 
+                <StackLayout VerticalOptions="Center">
+                    <Entry Placeholder="Email" 
                                x:Name="Email"
                                PlaceholderColor="#BDBDBD" 
                                TextColor="Black"
                                Text="{Binding Path=Email}"/>
-                        <Entry Placeholder="Password" 
+                    <Entry Placeholder="Password" 
                                x:Name="Password"
                                PlaceholderColor="#BDBDBD" 
                                TextColor="Black" 
                                IsPassword="True"
                                Text="{Binding Path=Password}"/>
-                    </StackLayout>
-                </Frame>
-            </StackLayout>
+                </StackLayout>
+            </Frame>
             <Button Text="LOGIN"
                     Grid.Row="2"
+                    Grid.Column="2"
                     FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
                     TextColor="#607D8B"
                     VerticalOptions="CenterAndExpand"
                     BackgroundColor="WhiteSmoke"
                     BorderWidth="1"
                     BorderColor="#607D8B"
-                    Margin="80,0,80,0"
                     Command="{Binding LogInCommand}" />
             <Button Text="iscriviti"
                     TextColor="#607D8B"
                     Grid.Row="3"
+                    Grid.Column="2"
                     VerticalOptions="EndAndExpand"
-                    Margin="80,0,80,0"
                     Command="{Binding SubmitCommand}" 
                     Font="micro" 
                     FontFamily="Quicksand-Bold.ttf#Quicksand-Bold" 
