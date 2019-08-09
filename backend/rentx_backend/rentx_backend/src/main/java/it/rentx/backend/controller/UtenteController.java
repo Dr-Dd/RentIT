@@ -59,6 +59,7 @@ public class UtenteController {
     }
     
     // Da terminare
+    // Nel body ricevo tutto tranne l'immagine e se un campo non viene cambiato allora stringa vuota. Se c'è una stringa vuota non ci devono essere cambiamenti
     @PutMapping("/modifica")
     public ResponseEntity<Risposta> modificaUtente(@RequestHeader("Authorization") String token, @RequestBody Utente dati_utente) {
     	Utente utente_da_modificare = this.utenteRepository.findByEmail(this.utenteService.estrazioneEmailDaToken(token));
@@ -70,6 +71,9 @@ public class UtenteController {
     	return ResponseEntity.ok().body(new Risposta("true", utente_da_modificare.getId(), "", "Dati modificati correttamente."));
     }
     
+    
+    // Devo cambiare il messaggio di risposta con "Il tuo account verrà cancellato solo quando tutti i prestiti sarannno terminati"
+    // Effettuare il controllo se i prestiti sono terminati, se vero cancello altimenti messaggio errore
     @DeleteMapping("/elimina")
     public ResponseEntity<Risposta> cancellaUtente(@RequestHeader("Authorization") String token) {
     	this.utenteRepository.delete(this.utenteRepository.findByEmail(this.utenteService.estrazioneEmailDaToken(token)));
