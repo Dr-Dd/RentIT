@@ -89,8 +89,7 @@ namespace RentIT.ViewModels
             if (signUpResponse.hasSucceded)
             {
                 //c'è da fare il login da qui?
-                await NavService.ClearBackStack();
-                await NavService.NavigateTo<SearchPageViewModel>();
+                await NavService.NavigateToMainPage();
             }
             else
             {

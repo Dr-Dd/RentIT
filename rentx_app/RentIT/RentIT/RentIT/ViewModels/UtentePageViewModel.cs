@@ -89,8 +89,7 @@ namespace RentIT.ViewModels
             var response = await _authService.LogoutAsync();
             if (response)
             {
-                await NavService.ClearBackStack();
-                await NavService.NavigateTo<SearchPageViewModel>();
+                await NavService.NavigateToMainPage();
             }
             else
             {
