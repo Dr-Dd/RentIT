@@ -14,6 +14,5 @@ namespace RentIT.Models.User
         private string Password { get; set; }
         private string NumeroTel { get; set; }
         private string Address { get; set; }
-        public ImageModel Img { get; set; }
     }
 }
