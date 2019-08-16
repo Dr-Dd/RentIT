@@ -35,8 +35,7 @@ namespace RentIT.ViewModels
         {
             //Questa pagina non è più raggiungibile senza che l'utente sia loggato quindi non c'è bisogno di quel controllo
             Utente = await _userService.GetCurrentProfileAsync();
-            //Bisogna aggiungere il metodo per caricare l'immagine di profilo che è in un service diverso
-            //Utente.Img = await _imgService.GetCurrentProfileImgAsync();
+            //Utente.Img = await _userService.GetUserImage();
         }
 
         //Comando per modificare i dati

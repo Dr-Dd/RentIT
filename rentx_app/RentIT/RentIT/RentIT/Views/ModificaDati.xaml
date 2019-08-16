@@ -16,7 +16,9 @@
                        FontSize="Medium"/>
             </StackLayout>
             <StackLayout HorizontalOptions="FillAndExpand"  Grid.Row="1" >
-            <Button Text="Modifica Password"
+            <!--Li ho commentati perché avevo a disposizione uno schermo piccolo e potevo
+                vedere solo i primi due bottoni. Abilitare la possibilità di scorrere la pagina?
+                <Button Text="Modifica Password"
                     TextColor="#607D8B"
                     FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
                     BorderWidth="1"
@@ -25,8 +27,8 @@
                     HorizontalOptions="FillAndExpand"
                     Margin="0,60,0,30"
                     Command="{Binding ModificaPasswordCommand}"/>
-                    <!-- Da Sistemare per attaccare la pagina -->
-            <Button Text="Modifica Email"
+                    Da Sistemare per attaccare la pagina -->
+            <!--<Button Text="Modifica Email"
                     TextColor="#607D8B"
                     FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
                     BorderWidth="1"
@@ -35,7 +37,16 @@
                     HorizontalOptions="FillAndExpand"
                     Margin="0,0,0,30"
                     Command="{Binding ModificaEmailCommand}"/>
-                    <!-- Da Sistemare per attaccare la pagina -->
+                    Da Sistemare per attaccare la pagina -->
+            <Button Text="Modifica Foto"
+                    TextColor="#607D8B"
+                    FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
+                    BorderWidth="1"
+                    BorderColor="#607D8B"
+                    BackgroundColor="WhiteSmoke"
+                    HorizontalOptions="FillAndExpand"
+                    Margin="0,60,0,30"
+                    Command="{Binding ModificaFotoCommand}"/>
             <Button Text="Elimina Account"
                     TextColor="#607D8B"
                     FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"

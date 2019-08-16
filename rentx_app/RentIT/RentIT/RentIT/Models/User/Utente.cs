@@ -1,4 +1,5 @@
-﻿using System;
+﻿using App.Models.User;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -13,5 +14,6 @@ namespace RentIT.Models.User
         private string Password { get; set; }
         private string NumeroTel { get; set; }
         private string Address { get; set; }
+        public ImageModel Img { get; set; }
     }
 }
