@@ -18,5 +18,9 @@ namespace RentIT.Services.User
         Task UploadUserImageAsync(string imageAsBase64);
 
         Task<ImageModel> GetUserImage();
+
+        Task<Response> ModifyUserData(Utente u);
+
+        Task<Response> DeleteAccount();
     }
 }

@@ -38,7 +38,7 @@ namespace RentIT.ViewModels
              spoiler: no*/
             ImageModel source = new ImageModel
             {
-                Data = ImageSource.FromResource("meme.png").ToString()
+                data = ImageSource.FromResource("meme.png").ToString()
             };
 
             return source;
