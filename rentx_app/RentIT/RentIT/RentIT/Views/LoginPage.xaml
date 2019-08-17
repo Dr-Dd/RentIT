@@ -13,11 +13,12 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <Label Grid.Row="0"
-                   Text="Rent[IT]"
+                   Text="Effettua Login"
                    HorizontalOptions="CenterAndExpand"
-                   VerticalOptions="CenterAndExpand"
+                   VerticalOptions="EndAndExpand"
+                   Margin="0,0,0,20"
                    FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
-                   FontSize="60"
+                   FontSize="40"
                    TextColor="#607D8B"/>
             <StackLayout Grid.Row="1">
                 <Frame BorderColor="#607D8B" 
