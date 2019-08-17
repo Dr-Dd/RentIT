@@ -1,8 +1,11 @@
 ﻿using App.Models.User;
+using App.Services.Foto;
 using RentIT.Models.User;
 using RentIT.Services;
 using RentIT.Services.Authentication;
 using RentIT.Services.User;
+using System;
+using System.IO;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
@@ -21,10 +24,11 @@ namespace RentIT.ViewModels
             }
         }
 
-        ImageModel _immagine;
-        public ImageModel Immagine
+        Image _immagine;
+        public Image Immagine
         {
-            get { return _immagine ?? immagineDefault(); }
+            //se _immagine è null, non ci sono foto nel db e ne carica una di default
+            get { return _immagine ?? (new Image { Source = "meme.png" }); }
             set
             {
                 _immagine = value;
@@ -32,32 +36,32 @@ namespace RentIT.ViewModels
             }
         }
 
-        public ImageModel immagineDefault()
-        {
-            /*tanto per provare se il metodo funziona
-             spoiler: no*/
-            ImageModel source = new ImageModel
-            {
-                Data = ImageSource.FromResource("meme.png").ToString()
-            };
-
-            return source;
-        }
-
         readonly IAuthenticationService _authService;
         readonly IUserService _userService;
-        public UtentePageViewModel(INavService navService, AuthenticationService authService, UserService userService) : base(navService)
+        readonly FotoService _fotoService;
+        public UtentePageViewModel(INavService navService, AuthenticationService authService, UserService userService, FotoService fotoService) : base(navService)
         {
             _authService = authService;
             _userService = userService;
+            _fotoService = fotoService;
         }
 
         public async override Task Init()
         {
             //Questa pagina non è più raggiungibile senza che l'utente sia loggato quindi non c'è bisogno di quel controllo
             Utente = await _userService.GetCurrentProfileAsync();
-            //da decommentare quando sarà stato fatto il collegamento al db
-            //_immagine = await _userService.GetUserImage();
+            //da fare il collegamento al db
+            //_immagine = await getPropic();
+        }
+
+        //Metodo per prendere l'immagine profilo dal database
+        public async Task<Image> getPropic()
+        {
+            ImageModel foto = await _userService.GetUserImage();
+            Image img = null;
+            if(foto != null)
+                img = _fotoService.fromStringToImage(foto.Data);
+            return img;
         }
 
         //Comando per modificare i dati

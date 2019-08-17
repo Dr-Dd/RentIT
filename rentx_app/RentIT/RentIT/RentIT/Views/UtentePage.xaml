@@ -24,9 +24,9 @@
             <controls:CircleImage x:Name="imgProfile"
                    Grid.Row="0"
                    Grid.Column="0"
-                   Source="{Binding Immagine}"
                    Aspect="AspectFit"
-                   Margin="30,10,20,10"/>
+                   Margin="30,10,20,10"
+                  Source="{Binding Immagine.Source}"/>
             <Label Grid.Row="0"
                    Grid.Column="1"
                    Text="{Binding Utente.Name}"

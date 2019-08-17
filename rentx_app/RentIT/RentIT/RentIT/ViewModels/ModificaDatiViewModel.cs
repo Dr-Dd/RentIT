@@ -8,15 +8,18 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using System.IO;
 using RentIT.Services.User;
+using App.Services.Foto;
 
 namespace RentIT.ViewModels
 {
 	public class ModificaDatiViewModel : BaseViewModel
 	{
         readonly IUserService _userService;
-        public ModificaDatiViewModel (INavService navService, UserService userService) : base(navService)
+        readonly FotoService _fotoService;
+        public ModificaDatiViewModel (INavService navService, UserService userService, FotoService fotoService) : base(navService)
 		{
             _userService = userService;
+            _fotoService = fotoService;
         }
 
         public override async Task Init()
@@ -74,11 +77,7 @@ namespace RentIT.ViewModels
 
             if (stream != null)
             {
-                MemoryStream copy = new MemoryStream();
-                stream.CopyTo(copy);
-                byte[] bytes = copy.ToArray();
-                string base64 = Convert.ToBase64String(bytes);
-
+                string base64 = _fotoService.fromStreamToString(stream);
                 await _userService.UploadUserImageAsync(base64);
             }
         }
