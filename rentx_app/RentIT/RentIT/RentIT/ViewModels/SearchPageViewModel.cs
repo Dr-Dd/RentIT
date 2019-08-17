@@ -86,6 +86,21 @@ namespace RentIT.ViewModels
             await NavService.NavigateTo<UtentePageViewModel>();
         }
 
+        Command _addAnnuncio;
+        public Command AddAnnuncio
+        {
+            get
+            {
+                return _addAnnuncio
+                    ?? (_addAnnuncio = new Command(async () => await ExecuteAddAnnuncioCommandAsync()));
+            }
+        }
+
+        async Task ExecuteAddAnnuncioCommandAsync()
+        {
+            await NavService.NavigateTo<AggiungiAnnuncioViewModel>();
+        }
+
         public override async Task Init()
         {
         }

@@ -13,15 +13,6 @@ namespace RentIT.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class SearchPageDetail : ContentPage
     {
-        /**
-         * Per qualche motivo, settare il Binding Context della detail
-         * page fa crashare l'app, da indagare
-         */
-        SearchPageDetailViewModel _vm
-        {
-            get { return _vm as SearchPageDetailViewModel;  }
-        }
-
         // TODO: ANTI-PATTERN, va spostato nel viewModel
         /**Lista di città rudimentale per provare un suggerimento dinamico**/
         private List<string> cities = new List<string>()
@@ -51,21 +42,6 @@ namespace RentIT.Views
         {
             citySearchBar.Text = e.Item.ToString();
         }
-
-        private async void Button_Clicked(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new AggiungiAnnuncioPage());
-        }
-
-        /**
-         * Vedi commento in testa alla pagina
-         */
-        //protected async override void OnAppearing()
-        //{
-        //    base.OnAppearing();
-        //    if (_vm != null)
-        //        await _vm.Init();
-        //}
 
     }
 }

@@ -55,7 +55,12 @@ namespace RentIT.Services.User
             //await CacheHelper.RemoveFromCache(profile.PhotoUrl);  
         }
 
+<<<<<<< HEAD
         public async Task<ImageModel> GetUserImage()
+=======
+        //qui serve l'id dell'utente e non solo il token
+        public Task<ImageModel> GetUserImage()
+>>>>>>> origin/ImmaginiProfilo
         {
 
             var builder = new UriBuilder(Constants.UserEndpointGetImage());
