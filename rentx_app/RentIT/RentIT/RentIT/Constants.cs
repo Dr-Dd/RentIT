@@ -12,7 +12,6 @@ namespace RentIT
         const string defaultAuthenticationEndpoint = "http://192.168.1.173:8080/auth/{0}";
         const string defaultItemEndpoint = "http://192.168.1.173:8080/item/{0}";
         const string defaultProductEndpoint = "http://192.168.1.173:8080/product/{0}";
-        //utente minuscolo
         const string defaultUserEndpoint = "http://192.168.1.173:8080/utente/{0}";
 
 
@@ -29,8 +28,13 @@ namespace RentIT
 
         public static string UserEndpointIscrizione()
         {
-            //qui anche registrazione invece di iscrizione
+            
             return string.Format(Constants.defaultUserEndpoint, "registrazione");
+        }
+
+        public static string UserEndpontEliminaAccount()
+        {
+            return string.Format(Constants.defaultUserEndpoint, "elimina");
         }
 
         public static string UserEndpointModifyData()

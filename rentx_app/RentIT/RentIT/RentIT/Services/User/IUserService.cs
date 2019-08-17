@@ -11,7 +11,7 @@ namespace RentIT.Services.User
 {
     public interface IUserService
     {
-        Task<SignUpResponse> SignUpAsync(SignUpRequest request);
+        Task<Response> SignUpAsync(SignUpRequest request);
 
         Task<Utente> GetCurrentProfileAsync();
 

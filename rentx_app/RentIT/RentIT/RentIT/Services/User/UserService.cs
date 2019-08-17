@@ -20,13 +20,13 @@ namespace RentIT.Services.User
             this.requestService = requestService;
         }
 
-        public Task<SignUpResponse> SignUpAsync(SignUpRequest request)
+        public Task<Response> SignUpAsync(SignUpRequest request)
         {
             // RestUrl = http://5.249.151.26:5000/
             var builder = new UriBuilder(Constants.UserEndpointIscrizione());
             var uri = builder.ToString();
 
-            return requestService.PostAsync<SignUpRequest,SignUpResponse>(uri, request);
+            return requestService.PostAsync<SignUpRequest,Response>(uri, request);
         }
 
         public Task<Utente> GetCurrentProfileAsync()
@@ -48,20 +48,40 @@ namespace RentIT.Services.User
 
             var imageModel = new ImageModel
             {
-                Data = imageAsBase64
+                data = imageAsBase64
             };
 
             await requestService.PutAsync(uri, imageModel,AppSettings.AccessToken);
             //await CacheHelper.RemoveFromCache(profile.PhotoUrl);  
         }
 
-        public Task<ImageModel> GetUserImage()
+        public async Task<ImageModel> GetUserImage()
         {
 
             var builder = new UriBuilder(Constants.UserEndpointGetImage());
             var uri = builder.ToString();
 
-            return requestService.GetAsync<ImageModel>(uri, AppSettings.AccessToken);
+            return await requestService.GetAsync<ImageModel>(uri, AppSettings.AccessToken);
+        }
+
+        public async Task<Response> ModifyUserData(Utente u)
+        {
+            var builder = new UriBuilder(Constants.UserEndpointModifyData());
+            var uri = builder.ToString();
+
+            Response resp = await requestService.PutAsync<Utente,Response>(uri,u, AppSettings.AccessToken);
+
+            return resp;
+        }
+
+        public async Task<Response> DeleteAccount()
+        {
+            var builder = new UriBuilder(Constants.UserEndpontEliminaAccount());
+            var uri = builder.ToString();
+
+            Response resp = await requestService.DeleteAsync<Response>(uri, AppSettings.AccessToken);
+
+            return resp;
         }
     }
 }
