@@ -38,6 +38,13 @@
                         <ListView x:Name="suggestionListView"
                                   HeightRequest="30"
                                   ItemTapped="SuggestionListView_ItemTapped"/>
+                        <Button Text="Cerca"
+                                BackgroundColor="WhiteSmoke"
+                                BorderColor="#607D8B"
+                                TextColor="#607D8B"
+                                FontSize="Medium"
+                                FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
+                                BorderWidth="1"/>
                     </StackLayout>
                 </Frame>
             </StackLayout>
