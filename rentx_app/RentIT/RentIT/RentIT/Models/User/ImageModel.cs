@@ -4,7 +4,7 @@ using System.Text;
 
 namespace App.Models.User
 {
-    class ImageModel
+    public class ImageModel
     {
         public string Data { get; set; }
     }

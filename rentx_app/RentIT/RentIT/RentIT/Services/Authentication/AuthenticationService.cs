@@ -30,7 +30,6 @@ namespace RentIT.Services.Authentication
         //prende in imput email e password e ritorna l'utente corrsipondente nel db , compresi dati e token che vengono storati localmente 
         public async Task<AuthenticationResponse> LoginAsync(string _email, string _password)
         {
-            // RestUrl = http://5.249.151.26:5000/Auth
             var builder = new UriBuilder(Constants.AuthEndpointLogin());
             string uri = builder.ToString();
 
@@ -54,7 +53,8 @@ namespace RentIT.Services.Authentication
         public async Task<bool> LogoutAsync()
         {
             //gestisci logout eliminando nel db la entry corrispondente all'id inviato ,dalla tabella id-token
-            
+
+            // RestUrl = http://5.249.151.26:5000/Auth
             var builder = new UriBuilder(Constants.AuthEndpointLogout());
             string uri = builder.ToString();
 

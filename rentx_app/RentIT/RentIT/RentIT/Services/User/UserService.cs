@@ -43,7 +43,7 @@ namespace RentIT.Services.User
 
 
             var builder = new UriBuilder(Constants.UserEndpointUpImage());
-            builder.Path = "/" + AppSettings.UserId.ToString();
+            //builder.Path = "/" + AppSettings.UserId.ToString();     lo mettiamo?? 
             var uri = builder.ToString();
 
             var imageModel = new ImageModel
@@ -53,6 +53,15 @@ namespace RentIT.Services.User
 
             await requestService.PutAsync(uri, imageModel,AppSettings.AccessToken);
             //await CacheHelper.RemoveFromCache(profile.PhotoUrl);  
+        }
+
+        public Task<ImageModel> GetUserImage()
+        {
+
+            var builder = new UriBuilder(Constants.UserEndpointGetImage());
+            var uri = builder.ToString();
+
+            return requestService.GetAsync<ImageModel>(uri, AppSettings.AccessToken);
         }
     }
 }

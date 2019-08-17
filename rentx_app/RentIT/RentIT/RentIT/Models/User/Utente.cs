@@ -11,11 +11,7 @@ namespace RentIT.Models.User
         private string Surname { get; set; }
         private string Email { get; set; }
         private string Password { get; set; }
-        private string NumeroTel;
-        private string Address;
-        public string Img { get; set; }
-        
-
-   
-     }
+        private string NumeroTel { get; set; }
+        private string Address { get; set; }
+    }
 }
