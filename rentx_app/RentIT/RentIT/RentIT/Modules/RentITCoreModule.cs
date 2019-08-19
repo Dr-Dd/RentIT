@@ -16,7 +16,6 @@ namespace RentIT.Modules
             // Carico i ViewModels
             Bind<LoginPageViewModel>().ToSelf();
             Bind<SearchPageViewModel>().ToSelf();
-            Bind<SearchPageDetailViewModel>().ToSelf();
             Bind<SubmitPageViewModel>().ToSelf();
             Bind<AnnunciPageViewModel>().ToSelf();
             Bind<UtentePageViewModel>().ToSelf();

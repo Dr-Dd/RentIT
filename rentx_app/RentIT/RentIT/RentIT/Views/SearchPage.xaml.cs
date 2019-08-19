@@ -7,6 +7,17 @@ using Xamarin.Forms.Xaml;
 
 namespace RentIT.Views
 {
+    /* NB********************************************
+     * Per motivi a me ancora oscuri, Microsoft (anche conosciuta come 'Miguel De Icaza')
+     * ha pensato che una MasterDetailPage, composta da 2 view, abbia un solo 
+     * bindingContext, relativo alla Master Page. Poco male! La cosa ha molto senso
+     * visto che comunque a livello pratico si utilizza una sola pagina. Peccato che ciò
+     * NON SIA SCRITTO SU ALCUNA FORMA DI DOCUMENTAZIONE MAI RILASCIATA PER QUESTO 
+     * FRAMEWORK. Detto ciò, tutto ciò che ha a che fare con MVVM va gestito dalla sola 
+     * SearchPageViewModel.
+     *
+     * ~drd
+     */
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class SearchPage : MasterDetailPage
     {
@@ -26,7 +37,6 @@ namespace RentIT.Views
         {
             InitializeComponent();
             Detail = new NavigationPage((Page)Activator.CreateInstance(typeof(SearchPageDetail)));
-
         }
 
         async void Login_Tapped(object sender, EventArgs e)

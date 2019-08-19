@@ -101,16 +101,16 @@ namespace RentIT.Services
             }
         }
 
-        public async Task ClearBackStack()
+        public async Task NavigateToMainPage()
         {
             if (XamarinFormsNav.NavigationStack.Count <= 1)
             {
                 return;
             }
 
-            for (var i = 0; i < XamarinFormsNav.NavigationStack.Count - 1; i++)
+            for (var i = 0; i < XamarinFormsNav.NavigationStack.Count; i++)
             {
-                XamarinFormsNav.RemovePage(XamarinFormsNav.NavigationStack[i]);
+                await XamarinFormsNav.PopAsync();
             }
         }
 

@@ -20,7 +20,7 @@ namespace RentIT.Services
         Task NavigateTo<TVM, TParameter>(TParameter parameter)
             where TVM : BaseViewModel;
         Task RemoveLastView();
-        Task ClearBackStack();
+        Task NavigateToMainPage();
         Task NavigateToUri(Uri uri);
 
         event PropertyChangedEventHandler CanGoBackChanged;

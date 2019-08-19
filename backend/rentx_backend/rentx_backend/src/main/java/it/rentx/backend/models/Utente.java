@@ -41,7 +41,7 @@ public class Utente {
 	
 	public Utente() {}
 	
-	public Utente(String name, String surname, String email, String password, String numero, String address, Image image) {
+	public Utente(long id, String name, String surname, String email, String password,  String numero, String address, Image image) {
 		this.name = name;
 		this.surname = surname;
 		this.email = email;
@@ -49,15 +49,6 @@ public class Utente {
 		this.numero = numero;
 		this.address = address;
 		this.image = image;
-	}
-	
-	public Utente(Long id, String name, String surname, String email, String numero, String address) {
-		this.id = id;
-		this.name = name;
-		this.surname = surname;
-		this.email = email;
-		this.numero = numero;
-		this.address = address;
 	}
 
 	public long getId() {

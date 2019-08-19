@@ -4,60 +4,64 @@
              x:Class="RentIT.Views.SearchPageDetail"
              BackgroundColor="#CFD8DC">
     <ContentPage.Content>
-        <Grid Margin="10" >
+        <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="2*"/>
-                <RowDefinition Height="2*"/>
+                <RowDefinition Height="30*"/>
+                <RowDefinition Height="40*"/>
+                <RowDefinition Height="30*"/>
             </Grid.RowDefinitions>
-            <Image Grid.Row="0" Source="RentBanner.png" Margin="20,20,20,20"/>
-            <StackLayout Grid.Row="1">
-                <Frame BorderColor="#607D8B" Margin="5,40,5,10" BackgroundColor="WhiteSmoke" >
-                    <StackLayout>
-                        <Label x:Name="prova" Text="CHE COSA STAI CERCANDO?" FontSize="Medium" TextColor="#607D8B"
-                               HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand" Margin="0,0,0,10">
-                            <Label.FontFamily>
-                                <OnPlatform x:TypeArguments="x:String">
-                                    <On Platform="Android" Value="Quicksand-Bold.ttf#Quicksand-Bold"/>
-                                </OnPlatform>
-                            </Label.FontFamily>
-                        </Label>
-                        <SearchBar Margin="0,0,0,0"
-                                   HorizontalOptions="StartAndExpand"
-                                   VerticalOptions="Center"
-                                   Placeholder="Cerca qualcosa"
-                                   PlaceholderColor="#BDBDBD"/>
-                        <SearchBar x:Name="citySearchBar"
-                                   TextChanged="CitySearchBar_TextChanged"
-                                   Margin="0,0,0,0"
-                                   HorizontalOptions="StartAndExpand"
-                                   VerticalOptions="StartAndExpand"
-                                   Placeholder="Indirizzo, Città"
-                                   PlaceholderColor="#BDBDBD"
-                       />
-                        <ListView x:Name="suggestionListView"
-                                  HeightRequest="30"
-                                  ItemTapped="SuggestionListView_ItemTapped"/>
-                        <Button Text="Cerca"
-                                BackgroundColor="WhiteSmoke"
-                                BorderColor="#607D8B"
-                                TextColor="#607D8B"
-                                FontSize="Medium"
-                                FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
-                                BorderWidth="1"/>
-                    </StackLayout>
-                </Frame>
-            </StackLayout>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="10*"/>
+                <ColumnDefinition Width="10*"/>
+                <ColumnDefinition Width="60*"/>
+                <ColumnDefinition Width="10*"/>
+                <ColumnDefinition Width="10*"/>
+            </Grid.ColumnDefinitions>
+            <Image Grid.Row="0"
+                   Grid.Column="2"
+                   Source="RentBanner.png"/>
+            <Frame VerticalOptions="Center" 
+                         Grid.Row="1"
+                         Grid.Column="1"
+                         Grid.ColumnSpan="3"
+                         BorderColor="#607D8B" 
+                         BackgroundColor="WhiteSmoke" >
+                <StackLayout>
+                    <Label x:Name="prova" 
+                               Text="CHE COSA STAI CERCANDO?" 
+                               FontSize="Medium" 
+                               TextColor="#607D8B"
+                               HorizontalOptions="Center">
+                        <Label.FontFamily>
+                            <OnPlatform x:TypeArguments="x:String">
+                                <On Platform="Android" 
+                                        Value="Quicksand-Bold.ttf#Quicksand-Bold"/>
+                            </OnPlatform>
+                        </Label.FontFamily>
+                    </Label>
+                    <SearchBar HorizontalOptions="Center" 
+                               Placeholder="Cerca qualcosa" 
+                               PlaceholderColor="#BDBDBD"/>
+                    <SearchBar x:Name="citySearchBar" 
+                               TextChanged="CitySearchBar_TextChanged" 
+                               HorizontalOptions="Center" 
+                               Placeholder="Indirizzo, Città" 
+                               PlaceholderColor="#BDBDBD" />
+                    <ListView x:Name="suggestionListView" 
+                              ItemTapped="SuggestionListView_ItemTapped"/>
+                </StackLayout>
+            </Frame>
             <Button Grid.Row="2"
+                    Grid.Column="1"
+                    Grid.ColumnSpan="3"
                     Text="+ AGGIUNGI ANNUNCIO"
-                    Margin="5,80,5,120"
                     BackgroundColor="WhiteSmoke"
+                    VerticalOptions="Center"
                     TextColor="#607D8B"
                     FontSize="Medium"
                     FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
-                    BorderWidth="1"
                     BorderColor="#607D8B"
-                    Clicked="Button_Clicked"/>
+                    Command="{Binding AddAnnuncio}" />
         </Grid>
     </ContentPage.Content>
 </ContentPage>
