@@ -49,6 +49,11 @@
                                PlaceholderColor="#BDBDBD" />
                     <ListView x:Name="suggestionListView" 
                               ItemTapped="SuggestionListView_ItemTapped"/>
+                    <Button Text="CERCA"
+                            TextColor="#607D8B"
+                            BorderColor="#607D8B"
+                            BorderWidth="1"
+                            BackgroundColor="WhiteSmoke"/>
                 </StackLayout>
             </Frame>
             <Button Grid.Row="2"
@@ -56,6 +61,7 @@
                     Grid.ColumnSpan="3"
                     Text="+ AGGIUNGI ANNUNCIO"
                     BackgroundColor="WhiteSmoke"
+                    BorderWidth="1"
                     VerticalOptions="Center"
                     TextColor="#607D8B"
                     FontSize="Medium"

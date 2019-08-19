@@ -14,16 +14,15 @@ namespace RentIT
          * Ad esempio, visto che li l'ip sul mio pc è 192.168.1.83, allora quello degli endpoint dovrà 
          * essere uguale! (Come in questo caso)
          */
-        /*
+   
         // URL of REST service
-        public static string RestUrl = "http://192.168.1.83:8080/{0}";
+        public static string RestUrl = "http://192.168.1.226:8080/{0}";
         // defaul Endpoints for api
-        const string defaultAuthenticationEndpoint = "http://192.168.1.83:8080/auth/{0}";
-        const string defaultItemEndpoint = "http://192.168.1.83:8080/item/{0}";
-        const string defaultProductEndpoint = "http://192.168.1.83:8080/product/{0}";
+        const string defaultAuthenticationEndpoint = "http://192.168.1.226:8080/auth/{0}";
+        const string defaultItemEndpoint = "http://192.168.1.226:8080/item/{0}";
+        const string defaultProductEndpoint = "http://192.168.1.226:8080/product/{0}";
         //utente minuscolo
-        const string defaultUserEndpoint = "http://192.168.1.83:8080/utente/{0}";
-        */
+        const string defaultUserEndpoint = "http://192.168.1.226:8080/utente/{0}";
 
 
 
