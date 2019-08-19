@@ -49,6 +49,13 @@
                                PlaceholderColor="#BDBDBD" />
                     <ListView x:Name="suggestionListView" 
                               ItemTapped="SuggestionListView_ItemTapped"/>
+                    <Button Text="CERCA"
+                            TextColor="#607D8B"
+                            FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
+                            BorderColor="#607D8B"
+                            BorderWidth="1"
+                            BackgroundColor="WhiteSmoke"
+                            Margin="0,0,0,20"/>
                 </StackLayout>
             </Frame>
             <Button Grid.Row="2"
@@ -57,6 +64,7 @@
                     Text="+ AGGIUNGI ANNUNCIO"
                     BackgroundColor="WhiteSmoke"
                     VerticalOptions="Center"
+                    BorderWidth="1"
                     TextColor="#607D8B"
                     FontSize="Medium"
                     FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
