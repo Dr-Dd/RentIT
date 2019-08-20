@@ -6,21 +6,21 @@
              BackgroundColor="#CFD8DC">
     <ContentPage.Content>
         <ScrollView>
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="2*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="10*"/>
-                <ColumnDefinition Width="10*"/>
-                <ColumnDefinition Width="60*"/>
-                <ColumnDefinition Width="10*"/>
-                <ColumnDefinition Width="10*"/>
-            </Grid.ColumnDefinitions>
-            <Label Grid.Row="0"
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="10*"/>
+                    <ColumnDefinition Width="10*"/>
+                    <ColumnDefinition Width="60*"/>
+                    <ColumnDefinition Width="10*"/>
+                    <ColumnDefinition Width="10*"/>
+                </Grid.ColumnDefinitions>
+                <Label Grid.Row="0"
                    Grid.Column="1"
                    Grid.ColumnSpan="3"
                    Text="Inserisci le tue credenziali"
@@ -29,26 +29,26 @@
                    FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
                    FontSize="Medium"
                    TextColor="#607D8B"/>
-            <Frame Grid.Row="1"
+                <Frame Grid.Row="1"
                        Grid.Column="1"
                        Grid.ColumnSpan="3"
                        BorderColor="#607D8B" 
                        BackgroundColor="WhiteSmoke">
-                <StackLayout VerticalOptions="Center">
-                    <Entry Placeholder="Email" 
+                    <StackLayout VerticalOptions="Center">
+                        <Entry Placeholder="Email" 
                                x:Name="Email"
                                PlaceholderColor="#BDBDBD" 
                                TextColor="Black"
                                Text="{Binding Path=Email}"/>
-                    <Entry Placeholder="Password" 
+                        <Entry Placeholder="Password" 
                                x:Name="Password"
                                PlaceholderColor="#BDBDBD" 
                                TextColor="Black" 
                                IsPassword="True"
                                Text="{Binding Path=Password}"/>
-                </StackLayout>
-            </Frame>
-            <Button Text="LOGIN"
+                    </StackLayout>
+                </Frame>
+                <Button Text="LOGIN"
                     Grid.Row="2"
                     Grid.Column="2"
                     FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
@@ -58,7 +58,7 @@
                     BorderWidth="1"
                     BorderColor="#607D8B"
                     Command="{Binding LogInCommand}" />
-            <Button Text="iscriviti"
+                <Button Text="iscriviti"
                     TextColor="#607D8B"
                     Grid.Row="3"
                     Grid.Column="2"
@@ -67,7 +67,7 @@
                     Font="micro" 
                     FontFamily="Quicksand-Bold.ttf#Quicksand-Bold" 
                     BackgroundColor="Transparent" />
-        </Grid>
+            </Grid>
         </ScrollView>
     </ContentPage.Content>
 </ContentPage>
