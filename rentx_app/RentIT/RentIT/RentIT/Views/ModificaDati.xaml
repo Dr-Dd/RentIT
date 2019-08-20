@@ -100,7 +100,8 @@
                         BorderWidth="1"
                         BorderColor="#607D8B"
                         BackgroundColor="WhiteSmoke"
-                        VerticalOptions="CenterAndExpand"/>
+                        VerticalOptions="CenterAndExpand"
+                        Command="{Binding EliminaCommand}"/>
             </Grid>
         </ScrollView>
     </ContentPage.Content>

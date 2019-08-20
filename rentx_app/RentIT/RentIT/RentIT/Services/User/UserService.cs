@@ -82,6 +82,12 @@ namespace RentIT.Services.User
 
             Response resp = await requestService.DeleteAsync<Response>(uri, AppSettings.AccessToken);
 
+            if (resp.hasSucceded == true)
+            {
+                AppSettings.RemoveAccessToken();
+                AppSettings.RemoveUserId();
+            }
+
             return resp;
         }
     }

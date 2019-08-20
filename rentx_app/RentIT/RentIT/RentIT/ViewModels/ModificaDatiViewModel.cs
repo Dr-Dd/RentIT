@@ -27,36 +27,30 @@ namespace RentIT.ViewModels
 
         }
 
-        /*Comando per passare alla pagina di modifica password*/
-        Command _modificaPasswordCommand;
-        public Command ModificaPasswordCommand
+        /*Comando per eliminare l'account*/
+        Command _eliminaCommand;
+        public Command EliminaCommand
         {
             get
             {
-                return _modificaPasswordCommand
-                    ?? (_modificaPasswordCommand = new Command(async () => await ExecuteModificaPasswordCommand()));
+                return _eliminaCommand
+                    ?? (_eliminaCommand = new Command(async () => await ExecuteEliminaCommand()));
             }
         }
 
-        async Task ExecuteModificaPasswordCommand()
+        async Task ExecuteEliminaCommand()
         {
-            await NavService.NavigateTo<ModificaPasswordViewModel>();
-        }
-
-        /*Comando per passare alla pagina di modifica email*/
-        Command _modificaEmailCommand;
-        public Command ModificaEmailCommand
-        {
-            get
+            IsBusy = true;
+            var response = await _userService.DeleteAccount();
+            if(response.hasSucceded)
             {
-                return _modificaEmailCommand
-                    ?? (_modificaEmailCommand = new Command(async () => await ExecuteModificaEmailCommand()));
+                await NavService.NavigateToMainPage();
             }
-        }
-
-        async Task ExecuteModificaEmailCommand()
-        {
-            await NavService.NavigateTo<ModificaEmailViewModel>();
+            else
+            {
+                await App.Current.MainPage.DisplayAlert("Errore", response.responseMessage, "Ok");
+            }
+            IsBusy = false;
         }
 
         //Comando per aggiungere o modificare la propic
