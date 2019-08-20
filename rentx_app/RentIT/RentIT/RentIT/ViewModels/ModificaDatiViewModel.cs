@@ -27,7 +27,7 @@ namespace RentIT.ViewModels
 
         }
 
-        /**Comando per passare alla pagina di modifica password*/
+        /*Comando per passare alla pagina di modifica password*/
         Command _modificaPasswordCommand;
         public Command ModificaPasswordCommand
         {
@@ -43,7 +43,7 @@ namespace RentIT.ViewModels
             await NavService.NavigateTo<ModificaPasswordViewModel>();
         }
 
-        /**Comando per passare alla pagina di modifica email**/
+        /*Comando per passare alla pagina di modifica email*/
         Command _modificaEmailCommand;
         public Command ModificaEmailCommand
         {
@@ -59,8 +59,7 @@ namespace RentIT.ViewModels
             await NavService.NavigateTo<ModificaEmailViewModel>();
         }
 
-        /*Comando per aggiungere o modificare la propic
-         Ancora da testare perché manca utente/addImage*/
+        //Comando per aggiungere o modificare la propic
         Command _modificaFotoCommand;
         public Command ModificaFotoCommand
         {
@@ -73,10 +72,12 @@ namespace RentIT.ViewModels
 
         async Task ExecuteModificaFotoCommand()
         {
+            //Caricare un'immagine dalla galleria
             Stream stream = await DependencyService.Get<IPicturePicker>().GetImageStreamAsync();
 
             if (stream != null)
             {
+                //se esiste, si salva nel db associato all'utente
                 string base64 = _fotoService.fromStreamToString(stream);
                 await _userService.UploadUserImageAsync(base64);
             }

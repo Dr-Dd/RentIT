@@ -50,8 +50,8 @@ namespace RentIT.ViewModels
         {
             //Questa pagina non è più raggiungibile senza che l'utente sia loggato quindi non c'è bisogno di quel controllo
             Utente = await _userService.GetCurrentProfileAsync();
-            //da fare il collegamento al db
-            //_immagine = await getPropic();
+            //TODO: da decommentare dopo fatto il collegamento al db
+            //Immagine = await getPropic();
         }
 
         //Metodo per prendere l'immagine profilo dal database
@@ -60,7 +60,7 @@ namespace RentIT.ViewModels
             ImageModel foto = await _userService.GetUserImage();
             Image img = null;
             if(foto != null)
-                img = _fotoService.fromStringToImage(foto.Data);
+                img = _fotoService.fromStringToImage(foto.data);
             return img;
         }
 

@@ -8,7 +8,8 @@ namespace App.Services.Foto
 {
     public class FotoService
     {
-        //Metodo per convertire dalla stringa base64 a un'immagine
+        /*Metodo per convertire dalla stringa base64,
+         * ovvero da un'immagine del tipo restituito dal db a un'image*/
         public Image fromStringToImage(string imageBase64)
         {
             //Conversione in un array di byte
@@ -18,7 +19,9 @@ namespace App.Services.Foto
             return img;
         }
 
-        //Metodo per convertire da uno stream a una stringa base64
+        /*Metodo per convertire da uno stream a una stringa base64
+         * Serve ad esempio a salvare nel db un'immagine dalla galleria del telefono
+         * dato che con PicturePicker viene caricata come stream*/
         public string fromStreamToString(Stream stream)
         {
             MemoryStream copy = new MemoryStream();
