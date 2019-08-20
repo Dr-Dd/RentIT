@@ -5,6 +5,7 @@
              NavigationPage.HasNavigationBar="True"
              BackgroundColor="#CFD8DC">
     <ContentPage.Content>
+        <ScrollView>
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
@@ -67,5 +68,6 @@
                     FontFamily="Quicksand-Bold.ttf#Quicksand-Bold" 
                     BackgroundColor="Transparent" />
         </Grid>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>
