@@ -33,7 +33,7 @@
                             Grid.Row="1"
                             Grid.Column="0"  
                             BorderColor="#607D8B"
-                            Source="meme.png"
+                            Source="{Binding Immagine.Source}"
                             HeightRequest="10"
                             WidthRequest="10"/>
                 <Button Margin="20,20,20,20"
@@ -44,7 +44,8 @@
                             BorderWidth="1"
                             BackgroundColor="WhiteSmoke"
                             WidthRequest="10"
-                            HeightRequest="10"/>
+                            HeightRequest="10"
+                            Command="{Binding ModificaFotoCommand}"/>
                 <Entry Grid.Row="2"
                             Grid.ColumnSpan="2"
                         Text="{Binding Utente.Email}"

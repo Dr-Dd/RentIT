@@ -9,11 +9,35 @@ using Xamarin.Forms;
 using System.IO;
 using RentIT.Services.User;
 using App.Services.Foto;
+using RentIT.Models.User;
 
 namespace RentIT.ViewModels
 {
 	public class ModificaDatiViewModel : BaseViewModel
 	{
+        Utente _utente;
+        public Utente Utente
+        {
+            get { return _utente; }
+            set
+            {
+                _utente = value;
+                OnPropertyChanged();
+            }
+        }
+
+        Image _immagine;
+        public Image Immagine
+        {
+            //se _immagine è null, non ci sono foto nel db e ne carica una di default
+            get { return _immagine ?? (new Image { Source = "meme.png" }); }
+            set
+            {
+                _immagine = value;
+                OnPropertyChanged();
+            }
+        }
+
         readonly IUserService _userService;
         readonly FotoService _fotoService;
         public ModificaDatiViewModel (INavService navService, UserService userService, FotoService fotoService) : base(navService)
