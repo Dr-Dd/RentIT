@@ -1,10 +1,11 @@
-﻿using RentIT.Models.User;
+﻿using App.Models.User;
+using App.Services.Foto;
+using RentIT.Models.User;
 using RentIT.Services;
 using RentIT.Services.Authentication;
 using RentIT.Services.User;
 using System;
-using System.Collections.Generic;
-using System.Text;
+using System.IO;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
@@ -23,20 +24,44 @@ namespace RentIT.ViewModels
             }
         }
 
+        Image _immagine;
+        public Image Immagine
+        {
+            //se _immagine è null, non ci sono foto nel db e ne carica una di default
+            get { return _immagine ?? (new Image { Source = "meme.png" }); }
+            set
+            {
+                _immagine = value;
+                OnPropertyChanged();
+            }
+        }
+
         readonly IAuthenticationService _authService;
         readonly IUserService _userService;
-        public UtentePageViewModel(INavService navService, AuthenticationService authService, UserService userService) : base(navService)
+        readonly FotoService _fotoService;
+        public UtentePageViewModel(INavService navService, AuthenticationService authService, UserService userService, FotoService fotoService) : base(navService)
         {
             _authService = authService;
             _userService = userService;
+            _fotoService = fotoService;
         }
 
         public async override Task Init()
         {
             //Questa pagina non è più raggiungibile senza che l'utente sia loggato quindi non c'è bisogno di quel controllo
             Utente = await _userService.GetCurrentProfileAsync();
-            //Bisogna aggiungere il metodo per caricare l'immagine di profilo che è in un service diverso
-            //Utente.Img = await _imgService.GetCurrentProfileImgAsync();
+            //TODO: da decommentare dopo fatto il collegamento al db
+            //Immagine = await getPropic();
+        }
+
+        //Metodo per prendere l'immagine profilo dal database
+        public async Task<Image> getPropic()
+        {
+            ImageModel foto = await _userService.GetUserImage();
+            Image img = null;
+            if(foto != null)
+                img = _fotoService.fromStringToImage(foto.data);
+            return img;
         }
 
         //Comando per modificare i dati

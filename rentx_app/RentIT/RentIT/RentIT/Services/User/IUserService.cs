@@ -11,12 +11,16 @@ namespace RentIT.Services.User
 {
     public interface IUserService
     {
-        Task<SignUpResponse> SignUpAsync(SignUpRequest request);
+        Task<Response> SignUpAsync(SignUpRequest request);
 
         Task<Utente> GetCurrentProfileAsync();
 
         Task UploadUserImageAsync(string imageAsBase64);
 
         Task<ImageModel> GetUserImage();
+
+        Task<Response> ModifyUserData(Utente u);
+
+        Task<Response> DeleteAccount();
     }
 }

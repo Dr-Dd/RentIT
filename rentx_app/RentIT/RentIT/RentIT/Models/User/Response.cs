@@ -4,7 +4,7 @@ using System.Text;
 
 namespace RentIT.Models.User
 {
-    public class SignUpResponse
+    public class Response
     {
         public bool hasSucceded { get; set; }
         public string responseMessage { get; set; }

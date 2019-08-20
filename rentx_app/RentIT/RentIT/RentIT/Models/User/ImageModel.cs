@@ -6,6 +6,6 @@ namespace App.Models.User
 {
     public class ImageModel
     {
-        public string Data { get; set; }
+        public string data { get; set; }
     }
 }
