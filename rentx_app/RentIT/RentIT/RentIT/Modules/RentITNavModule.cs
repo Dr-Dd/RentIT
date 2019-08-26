@@ -49,12 +49,6 @@ namespace RentIT.Modules
             navService.RegisterViewMapping(typeof(AggiungiAnnuncioViewModel),
                 typeof(AggiungiAnnuncioPage));
 
-            navService.RegisterViewMapping(typeof(ModificaPasswordViewModel),
-                typeof(ModificaPassword));
-
-            navService.RegisterViewMapping(typeof(ModificaEmailViewModel),
-                typeof(ModificaEmail));
-
             navService.RegisterViewMapping(typeof(AnnunciUtenteViewModel),
                 typeof(AnnunciUtentePage));
 

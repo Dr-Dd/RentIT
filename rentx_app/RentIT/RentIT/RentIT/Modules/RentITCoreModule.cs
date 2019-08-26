@@ -22,8 +22,6 @@ namespace RentIT.Modules
             Bind<DettaglioAnnuncioViewModel>().ToSelf();
             Bind<AggiungiAnnuncioViewModel>().ToSelf();
             Bind<ModificaDatiViewModel>().ToSelf();
-            Bind<ModificaPasswordViewModel>().ToSelf();
-            Bind<ModificaEmailViewModel>().ToSelf();
             Bind<AnnunciUtenteViewModel>().ToSelf();
             Bind<GestioneAnnuncioViewModel>().ToSelf();
 
