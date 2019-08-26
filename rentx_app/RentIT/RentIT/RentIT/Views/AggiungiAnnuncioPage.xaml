@@ -25,13 +25,16 @@
                    TextColor="#607D8B"/>
                 <Entry Grid.Row="1"
                    x:Name="nomeOggetto"
-                   Placeholder="nome oggetto"/>
+                   Placeholder="nome oggetto"
+                   Text="{Binding Path=NomeOggetto}"/>
                 <Entry Grid.Row="2"
                    x:Name="descrizioneOggetto"
-                   Placeholder="descrizione"/>
+                   Placeholder="descrizione"
+                   Text="{Binding Path=Descrizione}"/>
                 <Entry Grid.Row="3"
                    x:Name="prezzo"
-                   Placeholder="prezzo"/>
+                   Placeholder="prezzo"
+                   Text="{Binding Path=Prezzo}"/>
                 <Frame Grid.Row="4"
                    BorderColor="#607D8B"
                    Margin="10,0,10,0"
