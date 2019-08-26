@@ -104,7 +104,7 @@ namespace RentIT.ViewModels
         async Task ExecuteModificaDatiCommand()
         {
             IsBusy = true;
-            var response = await _userService.ModifyUserData(/*TODO: utente*/);
+            var response = await _userService.ModifyUserData(Utente);
             if (response.hasSucceded)
             {
                 await NavService.NavigateToMainPage();

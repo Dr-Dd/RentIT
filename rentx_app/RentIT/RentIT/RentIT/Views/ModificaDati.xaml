@@ -48,7 +48,7 @@
                             Command="{Binding ModificaFotoCommand}"/>
                 <Entry Grid.Row="2"
                             Grid.ColumnSpan="2"
-                        Text="{Binding Utente.Email}"
+                        Text="{Binding Utente.email}"
                         TextColor="#607D8B"
                         FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"/>
                 <Entry Grid.Row="3"
@@ -73,14 +73,14 @@
                             Grid.Column="0"
                             Grid.ColumnSpan="2"
                             x:Name="nuovoIndirizzo"
-                            Text="{Binding Utente.Address}"
+                            Text="{Binding Utente.address}"
                             TextColor="#607D8B"
                             FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"/>
                 <Entry Grid.Row="6"
                             Grid.Column="0"
                             Grid.ColumnSpan="2" 
                             x:Name="nuovoTelefono"
-                            Text="{Binding Utente.NumeroTel}"
+                            Text="{Binding Utente.numeroTel}"
                             TextColor="#607D8B"
                             FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"/>
                 <Button Grid.Row="7"

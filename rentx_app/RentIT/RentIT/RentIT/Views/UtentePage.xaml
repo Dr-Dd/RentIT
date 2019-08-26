@@ -29,7 +29,7 @@
                        Margin="30,10,20,10"/>
             <Label Grid.Row="0"
                        Grid.Column="1"
-                       Text="{Binding Utente.Name}"
+                       Text="{Binding Utente.name}"
                        FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
                        HorizontalOptions="CenterAndExpand"
                        VerticalOptions="CenterAndExpand"
