@@ -36,7 +36,8 @@
                    BorderColor="#607D8B"
                    Margin="10,0,10,0"
                    ScaleY="0.5">
-                   <Image x:Name="image"/>
+                <Image x:Name="image" 
+                   Source="{Binding Immagine.Source}"/>
                 </Frame>
                 <Button x:Name="pickPictureButton"
                     Grid.Row="5"
@@ -45,7 +46,7 @@
                     BorderWidth="1"
                     BorderColor="#607D8B"
                     Margin="70,0,70,0"
-                    Clicked="Pick_Image_Button_Clicked"
+                    Command="{Binding AggiungiFotoCommand}"
                     BackgroundColor="WhiteSmoke"/>
                 <Button Grid.Row="6"
                         Text="Aggiungi annuncio"
