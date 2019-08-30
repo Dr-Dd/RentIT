@@ -54,7 +54,7 @@
                        x:Name="blankField"
                        Text="Compila tutti i campi"
                        FontSize="Medium"
-                       IsVisible="True"
+                       IsVisible="False"
                        TextColor="Red"
                        FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"/>
                 <Button x:Name="pickPictureButton"
