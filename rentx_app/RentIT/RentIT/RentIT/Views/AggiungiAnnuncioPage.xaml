@@ -48,10 +48,12 @@
                    Source="{Binding Immagine.Source}"
                    />
                 </Frame>
-                <Label HorizontalOptions="Center"
+                <Label Margin="0,20,0,20"
+                       HorizontalOptions="Center"
                        Grid.Row="5"
                        x:Name="blankField"
                        Text="Compila tutti i campi"
+                       FontSize="Medium"
                        IsVisible="True"
                        TextColor="Red"
                        FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"/>
