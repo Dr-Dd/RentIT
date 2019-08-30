@@ -5,11 +5,12 @@
              NavigationPage.HasNavigationBar="True"
              BackgroundColor="#CFD8DC">
     <ContentPage.Content>
-        <ScrollView>
+        <ScrollView Margin="10,10,10,20">
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="2*"/>
+                <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
@@ -23,31 +24,40 @@
             <Label Grid.Row="0"
                    Grid.Column="1"
                    Grid.ColumnSpan="3"
-                   Text="Inserisci le tue credenziali"
+                   Text="Effettua il login"
                    HorizontalOptions="CenterAndExpand"
                    VerticalOptions="CenterAndExpand"
                    FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
-                   FontSize="Medium"
+                   FontSize="Large"
                    TextColor="#607D8B"/>
             <Frame Grid.Row="1"
                        Grid.Column="1"
                        Grid.ColumnSpan="3"
                        BorderColor="#607D8B" 
                        BackgroundColor="WhiteSmoke">
-                <StackLayout VerticalOptions="Center">
-                    <Entry Placeholder="Email" 
+                    <StackLayout VerticalOptions="Center">
+                        <Entry Placeholder="Email" 
                                x:Name="Email"
                                PlaceholderColor="#BDBDBD" 
+                               FontFamily="Quicksand-Light.ttf#Quicksand-Light"
                                TextColor="Black"
                                Text="{Binding Path=Email}"/>
-                    <Entry Placeholder="Password" 
+                        <Entry Placeholder="Password" 
                                x:Name="Password"
                                PlaceholderColor="#BDBDBD" 
+                               FontFamily="Quicksand-Light.ttf#Quicksand-Light"
                                TextColor="Black" 
                                IsPassword="True"
                                Text="{Binding Path=Password}"/>
-                </StackLayout>
-            </Frame>
+                        <Label
+                               Grid.Row="6"
+                               x:Name="wrongLogin"
+                               Text="Email o password non corretta"
+                               FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
+                               IsVisible="False"
+                               TextColor="Red"/>
+                    </StackLayout>
+                </Frame>
             <Button Text="LOGIN"
                     Grid.Row="2"
                     Grid.Column="2"
@@ -60,7 +70,8 @@
                     Command="{Binding LogInCommand}" />
             <Button Text="iscriviti"
                     TextColor="#607D8B"
-                    Grid.Row="3"
+                    Grid.Row="4"
+                    Margin="0,0,0,10"
                     Grid.Column="2"
                     VerticalOptions="EndAndExpand"
                     Command="{Binding SubmitCommand}" 
