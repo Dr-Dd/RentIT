@@ -15,6 +15,7 @@
                         <RowDefinition Height="2*"/>
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
                 </Grid>
                 <Label Grid.Row="0"
@@ -38,8 +39,15 @@
                    ScaleY="0.5">
                    <Image x:Name="image"/>
                 </Frame>
+                <Label HorizontalOptions="Center"
+                       Grid.Row="5"
+                       x:Name="blankField"
+                       Text="Compila tutti i campi"
+                       IsVisible="False"
+                       TextColor="Red"
+                       FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"/>
                 <Button x:Name="pickPictureButton"
-                    Grid.Row="5"
+                    Grid.Row="6"
                     Text="+ Inserisci immagine"
                     TextColor="#607D8B"
                     BorderWidth="1"
@@ -47,7 +55,7 @@
                     Margin="70,0,70,0"
                     Clicked="Pick_Image_Button_Clicked"
                     BackgroundColor="WhiteSmoke"/>
-                <Button Grid.Row="6"
+                <Button Grid.Row="7"
                         Text="Aggiungi annuncio"
                         TextColor="#607D8B"
                         BorderWidth="1"
