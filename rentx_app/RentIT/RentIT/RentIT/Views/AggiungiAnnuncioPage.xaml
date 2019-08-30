@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="RentIT.Views.AggiungiAnnuncioPage">
     <ContentPage.Content>
-        <ScrollView>
+        <ScrollView Margin="20,0,20,20">
             <StackLayout VerticalOptions="FillAndExpand">
                 <Grid HorizontalOptions="CenterAndExpand"
                   VerticalOptions="Start">
@@ -12,14 +12,14 @@
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="*"/>
-                        <RowDefinition Height="2*"/>
+                        <RowDefinition Height="*"/>
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
                 </Grid>
                 <Label Grid.Row="0"
                    Text="Inserisci annuncio"
-                   Margin="75,0,0,0"
+                   Margin="55,0,0,0"
                    FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
                    FontSize="25"
                    TextColor="#607D8B"/>
@@ -38,9 +38,11 @@
                 <Frame Grid.Row="4"
                    BorderColor="#607D8B"
                    Margin="10,0,10,0"
-                   ScaleY="0.5">
+                   HeightRequest="400"
+                   VerticalOptions="Start">
                 <Image x:Name="image" 
-                   Source="{Binding Immagine.Source}"/>
+                   Source="{Binding Immagine.Source}"
+                   />
                 </Frame>
                 <Button x:Name="pickPictureButton"
                     Grid.Row="5"
