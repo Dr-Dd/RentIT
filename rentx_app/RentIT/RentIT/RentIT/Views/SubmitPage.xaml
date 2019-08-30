@@ -4,6 +4,7 @@
              x:Class="RentIT.Views.SubmitPage"
              BackgroundColor="#CFD8DC">
     <ContentPage.Content>
+        <ScrollView>
         <StackLayout>
             <Grid Margin="25" VerticalOptions="Center">
                 <Grid.RowDefinitions>
@@ -17,6 +18,8 @@
                            BackgroundColor="WhiteSmoke">
                         <Grid>
                             <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
                                 <RowDefinition Height="*"/>
                                 <RowDefinition Height="*"/>
                                 <RowDefinition Height="*"/>
@@ -60,20 +63,39 @@
                                FontFamily="Quicksand-Light.ttf#Quicksand-Light"
                                PlaceholderColor="#BDBDBD"
                                 IsPassword="True"/>
+                            <Entry
+                               Grid.Row="5"
+                               x:Name="confermaPassword"
+                               Placeholder="Conferma password"
+                               FontFamily="Quicksand-Light.ttf#Quicksand-Light"
+                               PlaceholderColor="#BDBDBD"
+                               IsPassword="True"/>
                             <Label 
+                                Grid.Row="6"
                                 x:Name="blankField"
                                 Text="Non hai riempito uno o più campi"
+                                FontFamily="Quicksand-Light.ttf#Quicksand-Bold"
                                 IsVisible="False"
                                 TextColor="Red"/>
                             <Label 
+                                Grid.Row="6"
                                 x:Name="emailIsUsed"
                                 Text="email già in uso, effettua il login"
+                                FontFamily="Quicksand-Light.ttf#Quicksand-Bold"
+                                IsVisible="False"
+                                TextColor="Red"/>
+                            <Label
+                                Grid.Row="6"
+                                x:Name="wrongPassword"
+                                Text="Le due password non corrispondono"
+                                FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
                                 IsVisible="False"
                                 TextColor="Red"/>
                         </Grid>
                     </Frame>
                 </StackLayout>
-            <Button Grid.Row="3"
+            <Button Grid.Row="2"
+                    Margin="0,10,0,0"
                     Text="ISCRIVITI"
                     VerticalOptions="StartAndExpand"
                     HorizontalOptions="CenterAndExpand"
@@ -86,5 +108,6 @@
                     FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"/>
             </Grid>
         </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

@@ -40,12 +40,15 @@
                         </Label.FontFamily>
                     </Label>
                     <SearchBar HorizontalOptions="Center" 
-                               Placeholder="Cerca qualcosa" 
+                               Placeholder="Cerca qualcosa"
+                               x:Name="objectSearchBar"
+                               FontFamily="Quicksand-Light.ttf#Quicksand-Light"
                                PlaceholderColor="#BDBDBD"/>
                     <SearchBar x:Name="citySearchBar" 
                                TextChanged="CitySearchBar_TextChanged" 
                                HorizontalOptions="Center" 
-                               Placeholder="Indirizzo, Città" 
+                               Placeholder="Indirizzo, Città"
+                               FontFamily="Quicksand-Light.ttf#Quicksand-Light"
                                PlaceholderColor="#BDBDBD" />
                     <ListView x:Name="suggestionListView" 
                               ItemTapped="SuggestionListView_ItemTapped"/>
