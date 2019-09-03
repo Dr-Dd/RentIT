@@ -20,6 +20,7 @@ namespace RentIT.Views
             InitializeComponent();
 		}
 
+        /*
         public void SamePassword(object sender, TextChangedEventArgs e)
         {
             string password_string = password.Text.ToString();
@@ -34,5 +35,7 @@ namespace RentIT.Views
                 bottoneIscrizione.IsEnabled = false;
             }
         }
+        */
+
     }
 }
