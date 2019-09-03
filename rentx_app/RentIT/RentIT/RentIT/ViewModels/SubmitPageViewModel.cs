@@ -59,6 +59,17 @@ namespace RentIT.ViewModels
             }
         }
 
+        string _confermaPassword;
+        public string ConfermaPassword
+        {
+            get { return _confermaPassword; }
+            set
+            {
+                _confermaPassword = value;
+                OnPropertyChanged();
+            }
+        }
+
         public override async Task Init()
         {
         }
@@ -98,5 +109,6 @@ namespace RentIT.ViewModels
 
             IsBusy = false;
         }
+
     }
 }
