@@ -40,22 +40,8 @@ public class UtenteController {
     }
     
     @GetMapping("/profile")
-    public ResponseEntity<Risposta> profiloUtente(@RequestHeader("Authorization") String token) {
-    	Utente u = this.utenteRepository.findByEmail(this.utenteService.estrazioneEmailDaToken(token));
-    	if(u != null) {
-	    	Utente utente_modificato = new Utente();
-	    	utente_modificato.setId(u.getId());
-	    	utente_modificato.setName(u.getName());
-	    	utente_modificato.setSurname(u.getSurname());
-	    	utente_modificato.setEmail(u.getEmail());
-	    	utente_modificato.setNumero(u.getNumero());
-	    	utente_modificato.setAddress(u.getAddress());
-	    	utente_modificato.setImage(u.getImage());
-	    	
-	    	System.out.println(utente_modificato.getId());
-	    	return ResponseEntity.ok().body(new Risposta("true", "", "Utente trovato", utente_modificato));
-    	} else 
-    		return ResponseEntity.badRequest().body(new Risposta("false", "", "Utente non trovato", null));
+    public Utente profiloUtente(@RequestHeader("Authorization") String token) {
+    	return this.utenteRepository.findByEmail(this.utenteService.estrazioneEmailDaToken(token));
     }
     
     // Da terminare

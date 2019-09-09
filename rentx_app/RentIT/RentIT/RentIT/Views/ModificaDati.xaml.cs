@@ -17,5 +17,24 @@ namespace RentIT.Views
 			InitializeComponent ();
 		}
 
+        public void SamePassword (object sender, TextChangedEventArgs e)
+        {
+            if (String.IsNullOrEmpty(password.Text) && String.IsNullOrEmpty(confermaPassword.Text))
+            {
+                modifica.IsEnabled = true;
+                errore.IsVisible = false;
+            }
+            else if (password.Text != confermaPassword.Text)
+            {
+                modifica.IsEnabled = false;
+                errore.IsVisible = true;
+            }
+            else
+            {
+                modifica.IsEnabled = true;
+                errore.IsVisible = false;
+            }
+        }
+
     }
 }

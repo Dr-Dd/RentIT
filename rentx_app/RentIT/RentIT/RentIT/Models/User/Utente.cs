@@ -9,10 +9,10 @@ namespace RentIT.Models.User
     {
         // tutti i campi effettivi di una classe Utente , da decidere bene quali sono 
         public string Name { get; set; }
-        private string Surname { get; set; }
-        private string Email { get; set; }
-        private string Password { get; set; }
-        private string NumeroTel { get; set; }
-        private string Address { get; set; }
+        public string Surname { get; set; }
+        public string Email { get; set; }
+        public string Password { get; set; }
+        public string Numero { get; set; }
+        public string Address { get; set; }
     }
 }
