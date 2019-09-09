@@ -12,8 +12,6 @@ namespace RentIT.Models
 
         public string Descrizione { get; set; }
 
-        public string PercorsoImmagine { get; set; }
-
         public decimal Prezzo { get; set; }
 
         public string NomeAffittuario { get; set; }
