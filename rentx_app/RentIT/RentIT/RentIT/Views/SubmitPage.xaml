@@ -1,8 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:converters="clr-namespace:RentIT.Converters"
              x:Class="RentIT.Views.SubmitPage"
              BackgroundColor="#CFD8DC">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:ReverseBooleanConverter 
+                      x:Key="ReverseBooleanConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.Content>
         <ScrollView>
         <StackLayout>
@@ -57,7 +64,6 @@
                                 PlaceholderColor="#BDBDBD"/>
                             <Entry
                                Grid.Row="4"
-                               x:Name="password"
                                Placeholder="Password"
                                Text="{Binding Path=Password}"
                                FontFamily="Quicksand-Light.ttf#Quicksand-Light"
@@ -65,14 +71,13 @@
                                 IsPassword="True"/>
                             <Entry
                                Grid.Row="5"
-                               x:Name="confermaPassword"
+                               Text="{Binding Path=ConfermaPassword}"
                                Placeholder="Conferma password"
                                FontFamily="Quicksand-Light.ttf#Quicksand-Light"
                                PlaceholderColor="#BDBDBD"
                                IsPassword="True"/>
+                            <StackLayout Grid.Row="6">
                             <Label 
-                                Grid.Row="6"
-                                x:Name="blankField"
                                 Text="Non hai riempito uno o più campi"
                                 FontFamily="Quicksand-Light.ttf#Quicksand-Bold"
                                 IsVisible="False"
@@ -89,12 +94,14 @@
                                 x:Name="wrongPassword"
                                 Text="Le due password non corrispondono"
                                 FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
-                                IsVisible="False"
+                                IsVisible="{Binding IsPwErrorVisible}"
                                 TextColor="Red"/>
+                        </StackLayout>
                         </Grid>
                     </Frame>
                 </StackLayout>
-            <Button Grid.Row="2"
+                <Button 
+                    Grid.Row="2"
                     Margin="0,10,0,0"
                     Text="ISCRIVITI"
                     VerticalOptions="StartAndExpand"
@@ -106,7 +113,7 @@
                     BorderColor="#607D8B"
                     TextColor="#607D8B"
                     FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"/>
-            </Grid>
+                </Grid>
         </StackLayout>
         </ScrollView>
     </ContentPage.Content>

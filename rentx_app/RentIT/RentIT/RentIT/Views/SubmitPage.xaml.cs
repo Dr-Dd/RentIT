@@ -17,7 +17,25 @@ namespace RentIT.Views
 	{
 		public SubmitPage ()
 		{
-			InitializeComponent ();
+            InitializeComponent();
 		}
+
+        /*
+        public void SamePassword(object sender, TextChangedEventArgs e)
+        {
+            string password_string = password.Text.ToString();
+            if (password.Text == confermaPassword.Text && !String.IsNullOrWhiteSpace(password_string))
+            {
+                bottoneIscrizione.IsVisible = true;
+                bottoneIscrizione.IsEnabled = true;
+            }
+            else
+            {
+                bottoneIscrizione.IsVisible = true;
+                bottoneIscrizione.IsEnabled = false;
+            }
+        }
+        */
+
     }
 }
