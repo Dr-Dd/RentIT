@@ -42,7 +42,6 @@ namespace RentIT.ViewModels
 
             IsBusy = true;
 
-            Image Immagine = new Image { Source = "tosaerba.jpg" };
             Annunci.Clear();
 
             // TODO: Aggiungere persistenza database
@@ -51,6 +50,7 @@ namespace RentIT.ViewModels
                 NomeOggetto = "Tosaerba",
                 Descrizione = "Tosaerba BOSCHIA potente, alimentato a escrementi di piccione",
                 Prezzo = 13,
+                PercorsoImmagine = "tosaerba.jpg",
                 NomeAffittuario = "Gigi Finizio",
                 Posizione = "4 Km da te",
                 Data = DateTime.Now
@@ -61,6 +61,7 @@ namespace RentIT.ViewModels
                 NomeOggetto = "Tosaerba",
                 Descrizione = "Tosaerba BOSCHIA potente, alimentato a escermenti di piccione",
                 Prezzo = 13,
+                PercorsoImmagine = "tosaerba.jpg",
                 NomeAffittuario = "Gigi Finizio",
                 Posizione = "4 Km da te",
                 Data = DateTime.Now
@@ -71,57 +72,7 @@ namespace RentIT.ViewModels
                 NomeOggetto = "Tosaerba",
                 Descrizione = "Tosaerba BOSCHIA potente, alimentato a escermenti di piccione",
                 Prezzo = 13,
-                NomeAffittuario = "Gigi Finizio",
-                Posizione = "4 Km da te",
-                Data = DateTime.Now
-            });
-
-
-            Annunci.Add(new Annuncio()
-            {
-                NomeOggetto = "Tosaerba",
-                Descrizione = "Tosaerba BOSCHIA potente, alimentato a escermenti di piccione",
-                Prezzo = 13,
-                NomeAffittuario = "Gigi Finizio",
-                Posizione = "4 Km da te",
-                Data = DateTime.Now
-            });
-
-            Annunci.Add(new Annuncio()
-            {
-                NomeOggetto = "Tosaerba",
-                Descrizione = "Tosaerba BOSCHIA potente, alimentato a escermenti di piccione",
-                Prezzo = 13,
-                NomeAffittuario = "Gigi Finizio",
-                Posizione = "4 Km da te",
-                Data = DateTime.Now
-            });
-
-            Annunci.Add(new Annuncio()
-            {
-                NomeOggetto = "Tosaerba",
-                Descrizione = "Tosaerba BOSCHIA potente, alimentato a escermenti di piccione",
-                Prezzo = 13,
-                NomeAffittuario = "Gigi Finizio",
-                Posizione = "4 Km da te",
-                Data = DateTime.Now
-            });
-
-            Annunci.Add(new Annuncio()
-            {
-                NomeOggetto = "Tosaerba",
-                Descrizione = "Tosaerba BOSCHIA potente, alimentato a escermenti di piccione",
-                Prezzo = 13,
-                NomeAffittuario = "Gigi Finizio",
-                Posizione = "4 Km da te",
-                Data = DateTime.Now
-            });
-
-            Annunci.Add(new Annuncio()
-            {
-                NomeOggetto = "Tosaerba",
-                Descrizione = "Tosaerba BOSCHIA potente, alimentato a escermenti di piccione",
-                Prezzo = 13,
+                PercorsoImmagine = "tosaerba.jpg",
                 NomeAffittuario = "Gigi Finizio",
                 Posizione = "4 Km da te",
                 Data = DateTime.Now
@@ -133,6 +84,7 @@ namespace RentIT.ViewModels
                 NomeOggetto = "Tosaerba",
                 Descrizione = "Tosaerba BOSCHIA potente, alimentato a escermenti di piccione",
                 Prezzo = 13,
+                PercorsoImmagine = "tosaerba.jpg",
                 NomeAffittuario = "Gigi Finizio",
                 Posizione = "4 Km da te",
                 Data = DateTime.Now
@@ -143,6 +95,7 @@ namespace RentIT.ViewModels
                 NomeOggetto = "Tosaerba",
                 Descrizione = "Tosaerba BOSCHIA potente, alimentato a escermenti di piccione",
                 Prezzo = 13,
+                PercorsoImmagine = "tosaerba.jpg",
                 NomeAffittuario = "Gigi Finizio",
                 Posizione = "4 Km da te",
                 Data = DateTime.Now
@@ -153,6 +106,7 @@ namespace RentIT.ViewModels
                 NomeOggetto = "Tosaerba",
                 Descrizione = "Tosaerba BOSCHIA potente, alimentato a escermenti di piccione",
                 Prezzo = 13,
+                PercorsoImmagine = "tosaerba.jpg",
                 NomeAffittuario = "Gigi Finizio",
                 Posizione = "4 Km da te",
                 Data = DateTime.Now
@@ -163,6 +117,63 @@ namespace RentIT.ViewModels
                 NomeOggetto = "Tosaerba",
                 Descrizione = "Tosaerba BOSCHIA potente, alimentato a escermenti di piccione",
                 Prezzo = 13,
+                PercorsoImmagine = "tosaerba.jpg",
+                NomeAffittuario = "Gigi Finizio",
+                Posizione = "4 Km da te",
+                Data = DateTime.Now
+            });
+
+            Annunci.Add(new Annuncio()
+            {
+                NomeOggetto = "Tosaerba",
+                Descrizione = "Tosaerba BOSCHIA potente, alimentato a escermenti di piccione",
+                Prezzo = 13,
+                PercorsoImmagine = "tosaerba.jpg",
+                NomeAffittuario = "Gigi Finizio",
+                Posizione = "4 Km da te",
+                Data = DateTime.Now
+            });
+
+
+            Annunci.Add(new Annuncio()
+            {
+                NomeOggetto = "Tosaerba",
+                Descrizione = "Tosaerba BOSCHIA potente, alimentato a escermenti di piccione",
+                Prezzo = 13,
+                PercorsoImmagine = "tosaerba.jpg",
+                NomeAffittuario = "Gigi Finizio",
+                Posizione = "4 Km da te",
+                Data = DateTime.Now
+            });
+
+            Annunci.Add(new Annuncio()
+            {
+                NomeOggetto = "Tosaerba",
+                Descrizione = "Tosaerba BOSCHIA potente, alimentato a escermenti di piccione",
+                Prezzo = 13,
+                PercorsoImmagine = "tosaerba.jpg",
+                NomeAffittuario = "Gigi Finizio",
+                Posizione = "4 Km da te",
+                Data = DateTime.Now
+            });
+
+            Annunci.Add(new Annuncio()
+            {
+                NomeOggetto = "Tosaerba",
+                Descrizione = "Tosaerba BOSCHIA potente, alimentato a escermenti di piccione",
+                Prezzo = 13,
+                PercorsoImmagine = "tosaerba.jpg",
+                NomeAffittuario = "Gigi Finizio",
+                Posizione = "4 Km da te",
+                Data = DateTime.Now
+            });
+
+            Annunci.Add(new Annuncio()
+            {
+                NomeOggetto = "Tosaerba",
+                Descrizione = "Tosaerba BOSCHIA potente, alimentato a escermenti di piccione",
+                Prezzo = 13,
+                PercorsoImmagine = "tosaerba.jpg",
                 NomeAffittuario = "Gigi Finizio",
                 Posizione = "4 Km da te",
                 Data = DateTime.Now

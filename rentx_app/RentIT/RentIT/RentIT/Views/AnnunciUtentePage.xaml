@@ -26,7 +26,7 @@
                             <Image Grid.Row="0" 
                                    Grid.RowSpan="3"
                                    Grid.Column="0" 
-                                   Source="{Binding Immagine.Source}"/>
+                                   Source="{Binding PercorsoImmagine}"/>
                             <Label Grid.Row="0"                                               
                                    Grid.Column="1"                                               
                                    Text="{Binding NomeOggetto}"                                               
