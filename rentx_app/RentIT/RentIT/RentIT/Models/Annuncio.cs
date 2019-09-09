@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-
+using Xamarin.Forms;
 
 namespace RentIT.Models
 {
@@ -12,7 +12,7 @@ namespace RentIT.Models
 
         public string Descrizione { get; set; }
 
-        public string PercorsoImmagine { get; set; }
+        public Image Immagine { get; set; }
 
         public decimal Prezzo { get; set; }
 

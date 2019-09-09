@@ -15,7 +15,7 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Image Source="{Binding Annuncio.PercorsoImmagine}" 
+            <Image Source="{Binding Annuncio.Immagine.Source}" 
                    Aspect="AspectFit"
                    Grid.Row="1"
                    Grid.Column="0"

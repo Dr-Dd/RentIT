@@ -39,7 +39,7 @@
                    FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
                    TextColor="#607D8B"
                    Margin="0,0,20,0"/>
-            <Image Source="{Binding Annuncio.PercorsoImmagine}" 
+            <Image Source="{Binding Annuncio.Immagine.Source}" 
                    Aspect="AspectFit"
                    Grid.Row="1"
                    Grid.Column="0"
