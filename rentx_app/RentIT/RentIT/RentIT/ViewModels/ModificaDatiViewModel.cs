@@ -39,6 +39,41 @@ namespace RentIT.ViewModels
             }
         }
 
+        string _password;
+        public string Password
+        {
+            get { return _password; }
+            set
+            {
+                _password = value;
+                OnPropertyChanged();
+                ModificaDatiCommand.ChangeCanExecute();
+            }
+        }
+
+        string _confermaPassword;
+        public string ConfermaPassword
+        {
+            get { return _confermaPassword; }
+            set
+            {
+                _confermaPassword = value;
+                OnPropertyChanged();
+                ModificaDatiCommand.ChangeCanExecute();
+            }
+        }
+
+        bool _isPwErrorVisible;
+        public bool IsPwErrorVisible
+        {
+            get { return _isPwErrorVisible; }
+            set
+            {
+                _isPwErrorVisible = value;
+                OnPropertyChanged();                         
+            }                                               
+        }                                                             
+
         readonly IUserService _userService;
         readonly FotoService _fotoService;
         public ModificaDatiViewModel (INavService navService, UserService userService, FotoService fotoService) : base(navService)
@@ -90,6 +125,17 @@ namespace RentIT.ViewModels
             }
         }
 
+        //Funzione di controllo password
+        bool PasswordsAreTheSame()
+        {
+            var isValid = Password == ConfermaPassword;
+
+            if (isValid) IsPwErrorVisible = false;
+            else IsPwErrorVisible = true;
+
+            return isValid;
+        }
+
         /*Comando per modificare i dati dell'account*/
         Command _modificaDatiCommand;
         public Command ModificaDatiCommand
@@ -97,13 +143,15 @@ namespace RentIT.ViewModels
             get
             {
                 return _modificaDatiCommand
-                    ?? (_modificaDatiCommand = new Command(async () => await ExecuteModificaDatiCommand()));
+                    ?? (_modificaDatiCommand = new Command(async () => await ExecuteModificaDatiCommand(), PasswordsAreTheSame));
             }
         }
 
         async Task ExecuteModificaDatiCommand()
         {
             IsBusy = true;
+            if (!string.IsNullOrWhiteSpace(Password))
+                Utente.Password = Password;
             var response = await _userService.ModifyUserData(Utente);
             if (response.hasSucceded)
             {

@@ -103,7 +103,7 @@ namespace RentIT.ViewModels
             var isValid = (Password == ConfermaPassword && 
                 !string.IsNullOrWhiteSpace(Password));
 
-            if (isValid) IsPwErrorVisible = false;
+            if (Password == ConfermaPassword) IsPwErrorVisible = false;
             else IsPwErrorVisible = true;
 
             return isValid;
