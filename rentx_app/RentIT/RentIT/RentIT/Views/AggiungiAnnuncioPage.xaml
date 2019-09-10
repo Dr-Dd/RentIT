@@ -74,7 +74,8 @@
                         BorderColor="#607D8B"
                         Margin="70,0,70,0"
                         FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
-                        BackgroundColor="WhiteSmoke"/>
+                        BackgroundColor="WhiteSmoke"
+                        Command="{Binding AggiungiAnnuncioCommand}"/>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>
