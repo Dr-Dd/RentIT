@@ -5,12 +5,12 @@
              NavigationPage.HasNavigationBar="True"
              BackgroundColor="#CFD8DC">
     <ContentPage.Content>
-        <ScrollView Margin="10,10,10,20">
+        <ScrollView>
         <Grid>
             <Grid.RowDefinitions>
+                <RowDefinition Height="1.2*"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="2*"/>
-                <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
@@ -63,17 +63,18 @@
                     Grid.Column="2"
                     FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
                     TextColor="#607D8B"
-                    VerticalOptions="CenterAndExpand"
+                    VerticalOptions="StartAndExpand"
+                    Margin="0,40,0,0"
                     BackgroundColor="WhiteSmoke"
                     BorderWidth="1"
                     BorderColor="#607D8B"
                     Command="{Binding LogInCommand}" />
-            <Button Text="iscriviti"
+            <Button Text="Iscriviti"
                     TextColor="#607D8B"
-                    Grid.Row="4"
+                    Grid.Row="3"
                     Margin="0,0,0,10"
                     Grid.Column="2"
-                    VerticalOptions="EndAndExpand"
+                    VerticalOptions="StartAndExpand"
                     Command="{Binding SubmitCommand}" 
                     Font="micro" 
                     FontFamily="Quicksand-Bold.ttf#Quicksand-Bold" 
