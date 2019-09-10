@@ -76,27 +76,15 @@
                                FontFamily="Quicksand-Light.ttf#Quicksand-Light"
                                PlaceholderColor="#BDBDBD"
                                IsPassword="True"/>
-                            <StackLayout Grid.Row="6">
-                            <Label 
-                                Text="Non hai riempito uno o più campi"
-                                FontFamily="Quicksand-Light.ttf#Quicksand-Bold"
-                                IsVisible="False"
-                                TextColor="Red"/>
-                            <Label 
+                                <StackLayout Grid.Row="6">
+                                    <Label 
                                 Grid.Row="6"
                                 x:Name="emailIsUsed"
                                 Text="email già in uso, effettua il login"
                                 FontFamily="Quicksand-Light.ttf#Quicksand-Bold"
                                 IsVisible="False"
                                 TextColor="Red"/>
-                            <Label
-                                Grid.Row="6"
-                                x:Name="wrongPassword"
-                                Text="Le due password non corrispondono"
-                                FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
-                                IsVisible="{Binding IsPwErrorVisible}"
-                                TextColor="Red"/>
-                        </StackLayout>
+                                </StackLayout>
                         </Grid>
                     </Frame>
                 </StackLayout>
