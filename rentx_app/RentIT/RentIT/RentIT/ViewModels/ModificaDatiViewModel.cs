@@ -39,6 +39,30 @@ namespace RentIT.ViewModels
             }
         }
 
+        string _password;
+        public string Password
+        {
+            get { return _password; }
+            set
+            {
+                _password = value;
+                OnPropertyChanged();
+                ModificaDatiCommand.ChangeCanExecute();
+            }
+        }
+
+        string _confermaPassword;
+        public string ConfermaPassword
+        {
+            get { return _confermaPassword; }
+            set
+            {
+                _confermaPassword = value;
+                OnPropertyChanged();
+                ModificaDatiCommand.ChangeCanExecute();
+            }
+        }                                                         
+
         readonly IUserService _userService;
         readonly FotoService _fotoService;
         public ModificaDatiViewModel (INavService navService, UserService userService, FotoService fotoService) : base(navService)
@@ -90,6 +114,14 @@ namespace RentIT.ViewModels
             }
         }
 
+        //Funzione di controllo password
+        bool PasswordsAreTheSame()
+        {
+            var isValid = Password == ConfermaPassword;
+
+            return isValid;
+        }
+
         /*Comando per modificare i dati dell'account*/
         Command _modificaDatiCommand;
         public Command ModificaDatiCommand
@@ -104,6 +136,16 @@ namespace RentIT.ViewModels
         async Task ExecuteModificaDatiCommand()
         {
             IsBusy = true;
+
+            if (!PasswordsAreTheSame())
+            {
+                await App.Current.MainPage.DisplayAlert("Errore", "Le due password non corrispondono", "Ok");
+                return;
+            }
+
+            if (!string.IsNullOrWhiteSpace(Password))
+                Utente.Password = Password;
+
             var response = await _userService.ModifyUserData(Utente);
             if (response.hasSucceded)
             {

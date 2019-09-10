@@ -58,19 +58,7 @@ namespace RentIT.ViewModels
                 OnPropertyChanged();
                 SignInCommand.ChangeCanExecute();
             }
-        }
-
-        // Parametro a cui lego la visibilità password, che verrà settato dal validatore di quest'ultima
-        bool _isPwErrorVisible;
-        public bool IsPwErrorVisible
-        {
-            get { return _isPwErrorVisible; }
-            set
-            {
-                _isPwErrorVisible = value;
-                OnPropertyChanged();                        // 
-            }                                               //
-        }                                                   //
+        }                                                 
 
         string _confermaPassword;
         public string ConfermaPassword
@@ -80,7 +68,7 @@ namespace RentIT.ViewModels
             {
                 _confermaPassword = value;
                 OnPropertyChanged();
-                SignInCommand.ChangeCanExecute(); // Nota come, nel viewModel, la funzione di set
+                //SignInCommand.ChangeCanExecute(); // Nota come, nel viewModel, la funzione di set
             }                                     // viene eseguita ogni qualvolta l'utente modifica il campo
         }                                         // interessato. Questo vuol dire che possiamo usarla per eseguire
                                                   // delle operazioni ogniqualvolta un utente modifica il campo! 
@@ -94,19 +82,23 @@ namespace RentIT.ViewModels
 
         /**
          * Funzione di controllo password, viene attivata ogniqualvolta una delle due password viene modificata
-         * essa va associata a un comando per permettere questa interattività (vedi SignInCommand). Nota come inoltre
-         * da essa setto anche la visibilità dei messaggi di errore (IsPwErrorVisible), poiché chiaramente esso sarà visibile
-         * solo se le password sono errate!!
          */
         bool PasswordsAreTheSameAndNotEmpty()
         {
             var isValid = (Password == ConfermaPassword && 
                 !string.IsNullOrWhiteSpace(Password));
 
-            if (isValid) IsPwErrorVisible = false;
-            else IsPwErrorVisible = true;
-
             return isValid;
+        }
+
+        //Funzione di controllo campi vuoti
+        bool EmptyFields()
+        {
+            var empty = string.IsNullOrWhiteSpace(Name) ||
+                        string.IsNullOrWhiteSpace(Surname) ||
+                        string.IsNullOrWhiteSpace(Email) ||
+                        string.IsNullOrWhiteSpace(Password);
+            return empty;
         }
 
         /*comando di registrazione*/
@@ -115,14 +107,26 @@ namespace RentIT.ViewModels
         {
             get
             {
-                return _signInCommand // Piccola nota sul comando, come puoi vedere accetta un booleano che controlla l'eseguibilità del comando, in questo caso una funzione
-                    ?? (_signInCommand = new Command(async () => await ExecuteSignInCommand(), PasswordsAreTheSameAndNotEmpty));
+                return _signInCommand
+                    ?? (_signInCommand = new Command(async () => await ExecuteSignInCommand()));
             }
         }
         
         async Task ExecuteSignInCommand()
         {
             IsBusy = true;
+
+            if (!PasswordsAreTheSameAndNotEmpty())
+            {
+                await App.Current.MainPage.DisplayAlert("Errore", "Le due password non corrispondono", "Ok");
+                return;
+            }
+
+            if (EmptyFields())
+            {
+                await App.Current.MainPage.DisplayAlert("Errore", "Non hai riempito uno o più campi", "Ok");
+                return;
+            }
             var signUpRequest = new SignUpRequest
             {
                 name = Name,
