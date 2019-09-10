@@ -91,6 +91,7 @@ namespace RentIT.ViewModels
             return isValid;
         }
 
+        //Funzione di controllo campi vuoti
         bool EmptyFields()
         {
             var empty = string.IsNullOrWhiteSpace(Name) ||
@@ -106,7 +107,7 @@ namespace RentIT.ViewModels
         {
             get
             {
-                return _signInCommand // Piccola nota sul comando, come puoi vedere accetta un booleano che controlla l'eseguibilità del comando, in questo caso una funzione
+                return _signInCommand
                     ?? (_signInCommand = new Command(async () => await ExecuteSignInCommand()));
             }
         }

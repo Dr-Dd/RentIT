@@ -61,18 +61,7 @@ namespace RentIT.ViewModels
                 OnPropertyChanged();
                 ModificaDatiCommand.ChangeCanExecute();
             }
-        }
-
-        bool _isPwErrorVisible;
-        public bool IsPwErrorVisible
-        {
-            get { return _isPwErrorVisible; }
-            set
-            {
-                _isPwErrorVisible = value;
-                OnPropertyChanged();                         
-            }                                               
-        }                                                             
+        }                                                         
 
         readonly IUserService _userService;
         readonly FotoService _fotoService;
@@ -130,9 +119,6 @@ namespace RentIT.ViewModels
         {
             var isValid = Password == ConfermaPassword;
 
-            if (isValid) IsPwErrorVisible = false;
-            else IsPwErrorVisible = true;
-
             return isValid;
         }
 
@@ -143,15 +129,23 @@ namespace RentIT.ViewModels
             get
             {
                 return _modificaDatiCommand
-                    ?? (_modificaDatiCommand = new Command(async () => await ExecuteModificaDatiCommand(), PasswordsAreTheSame));
+                    ?? (_modificaDatiCommand = new Command(async () => await ExecuteModificaDatiCommand()));
             }
         }
 
         async Task ExecuteModificaDatiCommand()
         {
             IsBusy = true;
+
+            if (!PasswordsAreTheSame())
+            {
+                await App.Current.MainPage.DisplayAlert("Errore", "Le due password non corrispondono", "Ok");
+                return;
+            }
+
             if (!string.IsNullOrWhiteSpace(Password))
                 Utente.Password = Password;
+
             var response = await _userService.ModifyUserData(Utente);
             if (response.hasSucceded)
             {

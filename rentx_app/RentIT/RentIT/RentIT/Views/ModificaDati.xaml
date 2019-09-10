@@ -92,12 +92,6 @@
                             TextColor="#607D8B"
                        PlaceholderColor="#BDBDBD"
                             FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"/>
-                <Label Grid.Row="7"
-                       x:Name="errore"
-                       IsVisible="{Binding IsPwErrorVisible}"
-                       Text="Le due password non corrispondono"
-                       TextColor="Red"
-                       FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"/>
                 <Button Grid.Row="8"
                         x:Name="modifica"
                         Grid.Column="0"
