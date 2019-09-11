@@ -4,16 +4,19 @@ using System.Collections.Generic;
 using System.Text;
 using Xamarin.Forms;
 
-namespace RentIT.Models
+namespace RentIT.Models.Annuncio
 {
     /**Momentanea**/
-    public class Annuncio
+    public class Ad
     {
+
+        public string Id { get; set; }
+
         public string NomeOggetto { get; set; }
 
         public string Descrizione { get; set; }
 
-        public Image Immagine { get; set; }
+        //public Image Immagine { get; set; }
 
         public decimal Prezzo { get; set; }
 

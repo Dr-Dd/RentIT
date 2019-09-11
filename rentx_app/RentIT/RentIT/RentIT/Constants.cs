@@ -21,7 +21,7 @@ namespace RentIT
         // defaul Endpoints for api
         const string defaultAuthenticationEndpoint = "http://192.168.1.173:8080/auth/{0}";
         const string defaultItemEndpoint = "http://192.168.1.173:8080/item/{0}";
-        const string defaultProductEndpoint = "http://192.168.1.173:8080/product/{0}";
+        const string defaultAnnuncioEndpoint = "http://192.168.1.173:8080/annuncio/{0}";
         const string defaultUserEndpoint = "http://192.168.1.173:8080/utente/{0}";
 
 
@@ -66,14 +66,26 @@ namespace RentIT
             return string.Format(Constants.defaultUserEndpoint, "image");
         }
 
+        public static string newAnnuncioEndpoint()
+        {
+            return string.Format(Constants.defaultAnnuncioEndpoint, "newAnnuncio");
+        }
+
+        public static string eliminaAnnuncioEndpoint()
+        {
+            return string.Format(Constants.defaultAnnuncioEndpoint, "elimina");
+        }
+
+        public static string modificaAnnuncioEndpoint()
+        {
+            return string.Format(Constants.defaultAnnuncioEndpoint, "modifica");
+        }
+
         public static string ItemEndpoint()
         {
             return defaultItemEndpoint;
         }
 
-        public static string ProductEndpoint()
-        {
-            return defaultProductEndpoint;
-        }
+       
     }
 }

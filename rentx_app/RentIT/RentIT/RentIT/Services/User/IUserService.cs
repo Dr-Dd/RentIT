@@ -1,5 +1,5 @@
 ﻿
-using App.Models.User;
+using App.Models.Image;
 using RentIT.Models.User;
 using System;
 using System.Collections.Generic;

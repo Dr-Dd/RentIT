@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace App.Models.User
+namespace App.Models.Image
 {
     public class ImageModel
     {

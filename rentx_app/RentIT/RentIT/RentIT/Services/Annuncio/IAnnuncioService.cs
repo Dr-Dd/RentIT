@@ -1,5 +1,7 @@
 ﻿using System.Threading.Tasks;
 using RentIT.Models.User;
+using RentIT.Models.Annuncio;
+
 
 namespace App.Services.Annuncio
 {
@@ -7,11 +9,10 @@ namespace App.Services.Annuncio
     {
         Task UploadItemImageAsync(string imageAsBase64);
 
-        Task<Response> AddAnnuncioAsync(RentIT.Models.Annuncio a);
+        Task<Response> AddAnnuncioAsync(Ad a);
 
-        Task<Response> ModifyItemData(RentIT.Models.Annuncio a);
-        //Non so perché ma annuncio non me lo prende se metto using
-
-        Task<Response> Delete();
+        Task<Response> ModifyItemData(Ad a);
+        
+        Task<Response> Delete(string id);
     }
 }
