@@ -51,6 +51,7 @@
                        FontSize="Medium"/>
             </Frame>
             <Button Text="MODIFICA"
+                    Command="{Binding ModificaAnnuncioCommand}"
                     Grid.Row="4"
                     Grid.Column="0"
                     TextColor="#607D8B"
@@ -60,6 +61,7 @@
                     BorderWidth="1"
                     BorderColor="#607D8B"/>
             <Button Text="RIMUOVI"
+                    Command="{Binding EliminaAnnuncioCommand}"
                     Grid.Row="4"
                     Grid.Column="1"
                     TextColor="#607D8B"
