@@ -99,7 +99,7 @@ namespace RentIT.ViewModels
                 //questa riga serve solo a visualizzare l'immagine in attesa del collegamento al db
                 Immagine = _fotoService.fromStringToImage(base64);
 
-                //tipo _annuncioService.UploadItemImage(base64)
+                //tipo _annuncioService.UploadItemImageAsync(base64)
             }
         }
 
@@ -118,19 +118,19 @@ namespace RentIT.ViewModels
         {
             IsBusy = true;
 
-            /*da decommentare dopo l'aggiunta dei metodi
             if(EmptyFields()){
                 await App.Current.MainPage.DisplayAlert("Errore", "Non hai riempito uno o più campi", "Ok");
                 return;
             }
 
-            var annuncioRequest = new AnnuncioRequest
+            /*da decommentare dopo l'aggiunta dei metodi
+            var annuncioRequest = new Annuncio
             {
                 NomeOggetto = NomeOggetto,
                 Descrizione = Descrizione,
                 Prezzo = Prezzo,
                 Data = DateTime.Now,
-                //viene passato l'utente a questa pagina cliccando "aggiungi annuncio"
+                //viene passato l'utente a questa pagina cliccando "aggiungi annuncio"?
                 Affittuario = Utente;
             };
             var response = await _annuncioService.addAnnuncioAsync(annuncioRequest);

@@ -87,12 +87,12 @@ namespace RentIT.ViewModels
 
             if (!EmptyFields())
             {
-                await App.Current.MainPage.DisplayAlert("Errore", "Non puoi lasciare campi vuoti", "Ok");
+                await App.Current.MainPage.DisplayAlert("Errore", "Non hai riempito uno o più campi", "Ok");
                 return;
             }
 
             /*
-            var response = await _annuncioService.ModifyData(Annuncio);
+            var response = await _annuncioService.ModifyItemData(Annuncio);
             if (response.hasSucceded)
             {
                 await NavService.NavigateToMainPage();
