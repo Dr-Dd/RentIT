@@ -20,10 +20,10 @@
             <StackLayout Orientation="Horizontal"
                          Grid.Row="0"
                          Grid.Column="0">
-                <controls:CircleImage Source="meme.png" 
+                <controls:CircleImage Source="{Binding ImmagineUtente.Source}" 
                                       WidthRequest="80"
                                       HeightRequest="80"/>
-                <Label Text="{Binding Annuncio.NomeAffittuario}"
+                <Label Text="{Binding Annuncio.Affittuario.Name}"
                        FontSize="Small"
                        FontAttributes="Bold"
                        FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"

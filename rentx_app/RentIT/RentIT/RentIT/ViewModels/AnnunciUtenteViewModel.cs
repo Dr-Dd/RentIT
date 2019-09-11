@@ -1,4 +1,5 @@
 ﻿using RentIT.Models;
+using RentIT.Models.User;
 using RentIT.Services;
 using System;
 using System.Collections.Generic;
@@ -51,7 +52,7 @@ namespace RentIT.ViewModels
                 Descrizione = "Tosaerba BOSCHIA potente, alimentato a escrementi di piccione",
                 Prezzo = 13,
                 Immagine = new Image { Source = "tosaerba.jpg" },
-                NomeAffittuario = "Gigi Finizio",
+                Affittuario = new Utente { Name = "Gigi Finizio" },
                 Posizione = "4 Km da te",
                 Data = DateTime.Now
             });
@@ -62,7 +63,7 @@ namespace RentIT.ViewModels
                 Descrizione = "Tosaerba BOSCHIA potente, alimentato a escermenti di piccione",
                 Prezzo = 13,
                 Immagine = new Image { Source = "tosaerba.jpg" },
-                NomeAffittuario = "Gigi Finizio",
+                Affittuario = new Utente { Name = "Gigi Finizio" },
                 Posizione = "4 Km da te",
                 Data = DateTime.Now
             });
@@ -73,7 +74,7 @@ namespace RentIT.ViewModels
                 Descrizione = "Tosaerba BOSCHIA potente, alimentato a escermenti di piccione",
                 Prezzo = 13,
                 Immagine = new Image { Source = "tosaerba.jpg" },
-                NomeAffittuario = "Gigi Finizio",
+                Affittuario = new Utente { Name = "Gigi Finizio" },
                 Posizione = "4 Km da te",
                 Data = DateTime.Now
             });
@@ -84,7 +85,7 @@ namespace RentIT.ViewModels
                 Descrizione = "Tosaerba BOSCHIA potente, alimentato a escermenti di piccione",
                 Prezzo = 13,
                 Immagine = new Image { Source = "tosaerba.jpg" },
-                NomeAffittuario = "Gigi Finizio",
+                Affittuario = new Utente { Name = "Gigi Finizio" },
                 Posizione = "4 Km da te",
                 Data = DateTime.Now
             });
@@ -95,7 +96,7 @@ namespace RentIT.ViewModels
                 Descrizione = "Tosaerba BOSCHIA potente, alimentato a escrementi di piccione",
                 Prezzo = 13,
                 Immagine = new Image { Source = "tosaerba.jpg" },
-                NomeAffittuario = "Gigi Finizio",
+                Affittuario = new Utente { Name = "Gigi Finizio" },
                 Posizione = "4 Km da te",
                 Data = DateTime.Now
             });
@@ -106,7 +107,7 @@ namespace RentIT.ViewModels
                 Descrizione = "Tosaerba BOSCHIA potente, alimentato a escermenti di piccione",
                 Prezzo = 13,
                 Immagine = new Image { Source = "tosaerba.jpg" },
-                NomeAffittuario = "Gigi Finizio",
+                Affittuario = new Utente { Name = "Gigi Finizio" },
                 Posizione = "4 Km da te",
                 Data = DateTime.Now
             });
@@ -117,7 +118,7 @@ namespace RentIT.ViewModels
                 Descrizione = "Tosaerba BOSCHIA potente, alimentato a escermenti di piccione",
                 Prezzo = 13,
                 Immagine = new Image { Source = "tosaerba.jpg" },
-                NomeAffittuario = "Gigi Finizio",
+                Affittuario = new Utente { Name = "Gigi Finizio" },
                 Posizione = "4 Km da te",
                 Data = DateTime.Now
             });
@@ -128,7 +129,7 @@ namespace RentIT.ViewModels
                 Descrizione = "Tosaerba BOSCHIA potente, alimentato a escermenti di piccione",
                 Prezzo = 13,
                 Immagine = new Image { Source = "tosaerba.jpg" },
-                NomeAffittuario = "Gigi Finizio",
+                Affittuario = new Utente { Name = "Gigi Finizio" },
                 Posizione = "4 Km da te",
                 Data = DateTime.Now
             });
@@ -139,7 +140,7 @@ namespace RentIT.ViewModels
                 Descrizione = "Tosaerba BOSCHIA potente, alimentato a escrementi di piccione",
                 Prezzo = 13,
                 Immagine = new Image { Source = "tosaerba.jpg" },
-                NomeAffittuario = "Gigi Finizio",
+                Affittuario = new Utente { Name = "Gigi Finizio" },
                 Posizione = "4 Km da te",
                 Data = DateTime.Now
             });
@@ -150,7 +151,7 @@ namespace RentIT.ViewModels
                 Descrizione = "Tosaerba BOSCHIA potente, alimentato a escermenti di piccione",
                 Prezzo = 13,
                 Immagine = new Image { Source = "tosaerba.jpg" },
-                NomeAffittuario = "Gigi Finizio",
+                Affittuario = new Utente { Name = "Gigi Finizio" },
                 Posizione = "4 Km da te",
                 Data = DateTime.Now
             });
@@ -161,7 +162,7 @@ namespace RentIT.ViewModels
                 Descrizione = "Tosaerba BOSCHIA potente, alimentato a escermenti di piccione",
                 Prezzo = 13,
                 Immagine = new Image { Source = "tosaerba.jpg" },
-                NomeAffittuario = "Gigi Finizio",
+                Affittuario = new Utente { Name = "Gigi Finizio" },
                 Posizione = "4 Km da te",
                 Data = DateTime.Now
             });
@@ -172,7 +173,7 @@ namespace RentIT.ViewModels
                 Descrizione = "Tosaerba BOSCHIA potente, alimentato a escermenti di piccione",
                 Prezzo = 13,
                 Immagine = new Image { Source = "tosaerba.jpg" },
-                NomeAffittuario = "Gigi Finizio",
+                Affittuario = new Utente { Name = "Gigi Finizio" },
                 Posizione = "4 Km da te",
                 Data = DateTime.Now
             });

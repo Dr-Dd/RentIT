@@ -66,7 +66,15 @@ namespace RentIT.ViewModels
         public async override Task Init()
         {
         }
-        
+
+        bool EmptyFields()
+        {
+            var empty = string.IsNullOrWhiteSpace(NomeOggetto) ||
+                        string.IsNullOrWhiteSpace(Descrizione) ||
+                        (Prezzo == 0);
+            return empty;
+        }
+
         //Comando per aggiungere foto all'annuncio
         Command _aggiungiFotoCommand;
         public Command AggiungiFotoCommand
@@ -111,11 +119,19 @@ namespace RentIT.ViewModels
             IsBusy = true;
 
             /*da decommentare dopo l'aggiunta dei metodi
-             * var annuncioRequest = new AnnuncioRequest
+            if(EmptyFields()){
+                await App.Current.MainPage.DisplayAlert("Errore", "Non hai riempito uno o più campi", "Ok");
+                return;
+            }
+
+            var annuncioRequest = new AnnuncioRequest
             {
-                name = NomeOggetto,
-                description = Descrizione,
-                price = Prezzo
+                NomeOggetto = NomeOggetto,
+                Descrizione = Descrizione,
+                Prezzo = Prezzo,
+                Data = DateTime.Now,
+                //viene passato l'utente a questa pagina cliccando "aggiungi annuncio"
+                Affittuario = Utente;
             };
             var response = await _annuncioService.addAnnuncioAsync(annuncioRequest);
             if (response.hasSucceded)

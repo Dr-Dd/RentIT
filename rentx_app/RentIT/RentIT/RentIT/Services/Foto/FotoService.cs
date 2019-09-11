@@ -1,7 +1,9 @@
-﻿using System;
+﻿using App.Models.User;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace App.Services.Foto
@@ -31,6 +33,12 @@ namespace App.Services.Foto
             //Creazione stringa
             string base64 = Convert.ToBase64String(bytes);
             return base64;
+        }
+
+        /* Metodo per prendere dal db la foto di un utente conoscendone l'email*/
+        public Task<ImageModel> GetImage(string email)
+        {
+            return new Task<ImageModel>(() => new ImageModel());            
         }
     }
 }

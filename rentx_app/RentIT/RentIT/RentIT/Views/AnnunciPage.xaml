@@ -38,7 +38,7 @@
                                    TextColor="#607D8B"/>
                             <Label Grid.Row="0" 
                                    Grid.Column="2" 
-                                   Text="{Binding NomeAffittuario}" 
+                                   Text="{Binding Affittuario.Nome}" 
                                    HorizontalTextAlignment="End"
                                    VerticalTextAlignment="End"
                                    FontFamily="Quicksand-Regular.ttf#Quicksand-Medium"

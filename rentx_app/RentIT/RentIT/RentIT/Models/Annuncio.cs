@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RentIT.Models.User;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using Xamarin.Forms;
@@ -16,7 +17,7 @@ namespace RentIT.Models
 
         public decimal Prezzo { get; set; }
 
-        public string NomeAffittuario { get; set; }
+        public Utente Affittuario { get; set; }
 
         public string Posizione { get; set; }
 
