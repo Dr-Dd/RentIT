@@ -47,7 +47,7 @@ namespace RentIT.ViewModels
 
         async Task ExecuteRentITCommand()
         {
-            await App.Current.MainPage.DisplayAlert("Contatta Affittuario", "Email: Annuncio.EmailAffittuario" + "\n" + "Telefono: Annuncio.TelefonoAffittuario", "ok");
+            await App.Current.MainPage.DisplayAlert("Contatta Affittuario", "Email: Annuncio.Affittuario.Email" + "\n" + "Telefono: Annuncio.Affittuario.Telefono", "OK");
             return;
         }
     }
