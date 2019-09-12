@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
 using System.Threading.Tasks;
+using Xamarin.Forms;
 
 namespace RentIT.ViewModels
 {
@@ -33,6 +34,21 @@ namespace RentIT.ViewModels
         {
             Annuncio = annuncio;
         }
-        
+
+        Command _rentItCommand;
+        public Command RentITCommand
+        {
+            get
+            {
+                return _rentItCommand
+                    ?? (_rentItCommand = new Command(async () => await ExecuteRentITCommand()));
+            }
+        }
+
+        async Task ExecuteRentITCommand()
+        {
+            await App.Current.MainPage.DisplayAlert("Contatta Affittuario", "Email: Annuncio.EmailAffittuario" + "\n" + "Telefono: Annuncio.TelefonoAffittuario", "ok");
+            return;
+        }
     }
 }
