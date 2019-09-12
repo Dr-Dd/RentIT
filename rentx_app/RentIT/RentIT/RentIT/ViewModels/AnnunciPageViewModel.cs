@@ -7,14 +7,15 @@ using RentIT.Models;
 using RentIT.Services;
 using Xamarin.Forms;
 using RentIT.Models.User;
+using RentIT.Models.Annuncio;
 
 namespace RentIT.ViewModels
 {
     public class AnnunciPageViewModel : BaseViewModel<SearchQuery>
     {
 
-        ObservableCollection<Annuncio> _annunci;
-        public ObservableCollection<Annuncio> Annunci
+        ObservableCollection<Ad> _annunci;
+        public ObservableCollection<Ad> Annunci
         {
             get { return _annunci; }
             set
@@ -26,7 +27,7 @@ namespace RentIT.ViewModels
 
         public AnnunciPageViewModel(INavService navService) : base(navService)
         {
-            Annunci = new ObservableCollection<Annuncio>();
+            Annunci = new ObservableCollection<Ad>();
         }
 
         /**
@@ -46,7 +47,7 @@ namespace RentIT.ViewModels
             Annunci.Clear();
 
             // TODO: Aggiungere persistenza database
-            Annunci.Add(new Annuncio()
+            Annunci.Add(new Ad()
             {
                 NomeOggetto = "Tosaerba",
                 Descrizione = "Tosaerba BOSCHIA potente, alimentato a escrementi di piccione",
@@ -57,7 +58,7 @@ namespace RentIT.ViewModels
                 Data = DateTime.Now
             });
 
-            Annunci.Add(new Annuncio()
+            Annunci.Add(new Ad()
             {
                 NomeOggetto = "Tosaerba",
                 Descrizione = "Tosaerba BOSCHIA potente, alimentato a escermenti di piccione",
@@ -68,63 +69,7 @@ namespace RentIT.ViewModels
                 Data = DateTime.Now
             });
 
-            Annunci.Add(new Annuncio()
-            {
-                NomeOggetto = "Tosaerba",
-                Descrizione = "Tosaerba BOSCHIA potente, alimentato a escermenti di piccione",
-                Prezzo = 13,
-                Immagine = new Image { Source = "tosaerba.jpg" },
-                Affittuario = new Utente { Name = "Gigi Finizio" },
-                Posizione = "4 Km da te",
-                Data = DateTime.Now
-            });
-
-
-            Annunci.Add(new Annuncio()
-            {
-                NomeOggetto = "Tosaerba",
-                Descrizione = "Tosaerba BOSCHIA potente, alimentato a escermenti di piccione",
-                Prezzo = 13,
-                Immagine = new Image { Source = "tosaerba.jpg" },
-                Affittuario = new Utente { Name = "Gigi Finizio" },
-                Posizione = "4 Km da te",
-                Data = DateTime.Now
-            });
-
-            Annunci.Add(new Annuncio()
-            {
-                NomeOggetto = "Tosaerba",
-                Descrizione = "Tosaerba BOSCHIA potente, alimentato a escermenti di piccione",
-                Prezzo = 13,
-                Immagine = new Image { Source = "tosaerba.jpg" },
-                Affittuario = new Utente { Name = "Gigi Finizio" },
-                Posizione = "4 Km da te",
-                Data = DateTime.Now
-            });
-
-            Annunci.Add(new Annuncio()
-            {
-                NomeOggetto = "Tosaerba",
-                Descrizione = "Tosaerba BOSCHIA potente, alimentato a escermenti di piccione",
-                Prezzo = 13,
-                Immagine = new Image { Source = "tosaerba.jpg" },
-                Affittuario = new Utente { Name = "Gigi Finizio" },
-                Posizione = "4 Km da te",
-                Data = DateTime.Now
-            });
-
-            Annunci.Add(new Annuncio()
-            {
-                NomeOggetto = "Tosaerba",
-                Descrizione = "Tosaerba BOSCHIA potente, alimentato a escermenti di piccione",
-                Prezzo = 13,
-                Immagine = new Image { Source = "tosaerba.jpg" },
-                Affittuario = new Utente { Name = "Gigi Finizio" },
-                Posizione = "4 Km da te",
-                Data = DateTime.Now
-            });
-
-            Annunci.Add(new Annuncio()
+            Annunci.Add(new Ad()
             {
                 NomeOggetto = "Tosaerba",
                 Descrizione = "Tosaerba BOSCHIA potente, alimentato a escermenti di piccione",
@@ -136,7 +81,7 @@ namespace RentIT.ViewModels
             });
 
 
-            Annunci.Add(new Annuncio()
+            Annunci.Add(new Ad()
             {
                 NomeOggetto = "Tosaerba",
                 Descrizione = "Tosaerba BOSCHIA potente, alimentato a escermenti di piccione",
@@ -147,7 +92,7 @@ namespace RentIT.ViewModels
                 Data = DateTime.Now
             });
 
-            Annunci.Add(new Annuncio()
+            Annunci.Add(new Ad()
             {
                 NomeOggetto = "Tosaerba",
                 Descrizione = "Tosaerba BOSCHIA potente, alimentato a escermenti di piccione",
@@ -158,7 +103,7 @@ namespace RentIT.ViewModels
                 Data = DateTime.Now
             });
 
-            Annunci.Add(new Annuncio()
+            Annunci.Add(new Ad()
             {
                 NomeOggetto = "Tosaerba",
                 Descrizione = "Tosaerba BOSCHIA potente, alimentato a escermenti di piccione",
@@ -169,7 +114,63 @@ namespace RentIT.ViewModels
                 Data = DateTime.Now
             });
 
-            Annunci.Add(new Annuncio()
+            Annunci.Add(new Ad()
+            {
+                NomeOggetto = "Tosaerba",
+                Descrizione = "Tosaerba BOSCHIA potente, alimentato a escermenti di piccione",
+                Prezzo = 13,
+                Immagine = new Image { Source = "tosaerba.jpg" },
+                Affittuario = new Utente { Name = "Gigi Finizio" },
+                Posizione = "4 Km da te",
+                Data = DateTime.Now
+            });
+
+            Annunci.Add(new Ad()
+            {
+                NomeOggetto = "Tosaerba",
+                Descrizione = "Tosaerba BOSCHIA potente, alimentato a escermenti di piccione",
+                Prezzo = 13,
+                Immagine = new Image { Source = "tosaerba.jpg" },
+                Affittuario = new Utente { Name = "Gigi Finizio" },
+                Posizione = "4 Km da te",
+                Data = DateTime.Now
+            });
+
+
+            Annunci.Add(new Ad()
+            {
+                NomeOggetto = "Tosaerba",
+                Descrizione = "Tosaerba BOSCHIA potente, alimentato a escermenti di piccione",
+                Prezzo = 13,
+                Immagine = new Image { Source = "tosaerba.jpg" },
+                Affittuario = new Utente { Name = "Gigi Finizio" },
+                Posizione = "4 Km da te",
+                Data = DateTime.Now
+            });
+
+            Annunci.Add(new Ad()
+            {
+                NomeOggetto = "Tosaerba",
+                Descrizione = "Tosaerba BOSCHIA potente, alimentato a escermenti di piccione",
+                Prezzo = 13,
+                Immagine = new Image { Source = "tosaerba.jpg" },
+                Affittuario = new Utente { Name = "Gigi Finizio" },
+                Posizione = "4 Km da te",
+                Data = DateTime.Now
+            });
+
+            Annunci.Add(new Ad()
+            {
+                NomeOggetto = "Tosaerba",
+                Descrizione = "Tosaerba BOSCHIA potente, alimentato a escermenti di piccione",
+                Prezzo = 13,
+                Immagine = new Image { Source = "tosaerba.jpg" },
+                Affittuario = new Utente { Name = "Gigi Finizio" },
+                Posizione = "4 Km da te",
+                Data = DateTime.Now
+            });
+
+            Annunci.Add(new Ad()
             {
                 NomeOggetto = "Tosaerba",
                 Descrizione = "Tosaerba BOSCHIA potente, alimentato a escermenti di piccione",
@@ -183,19 +184,19 @@ namespace RentIT.ViewModels
             IsBusy = false;
         }
 
-        Command<Annuncio> _viewAnnuncio;
-        public Command<Annuncio> ViewAnnuncio
+        Command<Ad> _viewAnnuncio;
+        public Command<Ad> ViewAnnuncio
         {
             get
             {
                 return _viewAnnuncio
-                    ?? (new Command<Annuncio>(async (annuncio) => await ExecuteViewAnnuncio(annuncio)));
+                    ?? (new Command<Ad>(async (annuncio) => await ExecuteViewAnnuncio(annuncio)));
             }
         }
 
-        async Task ExecuteViewAnnuncio(Annuncio annuncio)
+        async Task ExecuteViewAnnuncio(Ad annuncio)
         {
-            await NavService.NavigateTo<DettaglioAnnuncioViewModel, Annuncio>(annuncio);
+            await NavService.NavigateTo<DettaglioAnnuncioViewModel, Ad>(annuncio);
         }
 
         public async override Task Init(SearchQuery query)

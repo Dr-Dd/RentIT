@@ -1,6 +1,7 @@
-﻿using App.Models.User;
+﻿using App.Models.Image;
 using App.Services.Foto;
 using RentIT.Models;
+using RentIT.Models.Annuncio;
 using RentIT.Services;
 using System;
 using System.Collections.Generic;
@@ -15,10 +16,10 @@ namespace RentIT.ViewModels
      * Classe segnaposto, probabilmente in futuro ci sarà bisogno 
      * di implementare l'aggiunta di un oggetto tramite API
      */
-    public class DettaglioAnnuncioViewModel : BaseViewModel<Annuncio>
+    public class DettaglioAnnuncioViewModel : BaseViewModel<Ad>
     {
-        Annuncio _annuncio;
-        public Annuncio Annuncio
+        Ad _annuncio;
+        public Ad Annuncio
         {
             get { return _annuncio; }
             set
@@ -45,7 +46,7 @@ namespace RentIT.ViewModels
             _fotoService = fotoService;
         }
 
-        public async override Task Init(Annuncio annuncio)
+        public async override Task Init(Ad annuncio)
         {
             Annuncio = annuncio;
             //ImmagineUtente = await getPropic();

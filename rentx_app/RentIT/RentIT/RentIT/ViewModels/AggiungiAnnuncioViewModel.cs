@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using System.Threading.Tasks;
+using App.Services.Annuncio;
 using App.Services.Foto;
 using RentIT.Models;
+using RentIT.Models.Annuncio;
 using RentIT.Services;
 using Xamarin.Forms;
 
@@ -58,9 +60,11 @@ namespace RentIT.ViewModels
         }
 
         readonly FotoService _fotoService;
-        public AggiungiAnnuncioViewModel(INavService navService, FotoService fotoService) : base(navService)
+        readonly IAnnuncioService _annuncioService;
+        public AggiungiAnnuncioViewModel(INavService navService, FotoService fotoService, AnnuncioService annuncioService) : base(navService)
         {
             _fotoService = fotoService;
+            _annuncioService = annuncioService;
         }
 
         public async override Task Init()
@@ -123,17 +127,14 @@ namespace RentIT.ViewModels
                 return;
             }
 
-            /*da decommentare dopo l'aggiunta dei metodi
-            var annuncioRequest = new Annuncio
+            var annuncioRequest = new Ad
             {
                 NomeOggetto = NomeOggetto,
                 Descrizione = Descrizione,
                 Prezzo = Prezzo,
-                Data = DateTime.Now,
-                //viene passato l'utente a questa pagina cliccando "aggiungi annuncio"?
-                Affittuario = Utente;
+                Data = DateTime.Now
             };
-            var response = await _annuncioService.addAnnuncioAsync(annuncioRequest);
+            var response = await _annuncioService.AddAnnuncioAsync(annuncioRequest);
             if (response.hasSucceded)
             {
                 await NavService.NavigateToMainPage();
@@ -142,7 +143,7 @@ namespace RentIT.ViewModels
             {
                 await App.Current.MainPage.DisplayAlert("Errore", response.responseMessage, "Ok");
             }
-            */
+            
             IsBusy = false;
         }
     }

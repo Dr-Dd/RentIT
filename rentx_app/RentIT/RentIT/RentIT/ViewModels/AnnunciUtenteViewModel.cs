@@ -1,4 +1,5 @@
 ﻿using RentIT.Models;
+using RentIT.Models.Annuncio;
 using RentIT.Models.User;
 using RentIT.Services;
 using System;
@@ -14,8 +15,8 @@ namespace RentIT.ViewModels
 {
     public class AnnunciUtenteViewModel : BaseViewModel<SearchQuery>
     {
-        ObservableCollection<Annuncio> _annunci;
-        public ObservableCollection<Annuncio> Annunci
+        ObservableCollection<Ad> _annunci;
+        public ObservableCollection<Ad> Annunci
         {
             get { return _annunci; }
             set
@@ -27,7 +28,7 @@ namespace RentIT.ViewModels
         
         public AnnunciUtenteViewModel(INavService navService) : base(navService)
         {
-            Annunci = new ObservableCollection<Annuncio>();
+            Annunci = new ObservableCollection<Ad>();
         }
         /**
         * IMPORTANTE: Nello stato attuale, la ListView fa laggare
@@ -46,7 +47,7 @@ namespace RentIT.ViewModels
             Annunci.Clear();
 
             // TODO: Aggiungere persistenza database
-            Annunci.Add(new Annuncio()
+            Annunci.Add(new Ad()
             {
                 NomeOggetto = "Tosaerba",
                 Descrizione = "Tosaerba BOSCHIA potente, alimentato a escrementi di piccione",
@@ -57,7 +58,7 @@ namespace RentIT.ViewModels
                 Data = DateTime.Now
             });
 
-            Annunci.Add(new Annuncio()
+            Annunci.Add(new Ad()
             {
                 NomeOggetto = "Tosaerba",
                 Descrizione = "Tosaerba BOSCHIA potente, alimentato a escermenti di piccione",
@@ -68,7 +69,7 @@ namespace RentIT.ViewModels
                 Data = DateTime.Now
             });
 
-            Annunci.Add(new Annuncio()
+            Annunci.Add(new Ad()
             {
                 NomeOggetto = "Tosaerba",
                 Descrizione = "Tosaerba BOSCHIA potente, alimentato a escermenti di piccione",
@@ -79,7 +80,7 @@ namespace RentIT.ViewModels
                 Data = DateTime.Now
             });
 
-            Annunci.Add(new Annuncio()
+            Annunci.Add(new Ad()
             {
                 NomeOggetto = "Tosaerba",
                 Descrizione = "Tosaerba BOSCHIA potente, alimentato a escermenti di piccione",
@@ -90,7 +91,7 @@ namespace RentIT.ViewModels
                 Data = DateTime.Now
             });
 
-            Annunci.Add(new Annuncio()
+            Annunci.Add(new Ad()
             {
                 NomeOggetto = "Tosaerba",
                 Descrizione = "Tosaerba BOSCHIA potente, alimentato a escrementi di piccione",
@@ -101,7 +102,7 @@ namespace RentIT.ViewModels
                 Data = DateTime.Now
             });
 
-            Annunci.Add(new Annuncio()
+            Annunci.Add(new Ad()
             {
                 NomeOggetto = "Tosaerba",
                 Descrizione = "Tosaerba BOSCHIA potente, alimentato a escermenti di piccione",
@@ -112,7 +113,7 @@ namespace RentIT.ViewModels
                 Data = DateTime.Now
             });
 
-            Annunci.Add(new Annuncio()
+            Annunci.Add(new Ad()
             {
                 NomeOggetto = "Tosaerba",
                 Descrizione = "Tosaerba BOSCHIA potente, alimentato a escermenti di piccione",
@@ -123,7 +124,7 @@ namespace RentIT.ViewModels
                 Data = DateTime.Now
             });
 
-            Annunci.Add(new Annuncio()
+            Annunci.Add(new Ad()
             {
                 NomeOggetto = "Tosaerba",
                 Descrizione = "Tosaerba BOSCHIA potente, alimentato a escermenti di piccione",
@@ -134,7 +135,7 @@ namespace RentIT.ViewModels
                 Data = DateTime.Now
             });
 
-            Annunci.Add(new Annuncio()
+            Annunci.Add(new Ad()
             {
                 NomeOggetto = "Tosaerba",
                 Descrizione = "Tosaerba BOSCHIA potente, alimentato a escrementi di piccione",
@@ -145,7 +146,7 @@ namespace RentIT.ViewModels
                 Data = DateTime.Now
             });
 
-            Annunci.Add(new Annuncio()
+            Annunci.Add(new Ad()
             {
                 NomeOggetto = "Tosaerba",
                 Descrizione = "Tosaerba BOSCHIA potente, alimentato a escermenti di piccione",
@@ -156,7 +157,7 @@ namespace RentIT.ViewModels
                 Data = DateTime.Now
             });
 
-            Annunci.Add(new Annuncio()
+            Annunci.Add(new Ad()
             {
                 NomeOggetto = "Tosaerba",
                 Descrizione = "Tosaerba BOSCHIA potente, alimentato a escermenti di piccione",
@@ -167,7 +168,7 @@ namespace RentIT.ViewModels
                 Data = DateTime.Now
             });
 
-            Annunci.Add(new Annuncio()
+            Annunci.Add(new Ad()
             {
                 NomeOggetto = "Tosaerba",
                 Descrizione = "Tosaerba BOSCHIA potente, alimentato a escermenti di piccione",
@@ -181,19 +182,19 @@ namespace RentIT.ViewModels
             IsBusy = false;
         }
 
-        Command<Annuncio> _viewGestioneAnnuncio;
-        public Command<Annuncio> ViewGestioneAnnuncio
+        Command<Ad> _viewGestioneAnnuncio;
+        public Command<Ad> ViewGestioneAnnuncio
         {
             get
             {
                 return _viewGestioneAnnuncio
-                    ?? (new Command<Annuncio>(async (annuncio) => await ExecuteViewGestioneAnnuncio(annuncio)));
+                    ?? (new Command<Ad>(async (annuncio) => await ExecuteViewGestioneAnnuncio(annuncio)));
             }
         }
 
-        async Task ExecuteViewGestioneAnnuncio(Annuncio annuncio)
+        async Task ExecuteViewGestioneAnnuncio(Ad annuncio)
         {
-            await NavService.NavigateTo<GestioneAnnuncioViewModel, Annuncio>(annuncio);
+            await NavService.NavigateTo<GestioneAnnuncioViewModel, Ad>(annuncio);
         }
 
         public async override Task Init(SearchQuery query)

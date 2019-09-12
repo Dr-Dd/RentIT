@@ -1,4 +1,6 @@
-﻿using RentIT.Models;
+﻿using App.Services.Annuncio;
+using RentIT.Models;
+using RentIT.Models.Annuncio;
 using RentIT.Services;
 using System;
 using System.Collections.Generic;
@@ -8,10 +10,10 @@ using Xamarin.Forms;
 
 namespace RentIT.ViewModels
 {
-    public class GestioneAnnuncioViewModel : BaseViewModel<Annuncio>
+    public class GestioneAnnuncioViewModel : BaseViewModel<Ad>
     {
-        Annuncio _annuncio;
-        public Annuncio Annuncio
+        Ad _annuncio;
+        public Ad Annuncio
         {
             get
             {
@@ -24,11 +26,14 @@ namespace RentIT.ViewModels
             }
         }
 
-        public GestioneAnnuncioViewModel(INavService navService) : base(navService)
+
+        readonly IAnnuncioService _annuncioService;
+        public GestioneAnnuncioViewModel(INavService navService, AnnuncioService annuncioService) : base(navService)
         {
+            _annuncioService = annuncioService;
         }
 
-        public async override Task Init(Annuncio annuncio)
+        public async override Task Init(Ad annuncio)
         {
             Annuncio = annuncio;
         }
@@ -47,8 +52,8 @@ namespace RentIT.ViewModels
         async Task ExecuteEliminaAnnuncioCommand()
         {
             IsBusy = true;
-            /*
-            var response = await _annuncioService.Delete();
+            
+            var response = await _annuncioService.Delete(Annuncio.Id);
             if (response.hasSucceded)
             {
                 await NavService.NavigateToMainPage();
@@ -57,7 +62,6 @@ namespace RentIT.ViewModels
             {
                 await App.Current.MainPage.DisplayAlert("Errore", response.responseMessage, "Ok");
             }
-            */
 
             IsBusy = false;
         }
@@ -90,8 +94,7 @@ namespace RentIT.ViewModels
                 await App.Current.MainPage.DisplayAlert("Errore", "Non hai riempito uno o più campi", "Ok");
                 return;
             }
-
-            /*
+            
             var response = await _annuncioService.ModifyItemData(Annuncio);
             if (response.hasSucceded)
             {
@@ -101,7 +104,7 @@ namespace RentIT.ViewModels
             {
                 await App.Current.MainPage.DisplayAlert("Errore", response.responseMessage, "Ok");
             }
-            */
+            
             IsBusy = false;
         }
     }

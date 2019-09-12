@@ -1,4 +1,4 @@
-﻿using App.Models.User;
+﻿using App.Models.Image;
 using System;
 using System.Collections.Generic;
 using System.IO;
