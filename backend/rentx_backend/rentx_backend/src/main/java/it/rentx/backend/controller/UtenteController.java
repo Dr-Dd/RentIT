@@ -50,10 +50,11 @@ public class UtenteController {
     	Utente utente_da_modificare = this.utenteRepository.findByEmail(this.utenteService.estrazioneEmailDaToken(token));
     	//utente_da_modificare.setNumero(dati_utente.getNumero());
     	//utente_da_modificare.setAddress(dati_utente.getAddress());
-    	String password = utente_da_modificare.getPassword();
+    	//String password = utente_da_modificare.getPassword();
     	
-    	utente_modificato.setPassword(password);
+    	
     	this.utenteRepository.delete(utente_da_modificare);
+    	utente_modificato.setPassword(bCryptPasswordEncoder.encode(utente_modificato.getPassword()));
     	this.utenteRepository.save(utente_modificato);
     	return ResponseEntity.ok().body(new Risposta("true", utente_modificato.getId(), "", "Dati modificati correttamente."));
     }
