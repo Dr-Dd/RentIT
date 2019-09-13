@@ -6,62 +6,65 @@
     <ContentPage.Content>
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="30*"/>
-                <RowDefinition Height="40*"/>
-                <RowDefinition Height="30*"/>
+                <RowDefinition Height="30*" />
+                <RowDefinition Height="40*" />
+                <RowDefinition Height="30*" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="10*"/>
-                <ColumnDefinition Width="10*"/>
-                <ColumnDefinition Width="60*"/>
-                <ColumnDefinition Width="10*"/>
-                <ColumnDefinition Width="10*"/>
+                <ColumnDefinition Width="10*" />
+                <ColumnDefinition Width="10*" />
+                <ColumnDefinition Width="60*" />
+                <ColumnDefinition Width="10*" />
+                <ColumnDefinition Width="10*" />
             </Grid.ColumnDefinitions>
             <Image Grid.Row="0"
                    Grid.Column="2"
-                   Source="RentBanner.png"/>
-            <Frame VerticalOptions="Center" 
-                         Grid.Row="1"
-                         Grid.Column="1"
-                         Grid.ColumnSpan="3"
-                         BorderColor="#607D8B" 
-                         BackgroundColor="WhiteSmoke" >
+                   Source="RentBanner.png" />
+            <Frame VerticalOptions="Center"
+                   CornerRadius="25"
+                   Grid.Row="1"
+                   Grid.Column="1"
+                   Grid.ColumnSpan="3"
+                   BorderColor="#607D8B"
+                   BackgroundColor="WhiteSmoke">
                 <StackLayout>
-                    <Label x:Name="prova" 
-                               Text="CHE COSA STAI CERCANDO?" 
-                               FontSize="Medium" 
-                               TextColor="#607D8B"
-                               HorizontalOptions="Center">
+                    <Label x:Name="prova"
+                           Text="CHE COSA STAI CERCANDO?"
+                           FontSize="Medium"
+                           TextColor="#607D8B"
+                           HorizontalOptions="Center">
                         <Label.FontFamily>
                             <OnPlatform x:TypeArguments="x:String">
-                                <On Platform="Android" 
-                                        Value="Quicksand-Bold.ttf#Quicksand-Bold"/>
+                                <On Platform="Android"
+                                    Value="Quicksand-Bold.ttf#Quicksand-Bold" />
                             </OnPlatform>
                         </Label.FontFamily>
                     </Label>
-                    <SearchBar HorizontalOptions="Center" 
+                    <SearchBar HorizontalOptions="Center"
                                Placeholder="Cerca qualcosa"
                                x:Name="objectSearchBar"
                                FontFamily="Quicksand-Light.ttf#Quicksand-Light"
-                               PlaceholderColor="#BDBDBD"/>
-                    <SearchBar x:Name="citySearchBar" 
-                               TextChanged="CitySearchBar_TextChanged" 
-                               HorizontalOptions="Center" 
+                               PlaceholderColor="#BDBDBD" />
+                    <SearchBar x:Name="citySearchBar"
+                               TextChanged="CitySearchBar_TextChanged"
+                               HorizontalOptions="Center"
                                Placeholder="Indirizzo, Città"
                                FontFamily="Quicksand-Light.ttf#Quicksand-Light"
                                PlaceholderColor="#BDBDBD" />
-                    <ListView x:Name="suggestionListView" 
-                              ItemTapped="SuggestionListView_ItemTapped"/>
+                    <ListView x:Name="suggestionListView"
+                              ItemTapped="SuggestionListView_ItemTapped" />
                     <Button Text="CERCA"
+                            CornerRadius="25"
                             TextColor="#607D8B"
                             FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
                             BorderColor="#607D8B"
                             BorderWidth="1"
                             BackgroundColor="WhiteSmoke"
-                            Margin="0,0,0,20"/>
+                            Margin="0,0,0,20" />
                 </StackLayout>
             </Frame>
             <Button Grid.Row="2"
+                    CornerRadius="20"
                     Grid.Column="1"
                     Grid.ColumnSpan="3"
                     Text="+ AGGIUNGI ANNUNCIO"

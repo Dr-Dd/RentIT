@@ -1,122 +1,132 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-                    x:Class="RentIT.Views.ModificaDati"
-                    xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
-                    Title="Modifica Dati">
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RentIT.Views.ModificaDati"
+             xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
+             Title="Modifica Dati">
     <ContentPage.Content>
         <ScrollView>
             <StackLayout>
-            <Grid Margin="10">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="3*"/>
-                    <RowDefinition Height="0.7*"/>
-                    <RowDefinition Height="0.7*"/>
-                    <RowDefinition Height="0.7*"/>
-                    <RowDefinition Height="0.7*"/>
-                    <RowDefinition Height="0.7*"/>
-                    <RowDefinition Height="0.7*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="3.3*"/>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <Label Grid.Row="0"
-                       Grid.ColumnSpan="2"
-                    Text="MODIFICA DATI O ELIMINA ACCOUNT"
-                            HorizontalOptions="FillAndExpand"
-                            VerticalOptions="FillAndExpand"
-                            Margin="0,0,0,20"
-                            TextColor="#607D8B"
-                            FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
-                            FontSize="Medium"/>
-                <controls:CircleImage x:Name="immagineProfilo"
+                <Grid Margin="10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="3*" />
+                        <RowDefinition Height="0.7*" />
+                        <RowDefinition Height="0.7*" />
+                        <RowDefinition Height="0.7*" />
+                        <RowDefinition Height="0.7*" />
+                        <RowDefinition Height="0.7*" />
+                        <RowDefinition Height="0.7*" />
+                        <RowDefinition Height="0.7*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="3.3*" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Row="0"
+                           Grid.ColumnSpan="2"
+                           Text="MODIFICA DATI O ELIMINA ACCOUNT"
+                           HorizontalOptions="FillAndExpand"
+                           VerticalOptions="FillAndExpand"
+                           Margin="0,0,0,20"
+                           TextColor="#607D8B"
+                           FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
+                           FontSize="Medium" />
+                    <controls:CircleImage x:Name="immagineProfilo"
+                                          Grid.Row="1"
+                                          Grid.Column="0"
+                                          BorderColor="#607D8B"
+                                          Source="{Binding Immagine.Source}"
+                                          HeightRequest="10"
+                                          WidthRequest="10"
+                                          Margin="0,0,0,10" />
+                    <Button Margin="20,20,20,20"
                             Grid.Row="1"
-                            Grid.Column="0"  
-                            BorderColor="#607D8B"
-                            Source="{Binding Immagine.Source}"
-                            HeightRequest="10"
-                            WidthRequest="10"
-                            Margin="0,0,0,10"/>
-                <Button Margin="20,20,20,20"
-                        Grid.Row="1"
                             Grid.Column="1"
                             ImageSource="Modify.png"
                             BackgroundColor="Transparent"
                             WidthRequest="10"
                             HeightRequest="10"
-                            Command="{Binding ModificaFotoCommand}"/>
-                <Entry Grid.Row="2"
-                       Placeholder="Email"
-                            Grid.ColumnSpan="2"
-                        Text="{Binding Utente.Email}"
-                        TextColor="#607D8B"
-                       PlaceholderColor="#BDBDBD"
-                        FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"/>
-                <Entry Grid.Row="3"
-                       Grid.Column="0"
-                       Grid.ColumnSpan="2"
-                       x:Name="password"
-                       Text="{Binding Path=Password}"
-                       Placeholder="Modifica password"
-                       PlaceholderColor="#BDBDBD"
-                       FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
-                       HorizontalOptions="FillAndExpand"
-                       IsPassword="True"/>
-                <Entry Grid.Row="4"
-                       Grid.Column="0"
-                       Grid.ColumnSpan="2"
-                       x:Name="confermaPassword"
-                       Text="{Binding Path=ConfermaPassword}"
-                       Placeholder="Conferma password"
-                       PlaceholderColor="#BDBDBD"
-                       FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
-                       HorizontalOptions="FillAndExpand"
-                       IsPassword="True"/>
-                <Entry Grid.Row="5"
-                       Placeholder="Indirizzo"
-                       Grid.Column="0"
-                       Grid.ColumnSpan="2"
-                       x:Name="nuovoIndirizzo"
-                            Text="{Binding Utente.Address}"
-                            TextColor="#607D8B"
-                       PlaceholderColor="#BDBDBD"
-                            FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"/>
-                <Entry Grid.Row="6"
+                            Command="{Binding ModificaFotoCommand}" />
+                    <Entry Grid.Row="2"
+                           Placeholder="Nome"
+                           Grid.ColumnSpan="2"
+                           Text="{Binding Utente.Name}"
+                           TextColor="#607D8B"
+                           PlaceholderColor="#BDBDBD"
+                           FontFamily="Quicksand-Bold.ttf#Quicksand-Bold" />
+                    <Entry Grid.Row="3"
+                           Placeholder="Cognome"
+                           Grid.ColumnSpan="2"
+                           Text="{Binding Utente.Surname}"
+                           TextColor="#607D8B"
+                           PlaceholderColor="#BDBDBD"
+                           FontFamily="Quicksand-Bold.ttf#Quicksand-Bold" />
+                    <Entry Grid.Row="4"
+                           Grid.Column="0"
+                           Grid.ColumnSpan="2"
+                           x:Name="password"
+                           Text="{Binding Path=Password}"
+                           Placeholder="Modifica password"
+                           PlaceholderColor="#BDBDBD"
+                           FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
+                           HorizontalOptions="FillAndExpand"
+                           IsPassword="True" />
+                    <Entry Grid.Row="5"
+                           Grid.Column="0"
+                           Grid.ColumnSpan="2"
+                           x:Name="confermaPassword"
+                           Text="{Binding Path=ConfermaPassword}"
+                           Placeholder="Conferma password"
+                           PlaceholderColor="#BDBDBD"
+                           FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
+                           HorizontalOptions="FillAndExpand"
+                           IsPassword="True" />
+                    <Entry Grid.Row="6"
+                           Placeholder="Indirizzo"
+                           Grid.Column="0"
+                           Grid.ColumnSpan="2"
+                           x:Name="nuovoIndirizzo"
+                           Text="{Binding Utente.Address}"
+                           TextColor="#607D8B"
+                           PlaceholderColor="#BDBDBD"
+                           FontFamily="Quicksand-Bold.ttf#Quicksand-Bold" />
+                    <Entry Grid.Row="7"
+                           Grid.Column="0"
+                           Grid.ColumnSpan="2"
+                           Placeholder="Telefono"
+                           x:Name="nuovoTelefono"
+                           Text="{Binding Utente.Numero}"
+                           TextColor="#607D8B"
+                           PlaceholderColor="#BDBDBD"
+                           FontFamily="Quicksand-Bold.ttf#Quicksand-Bold" />
+                    <Button Grid.Row="8"
+                            x:Name="modifica"
+                            CornerRadius="25"
                             Grid.Column="0"
-                            Grid.ColumnSpan="2"
-                            Placeholder="Telefono"
-                            x:Name="nuovoTelefono"
-                            Text="{Binding Utente.Numero}"
+                            Text="Modifica"
                             TextColor="#607D8B"
-                       PlaceholderColor="#BDBDBD"
-                            FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"/>
-                <Button Grid.Row="8"
-                        x:Name="modifica"
-                        Grid.Column="0"
-                        Text="Modifica"
-                        TextColor="#607D8B"
-                        FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
-                        BorderWidth="1"
-                        BorderColor="#607D8B"
-                        BackgroundColor="WhiteSmoke"
-                        VerticalOptions="StartAndExpand"
-                        Command="{Binding ModificaDatiCommand}"/>
-                <Button Grid.Row="8"
-                        Grid.Column="1"
-                        Text="Elimina Account"
-                        FontSize="Small"
-                        TextColor="#607D8B"
-                        FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
-                        BorderWidth="1"
-                        BorderColor="#607D8B"
-                        BackgroundColor="WhiteSmoke"
-                        VerticalOptions="StartAndExpand"
-                        Command="{Binding EliminaCommand}"/>
-            </Grid>
+                            FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
+                            BorderWidth="1"
+                            BorderColor="#607D8B"
+                            BackgroundColor="WhiteSmoke"
+                            VerticalOptions="StartAndExpand"
+                            Command="{Binding ModificaDatiCommand}" />
+                    <Button Grid.Row="8"
+                            CornerRadius="25"
+                            Grid.Column="1"
+                            Text="Elimina Account"
+                            FontSize="Small"
+                            TextColor="#607D8B"
+                            FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
+                            BorderWidth="1"
+                            BorderColor="#607D8B"
+                            BackgroundColor="WhiteSmoke"
+                            VerticalOptions="StartAndExpand"
+                            Command="{Binding EliminaCommand}" />
+                </Grid>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

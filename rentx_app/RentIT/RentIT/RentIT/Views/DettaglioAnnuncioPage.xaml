@@ -7,28 +7,28 @@
     <ContentPage.Content>
         <Grid Margin="20,20,20,20">
             <Grid.RowDefinitions>
-                <RowDefinition Height="100"/>
-                <RowDefinition Height="2*"/>
-                <RowDefinition Height="50"/>
-                <RowDefinition Height="2*"/>
-                <RowDefinition Height="50"/>
+                <RowDefinition Height="100" />
+                <RowDefinition Height="2*" />
+                <RowDefinition Height="50" />
+                <RowDefinition Height="2*" />
+                <RowDefinition Height="50" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <StackLayout Orientation="Horizontal"
                          Grid.Row="0"
                          Grid.Column="0">
-                <controls:CircleImage Source="meme.png" 
+                <controls:CircleImage Source="meme.png"
                                       WidthRequest="80"
-                                      HeightRequest="80"/>
+                                      HeightRequest="80" />
                 <Label Text="{Binding Annuncio.NomeAffittuario}"
                        FontSize="Small"
                        FontAttributes="Bold"
                        FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
                        TextColor="#607D8B"
-                       VerticalOptions="Center"/>
+                       VerticalOptions="Center" />
             </StackLayout>
             <Label Text="{Binding Annuncio.Posizione}"
                    Grid.Row="0"
@@ -38,12 +38,12 @@
                    HorizontalOptions="End"
                    FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
                    TextColor="#607D8B"
-                   Margin="0,0,20,0"/>
-            <Image Source="{Binding Annuncio.PercorsoImmagine}" 
+                   Margin="0,0,20,0" />
+            <Image Source="{Binding Annuncio.PercorsoImmagine}"
                    Aspect="AspectFit"
                    Grid.Row="1"
                    Grid.Column="0"
-                   Grid.ColumnSpan="2"/>
+                   Grid.ColumnSpan="2" />
             <Label Text="{Binding Annuncio.NomeOggetto}"
                    Grid.Row="2"
                    Grid.Column="0"
@@ -51,8 +51,8 @@
                    VerticalOptions="Center"
                    FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
                    TextColor="#607D8B"
-                   FontSize="Large" 
-                   Margin="20,0,0,0"/>
+                   FontSize="Large"
+                   Margin="20,0,0,0" />
             <Label Text="{Binding Annuncio.Prezzo, StringFormat='{0:F0}€'}"
                    Grid.Row="2"
                    Grid.Column="1"
@@ -62,20 +62,22 @@
                    FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
                    TextColor="#85bb65"
                    FontSize="Medium"
-                   Margin="0,0,20,0"/>
-            <Frame BorderColor="#607D8B" 
+                   Margin="0,0,20,0" />
+            <Frame BorderColor="#607D8B"
+                   CornerRadius="25"
                    Grid.Row="3"
                    Grid.Column="0"
                    Grid.ColumnSpan="2"
-                   Margin="2,0,2,0" 
+                   Margin="2,0,2,0"
                    BackgroundColor="WhiteSmoke">
                 <Label Text="{Binding Annuncio.Descrizione}"
                        LineBreakMode="WordWrap"
                        FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
                        TextColor="#607D8B"
-                       FontSize="Medium"/>
+                       FontSize="Medium" />
             </Frame>
             <Button Text="RENT IT!"
+                    CornerRadius="25"
                     Grid.Row="4"
                     Grid.Column="1"
                     TextColor="#607D8B"
@@ -84,7 +86,7 @@
                     VerticalOptions="CenterAndExpand"
                     BorderWidth="1"
                     Command="{Binding RentITCommand}"
-                    BorderColor="#607D8B"/>
+                    BorderColor="#607D8B" />
         </Grid>
     </ContentPage.Content>
 </ContentPage>
