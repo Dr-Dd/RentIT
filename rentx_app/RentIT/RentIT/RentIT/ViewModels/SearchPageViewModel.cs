@@ -15,6 +15,15 @@ namespace RentIT.ViewModels
         {
         }
 
+        public override async Task Init()
+        {
+        }
+
+        bool IsLogged()
+        {
+            return !AppSettings.AccessToken.Equals(string.Empty);
+        }
+        //comando nella toolbar
         Command _loginCommand;
         public Command LoginCommand
         {
@@ -27,7 +36,7 @@ namespace RentIT.ViewModels
 
         async Task ExecuteLoginCommand()
         {
-            if (AppSettings.AccessToken.Equals(string.Empty))
+            if (!IsLogged())
             {
                 await NavService.NavigateTo<LoginPageViewModel>();
             }
@@ -37,7 +46,7 @@ namespace RentIT.ViewModels
             }
         }
 
-
+        //comandi nel menù a tendina
         Command _annunciPageCommand;
         public Command AnnunciPageCommand
         {
@@ -86,6 +95,7 @@ namespace RentIT.ViewModels
             await NavService.NavigateTo<UtentePageViewModel>();
         }
 
+        //pulsante aggiungi annuncio
         Command _addAnnuncio;
         public Command AddAnnuncio
         {
@@ -98,11 +108,13 @@ namespace RentIT.ViewModels
 
         async Task ExecuteAddAnnuncioCommandAsync()
         {
+            if(!IsLogged())
+            {
+                await App.Current.MainPage.DisplayAlert("RentIT", "Iscriviti o effettua il login per aggiungere un annuncio!", "Ok");
+                await NavService.NavigateTo<LoginPageViewModel>();
+                return;
+            }
             await NavService.NavigateTo<AggiungiAnnuncioViewModel>();
-        }
-
-        public override async Task Init()
-        {
         }
     }
 }
