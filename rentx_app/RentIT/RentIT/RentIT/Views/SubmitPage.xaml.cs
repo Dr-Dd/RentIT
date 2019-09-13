@@ -17,7 +17,8 @@ namespace RentIT.Views
 	{
 		public SubmitPage ()
 		{
-			InitializeComponent ();
+            InitializeComponent();
 		}
+
     }
 }

@@ -6,30 +6,31 @@
              BackgroundColor="#CFD8DC">
     <ContentPage.Content>
         <ScrollView>
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="2*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="10*"/>
-                    <ColumnDefinition Width="10*"/>
-                    <ColumnDefinition Width="60*"/>
-                    <ColumnDefinition Width="10*"/>
-                    <ColumnDefinition Width="10*"/>
-                </Grid.ColumnDefinitions>
-                <Label Grid.Row="0"
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1.2*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="10*"/>
+                <ColumnDefinition Width="10*"/>
+                <ColumnDefinition Width="60*"/>
+                <ColumnDefinition Width="10*"/>
+                <ColumnDefinition Width="10*"/>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Row="0"
                    Grid.Column="1"
                    Grid.ColumnSpan="3"
-                   Text="Inserisci le tue credenziali"
+                   Text="Effettua il login"
                    HorizontalOptions="CenterAndExpand"
                    VerticalOptions="CenterAndExpand"
                    FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
-                   FontSize="Medium"
+                   FontSize="Large"
                    TextColor="#607D8B"/>
-                <Frame Grid.Row="1"
+            <Frame Grid.Row="1"
                        Grid.Column="1"
                        Grid.ColumnSpan="3"
                        BorderColor="#607D8B" 
@@ -38,36 +39,47 @@
                         <Entry Placeholder="Email" 
                                x:Name="Email"
                                PlaceholderColor="#BDBDBD" 
+                               FontFamily="Quicksand-Light.ttf#Quicksand-Light"
                                TextColor="Black"
                                Text="{Binding Path=Email}"/>
                         <Entry Placeholder="Password" 
                                x:Name="Password"
                                PlaceholderColor="#BDBDBD" 
+                               FontFamily="Quicksand-Light.ttf#Quicksand-Light"
                                TextColor="Black" 
                                IsPassword="True"
                                Text="{Binding Path=Password}"/>
+                        <Label
+                               Grid.Row="6"
+                               x:Name="wrongLogin"
+                               Text="Email o password non corretta"
+                               FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
+                               IsVisible="False"
+                               TextColor="Red"/>
                     </StackLayout>
                 </Frame>
-                <Button Text="LOGIN"
+            <Button Text="LOGIN"
                     Grid.Row="2"
                     Grid.Column="2"
                     FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
                     TextColor="#607D8B"
-                    VerticalOptions="CenterAndExpand"
+                    VerticalOptions="StartAndExpand"
+                    Margin="0,40,0,0"
                     BackgroundColor="WhiteSmoke"
                     BorderWidth="1"
                     BorderColor="#607D8B"
                     Command="{Binding LogInCommand}" />
-                <Button Text="iscriviti"
+            <Button Text="Iscriviti"
                     TextColor="#607D8B"
                     Grid.Row="3"
+                    Margin="0,0,0,10"
                     Grid.Column="2"
-                    VerticalOptions="EndAndExpand"
+                    VerticalOptions="StartAndExpand"
                     Command="{Binding SubmitCommand}" 
                     Font="micro" 
                     FontFamily="Quicksand-Bold.ttf#Quicksand-Bold" 
                     BackgroundColor="Transparent" />
-            </Grid>
+        </Grid>
         </ScrollView>
     </ContentPage.Content>
 </ContentPage>

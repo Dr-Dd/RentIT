@@ -1,7 +1,4 @@
-﻿using App.Models.Image;
-using App.Services.Foto;
-using RentIT.Models;
-using RentIT.Models.Annuncio;
+﻿using RentIT.Models;
 using RentIT.Services;
 using System;
 using System.Collections.Generic;
@@ -16,10 +13,10 @@ namespace RentIT.ViewModels
      * Classe segnaposto, probabilmente in futuro ci sarà bisogno 
      * di implementare l'aggiunta di un oggetto tramite API
      */
-    public class DettaglioAnnuncioViewModel : BaseViewModel<Ad>
+    public class DettaglioAnnuncioViewModel : BaseViewModel<Annuncio>
     {
-        Ad _annuncio;
-        public Ad Annuncio
+        Annuncio _annuncio;
+        public Annuncio Annuncio
         {
             get { return _annuncio; }
             set
@@ -29,38 +26,29 @@ namespace RentIT.ViewModels
             }
         }
 
-        Image _immagineUtente;
-        public Image ImmagineUtente
+        public DettaglioAnnuncioViewModel(INavService navService) : base(navService)
         {
-            get { return _immagineUtente; }
-            set
+        }
+
+        public async override Task Init(Annuncio annuncio)
+        {
+            Annuncio = annuncio;
+        }
+
+        Command _rentItCommand;
+        public Command RentITCommand
+        {
+            get
             {
-                _immagineUtente = value;
-                OnPropertyChanged();
+                return _rentItCommand
+                    ?? (_rentItCommand = new Command(async () => await ExecuteRentITCommand()));
             }
         }
 
-        readonly FotoService _fotoService;
-        public DettaglioAnnuncioViewModel(INavService navService, FotoService fotoService) : base(navService)
+        async Task ExecuteRentITCommand()
         {
-            _fotoService = fotoService;
+            await App.Current.MainPage.DisplayAlert("Contatta Affittuario", "Email: Annuncio.Affittuario.Email" + "\n" + "Telefono: Annuncio.Affittuario.Telefono", "OK");
+            return;
         }
-
-        public async override Task Init(Ad annuncio)
-        {
-            Annuncio = annuncio;
-            //ImmagineUtente = await getPropic();
-        }
-
-        //Metodo per prendere l'immagine profilo dell'utente dal database
-        public async Task<Image> getPropic()
-        {
-            ImageModel foto = await _fotoService.GetImage(Annuncio.Affittuario.Email);
-            Image img = new Image();
-            if (foto != null)
-                img = _fotoService.fromStringToImage(foto.data);
-            return img;
-        }
-
     }
 }

@@ -83,6 +83,7 @@
                     BackgroundColor="WhiteSmoke"
                     VerticalOptions="CenterAndExpand"
                     BorderWidth="1"
+                    Command="{Binding RentITCommand}"
                     BorderColor="#607D8B"/>
         </Grid>
     </ContentPage.Content>

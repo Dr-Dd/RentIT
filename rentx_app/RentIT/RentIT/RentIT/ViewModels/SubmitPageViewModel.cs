@@ -56,13 +56,50 @@ namespace RentIT.ViewModels
             {
                 _password = value;
                 OnPropertyChanged();
+                SignInCommand.ChangeCanExecute();
             }
-        }
+        }                                                 
+
+        string _confermaPassword;
+        public string ConfermaPassword
+        {
+            get { return _confermaPassword; }
+            set
+            {
+                _confermaPassword = value;
+                OnPropertyChanged();
+                //SignInCommand.ChangeCanExecute(); // Nota come, nel viewModel, la funzione di set
+            }                                     // viene eseguita ogni qualvolta l'utente modifica il campo
+        }                                         // interessato. Questo vuol dire che possiamo usarla per eseguire
+                                                  // delle operazioni ogniqualvolta un utente modifica il campo! 
+                                                  // Qui, ad esempio, sto utilizzando una funzione dei comandi, che permette di 
+                                                  // attivare o disattivare un elemento ui in base alla funzione booleana associata
+                                                  // al comando interessato (vedi sotto)
 
         public override async Task Init()
         {
         }
 
+        /**
+         * Funzione di controllo password, viene attivata ogniqualvolta una delle due password viene modificata
+         */
+        bool PasswordsAreTheSameAndNotEmpty()
+        {
+            var isValid = (Password == ConfermaPassword && 
+                !string.IsNullOrWhiteSpace(Password));
+
+            return isValid;
+        }
+
+        //Funzione di controllo campi vuoti
+        bool EmptyFields()
+        {
+            var empty = string.IsNullOrWhiteSpace(Name) ||
+                        string.IsNullOrWhiteSpace(Surname) ||
+                        string.IsNullOrWhiteSpace(Email) ||
+                        string.IsNullOrWhiteSpace(Password);
+            return empty;
+        }
 
         /*comando di registrazione*/
         Command _signInCommand;
@@ -74,10 +111,22 @@ namespace RentIT.ViewModels
                     ?? (_signInCommand = new Command(async () => await ExecuteSignInCommand()));
             }
         }
-
+        
         async Task ExecuteSignInCommand()
         {
             IsBusy = true;
+
+            if (!PasswordsAreTheSameAndNotEmpty())
+            {
+                await App.Current.MainPage.DisplayAlert("Errore", "Le due password non corrispondono", "Ok");
+                return;
+            }
+
+            if (EmptyFields())
+            {
+                await App.Current.MainPage.DisplayAlert("Errore", "Non hai riempito uno o più campi", "Ok");
+                return;
+            }
             var signUpRequest = new SignUpRequest
             {
                 name = Name,
@@ -98,5 +147,6 @@ namespace RentIT.ViewModels
 
             IsBusy = false;
         }
+
     }
 }

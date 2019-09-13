@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="RentIT.Views.AggiungiAnnuncioPage">
     <ContentPage.Content>
-        <ScrollView Margin="20,0,20,20">
+        <ScrollView>
             <StackLayout VerticalOptions="FillAndExpand">
                 <Grid HorizontalOptions="CenterAndExpand"
                   VerticalOptions="Start">
@@ -12,7 +12,7 @@
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="2*"/>
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="*"/>
@@ -20,40 +20,29 @@
                 </Grid>
                 <Label Grid.Row="0"
                    Text="Inserisci annuncio"
-                   Margin="55,0,0,0"
+                   Margin="75,0,0,0"
                    FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
                    FontSize="25"
                    TextColor="#607D8B"/>
                 <Entry Grid.Row="1"
                    x:Name="nomeOggetto"
-                   Placeholder="Nome oggetto"
-                   Text="{Binding Path=NomeOggetto}"
-                   FontFamily="Quicksand-Light.ttf#Quicksand-Light"/>
+                   Placeholder="nome oggetto"/>
                 <Entry Grid.Row="2"
                    x:Name="descrizioneOggetto"
-                   Placeholder="Descrizione"
-                   Text="{Binding Path=Descrizione}"
-                   FontFamily="Quicksand-Light.ttf#Quicksand-Light"/>
+                   Placeholder="descrizione"/>
                 <Entry Grid.Row="3"
                    x:Name="prezzo"
-                   Placeholder="Prezzo"
-                   Text="{Binding Path=Prezzo}"
-                   FontFamily="Quicksand-Light.ttf#Quicksand-Light"/>
+                   Placeholder="prezzo"/>
                 <Frame Grid.Row="4"
                    BorderColor="#607D8B"
                    Margin="10,0,10,0"
-                   HeightRequest="400"
-                   VerticalOptions="Start">
-                <Image x:Name="image" 
-                   Source="{Binding Immagine.Source}"
-                   />
+                   ScaleY="0.5">
+                   <Image x:Name="image"/>
                 </Frame>
-                <Label Margin="0,20,0,20"
-                       HorizontalOptions="Center"
+                <Label HorizontalOptions="Center"
                        Grid.Row="5"
                        x:Name="blankField"
                        Text="Compila tutti i campi"
-                       FontSize="Medium"
                        IsVisible="False"
                        TextColor="Red"
                        FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"/>
@@ -64,8 +53,7 @@
                     BorderWidth="1"
                     BorderColor="#607D8B"
                     Margin="70,0,70,0"
-                    FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
-                    Command="{Binding AggiungiFotoCommand}"
+                    Clicked="Pick_Image_Button_Clicked"
                     BackgroundColor="WhiteSmoke"/>
                 <Button Grid.Row="7"
                         Text="Aggiungi annuncio"
@@ -73,9 +61,7 @@
                         BorderWidth="1"
                         BorderColor="#607D8B"
                         Margin="70,0,70,0"
-                        FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
-                        BackgroundColor="WhiteSmoke"
-                        Command="{Binding AggiungiAnnuncioCommand}"/>
+                        BackgroundColor="WhiteSmoke"/>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>
