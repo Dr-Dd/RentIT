@@ -50,9 +50,12 @@ public class UtenteController {
     	Utente utente_da_modificare = this.utenteRepository.findByEmail(this.utenteService.estrazioneEmailDaToken(token));
     	//utente_da_modificare.setNumero(dati_utente.getNumero());
     	//utente_da_modificare.setAddress(dati_utente.getAddress());
-    	utente_da_modificare = utente_modificato;
-    	this.utenteRepository.save(utente_da_modificare);
-    	return ResponseEntity.ok().body(new Risposta("true", utente_da_modificare.getId(), "", "Dati modificati correttamente."));
+    	String password = utente_da_modificare.getPassword();
+    	
+    	utente_modificato.setPassword(password);
+    	this.utenteRepository.delete(utente_da_modificare);
+    	this.utenteRepository.save(utente_modificato);
+    	return ResponseEntity.ok().body(new Risposta("true", utente_modificato.getId(), "", "Dati modificati correttamente."));
     }
     
     @DeleteMapping("/elimina")
