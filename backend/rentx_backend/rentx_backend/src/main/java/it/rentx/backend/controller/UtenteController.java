@@ -46,13 +46,12 @@ public class UtenteController {
     
     // Da terminare
     @PutMapping("/modifica")
-    public ResponseEntity<Risposta> modificaUtente(@RequestHeader("Authorization") String token, @RequestBody Utente dati_utente) {
+    public ResponseEntity<Risposta> modificaUtente(@RequestHeader("Authorization") String token, @RequestBody Utente utente_modificato) {
     	Utente utente_da_modificare = this.utenteRepository.findByEmail(this.utenteService.estrazioneEmailDaToken(token));
-    	utente_da_modificare.setNumero(dati_utente.getNumero());
-    	utente_da_modificare.setAddress(dati_utente.getAddress());
-    	
+    	//utente_da_modificare.setNumero(dati_utente.getNumero());
+    	//utente_da_modificare.setAddress(dati_utente.getAddress());
+    	utente_da_modificare = utente_modificato;
     	this.utenteRepository.save(utente_da_modificare);
-    	
     	return ResponseEntity.ok().body(new Risposta("true", utente_da_modificare.getId(), "", "Dati modificati correttamente."));
     }
     
