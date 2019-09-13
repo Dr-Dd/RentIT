@@ -52,9 +52,13 @@ public class UtenteController {
     	//utente_da_modificare.setAddress(dati_utente.getAddress());
     	//String password = utente_da_modificare.getPassword();
     	
+    	// Se la password dell'utente che arriva dalla richiesta è diversa da quello sul db la codifico e la setto altrimenti salvo direttamente
+    	if(!utente_modificato.getPassword().equals(utente_da_modificare.getPassword()))
+    		utente_modificato.setPassword(bCryptPasswordEncoder.encode(utente_modificato.getPassword()));
+    	
     	
     	this.utenteRepository.delete(utente_da_modificare);
-    	utente_modificato.setPassword(bCryptPasswordEncoder.encode(utente_modificato.getPassword()));
+
     	this.utenteRepository.save(utente_modificato);
     	return ResponseEntity.ok().body(new Risposta("true", utente_modificato.getId(), "", "Dati modificati correttamente."));
     }
