@@ -10,7 +10,7 @@ using System.IO;
 using RentIT.Services.User;
 using App.Services.Foto;
 using RentIT.Models.User;
-using App.Models.User;
+using App.Models.Image;
 
 namespace RentIT.ViewModels
 {

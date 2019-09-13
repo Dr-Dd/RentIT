@@ -50,13 +50,20 @@
                             HeightRequest="10"
                             Command="{Binding ModificaFotoCommand}"/>
                 <Entry Grid.Row="2"
-                       Placeholder="Email"
+                       Placeholder="Nome"
                             Grid.ColumnSpan="2"
-                        Text="{Binding Utente.Email}"
+                        Text="{Binding Utente.Name}"
                         TextColor="#607D8B"
                        PlaceholderColor="#BDBDBD"
                         FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"/>
                 <Entry Grid.Row="3"
+                       Placeholder="Cognome"
+                            Grid.ColumnSpan="2"
+                        Text="{Binding Utente.Surname}"
+                        TextColor="#607D8B"
+                       PlaceholderColor="#BDBDBD"
+                        FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"/>
+                <Entry Grid.Row="4"
                        Grid.Column="0"
                        Grid.ColumnSpan="2"
                        x:Name="password"
@@ -66,7 +73,7 @@
                        FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
                        HorizontalOptions="FillAndExpand"
                        IsPassword="True"/>
-                <Entry Grid.Row="4"
+                <Entry Grid.Row="5"
                        Grid.Column="0"
                        Grid.ColumnSpan="2"
                        x:Name="confermaPassword"
@@ -76,7 +83,7 @@
                        FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
                        HorizontalOptions="FillAndExpand"
                        IsPassword="True"/>
-                <Entry Grid.Row="5"
+                <Entry Grid.Row="6"
                        Placeholder="Indirizzo"
                        Grid.Column="0"
                        Grid.ColumnSpan="2"
@@ -85,7 +92,7 @@
                             TextColor="#607D8B"
                        PlaceholderColor="#BDBDBD"
                             FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"/>
-                <Entry Grid.Row="6"
+                <Entry Grid.Row="7"
                             Grid.Column="0"
                             Grid.ColumnSpan="2"
                             Placeholder="Telefono"
@@ -94,7 +101,7 @@
                             TextColor="#607D8B"
                        PlaceholderColor="#BDBDBD"
                             FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"/>
-                <Button Grid.Row="8"
+                <Button Grid.Row="9"
                         x:Name="modifica"
                         Grid.Column="0"
                         Text="Modifica"
@@ -105,7 +112,7 @@
                         BackgroundColor="WhiteSmoke"
                         VerticalOptions="StartAndExpand"
                         Command="{Binding ModificaDatiCommand}"/>
-                <Button Grid.Row="8"
+                <Button Grid.Row="9"
                         Grid.Column="1"
                         Text="Elimina Account"
                         FontSize="Small"

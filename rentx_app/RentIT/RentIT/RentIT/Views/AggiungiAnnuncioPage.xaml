@@ -26,34 +26,33 @@
                    TextColor="#607D8B"/>
                 <Entry Grid.Row="1"
                    x:Name="nomeOggetto"
-                   Placeholder="nome oggetto"/>
+                   Placeholder="Nome oggetto"
+                   Text="{Binding Path=NomeOggetto}"
+                   FontFamily="Quicksand-Light.ttf#Quicksand-Light"/>
                 <Entry Grid.Row="2"
                    x:Name="descrizioneOggetto"
-                   Placeholder="descrizione"/>
+                   Placeholder="Descrizione"
+                   Text="{Binding Path=Descrizione}"
+                   FontFamily="Quicksand-Light.ttf#Quicksand-Light"/>
                 <Entry Grid.Row="3"
                    x:Name="prezzo"
-                   Placeholder="prezzo"/>
+                   Placeholder="Prezzo"
+                   Text="{Binding Path=Prezzo}"
+                   FontFamily="Quicksand-Light.ttf#Quicksand-Light"/>
                 <Frame Grid.Row="4"
                    BorderColor="#607D8B"
                    Margin="10,0,10,0"
                    ScaleY="0.5">
-                   <Image x:Name="image"/>
+                    <Image x:Name="image"
+                           Source="{Binding Immagine.Source}"/>
                 </Frame>
-                <Label HorizontalOptions="Center"
-                       Grid.Row="5"
-                       x:Name="blankField"
-                       Text="Compila tutti i campi"
-                       IsVisible="False"
-                       TextColor="Red"
-                       FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"/>
-                <Button x:Name="pickPictureButton"
-                    Grid.Row="6"
+                <Button Grid.Row="6"
                     Text="+ Inserisci immagine"
                     TextColor="#607D8B"
                     BorderWidth="1"
                     BorderColor="#607D8B"
                     Margin="70,0,70,0"
-                    Clicked="Pick_Image_Button_Clicked"
+                    Command="{Binding AggiungiFotoCommand}"
                     BackgroundColor="WhiteSmoke"/>
                 <Button Grid.Row="7"
                         Text="Aggiungi annuncio"
@@ -61,7 +60,8 @@
                         BorderWidth="1"
                         BorderColor="#607D8B"
                         Margin="70,0,70,0"
-                        BackgroundColor="WhiteSmoke"/>
+                        BackgroundColor="WhiteSmoke"
+                        Command="{Binding AggiungiAnnuncioCommand}"/>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

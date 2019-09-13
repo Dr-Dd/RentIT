@@ -1,4 +1,5 @@
 ﻿using RentIT.Models;
+using RentIT.Models.Annuncio;
 using RentIT.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -26,7 +27,7 @@ namespace RentIT.Views
 
         async void GestioneAnnuncio_ItemTapped(object sender, ItemTappedEventArgs e)
         {
-            var annuncio = (Annuncio)e.Item;
+            var annuncio = (Ad)e.Item;
             _vm.ViewGestioneAnnuncio.Execute(annuncio);
 
             listaAnnunci.SelectedItem = null;
