@@ -11,7 +11,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "image_utente")
+@Table(name = "immagine")
 public class Image {
 
 	@Id
@@ -22,7 +22,11 @@ public class Image {
     @JoinColumn(name = "id_utente")
 	private Utente utente;
 	
-	@Column(name = "image_utente")
+	@OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_annuncio")
+	private Annuncio immagineAnnuncio;
+	
+	@Column(name = "immagine")
 	private Byte[] image;
 	
 	public Image() {}
@@ -54,6 +58,14 @@ public class Image {
 
 	public void setImage(Byte[] image) {
 		this.image = image;
+	}
+
+	public Annuncio getImmagineAnnuncio() {
+		return immagineAnnuncio;
+	}
+
+	public void setImmagineAnnuncio(Annuncio immagineAnnuncio) {
+		this.immagineAnnuncio = immagineAnnuncio;
 	}
 	
 	

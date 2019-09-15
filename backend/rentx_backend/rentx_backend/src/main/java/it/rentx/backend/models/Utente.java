@@ -1,5 +1,7 @@
 package it.rentx.backend.models;
 
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -7,6 +9,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -38,6 +41,9 @@ public class Utente {
 	
 	@OneToOne(mappedBy = "utente", cascade = CascadeType.ALL, fetch = FetchType.LAZY, optional = false)
 	private Image image;
+	
+	@OneToMany(mappedBy = "Affittuario", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private List<Annuncio> annunciUtente;
 	
 	public Utente() {}
 	
@@ -114,6 +120,15 @@ public class Utente {
 	public void setImage(Image image) {
 		this.image = image;
 	}
+
+	public List<Annuncio> getAnnunciUtente() {
+		return annunciUtente;
+	}
+
+	public void setAnnunciUtente(List<Annuncio> annunciUtente) {
+		this.annunciUtente = annunciUtente;
+	}
+	
 	
 	
 	
