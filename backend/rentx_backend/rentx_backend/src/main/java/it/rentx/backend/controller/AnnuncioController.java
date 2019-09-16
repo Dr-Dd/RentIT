@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -73,5 +74,16 @@ public class AnnuncioController {
     	annuncioService.delete(annuncioService.annuncioPerId(id));
     	return ResponseEntity.ok().body(new Risposta("true", "", "Annuncio eliminato correttamente.", null));
     }
+	
+	@GetMapping("/annunciDi/{id}")
+	public List<Annuncio> AnnunciUtente(@RequestHeader("Authorization") String token, @PathVariable("id") Long id) {
+		Utente attuale = utenteRepository.findByEmail(utenteService.estrazioneEmailDaToken(token));
+		
+		/*Se l'utente che sta facendo la richiesta la sta facendo per i propri annunci, può vedere anche
+		 * quelli prenotati, altrimenti no. Non so come farlo quindi per ora mi restituisco tutti gli annunci dell'utente
+		 */		
+		
+    	return annuncioService.annunciUtente(utenteRepository.findById(id).get());
+	}
 
 }

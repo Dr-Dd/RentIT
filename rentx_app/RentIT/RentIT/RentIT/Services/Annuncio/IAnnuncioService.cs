@@ -19,5 +19,8 @@ namespace App.Services.Annuncio
 
         Task<List<Ad>> GetUserAds(long UserId,bool b);
 
+        Task<List<Ad>> GetMyNotBookedAds();
+
+        Task<List<Ad>> GetMyBookedAds();
     }
 }

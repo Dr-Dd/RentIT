@@ -1,10 +1,13 @@
 package it.rentx.backend.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import it.rentx.backend.models.Annuncio;
+import it.rentx.backend.models.Utente;
 import it.rentx.backend.repository.AnnuncioRepository;
 
 @Service
@@ -42,6 +45,11 @@ public class AnnuncioService {
 		annuncio.setPrezzo(a.getPrezzo());
 		//solo questi tre perché utente, posizione e data non si possono modificare
 		return annuncio;
+	}
+
+	@Transactional
+	public List<Annuncio> annunciUtente(Utente affittuario) {
+		return repo.findByAffittuario(affittuario);
 	}
 }
 

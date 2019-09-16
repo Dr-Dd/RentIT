@@ -1,4 +1,5 @@
-﻿using RentIT.Models;
+﻿using App.Services.Annuncio;
+using RentIT.Models;
 using RentIT.Models.Annuncio;
 using RentIT.Models.User;
 using RentIT.Services;
@@ -15,8 +16,8 @@ namespace RentIT.ViewModels
 {
     public class AnnunciUtenteViewModel : BaseViewModel<SearchQuery>
     {
-        ObservableCollection<Ad> _annunci;
-        public ObservableCollection<Ad> Annunci
+        List<Ad> _annunci;
+        public List<Ad> Annunci
         {
             get { return _annunci; }
             set
@@ -25,10 +26,19 @@ namespace RentIT.ViewModels
                 OnPropertyChanged();
             }
         }
-        
-        public AnnunciUtenteViewModel(INavService navService) : base(navService)
+
+        readonly IAnnuncioService _annuncioService;
+        public AnnunciUtenteViewModel(INavService navService, AnnuncioService annuncioService) : base(navService)
         {
-            Annunci = new ObservableCollection<Ad>();
+            _annuncioService = annuncioService;
+        }
+
+        public async override Task Init(SearchQuery query)
+        {
+            Annunci = await _annuncioService.GetMyNotBookedAds();
+            //Poi ci sarà la pagina con quelli booked
+            //AnnunciBook = await _annuncioService.GetMyBookedAds();
+            //await LoadEntries(); 
         }
         /**
         * IMPORTANTE: Nello stato attuale, la ListView fa laggare
@@ -195,11 +205,6 @@ namespace RentIT.ViewModels
         async Task ExecuteViewGestioneAnnuncio(Ad annuncio)
         {
             await NavService.NavigateTo<GestioneAnnuncioViewModel, Ad>(annuncio);
-        }
-
-        public async override Task Init(SearchQuery query)
-        {
-            //await LoadEntries(); 
         }
     }
 }
