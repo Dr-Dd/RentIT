@@ -46,7 +46,7 @@ namespace App.Services.Foto
         }
 
         //metodo per uploadare le foto di un annuncio nel db(una per volta se sono tante in una lista)
-        public async Task UploadAdImagesAsync(string idAnn, string imageAsBase64)
+        public async Task UploadAdImagesAsync(int idAnn, string imageAsBase64)
         {
             var builder = new UriBuilder(Constants.uploadImgsAnnuncioEndpoint());
             builder.Path = "/" + idAnn;     //lo mettiamo?? 
@@ -62,7 +62,7 @@ namespace App.Services.Foto
 
 
         //metodo per prendere dal db le immagini relative ad un annuncio
-        public async Task<List<ImageModel>> GetAdImagesAsync(string idAnn) {
+        public async Task<List<ImageModel>> GetAdImagesAsync(int idAnn) {
 
             var builder = new UriBuilder(Constants.UserEndpointGetImage());
             builder.Path = "/" + idAnn;
@@ -91,7 +91,7 @@ namespace App.Services.Foto
 
         /* Metodo per prendere dal db la foto di un utente conoscendone l'idUser che deve corrispondere con il token*/
         //qui serve l'id dell'utente e non solo il token
-        public async Task<ImageModel> GetUserImage(string idUser)
+        public async Task<ImageModel> GetUserImage(int idUser)
         {
 
             var builder = new UriBuilder(Constants.UserEndpointGetImage());

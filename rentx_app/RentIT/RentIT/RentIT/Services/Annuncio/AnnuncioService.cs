@@ -35,7 +35,7 @@ namespace App.Services.Annuncio
         //mi serve l'id dell'annuncio (che ho anche aggiunto nel model)
         //nel db bisogna poi controllare che quell'id sia effettivamente dell'utente con questo token(
         //altrimenti chiunque puo cancellare un qualsiasi annuncio)
-        public async Task<Response> DeleteAdAsync(string idAd)
+        public async Task<Response> DeleteAdAsync(int idAd)
         {
             var builder = new UriBuilder(Constants.eliminaAnnuncioEndpoint());
             builder.Path = "/" + idAd;
@@ -53,7 +53,7 @@ namespace App.Services.Annuncio
         public async Task<Response> ModifyAdDataAsync(Ad a)
         {
             var builder = new UriBuilder(Constants.modificaAnnuncioEndpoint());
-            if (string.IsNullOrWhiteSpace(a.Id))
+            if (a.Id==0)  //da capire se questo  giusto
             {
                 var errResp = new Response {
                     hasSucceded = false,

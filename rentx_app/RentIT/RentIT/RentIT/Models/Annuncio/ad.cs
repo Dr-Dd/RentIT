@@ -10,7 +10,7 @@ namespace RentIT.Models.Annuncio
     public class Ad
     {
 
-        public string Id { get; set; }
+        public int Id { get; set; }
 
         public string NomeOggetto { get; set; }
 
@@ -23,6 +23,8 @@ namespace RentIT.Models.Annuncio
         public string Posizione { get; set; }
 
         public DateTime Data { get; set; }
+
+        public int AffittuarioId { get; set; }
 
         //Image non ci va proprio
         // public Image Immagine { get; set; }

@@ -53,7 +53,7 @@ namespace RentIT.ViewModels
         {
             IsBusy = true;
             
-            var response = await _annuncioService.Delete(Annuncio.Id);
+            var response = await _annuncioService.DeleteAdAsync(Annuncio.Id);
             if (response.hasSucceded)
             {
                 await NavService.NavigateToMainPage();
@@ -95,7 +95,7 @@ namespace RentIT.ViewModels
                 return;
             }
             
-            var response = await _annuncioService.ModifyItemData(Annuncio);
+            var response = await _annuncioService.ModifyAdDataAsync(Annuncio);
             if (response.hasSucceded)
             {
                 await NavService.NavigateToMainPage();

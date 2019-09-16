@@ -81,7 +81,7 @@ namespace RentIT.ViewModels
         //Metodo per prendere l'immagine profilo dal database
         public async Task<Image> getPropic()
         {
-            ImageModel foto = await _userService.GetUserImage();
+            ImageModel foto = await _fotoService.GetUserImage(AppSettings.UserId);
             Image img = null;
             if (foto != null)
                 img = _fotoService.fromStringToImage(foto.data);
@@ -109,7 +109,7 @@ namespace RentIT.ViewModels
             {
                 //se esiste, si salva la foto nel db associandola all'utente
                 string base64 = _fotoService.fromStreamToString(stream);
-                await _userService.UploadUserImageAsync(base64);
+                await _fotoService.UploadUserImageAsync(base64);
                 OnPropertyChanged();
             }
         }

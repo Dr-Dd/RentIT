@@ -11,6 +11,6 @@ namespace App.Services.Annuncio
 
         Task<Response> ModifyAdDataAsync(Ad a);
         
-        Task<Response> DeleteAdAsync(string idAnn);
+        Task<Response> DeleteAdAsync(int idAnn);
     }
 }
