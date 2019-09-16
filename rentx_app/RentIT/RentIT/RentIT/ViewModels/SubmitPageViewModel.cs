@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Text;
+using System.Threading.Tasks;
 using RentIT.Models.User;
 using RentIT.Services;
 using RentIT.Services.User;
@@ -137,7 +138,10 @@ namespace RentIT.ViewModels
             var signUpResponse = await _userService.SignUpAsync(signUpRequest);
             if (signUpResponse.hasSucceded)
             {
-                //c'è da fare il login da qui?
+                StringBuilder benvenuto = new StringBuilder();
+                benvenuto.AppendLine("Registrazione avvenuta con successo!");
+                benvenuto.Append("Effettua il login e completa il tuo profilo");
+                await App.Current.MainPage.DisplayAlert("RentIT", benvenuto.ToString(), "Ok");
                 await NavService.NavigateToMainPage();
             }
             else
