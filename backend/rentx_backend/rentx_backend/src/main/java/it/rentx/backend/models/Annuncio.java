@@ -13,7 +13,12 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.hibernate.search.annotations.Field;
+import org.hibernate.search.annotations.Indexed;
+import org.hibernate.search.annotations.TermVector;
+
 @Entity
+@Indexed
 @Table(name = "annuncio")
 public class Annuncio {
 
@@ -21,8 +26,10 @@ public class Annuncio {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	
+	@Field(termVector = TermVector.YES)
 	private String NomeOggetto;
 	
+	@Field(termVector = TermVector.YES)
 	private String Descrizione;
 	
 	@OneToOne(mappedBy = "immagineAnnuncio", cascade = CascadeType.ALL, fetch = FetchType.LAZY, optional = false)
