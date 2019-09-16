@@ -51,6 +51,11 @@ namespace RentIT
             return string.Format(Constants.defaultUserEndpoint, "modifica");
         }
 
+        public static string UserEndpointData()
+        {
+            return string.Format(Constants.defaultUserEndpoint, "profiloDi");
+        }
+
         public static string UserEndpointCurrentData()
         {
             return string.Format(Constants.defaultUserEndpoint, "profile");
