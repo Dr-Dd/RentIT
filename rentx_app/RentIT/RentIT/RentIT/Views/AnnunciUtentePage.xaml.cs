@@ -12,7 +12,7 @@ using Xamarin.Forms.Xaml;
 namespace RentIT.Views
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class AnnunciUtentePage : ContentPage
+	public partial class AnnunciUtentePage : CarouselPage
 	{
         AnnunciUtenteViewModel _vm
         {
@@ -30,6 +30,7 @@ namespace RentIT.Views
             _vm.ViewGestioneAnnuncio.Execute(annuncio);
 
             listaAnnunci.SelectedItem = null;
+            listaAnnunciPrenotati.SelectedItem = null;
         }
     }
 }

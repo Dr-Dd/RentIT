@@ -2,8 +2,9 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
-             xmlns:carousel="clr-namespace:CarouselView.FormsPlugin.Abstractions;assembly=CarouselView.FormsPlugin.Abstractions"
-             x:Class="RentIT.Views.DettaglioAnnuncioPage">
+             xmlns:carousel="clr-namespace:Xamd.ImageCarousel.Forms.Plugin.Abstractions;assembly=Xamd.ImageCarousel.Forms.Plugin.Abstractions"
+             x:Class="RentIT.Views.DettaglioAnnuncioPage"
+             >
     <ContentPage.Content>
         <Grid Margin="20,20,20,20">
             <Grid.RowDefinitions>
@@ -39,11 +40,13 @@
                    FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
                    TextColor="#607D8B"
                    Margin="0,0,20,0" />
-            <Image Source="{Binding Annuncio.PercorsoImmagine}"
-                   Aspect="AspectFit"
-                   Grid.Row="1"
-                   Grid.Column="0"
-                   Grid.ColumnSpan="2" />
+            <StackLayout Grid.Row="1"
+                         Grid.Column="0"
+                         Grid.ColumnSpan="2"
+                         HorizontalOptions="Center"
+                         VerticalOptions="End">
+                <carousel:ImageCarousel Images="{Binding Annuncio.PercorsiImmagine}" />
+            </StackLayout>
             <Label Text="{Binding Annuncio.NomeOggetto}"
                    Grid.Row="2"
                    Grid.Column="0"

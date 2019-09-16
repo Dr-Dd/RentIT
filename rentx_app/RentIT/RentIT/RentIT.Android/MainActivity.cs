@@ -11,6 +11,7 @@ using CarouselView.FormsPlugin.Android;
 using System.IO;
 using System.Threading.Tasks;
 using Android.Content;
+using Xamd.ImageCarousel.Forms.Plugin.Droid;
 
 namespace RentIT.Droid
 {
@@ -35,6 +36,7 @@ namespace RentIT.Droid
         private void InitControls()
         {
             CarouselViewRenderer.Init();
+            ImageCarouselRenderer.Init();
         }
 
         //Lettura immagini dalla galleria

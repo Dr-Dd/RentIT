@@ -26,9 +26,8 @@
                             </Grid.ColumnDefinitions>
                             <Image Grid.Row="0" 
                                    Grid.RowSpan="3"
-                                   Grid.Column="0" 
-                                   Source="{Binding PercorsoImmagine}"
-                                   />
+                                   Grid.Column="0"
+                                   Source="tosaerba.png" />
                             <Label Grid.Row="0"                                               
                                    Grid.Column="1"                                               
                                    Text="{Binding NomeOggetto}"                                               
