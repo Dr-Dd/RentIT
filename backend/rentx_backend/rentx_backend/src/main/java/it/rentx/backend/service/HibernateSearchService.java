@@ -3,6 +3,7 @@ package it.rentx.backend.service;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 import javax.persistence.NoResultException;
 import javax.transaction.Transactional;
 
@@ -17,15 +18,13 @@ import it.rentx.backend.models.Annuncio;
 
 @Service
 public class HibernateSearchService {
-
-	@Autowired
+	
 	private final EntityManager centityManager;
 	
-	
 	@Autowired
-	public HibernateSearchService(EntityManager entityManager) {
+	public HibernateSearchService(final EntityManagerFactory entityManager) {
 		super();
-		this.centityManager = entityManager;
+		this.centityManager = entityManager.createEntityManager();
 	}
 	
 	public void initializeHibernateSearch() {

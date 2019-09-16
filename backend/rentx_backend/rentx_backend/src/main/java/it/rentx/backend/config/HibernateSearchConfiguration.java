@@ -1,6 +1,6 @@
 package it.rentx.backend.config;
 
-import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -14,7 +14,7 @@ import it.rentx.backend.service.HibernateSearchService;
 public class HibernateSearchConfiguration {
 	
 	@Autowired
-	private EntityManager bentityManager;
+	private EntityManagerFactory bentityManager;
 	
 	@Bean
 	HibernateSearchService hibernateSearchService() {
