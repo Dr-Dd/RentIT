@@ -6,6 +6,7 @@ using App.Models.Image;
 using RentIT.Models.User;
 using RentIT.Services.Authentication;
 using RentIT.Services.Request;
+using RentIT.DBmessages;
 
 namespace RentIT.Services.User
 {

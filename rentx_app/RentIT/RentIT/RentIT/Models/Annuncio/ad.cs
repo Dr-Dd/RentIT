@@ -12,6 +12,8 @@ namespace RentIT.Models.Annuncio
 
         public int Id { get; set; }
 
+        public int AffittuarioId { get; set; }
+
         public string NomeOggetto { get; set; }
 
         public string Descrizione { get; set; }
@@ -24,7 +26,7 @@ namespace RentIT.Models.Annuncio
 
         public DateTime Data { get; set; }
 
-        public int AffittuarioId { get; set; }
+        
 
         //Questi due servono solo per visualizzare gli annunci nelle liste. Non vengono salvati nel db
         public Image Immagine { get; set; }
