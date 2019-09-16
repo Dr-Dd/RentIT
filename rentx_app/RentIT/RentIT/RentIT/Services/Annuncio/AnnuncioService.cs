@@ -6,6 +6,8 @@ using RentIT;
 using RentIT.Models.Annuncio;
 using RentIT.Models.User;
 using RentIT.Services.Request;
+using RentIT.DBmessages;
+using RentIT.Models;
 
 namespace App.Services.Annuncio
 {
@@ -45,7 +47,7 @@ namespace App.Services.Annuncio
 
             return resp;
         }
-        
+
 
         //anche qui ho bisogno dell'id dell'Annuncio da modificare , anche se stavolta posso prenderlo da dentro l'annuncio,
         //in realtà però dipende da come gestiamo il fetch dal db , in ogni caso non facciamo vedere l'id all'utente ,ma nel caso 
@@ -70,5 +72,54 @@ namespace App.Services.Annuncio
 
             return resp;
         }
+
+
+        public async Task<List<Ad>> GetLastAds(string città,string oggetto)
+        {
+            var builder = new UriBuilder(Constants.UltimiAnnunciEndpoint());
+            var uri = builder.ToString();
+
+            var sq = new SearchQuery
+            {
+                citta = città,
+                oggetto = oggetto
+            };
+
+            return await requestService.PostAsync<SearchQuery,List<Ad>>(uri,sq, AppSettings.AccessToken);
+
+        }
+
+        public async Task<List<Ad>> GetUserAds(long UserId,bool booked)
+        {
+            var builder = new UriBuilder(Constants.AnnunciPerUserEndpoint());
+            builder.Path = "/" + UserId;
+            var uri = builder.ToString();
+
+
+            //se voglio vedere quelli gia prenotati posso essere solo il possessore e nel backend dobbiamo fare il controllo che l'id corrisponda al token
+            if (booked)
+            {
+                return await requestService.GetAsync<List<Ad>>(uri, AppSettings.AccessToken);
+            }
+            //altrimenti non ti mando proprio il token tanto li puo vedere chiunque gli annunci non prenotati di un utente
+            else
+            {
+                return await requestService.GetAsync<List<Ad>>(uri);
+            }
+        }
+
+
+        //annunci non prenotati dell'user 
+        public Task<List<Ad>> GetMyNotBookedAds()
+        {
+            return GetUserAds(AppSettings.UserId,false);
+        }
+
+        public Task<List<Ad>> GetMyBookedAds()
+        {
+            return GetUserAds(AppSettings.UserId,true);
+        }
+
+        
     }
 }
