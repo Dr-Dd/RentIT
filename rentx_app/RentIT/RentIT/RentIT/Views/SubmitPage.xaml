@@ -12,7 +12,7 @@
     <ContentPage.Content>
         <ScrollView>
             <StackLayout>
-                <Grid Margin="25"
+                <Grid Padding="25"
                       VerticalOptions="Center">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="70*" />

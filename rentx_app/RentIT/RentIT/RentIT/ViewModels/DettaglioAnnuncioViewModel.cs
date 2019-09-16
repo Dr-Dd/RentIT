@@ -6,6 +6,8 @@ using System.Collections.ObjectModel;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using Xamarin.Essentials;
+
 
 namespace RentIT.ViewModels
 {
@@ -35,20 +37,30 @@ namespace RentIT.ViewModels
             Annuncio = annuncio;
         }
 
-        Command _rentItCommand;
-        public Command RentITCommand
+        Command _callCommand;
+        public Command CallCommand
         {
             get
             {
-                return _rentItCommand
-                    ?? (_rentItCommand = new Command(async () => await ExecuteRentITCommand()));
+                return _callCommand
+                    ?? (_callCommand = new Command(async () => await ExecuteCallCommand()));
             }
         }
 
-        async Task ExecuteRentITCommand()
+        async Task ExecuteCallCommand()
         {
-            await App.Current.MainPage.DisplayAlert("Contatta Affittuario", "Email: Annuncio.Affittuario.Email" + "\n" + "Telefono: Annuncio.Affittuario.Telefono", "OK");
-            return;
+            try
+            {
+                PhoneDialer.Open("6666666666666");
+            }
+            catch (FeatureNotSupportedException ex)
+            {
+                // Phone Dialer is not supported on this device.  
+            }
+            catch (Exception ex)
+            {
+                // Other error has occurred.  
+            }
         }
     }
 }

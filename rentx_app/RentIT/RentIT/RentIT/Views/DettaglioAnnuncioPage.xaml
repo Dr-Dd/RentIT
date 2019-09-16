@@ -76,17 +76,30 @@
                        TextColor="#607D8B"
                        FontSize="Medium" />
             </Frame>
-            <Button Text="RENT IT!"
-                    CornerRadius="25"
-                    Grid.Row="4"
-                    Grid.Column="1"
-                    TextColor="#607D8B"
-                    FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
+            <Button Grid.Row="4"
                     BackgroundColor="WhiteSmoke"
-                    VerticalOptions="CenterAndExpand"
+                    Grid.Column="0"
+                    CornerRadius="25"
                     BorderWidth="1"
-                    Command="{Binding RentITCommand}"
-                    BorderColor="#607D8B" />
+                    BorderColor="#607D8B"
+                    FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
+                    TextColor="#607D8B"
+                    Text="Chiama"
+                    ImageSource="ic_local_phone.png"
+                    ContentLayout="Left,10"
+                    Command="{Binding CallCommand}"/>
+            <Button Grid.Row="4"
+                    BackgroundColor="WhiteSmoke"
+                    Grid.Column="1"
+                    CornerRadius="25"
+                    BorderWidth="1"
+                    BorderColor="#607D8B"
+                    FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
+                    TextColor="#607D8B"
+                    Text="Email"
+                    ImageSource="ic_email.png"
+                    ContentLayout="Left,10"
+                    Command="{Binding EmailCommand}"/>
         </Grid>
     </ContentPage.Content>
 </ContentPage>

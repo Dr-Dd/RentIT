@@ -7,10 +7,9 @@
     <ContentPage.Padding>
         <OnPlatform iOS="0,0,20,0" />
     </ContentPage.Padding>
-
     <ContentPage.Content>
+        <ScrollView>
         <Grid BackgroundColor="#CFD8DC"
-              Margin="0,0,0,0"
               VerticalOptions="FillAndExpand"
               HorizontalOptions="FillAndExpand">
             <Grid.RowDefinitions>
@@ -94,5 +93,6 @@
                     Margin="80,20,80,20"
                     Command="{Binding LogOutCommand}" />
         </Grid>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>
