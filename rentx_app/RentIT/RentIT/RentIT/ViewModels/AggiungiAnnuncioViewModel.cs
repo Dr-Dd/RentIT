@@ -25,7 +25,7 @@ namespace RentIT.ViewModels
                 OnPropertyChanged();
             }
         }
-
+        
         string _nomeOggetto;
         public string NomeOggetto
         {
@@ -102,8 +102,6 @@ namespace RentIT.ViewModels
 
                 //questa riga serve solo a visualizzare l'immagine in attesa del collegamento al db
                 Immagine = _fotoService.fromStringToImage(base64);
-
-                //tipo _annuncioService.UploadItemImageAsync(base64)
             }
         }
 
@@ -135,8 +133,13 @@ namespace RentIT.ViewModels
                 Data = DateTime.Now
             };
             var response = await _annuncioService.AddAnnuncioAsync(annuncioRequest);
+            //C'è da salvare qui la foto. Aggiungiamo un'altra proprietà alla classe?
             if (response.hasSucceded)
             {
+                StringBuilder successo = new StringBuilder();
+                successo.AppendLine("Annuncio aggiunto con successo!");
+                successo.Append("Puoi trovarlo nella sezione 'I MIEI ANNUNCI' sul tuo profilo");
+                await App.Current.MainPage.DisplayAlert("RentIT", successo.ToString(), "Ok");
                 await NavService.NavigateToMainPage();
             }
             else
