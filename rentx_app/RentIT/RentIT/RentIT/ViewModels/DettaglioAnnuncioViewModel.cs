@@ -2,7 +2,9 @@
 using App.Services.Foto;
 using RentIT.Models;
 using RentIT.Models.Annuncio;
+using RentIT.Models.User;
 using RentIT.Services;
+using RentIT.Services.User;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -12,10 +14,6 @@ using Xamarin.Forms;
 
 namespace RentIT.ViewModels
 {
-    /**
-     * Classe segnaposto, probabilmente in futuro ci sarà bisogno 
-     * di implementare l'aggiunta di un oggetto tramite API
-     */
     public class DettaglioAnnuncioViewModel : BaseViewModel<Ad>
     {
         Ad _annuncio;
@@ -25,6 +23,17 @@ namespace RentIT.ViewModels
             set
             {
                 _annuncio = value;
+                OnPropertyChanged();
+            }
+        }
+
+        Utente _affittuario;
+        public Utente Affittuario
+        {
+            get { return _affittuario; }
+            set
+            {
+                _affittuario = value;
                 OnPropertyChanged();
             }
         }
@@ -41,14 +50,17 @@ namespace RentIT.ViewModels
         }
 
         readonly FotoService _fotoService;
-        public DettaglioAnnuncioViewModel(INavService navService, FotoService fotoService) : base(navService)
+        readonly IUserService _userService;
+        public DettaglioAnnuncioViewModel(INavService navService, FotoService fotoService, UserService userService) : base(navService)
         {
             _fotoService = fotoService;
+            _userService = userService;
         }
 
         public async override Task Init(Ad annuncio)
         {
             Annuncio = annuncio;
+            //Affittuario = _userService.GetProfileAsync(annuncio.AffittuarioId);
             //ImmagineUtente = await getPropic();
         }
 

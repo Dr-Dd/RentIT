@@ -23,7 +23,7 @@
                 <controls:CircleImage Source="{Binding ImmagineUtente.Source}" 
                                       WidthRequest="80"
                                       HeightRequest="80"/>
-                <Label Text="{Binding Annuncio.Affittuario.Name}"
+                <Label Text="{Binding Affittuario.Name}"
                        FontSize="Small"
                        FontAttributes="Bold"
                        FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
