@@ -42,7 +42,7 @@ public class Utente {
 	@OneToOne(mappedBy = "utente", cascade = CascadeType.ALL, fetch = FetchType.LAZY, optional = false)
 	private Image image;
 	
-	@OneToMany(mappedBy = "Affittuario", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "affittuario", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<Annuncio> annunciUtente;
 	
 	public Utente() {}

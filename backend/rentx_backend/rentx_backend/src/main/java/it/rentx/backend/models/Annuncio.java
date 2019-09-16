@@ -27,23 +27,23 @@ public class Annuncio {
 	private long id;
 	
 	@Field(termVector = TermVector.YES)
-	private String NomeOggetto;
+	private String nomeOggetto;
 	
 	@Field(termVector = TermVector.YES)
-	private String Descrizione;
+	private String descrizione;
 	
 	@OneToOne(mappedBy = "immagineAnnuncio", cascade = CascadeType.ALL, fetch = FetchType.LAZY, optional = false)
-	private Image Immagine;
+	private Image immagine;
 	
-	private float Prezzo;
+	private float prezzo;
 	
 	@ManyToOne
 	@JoinColumn(name="id_utente")
-	private Utente Affittuario;
+	private Utente affittuario;
 	
-	private String Posizione;
+	private String posizione;
 	
-	private Date Data;
+	private Date data;
 	
 	public Annuncio() {}
 
@@ -56,59 +56,59 @@ public class Annuncio {
 	}
 
 	public String getNomeOggetto() {
-		return NomeOggetto;
+		return nomeOggetto;
 	}
 
-	public void setNomeOggetto(String nomeOggetto) {
-		NomeOggetto = nomeOggetto;
+	public void setNomeOggetto(String NomeOggetto) {
+		nomeOggetto = NomeOggetto;
 	}
 
 	public String getDescrizione() {
-		return Descrizione;
+		return descrizione;
 	}
 
-	public void setDescrizione(String descrizione) {
-		Descrizione = descrizione;
+	public void setDescrizione(String Descrizione) {
+		descrizione = Descrizione;
 	}
 
 	public Image getImmagine() {
-		return Immagine;
+		return immagine;
 	}
 
-	public void setImmagine(Image immagine) {
-		Immagine = immagine;
+	public void setImmagine(Image Immagine) {
+		immagine = Immagine;
 	}
 
 	public float getPrezzo() {
-		return Prezzo;
+		return prezzo;
 	}
 
-	public void setPrezzo(float prezzo) {
-		Prezzo = prezzo;
+	public void setPrezzo(float Prezzo) {
+		prezzo = Prezzo;
 	}
 
 	public Utente getAffittuario() {
-		return Affittuario;
+		return affittuario;
 	}
 
-	public void setAffittuario(Utente affittuario) {
-		Affittuario = affittuario;
+	public void setAffittuario(Utente Affittuario) {
+		affittuario = Affittuario;
 	}
 
 	public String getPosizione() {
-		return Posizione;
+		return posizione;
 	}
 
-	public void setPosizione(String posizione) {
-		Posizione = posizione;
+	public void setPosizione(String Posizione) {
+		posizione = Posizione;
 	}
 
 	public Date getData() {
-		return Data;
+		return data;
 	}
 
-	public void setData(Date data) {
-		Data = data;
+	public void setData(Date Data) {
+		data = Data;
 	}
 	
 	
