@@ -39,6 +39,16 @@ namespace RentIT.Services.User
             return requestService.GetAsync<Utente>(uri,AppSettings.AccessToken);
         }
 
+        public Task<Utente> GetUserByIdAsync(long userId)
+        {
+
+            var builder = new UriBuilder(Constants.UserEndpointData());
+            builder.Path = "/" + userId;
+            var uri = builder.ToString();
+
+            return requestService.GetAsync<Utente>(uri);   //assolutamente non ritornare anche la password altrimenti c'è un leggero problema di sicurezza
+        }
+
 
         public async Task<Response> ModifyUserData(Utente u)
         {

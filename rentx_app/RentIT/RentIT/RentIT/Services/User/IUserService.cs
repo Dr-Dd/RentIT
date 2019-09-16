@@ -19,5 +19,7 @@ namespace RentIT.Services.User
         Task<Response> ModifyUserData(Utente u);
 
         Task<Response> DeleteAccount();
+
+        Task<Utente> GetUserByIdAsync(long userId);
     }
 }
