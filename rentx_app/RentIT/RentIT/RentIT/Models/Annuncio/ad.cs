@@ -28,9 +28,9 @@ namespace RentIT.Models.Annuncio
 
         
 
-        //Image non ci va proprio
-        // public Image Immagine { get; set; }
+        //Questi due servono solo per visualizzare gli annunci nelle liste. Non vengono salvati nel db
+        public Image Immagine { get; set; }
 
-        // public Utente Affittuario { get; set; }
+        public Utente Affittuario { get; set; }
     }
 }

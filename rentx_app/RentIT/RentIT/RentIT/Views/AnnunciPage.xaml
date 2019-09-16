@@ -36,14 +36,6 @@
                                    FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"                                               
                                    FontSize="Medium"                                         
                                    TextColor="#607D8B"/>
-                            <Label Grid.Row="0" 
-                                   Grid.Column="2" 
-                                   Text="{Binding Affittuario.Nome}" 
-                                   HorizontalTextAlignment="End"
-                                   VerticalTextAlignment="End"
-                                   FontFamily="Quicksand-Regular.ttf#Quicksand-Medium"
-                                   TextColor="#607D8B"
-                                   Margin="0,0,20,0"/>
                             <Label Text="{Binding Descrizione}" 
                                    Grid.Row="1" 
                                    Grid.Column="1" 

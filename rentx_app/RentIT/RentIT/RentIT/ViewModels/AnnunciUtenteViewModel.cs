@@ -34,7 +34,7 @@ namespace RentIT.ViewModels
         * IMPORTANTE: Nello stato attuale, la ListView fa laggare
         * vistosamente l'app, trovare un modo di rendere più veloce
         * ed efficiente lo scroll
-        */
+        
         async Task LoadEntries()
         {
             if (IsBusy)
@@ -180,7 +180,7 @@ namespace RentIT.ViewModels
             });
 
             IsBusy = false;
-        }
+        }*/
 
         Command<Ad> _viewGestioneAnnuncio;
         public Command<Ad> ViewGestioneAnnuncio
@@ -199,7 +199,7 @@ namespace RentIT.ViewModels
 
         public async override Task Init(SearchQuery query)
         {
-            await LoadEntries(); 
+            //await LoadEntries(); 
         }
     }
 }
