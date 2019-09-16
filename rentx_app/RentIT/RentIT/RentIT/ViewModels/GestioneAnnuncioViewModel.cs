@@ -98,6 +98,9 @@ namespace RentIT.ViewModels
             var response = await _annuncioService.ModifyAdDataAsync(Annuncio);
             if (response.hasSucceded)
             {
+                StringBuilder successo = new StringBuilder();
+                successo.Append("Annuncio modificato con successo!");
+                await App.Current.MainPage.DisplayAlert("RentIT", successo.ToString(), "ok");
                 await NavService.NavigateToMainPage();
             }
             else

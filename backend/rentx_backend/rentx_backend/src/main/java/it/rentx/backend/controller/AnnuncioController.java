@@ -54,6 +54,7 @@ public class AnnuncioController {
     public ResponseEntity<Risposta> nuovoAnnuncio(@RequestHeader("Authorization") String token, @RequestBody Annuncio annuncio) {
 		Utente utente = this.utenteRepository.findByEmail(this.utenteService.estrazioneEmailDaToken(token));
     	annuncio.setAffittuario(utente);
+    	annuncio.setPosizione(utente.getAddress());
 		annuncioService.salvaAnnuncio(annuncio);
         return ResponseEntity.ok().body(new Risposta("true","","Annuncio salvato correttamente", null));
     }
