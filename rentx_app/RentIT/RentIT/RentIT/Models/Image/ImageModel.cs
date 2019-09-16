@@ -7,5 +7,7 @@ namespace App.Models.Image
     public class ImageModel
     {
         public string data { get; set; }
+
+        public string idImg { get; set; }
     }
 }

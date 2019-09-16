@@ -38,32 +38,6 @@ namespace RentIT.Services.User
             return requestService.GetAsync<Utente>(uri,AppSettings.AccessToken);
         }
 
-        public async Task UploadUserImageAsync(string imageAsBase64)
-        {
-
-
-            var builder = new UriBuilder(Constants.UserEndpointUpImage());
-            //builder.Path = "/" + AppSettings.UserId.ToString();     lo mettiamo?? 
-            var uri = builder.ToString();
-
-            var imageModel = new ImageModel
-            {
-                data = imageAsBase64
-            };
-
-            await requestService.PutAsync(uri, imageModel,AppSettings.AccessToken);
-            //await CacheHelper.RemoveFromCache(profile.PhotoUrl);  
-        }
-
-        //qui serve l'id dell'utente e non solo il token
-        public async Task<ImageModel> GetUserImage()
-        {
-
-            var builder = new UriBuilder(Constants.UserEndpointGetImage());
-            var uri = builder.ToString();
-
-            return await requestService.GetAsync<ImageModel>(uri, AppSettings.AccessToken);
-        }
 
         public async Task<Response> ModifyUserData(Utente u)
         {

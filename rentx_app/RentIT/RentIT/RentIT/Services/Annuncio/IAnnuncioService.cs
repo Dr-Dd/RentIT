@@ -7,12 +7,10 @@ namespace App.Services.Annuncio
 {
     public interface IAnnuncioService
     {
-        Task UploadItemImageAsync(string imageAsBase64);
-
         Task<Response> AddAnnuncioAsync(Ad a);
 
-        Task<Response> ModifyItemData(Ad a);
+        Task<Response> ModifyAdDataAsync(Ad a);
         
-        Task<Response> Delete(string id);
+        Task<Response> DeleteAdAsync(string idAnn);
     }
 }

@@ -6,7 +6,7 @@ using Xamarin.Forms;
 
 namespace RentIT.Models.Annuncio
 {
-    /**Momentanea**/
+    
     public class Ad
     {
 
@@ -16,15 +16,17 @@ namespace RentIT.Models.Annuncio
 
         public string Descrizione { get; set; }
 
-        public Image Immagine { get; set; }
-
+        public string AnteprimaImg { get; set; }
+       
         public decimal Prezzo { get; set; }
-
-        public Utente Affittuario { get; set; }
 
         public string Posizione { get; set; }
 
         public DateTime Data { get; set; }
 
+        //Image non ci va proprio
+        // public Image Immagine { get; set; }
+
+        // public Utente Affittuario { get; set; }
     }
 }

@@ -1,4 +1,6 @@
 ﻿using App.Models.Image;
+using RentIT;
+using RentIT.Services.Request;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -10,6 +12,14 @@ namespace App.Services.Foto
 {
     public class FotoService
     {
+
+        private readonly IRequestService requestService;
+
+        public FotoService(IRequestService requestService)
+        {
+            this.requestService = requestService;
+        }
+
         /*Metodo per convertire dalla stringa base64,
          * ovvero da un'immagine del tipo restituito dal db a un'image*/
         public Image fromStringToImage(string imageBase64)
@@ -35,10 +45,62 @@ namespace App.Services.Foto
             return base64;
         }
 
-        /* Metodo per prendere dal db la foto di un utente conoscendone l'email*/
-        public Task<ImageModel> GetImage(string email)
+        //metodo per uploadare le foto di un annuncio nel db(una per volta se sono tante in una lista)
+        public async Task UploadAdImagesAsync(string idAnn, string imageAsBase64)
         {
-            return new Task<ImageModel>(() => new ImageModel());            
+            var builder = new UriBuilder(Constants.uploadImgsAnnuncioEndpoint());
+            builder.Path = "/" + idAnn;     //lo mettiamo?? 
+            var uri = builder.ToString();
+
+            var img = new ImageModel
+            {
+                data = imageAsBase64
+            };
+
+            await requestService.PutAsync(uri, img, AppSettings.AccessToken);
         }
+
+
+        //metodo per prendere dal db le immagini relative ad un annuncio
+        public async Task<List<ImageModel>> GetAdImagesAsync(string idAnn) {
+
+            var builder = new UriBuilder(Constants.UserEndpointGetImage());
+            builder.Path = "/" + idAnn;
+            var uri = builder.ToString();
+
+            return await requestService.GetAsync<List<ImageModel>>(uri, AppSettings.AccessToken);
+        }
+
+        //metodo per uploadare l'immagine dell'utente
+        public async Task UploadUserImageAsync(string imageAsBase64)
+        {
+            //nel caso l'immagine gia ci sia nel db bisogna fare il controllo e sostituirla anziche aggiungerla
+            var builder = new UriBuilder(Constants.UserEndpointUpImage());
+            builder.Path = "/" + AppSettings.UserId.ToString();     //lo mettiamo?? 
+            var uri = builder.ToString();
+
+            var img = new ImageModel
+            {
+                data = imageAsBase64
+            };
+
+            await requestService.PutAsync(uri, img, AppSettings.AccessToken);
+            //await CacheHelper.RemoveFromCache(profile.PhotoUrl);  
+        }
+
+
+        /* Metodo per prendere dal db la foto di un utente conoscendone l'idUser che deve corrispondere con il token*/
+        //qui serve l'id dell'utente e non solo il token
+        public async Task<ImageModel> GetUserImage(string idUser)
+        {
+
+            var builder = new UriBuilder(Constants.UserEndpointGetImage());
+            builder.Path = "/" + idUser;
+            var uri = builder.ToString();
+
+            return await requestService.GetAsync<ImageModel>(uri, AppSettings.AccessToken);
+        }
+
+        
     }
 }
