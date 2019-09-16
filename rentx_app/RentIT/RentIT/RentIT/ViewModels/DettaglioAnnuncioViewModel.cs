@@ -62,5 +62,27 @@ namespace RentIT.ViewModels
                 // Other error has occurred.  
             }
         }
+
+        Command _emailCommand;
+        public Command EmailCommand
+        {
+            get
+            {
+                return _emailCommand
+                    ?? (_emailCommand = new Command(async () => await ExecuteEmailCommand()));
+            }
+        }
+
+        async Task ExecuteEmailCommand()
+        {
+            List<String> destinatario = new List<string>();
+            destinatario.Add("tiziocaio@papapa.it");
+            var message = new EmailMessage
+            {
+                To = destinatario,
+            };
+
+            await Email.ComposeAsync(message);
+        }
     }
 }
