@@ -4,9 +4,8 @@
             xmlns:local="clr-namespace:RentIT.Views"
             x:Class="RentIT.Views.AnnunciUtentePage"
             Title="I miei annunci"
-            BarTextColor="#607D8B"
-            BarBackgroundColor="WhiteSmoke"
-            SelectedTabColor="Azure">
+            BarTextColor="#455A64"
+            BarBackgroundColor="#CFD8DC">
     <local:AnnunciAttivi />
     <local:AnnunciPrenotati />
 </TabbedPage>
