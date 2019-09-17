@@ -54,7 +54,7 @@ namespace RentIT.Services.Authentication
         {
             //gestisci logout eliminando nel db la entry corrispondente all'id inviato ,dalla tabella id-token
 
-            // RestUrl = http://5.249.151.26:5000/Auth
+            
             var builder = new UriBuilder(Constants.AuthEndpointLogout());
             string uri = builder.ToString();
 

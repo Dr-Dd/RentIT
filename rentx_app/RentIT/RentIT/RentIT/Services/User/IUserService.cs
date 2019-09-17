@@ -14,7 +14,7 @@ namespace RentIT.Services.User
     {
         Task<Response> SignUpAsync(SignUpRequest request);
 
-        Task<Utente> GetCurrentProfileAsync();
+        Task<Utente> GetMyProfileAsync();
 
         Task<Response> ModifyUserData(Utente u);
 

@@ -30,10 +30,10 @@ namespace RentIT.Services.User
             return requestService.PostAsync<SignUpRequest,Response>(uri, request);
         }
 
-        public Task<Utente> GetCurrentProfileAsync()
+        public Task<Utente> GetMyProfileAsync()
         {
 
-            var builder = new UriBuilder(Constants.UserEndpointCurrentData());
+            var builder = new UriBuilder(Constants.UserEndpointProfileData());
             var uri = builder.ToString();
 
             return requestService.GetAsync<Utente>(uri,AppSettings.AccessToken);
@@ -42,10 +42,11 @@ namespace RentIT.Services.User
         public Task<Utente> GetUserByIdAsync(long userId)
         {
 
-            var builder = new UriBuilder(Constants.UserEndpointData());
+            var builder = new UriBuilder(Constants.UserEndpointProfileData());
             builder.Path = "/" + userId;
             var uri = builder.ToString();
 
+            //non mando il token
             return requestService.GetAsync<Utente>(uri);   //assolutamente non ritornare anche la password altrimenti c'è un leggero problema di sicurezza
         }
 

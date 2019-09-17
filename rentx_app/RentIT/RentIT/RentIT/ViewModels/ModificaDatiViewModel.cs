@@ -73,7 +73,7 @@ namespace RentIT.ViewModels
 
         public override async Task Init()
         {
-            Utente = await _userService.GetCurrentProfileAsync();
+            Utente = await _userService.GetMyProfileAsync();
             //TODO: da decommentare dopo fatto il collegamento al db
             //Immagine = await _fotoService.getPropic();
         }

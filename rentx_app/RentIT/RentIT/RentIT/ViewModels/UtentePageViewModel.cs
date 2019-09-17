@@ -49,7 +49,7 @@ namespace RentIT.ViewModels
         public async override Task Init()
         {
             //Questa pagina non è più raggiungibile senza che l'utente sia loggato quindi non c'è bisogno di quel controllo
-            Utente = await _userService.GetCurrentProfileAsync();
+            Utente = await _userService.GetMyProfileAsync();
             //TODO: da decommentare dopo fatto il collegamento al db
             //Immagine = await getPropic();
         }

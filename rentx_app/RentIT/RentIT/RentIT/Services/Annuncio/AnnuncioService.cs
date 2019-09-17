@@ -115,6 +115,7 @@ namespace App.Services.Annuncio
             return GetUserAds(AppSettings.UserId,false);
         }
 
+        //annunci prenotati dell'user
         public Task<List<Ad>> GetMyBookedAds()
         {
             return GetUserAds(AppSettings.UserId,true);
