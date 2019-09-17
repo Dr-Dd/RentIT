@@ -166,6 +166,12 @@ namespace RentIT.ViewModels
                 await NavService.NavigateTo<LoginPageViewModel>();
                 return;
             }
+            if (AppSettings.NewProfile)
+            {
+                await App.Current.MainPage.DisplayAlert("RentIT", "Aggiorna i tuoi dati prima di aggiungere un annuncio!", "Ok");
+                await NavService.NavigateTo<ModificaDatiViewModel>();
+                return;
+            }
             await NavService.NavigateTo<AggiungiAnnuncioViewModel>();
         }
     }

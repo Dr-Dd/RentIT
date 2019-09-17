@@ -122,6 +122,16 @@ namespace RentIT.ViewModels
             return isValid;
         }
 
+        //Funzione per verificare che siano stati inseriti sia il numero che la città
+        bool EmptyFields()
+        {
+            var empty = string.IsNullOrWhiteSpace(Utente.Name) ||
+                        string.IsNullOrWhiteSpace(Utente.Surname) ||
+                        string.IsNullOrWhiteSpace(Utente.Address) ||
+                        string.IsNullOrWhiteSpace(Utente.Numero);
+            return empty;
+        }
+
         /*Comando per modificare i dati dell'account*/
         Command _modificaDatiCommand;
         public Command ModificaDatiCommand
@@ -143,12 +153,19 @@ namespace RentIT.ViewModels
                 return;
             }
 
+            if (EmptyFields())
+            {
+                await App.Current.MainPage.DisplayAlert("Errore", "Devi inserire sia il numero che la città", "Ok");
+                return;
+            }
+
             if (!string.IsNullOrWhiteSpace(Password))
                 Utente.Password = Password;
 
             var response = await _userService.ModifyUserData(Utente);
             if (response.hasSucceded)
             {
+                AppSettings.NewProfile = false;
                 await NavService.NavigateToMainPage();
             }
             else
