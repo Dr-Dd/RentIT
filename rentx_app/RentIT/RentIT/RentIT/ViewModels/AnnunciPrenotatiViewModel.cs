@@ -7,11 +7,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
-
-//Da modificare
 namespace RentIT.ViewModels
 {
-    public class AnnunciUtenteViewModel : BaseViewModel<SearchQuery>
+    public class AnnunciPrenotatiViewModel : BaseViewModel<SearchQuery>
     {
         ObservableCollection<Annuncio> _annunci;
         public ObservableCollection<Annuncio> Annunci
@@ -23,13 +21,11 @@ namespace RentIT.ViewModels
                 OnPropertyChanged();
             }
         }
-        
-        public AnnunciUtenteViewModel(INavService navService) : base(navService)
+
+        public AnnunciPrenotatiViewModel(INavService navService) : base(navService)
         {
             Annunci = new ObservableCollection<Annuncio>();
         }
-
-        
         /**
         * IMPORTANTE: Nello stato attuale, la ListView fa laggare
         * vistosamente l'app, trovare un modo di rendere più veloce

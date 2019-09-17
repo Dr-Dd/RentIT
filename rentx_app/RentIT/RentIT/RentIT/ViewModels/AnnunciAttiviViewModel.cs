@@ -1,17 +1,15 @@
-﻿using RentIT.Models;
-using RentIT.Services;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
 using System.Threading.Tasks;
+using RentIT.Models;
+using RentIT.Services;
 using Xamarin.Forms;
 
-
-//Da modificare
 namespace RentIT.ViewModels
 {
-    public class AnnunciUtenteViewModel : BaseViewModel<SearchQuery>
+    public class AnnunciAttiviViewModel : BaseViewModel<SearchQuery>
     {
         ObservableCollection<Annuncio> _annunci;
         public ObservableCollection<Annuncio> Annunci
@@ -23,13 +21,11 @@ namespace RentIT.ViewModels
                 OnPropertyChanged();
             }
         }
-        
-        public AnnunciUtenteViewModel(INavService navService) : base(navService)
+
+        public AnnunciAttiviViewModel(INavService navService) : base(navService)
         {
             Annunci = new ObservableCollection<Annuncio>();
         }
-
-        
         /**
         * IMPORTANTE: Nello stato attuale, la ListView fa laggare
         * vistosamente l'app, trovare un modo di rendere più veloce

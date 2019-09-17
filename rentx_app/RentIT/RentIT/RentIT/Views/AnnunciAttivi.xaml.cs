@@ -1,37 +1,35 @@
 ﻿using RentIT.Models;
 using RentIT.ViewModels;
-using RentIT.Views;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace RentIT.Views
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class AnnunciUtentePage : TabbedPage
+	[XamlCompilation(XamlCompilationOptions.Compile)]
+	public partial class AnnunciAttivi : ContentPage
 	{
-
         AnnunciAttiviViewModel _vm
         {
             get { return BindingContext as AnnunciAttiviViewModel; }
         }
 
-        public AnnunciUtentePage()
-        {
-            InitializeComponent();
-        }
-
-        protected override async void OnAppearing()
-        {
-            base.OnAppearing();
-
-            if (_vm != null)
-                await _vm.Init();
-        }
+        public AnnunciAttivi ()
+		{
+			InitializeComponent ();
+		}
 
         async void GestioneAnnuncio_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             var annuncio = (Annuncio)e.Item;
             _vm.ViewGestioneAnnuncio.Execute(annuncio);
+
+            listaAnnunci.SelectedItem = null;
         }
     }
 }
