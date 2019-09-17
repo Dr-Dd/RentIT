@@ -10,9 +10,9 @@ namespace RentIT.Views
 	public partial class AnnunciUtentePage : TabbedPage
 	{
 
-        AnnunciAttiviViewModel _vm
+        AnnunciUtenteViewModel _vm
         {
-            get { return BindingContext as AnnunciAttiviViewModel; }
+            get { return BindingContext as AnnunciUtenteViewModel; }
         }
 
         public AnnunciUtentePage()
