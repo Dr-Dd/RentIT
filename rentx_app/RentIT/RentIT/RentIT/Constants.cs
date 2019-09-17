@@ -98,7 +98,7 @@ namespace RentIT
 
         public static string UltimiAnnunciEndpoint()
         {
-            return string.Format(Constants.defaultAnnuncioEndpoint, "annunci");
+            return string.Format(Constants.defaultAnnuncioEndpoint, "search");
         }
 
 

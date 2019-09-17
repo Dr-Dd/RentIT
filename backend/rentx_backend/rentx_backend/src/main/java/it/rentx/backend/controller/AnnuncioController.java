@@ -13,11 +13,10 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import it.rentx.backend.models.Annuncio;
 import it.rentx.backend.models.Risposta;
+import it.rentx.backend.models.SearchQuery;
 import it.rentx.backend.models.Utente;
 import it.rentx.backend.repository.UtenteRepository;
 import it.rentx.backend.service.AnnuncioService;
@@ -40,14 +39,23 @@ public class AnnuncioController {
 	@Autowired
 	private UtenteRepository utenteRepository;
 
-	@RequestMapping(value = "/search", method = RequestMethod.GET)
-	public List<Annuncio> search(@RequestParam(value = "search", required = false) String q) {
+	@PostMapping(value = "/search")
+	public List<Annuncio> search(@RequestHeader("Authorization") String token, @RequestBody SearchQuery sq) {
 		List<Annuncio> searchResults = null;
 		try {
-			searchResults = searchService.fuzzySearch(q);
+			searchResults = searchService.fuzzySearch(sq.getOggetto());
 		} catch (Exception e) {
 			// decidere cosa (e se) gestire eccezioni
 		}
+		for (Annuncio annuncio : searchResults) {
+			if(annuncio.getPosizione() != sq.getCitta())
+				searchResults.remove(annuncio);
+		}
+		/*Ovviamente questa è una cafonata, mi serviva solo per provare velocemente
+		 * il metodo. Probabilmente va implementata passando 
+		 * 	annuncioService.annunciPosizione(sq.getCitta());
+		 * come insieme su cui fare la ricerca fuzzy
+		 */
 		return searchResults;
 	}
 	
@@ -77,10 +85,13 @@ public class AnnuncioController {
 	
 	@GetMapping("/annunciDi/{id}")
 	public List<Annuncio> AnnunciUtente(@RequestHeader("Authorization") String token, @PathVariable("id") Long id) {
-		Utente attuale = utenteRepository.findByEmail(utenteService.estrazioneEmailDaToken(token));
+		//Utente attuale = utenteRepository.findByEmail(utenteService.estrazioneEmailDaToken(token));
 		
-		/*Se l'utente che sta facendo la richiesta la sta facendo per i propri annunci, può vedere anche
-		 * quelli prenotati, altrimenti no. Non so come farlo quindi per ora mi restituisco tutti gli annunci dell'utente
+		/*Quando c'è il token, se l'utente di cui chiede gli annunci è lo stesso estratto dal token
+		 * allora il metodo deve restituire quelli prenotati
+		 * Se non c'è il token, vanno restituiti tutti gli annunci non prenotati, a prescindere che siano
+		 * oppure no quelli dell'utente-token
+		 * Non so come farlo quindi per ora mi restituisco tutti gli annunci dell'utente
 		 */		
 		
     	return annuncioService.annunciUtente(utenteRepository.findById(id).get());

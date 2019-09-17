@@ -11,11 +11,12 @@ using RentIT.Models.Annuncio;
 
 namespace RentIT.ViewModels
 {
-    public class AnnunciPageViewModel : BaseViewModel<SearchQuery>
+    //prima c'era BaseViewModel<SearchQuery>
+    public class AnnunciPageViewModel : BaseViewModel<List<Ad>>
     {
 
-        ObservableCollection<Ad> _annunci;
-        public ObservableCollection<Ad> Annunci
+        List<Ad> _annunci;
+        public List<Ad> Annunci
         {
             get { return _annunci; }
             set
@@ -27,7 +28,15 @@ namespace RentIT.ViewModels
 
         public AnnunciPageViewModel(INavService navService) : base(navService)
         {
-            Annunci = new ObservableCollection<Ad>();
+            //Annunci = new ObservableCollection<Ad>();
+        }
+
+
+        public async override Task Init(List<Ad> annunci)
+        {
+            // TODO: Implementare la ricerca
+            //await LoadEntries();
+            Annunci = annunci;
         }
 
         /**
@@ -185,12 +194,6 @@ namespace RentIT.ViewModels
         async Task ExecuteViewAnnuncio(Ad annuncio)
         {
             await NavService.NavigateTo<DettaglioAnnuncioViewModel, Ad>(annuncio);
-        }
-
-        public async override Task Init(SearchQuery query)
-        {
-            // TODO: Implementare la ricerca
-            await LoadEntries();
         }
     }
 }
