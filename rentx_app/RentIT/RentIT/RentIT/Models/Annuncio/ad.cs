@@ -28,9 +28,7 @@ namespace RentIT.Models.Annuncio
 
         
 
-        //Questi due servono solo per visualizzare gli annunci nelle liste. Non vengono salvati nel db
+        //Gestiamo l'immagine come image o come stringa base64?
         public Image Immagine { get; set; }
-
-        public Utente Affittuario { get; set; }
     }
 }

@@ -25,7 +25,11 @@ namespace RentIT.ViewModels
                 OnPropertyChanged();
             }
         }
-        
+        /* Questa stringa serve per mantenere il riferimento all'immagine
+         * in quanto, dopo che viene caricata, viene subito visualizzata
+         */
+        string base64;
+
         string _nomeOggetto;
         public string NomeOggetto
         {
@@ -75,7 +79,8 @@ namespace RentIT.ViewModels
         {
             var empty = string.IsNullOrWhiteSpace(NomeOggetto) ||
                         string.IsNullOrWhiteSpace(Descrizione) ||
-                        (Prezzo == 0);
+                        (Prezzo == 0) ||
+                        string.IsNullOrEmpty(base64);
             return empty;
         }
 
@@ -98,7 +103,7 @@ namespace RentIT.ViewModels
             if (stream != null)
             {
                 //se esiste, si salva nel db associato all'annuncio
-                string base64 = _fotoService.fromStreamToString(stream);
+                base64 = _fotoService.fromStreamToString(stream);
 
                 //questa riga serve solo a visualizzare l'immagine in attesa del collegamento al db
                 Immagine = _fotoService.fromStringToImage(base64);
@@ -131,14 +136,15 @@ namespace RentIT.ViewModels
                 Descrizione = Descrizione,
                 Prezzo = Prezzo,
                 Data = DateTime.Now
+                //AnteprimaImg = base64
             };
             var response = await _annuncioService.AddAnnuncioAsync(annuncioRequest);
-            //C'è da salvare qui la foto. Aggiungiamo un'altra proprietà alla classe?
             if (response.hasSucceded)
             {
+                //per salvare la foto serve IDannuncio
                 StringBuilder successo = new StringBuilder();
                 successo.AppendLine("Annuncio aggiunto con successo!");
-                successo.Append("Puoi trovarlo nella sezione 'I MIEI ANNUNCI' sul tuo profilo");
+                successo.AppendLine("Puoi trovarlo nella sezione 'I MIEI ANNUNCI' sul tuo profilo");
                 await App.Current.MainPage.DisplayAlert("RentIT", successo.ToString(), "Ok");
                 await NavService.NavigateToMainPage();
             }
