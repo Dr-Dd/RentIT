@@ -28,6 +28,20 @@ namespace RentIT.ViewModels
             }
         }
 
+        ObservableCollection<OggettoImmagine> _oggettiImmagine;
+        public ObservableCollection<OggettoImmagine> OggettiImmagine
+        {
+            get
+            {
+                return _oggettiImmagine;
+            }
+            set
+            {
+                _oggettiImmagine = value;
+                OnPropertyChanged();
+            }
+        }
+
         public DettaglioAnnuncioViewModel(INavService navService) : base(navService)
         {
         }
@@ -35,6 +49,20 @@ namespace RentIT.ViewModels
         public async override Task Init(Annuncio annuncio)
         {
             Annuncio = annuncio;
+            OggettiImmagine = creaOggettiImmagine(Annuncio);
+        }
+
+        public ObservableCollection<OggettoImmagine> creaOggettiImmagine(Annuncio annuncio)
+        {
+            OggettiImmagine = new ObservableCollection<OggettoImmagine>();
+            foreach (FileImageSource image in Annuncio.PercorsiImmagine)
+            {
+                OggettiImmagine.Add(new OggettoImmagine()
+                {
+                    Immagine = image
+                });
+            }
+            return OggettiImmagine;
         }
 
         Command _callCommand;

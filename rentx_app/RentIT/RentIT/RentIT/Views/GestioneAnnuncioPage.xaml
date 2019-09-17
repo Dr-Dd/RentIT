@@ -1,32 +1,52 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:indicator="clr-namespace"
+             xmlns:carousel="clr-namespace:CarouselView.FormsPlugin.Abstractions;assembly=CarouselView.FormsPlugin.Abstractions"
              x:Class="RentIT.Views.GestioneAnnuncioPage"
+             xmlns:local="clr-namespace:XamarinImageSlider"
              xmlns:controls="clr-namespace:Xamd.ImageCarousel.Forms.Plugin.Abstractions;assembly=Xamd.ImageCarousel.Forms.Plugin.Abstractions">
     <ContentPage.Content>
         <StackLayout>
             <Grid Margin="20,10,20,20">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="30" />
-                    <RowDefinition Height="2*" />
-                    <RowDefinition Height="80" />
-                    <RowDefinition Height="2*" />
-                    <RowDefinition Height="90" />
+                    <RowDefinition Height="4*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="6*" />
+                    <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="31*" />
                     <ColumnDefinition Width="38*" />
                     <ColumnDefinition Width="31*" />
                 </Grid.ColumnDefinitions>
-                <StackLayout Grid.Row="1"
+                <ContentView Grid.Row="1"
                              Grid.Column="0"
                              Grid.ColumnSpan="3"
                              HorizontalOptions="Center"
                              VerticalOptions="End">
-                    <controls:ImageCarousel Images="{Binding Annuncio.PercorsiImmagine}"/>
-                    
-                </StackLayout>
+                    <carousel:CarouselViewControl ItemsSource="{Binding OggettiImmagine}"
+                                                  VerticalOptions="FillAndExpand"
+                                                  HorizontalOptions="FillAndExpand"
+                                                  Position="0"
+                                                  CurrentPageIndicatorTintColor="#607D8B"
+                                                  ShowIndicators="True">
+                        <carousel:CarouselViewControl.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="40" />
+                                    </Grid.RowDefinitions>
+                                    <Image Grid.Row="0"
+                                           Aspect="AspectFit"
+                                           Source="{Binding Immagine}" />
+                                </Grid>
+                            </DataTemplate>
+                        </carousel:CarouselViewControl.ItemTemplate>
+                    </carousel:CarouselViewControl>
+
+                </ContentView>
                 <Entry Text="{Binding Annuncio.NomeOggetto}"
                        Grid.Row="2"
                        Grid.Column="0"
