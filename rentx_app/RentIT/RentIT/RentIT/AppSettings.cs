@@ -23,6 +23,10 @@ namespace RentIT
         private const string AccessTokenKey = "access_token_key";
         private static readonly string AccessTokenDefault = string.Empty;
 
+        private const string NewProfilekey = "new_profile_key";
+        private static readonly bool NewProfileDefault = true;
+
+
 
         public static int UserId
         {
@@ -48,6 +52,18 @@ namespace RentIT
             }
         }
 
+        public static bool NewProfile
+        {
+            get
+            {
+                return Settings.GetValueOrDefault(NewProfilekey, NewProfileDefault);
+            }
+            set
+            {
+                Settings.AddOrUpdateValue(NewProfilekey, value);
+            }
+        }
+
         public static void RemoveUserId()
         {
             Settings.Remove(UserIdKey);
@@ -57,5 +73,18 @@ namespace RentIT
         {
             Settings.Remove(AccessTokenKey);
         }
+
+        public static void RemoveNewProfile()
+        {
+            Settings.Remove(NewProfilekey);
+        }
+
+        public static void RemoveAll()
+        {
+            RemoveAccessToken();
+            RemoveNewProfile();
+            RemoveUserId();
+        }
+
     }
 }

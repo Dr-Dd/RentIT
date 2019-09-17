@@ -55,7 +55,7 @@ namespace App.Services.Annuncio
         public async Task<Response> ModifyAdDataAsync(Ad a)
         {
             var builder = new UriBuilder(Constants.modificaAnnuncioEndpoint());
-            if (a.Id==0)  //da capire se questo  giusto
+            if (a.Id==0)  //da capire se questo è giusto
             {
                 var errResp = new Response {
                     hasSucceded = false,
@@ -74,15 +74,15 @@ namespace App.Services.Annuncio
         }
 
 
-        public async Task<List<Ad>> GetLastAds(string città,string oggetto)
+        public async Task<List<Ad>> GetLastAds(string _citta,string _oggetto)
         {
             var builder = new UriBuilder(Constants.UltimiAnnunciEndpoint());
             var uri = builder.ToString();
 
             var sq = new SearchQuery
             {
-                citta = città,
-                oggetto = oggetto
+                citta = _citta,
+                oggetto = _oggetto
             };
 
             return await requestService.PostAsync<SearchQuery,List<Ad>>(uri,sq, AppSettings.AccessToken);
