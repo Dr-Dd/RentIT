@@ -34,7 +34,10 @@ public class UtenteController {
 
     @PostMapping("/registrazione")
     public ResponseEntity<Risposta> registrazioneUtente(@RequestBody Utente utente) {
-        utente.setPassword(bCryptPasswordEncoder.encode(utente.getPassword()));
+    	if(utenteRepository.findByEmail(utente.getEmail()) != null ) {
+    		return ResponseEntity.ok().body(new Risposta("false","","Email già registrata", null));
+    	}
+    	utente.setPassword(bCryptPasswordEncoder.encode(utente.getPassword()));
         utenteRepository.save(utente);
         return ResponseEntity.ok().body(new Risposta("true","","Utente iscritto correttamente", null));
     }
