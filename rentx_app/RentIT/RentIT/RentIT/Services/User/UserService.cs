@@ -70,8 +70,7 @@ namespace RentIT.Services.User
 
             if (resp.hasSucceded == true)
             {
-                AppSettings.RemoveAccessToken();
-                AppSettings.RemoveUserId();
+                AppSettings.RemoveAll();
             }
 
             return resp;

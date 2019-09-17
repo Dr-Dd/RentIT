@@ -88,7 +88,7 @@ namespace RentIT
 
         public static string AnnunciPerUserEndpoint()
         {
-            return string.Format(Constants.defaultAnnuncioEndpoint, "annunciDi");
+            return string.Format(Constants.defaultAnnuncioEndpoint, "annunci");
         }
 
         public static string UltimiAnnunciEndpoint()

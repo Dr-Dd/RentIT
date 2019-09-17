@@ -62,7 +62,8 @@ namespace RentIT.Services.Authentication
 
             if (logOutInfo.hasSucceded == true)
             {
-                AppSettings.RemoveAll();
+                AppSettings.RemoveAccessToken();
+                AppSettings.RemoveUserId();
             }
                 
 
