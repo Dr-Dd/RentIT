@@ -44,6 +44,7 @@ namespace RentIT.Services.Authentication
             {
                 AppSettings.UserId = authenticationInfo.userId;
                 AppSettings.AccessToken = authenticationInfo.accessToken;
+                AppSettings.NewProfile = authenticationInfo.isFirstAccess;
             }
             return authenticationInfo;
         }

@@ -10,5 +10,7 @@
         public string accessToken { get; set; }
 
         public string responseMessage { get; set; }
+
+        public bool isFirstAccess { get; set; }
     }
 }
