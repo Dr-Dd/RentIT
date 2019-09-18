@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace RentIT.Models.User
+namespace RentIT.DBmessages
 {
     public class Response
     {

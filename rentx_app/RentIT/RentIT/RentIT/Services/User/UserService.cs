@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
-using App.Models.User;
+using App.Models.Image;
 using RentIT.Models.User;
 using RentIT.Services.Authentication;
 using RentIT.Services.Request;
+using RentIT.DBmessages;
 
 namespace RentIT.Services.User
 {
@@ -29,41 +30,26 @@ namespace RentIT.Services.User
             return requestService.PostAsync<SignUpRequest,Response>(uri, request);
         }
 
-        public Task<Utente> GetCurrentProfileAsync()
+        public Task<Utente> GetMyProfileAsync()
         {
 
-            var builder = new UriBuilder(Constants.UserEndpointCurrentData());
+            var builder = new UriBuilder(Constants.UserEndpointProfileData());
             var uri = builder.ToString();
 
             return requestService.GetAsync<Utente>(uri,AppSettings.AccessToken);
         }
 
-        public async Task UploadUserImageAsync(string imageAsBase64)
+        public Task<Utente> GetUserByIdAsync(long userId)
         {
 
-
-            var builder = new UriBuilder(Constants.UserEndpointUpImage());
-            //builder.Path = "/" + AppSettings.UserId.ToString();     lo mettiamo?? 
+            var builder = new UriBuilder(Constants.UserEndpointProfileData());
+            builder.Path = "/" + userId;
             var uri = builder.ToString();
 
-            var imageModel = new ImageModel
-            {
-                data = imageAsBase64
-            };
-
-            await requestService.PutAsync(uri, imageModel,AppSettings.AccessToken);
-            //await CacheHelper.RemoveFromCache(profile.PhotoUrl);  
+            //non mando il token
+            return requestService.GetAsync<Utente>(uri);   //assolutamente non ritornare anche la password altrimenti c'è un leggero problema di sicurezza
         }
 
-        //qui serve l'id dell'utente e non solo il token
-        public async Task<ImageModel> GetUserImage()
-        {
-
-            var builder = new UriBuilder(Constants.UserEndpointGetImage());
-            var uri = builder.ToString();
-
-            return await requestService.GetAsync<ImageModel>(uri, AppSettings.AccessToken);
-        }
 
         public async Task<Response> ModifyUserData(Utente u)
         {
@@ -84,8 +70,7 @@ namespace RentIT.Services.User
 
             if (resp.hasSucceded == true)
             {
-                AppSettings.RemoveAccessToken();
-                AppSettings.RemoveUserId();
+                AppSettings.RemoveAll();
             }
 
             return resp;

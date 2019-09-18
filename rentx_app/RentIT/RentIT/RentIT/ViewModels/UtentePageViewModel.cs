@@ -1,4 +1,4 @@
-﻿using App.Models.User;
+﻿using App.Models.Image;
 using App.Services.Foto;
 using RentIT.Models.User;
 using RentIT.Services;
@@ -49,7 +49,7 @@ namespace RentIT.ViewModels
         public async override Task Init()
         {
             //Questa pagina non è più raggiungibile senza che l'utente sia loggato quindi non c'è bisogno di quel controllo
-            Utente = await _userService.GetCurrentProfileAsync();
+            Utente = await _userService.GetMyProfileAsync();
             //TODO: da decommentare dopo fatto il collegamento al db
             //Immagine = await getPropic();
         }
@@ -57,7 +57,7 @@ namespace RentIT.ViewModels
         //Metodo per prendere l'immagine profilo dal database
         public async Task<Image> getPropic()
         {
-            ImageModel foto = await _userService.GetUserImage();
+            ImageModel foto = await _fotoService.GetUserImage(AppSettings.UserId);
             Image img = null;
             if(foto != null)
                 img = _fotoService.fromStringToImage(foto.data);

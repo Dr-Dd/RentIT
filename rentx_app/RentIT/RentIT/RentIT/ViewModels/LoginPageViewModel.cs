@@ -7,6 +7,7 @@ using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using RentIT.Services.Authentication;
+using System.Text;
 
 namespace RentIT.ViewModels
 {
@@ -64,6 +65,15 @@ namespace RentIT.ViewModels
             var authResponse = await _authService.LoginAsync(_email, _password);
             if (authResponse.hasSucceded)
             {
+                if (AppSettings.NewProfile)
+                {
+                    StringBuilder benvenuto = new StringBuilder();
+                    benvenuto.AppendLine("Benvenuto su RentIT!");
+                    benvenuto.Append("Completa il tuo profilo prima di continuare");
+                    await App.Current.MainPage.DisplayAlert("RentIT", benvenuto.ToString(), "Ok");
+                    await NavService.NavigateTo<ModificaDatiViewModel>();
+                    return;
+                }
                 await NavService.NavigateToMainPage();
             }
             else

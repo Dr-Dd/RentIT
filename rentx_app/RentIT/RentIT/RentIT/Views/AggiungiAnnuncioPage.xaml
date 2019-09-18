@@ -11,6 +11,7 @@
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
                 </Grid>
+<<<<<<< HEAD
                 <Frame Grid.Row="0"
                        BorderColor="#607D8B"
                        BackgroundColor="WhiteSmoke"
@@ -70,12 +71,56 @@
                        FontFamily="Quicksand-Bold.ttf#Quicksand-Bold" />
                 <Button Grid.Row="1"
                         CornerRadius="25"
+=======
+                <Label Grid.Row="0"
+                   Text="Inserisci annuncio"
+                   Margin="75,0,0,0"
+                   FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
+                   FontSize="25"
+                   TextColor="#607D8B"/>
+                <Entry Grid.Row="1"
+                   x:Name="nomeOggetto"
+                   Placeholder="Nome oggetto"
+                   Text="{Binding Path=NomeOggetto}"
+                   FontFamily="Quicksand-Light.ttf#Quicksand-Light"/>
+                <Entry Grid.Row="2"
+                   x:Name="descrizioneOggetto"
+                   Placeholder="Descrizione"
+                   Text="{Binding Path=Descrizione}"
+                   FontFamily="Quicksand-Light.ttf#Quicksand-Light"/>
+                <Entry Grid.Row="3"
+                   x:Name="prezzo"
+                   Placeholder="Prezzo"
+                   Text="{Binding Path=Prezzo}"
+                   FontFamily="Quicksand-Light.ttf#Quicksand-Light"/>
+                <Frame Grid.Row="4"
+                   BorderColor="#607D8B"
+                   Margin="10,0,10,0"
+                   ScaleY="0.5">
+                    <Image x:Name="image"
+                           Source="{Binding Immagine.Source}"/>
+                </Frame>
+                <Button Grid.Row="6"
+                    Text="+ Inserisci immagine"
+                    TextColor="#607D8B"
+                    BorderWidth="1"
+                    BorderColor="#607D8B"
+                    Margin="70,0,70,0"
+                    Command="{Binding AggiungiFotoCommand}"
+                    BackgroundColor="WhiteSmoke"/>
+                <Button Grid.Row="7"
+>>>>>>> AggiungiAnnuncio
                         Text="Aggiungi annuncio"
                         TextColor="#607D8B"
                         BorderWidth="1"
                         BorderColor="#607D8B"
                         Margin="70,0,70,0"
+<<<<<<< HEAD
                         BackgroundColor="WhiteSmoke" />
+=======
+                        BackgroundColor="WhiteSmoke"
+                        Command="{Binding AggiungiAnnuncioCommand}"/>
+>>>>>>> AggiungiAnnuncio
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

@@ -1,7 +1,10 @@
-﻿using RentIT.Models;
+﻿using App.Services.Annuncio;
+using RentIT.Models;
+using RentIT.Models.Annuncio;
 using RentIT.Services;
 using RentIT.Views;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using Xamarin.Forms;
@@ -10,9 +13,32 @@ namespace RentIT.ViewModels
 {
     public class SearchPageViewModel : BaseViewModel
     {
-
-        public SearchPageViewModel(INavService navService) : base(navService)
+        string _oggetto;
+        public string Oggetto
         {
+            get { return _oggetto; }
+            set
+            {
+                _oggetto = value;
+                OnPropertyChanged();
+            }
+        }
+
+        string _citta;
+        public string Citta
+        {
+            get { return _citta; }
+            set
+            {
+                _citta = value;
+                OnPropertyChanged();
+            }
+        }
+
+        readonly IAnnuncioService _annuncioService;
+        public SearchPageViewModel(INavService navService, AnnuncioService annuncioService) : base(navService)
+        {
+            _annuncioService = annuncioService;
         }
 
         public override async Task Init()
@@ -23,7 +49,10 @@ namespace RentIT.ViewModels
         {
             return !AppSettings.AccessToken.Equals(string.Empty);
         }
-        //comando nella toolbar
+
+        /*
+         * Comando nella toolbar
+         */
         Command _loginCommand;
         public Command LoginCommand
         {
@@ -46,7 +75,9 @@ namespace RentIT.ViewModels
             }
         }
 
-        //comandi nel menù a tendina
+        /*
+         * Comandi nel menù a tendina
+         */
         Command _annunciPageCommand;
         public Command AnnunciPageCommand
         {
@@ -95,7 +126,28 @@ namespace RentIT.ViewModels
             await NavService.NavigateTo<UtentePageViewModel>();
         }
 
-        //pulsante aggiungi annuncio
+        /*
+         * Pulsante cerca
+         */
+        Command _cercaCommand;
+        public Command CercaCommand
+        {
+            get
+            {
+                return _cercaCommand ?? (
+                    _cercaCommand = new Command(async () => await ExecuteCercaCommand()));
+            }
+        }
+
+        async Task ExecuteCercaCommand()
+        {
+            List<Ad> risultati = await _annuncioService.GetLastAds(Citta, Oggetto);
+            await NavService.NavigateTo<AnnunciPageViewModel, List<Ad>>(risultati);
+        }
+
+        /*
+         * Pulsante aggiungi annuncio
+         */
         Command _addAnnuncio;
         public Command AddAnnuncio
         {
@@ -112,6 +164,12 @@ namespace RentIT.ViewModels
             {
                 await App.Current.MainPage.DisplayAlert("RentIT", "Iscriviti o effettua il login per aggiungere un annuncio!", "Ok");
                 await NavService.NavigateTo<LoginPageViewModel>();
+                return;
+            }
+            if (AppSettings.NewProfile)
+            {
+                await App.Current.MainPage.DisplayAlert("RentIT", "Aggiorna i tuoi dati prima di aggiungere un annuncio!", "Ok");
+                await NavService.NavigateTo<ModificaDatiViewModel>();
                 return;
             }
             await NavService.NavigateTo<AggiungiAnnuncioViewModel>();

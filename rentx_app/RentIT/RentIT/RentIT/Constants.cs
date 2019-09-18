@@ -14,8 +14,9 @@ namespace RentIT
          * Ad esempio, visto che li l'ip sul mio pc è 192.168.1.83, allora quello degli endpoint dovrà 
          * essere uguale! (Come in questo caso)
          */
-        
+
         // URL of REST service
+<<<<<<< HEAD
         public static string RestUrl = "http://10.25.137.212:8080/{0}";
 
         // defaul Endpoints for api
@@ -23,6 +24,15 @@ namespace RentIT
         const string defaultItemEndpoint = "http://10.25.137.212:8080/item/{0}";
         const string defaultProductEndpoint = "http://10.25.137.212:8080/product/{0}";
         const string defaultUserEndpoint = "http://10.25.137.212:8080/utente/{0}";
+=======
+        public static string RestUrl = "http://192.168.43.149:8080/{0}";
+
+        // defaul Endpoints for api
+        const string defaultAuthenticationEndpoint = "http://192.168.43.149:8080/auth/{0}";
+        const string defaultItemEndpoint = "http://192.168.43.149:8080/item/{0}";
+        const string defaultAnnuncioEndpoint = "http://192.168.43.149:8080/annuncio/{0}";
+        const string defaultUserEndpoint = "http://192.168.43.149:8080/utente/{0}";
+>>>>>>> AggiungiAnnuncio
 
 
         public static string AuthEndpointLogin()
@@ -51,7 +61,7 @@ namespace RentIT
             return string.Format(Constants.defaultUserEndpoint, "modifica");
         }
 
-        public static string UserEndpointCurrentData()
+        public static string UserEndpointProfileData()
         {
             return string.Format(Constants.defaultUserEndpoint, "profile");
         }
@@ -66,14 +76,42 @@ namespace RentIT
             return string.Format(Constants.defaultUserEndpoint, "image");
         }
 
+        public static string newAnnuncioEndpoint()
+        {
+            return string.Format(Constants.defaultAnnuncioEndpoint, "newAnnuncio");
+        }
+
+        public static string eliminaAnnuncioEndpoint()
+        {
+            return string.Format(Constants.defaultAnnuncioEndpoint, "elimina");
+        }
+
+        public static string modificaAnnuncioEndpoint()
+        {
+            return string.Format(Constants.defaultAnnuncioEndpoint, "modifica");
+        }
+
+        public static string uploadImgsAnnuncioEndpoint()
+        {
+            return string.Format(Constants.defaultAnnuncioEndpoint, "addImage");
+        }
+
+        public static string AnnunciPerUserEndpoint()
+        {
+            return string.Format(Constants.defaultAnnuncioEndpoint, "annunci");
+        }
+
+        public static string UltimiAnnunciEndpoint()
+        {
+            return string.Format(Constants.defaultAnnuncioEndpoint, "search");
+        }
+
+
         public static string ItemEndpoint()
         {
             return defaultItemEndpoint;
         }
 
-        public static string ProductEndpoint()
-        {
-            return defaultProductEndpoint;
-        }
+       
     }
 }

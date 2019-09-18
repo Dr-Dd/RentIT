@@ -20,10 +20,17 @@
             <StackLayout Orientation="Horizontal"
                          Grid.Row="0"
                          Grid.Column="0">
+<<<<<<< HEAD
                 <controls:CircleImage Source="meme.png"
                                       WidthRequest="80"
                                       HeightRequest="80" />
                 <Label Text="{Binding Annuncio.NomeAffittuario}"
+=======
+                <controls:CircleImage Source="{Binding ImmagineUtente.Source}" 
+                                      WidthRequest="80"
+                                      HeightRequest="80"/>
+                <Label Text="{Binding Affittuario.Name}"
+>>>>>>> AggiungiAnnuncio
                        FontSize="Small"
                        FontAttributes="Bold"
                        FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
@@ -38,8 +45,13 @@
                    HorizontalOptions="End"
                    FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
                    TextColor="#607D8B"
+<<<<<<< HEAD
                    Margin="0,0,20,0" />
             <Image Source="{Binding Annuncio.PercorsoImmagine}"
+=======
+                   Margin="0,0,20,0"/>
+            <Image Source="{Binding Annuncio.Immagine.Source}" 
+>>>>>>> AggiungiAnnuncio
                    Aspect="AspectFit"
                    Grid.Row="1"
                    Grid.Column="0"

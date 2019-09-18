@@ -54,7 +54,11 @@
 			<artifactId>spring-security-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-search-orm</artifactId>
+			<version>5.8.2.Final</version>
+		</dependency>
 	</dependencies>
 
 	<build>
