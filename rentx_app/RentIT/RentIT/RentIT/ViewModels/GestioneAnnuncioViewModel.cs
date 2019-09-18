@@ -4,6 +4,7 @@ using RentIT.Models.Annuncio;
 using RentIT.Services;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
@@ -26,6 +27,20 @@ namespace RentIT.ViewModels
             }
         }
 
+        ObservableCollection<OggettoImmagine> _oggettiImmagine;
+        public ObservableCollection<OggettoImmagine> OggettiImmagine
+        {
+            get
+            {
+                return _oggettiImmagine;
+            }
+            set
+            {
+                _oggettiImmagine = value;
+                OnPropertyChanged();
+            }
+        }
+
 
         readonly IAnnuncioService _annuncioService;
         public GestioneAnnuncioViewModel(INavService navService, AnnuncioService annuncioService) : base(navService)
@@ -36,10 +51,24 @@ namespace RentIT.ViewModels
         public async override Task Init(Ad annuncio)
         {
             Annuncio = annuncio;
+            OggettiImmagine = creaOggettiImmagine(Annuncio);
         }
 
-        /*Comando per eliminare l'annuncio*/
-        Command _eliminaAnnuncioCommand;
+        public ObservableCollection<OggettoImmagine> creaOggettiImmagine(Ad annuncio)
+        {
+            OggettiImmagine = new ObservableCollection<OggettoImmagine>();
+            foreach (FileImageSource image in Annuncio.PercorsiImmagine)
+            {
+                OggettiImmagine.Add(new OggettoImmagine()
+                {
+                    Immagine = image
+                });
+            }
+            return OggettiImmagine;
+        }
+
+    /*Comando per eliminare l'annuncio*/
+    Command _eliminaAnnuncioCommand;
         public Command EliminaAnnuncioCommand
         {
             get

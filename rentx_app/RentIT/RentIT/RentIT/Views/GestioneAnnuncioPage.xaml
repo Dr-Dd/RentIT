@@ -1,75 +1,129 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="RentIT.Views.GestioneAnnuncioPage">
+             xmlns:carousel="clr-namespace:CarouselView.FormsPlugin.Abstractions;assembly=CarouselView.FormsPlugin.Abstractions"
+             x:Class="RentIT.Views.GestioneAnnuncioPage"
+             xmlns:local="clr-namespace:XamarinImageSlider"
+             xmlns:controls="clr-namespace:Xamd.ImageCarousel.Forms.Plugin.Abstractions;assembly=Xamd.ImageCarousel.Forms.Plugin.Abstractions">
     <ContentPage.Content>
         <StackLayout>
-        <Grid Margin="20,20,20,20">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="100"/>
-                <RowDefinition Height="2*"/>
-                <RowDefinition Height="50"/>
-                <RowDefinition Height="2*"/>
-                <RowDefinition Height="50"/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <Image Source="{Binding Annuncio.Immagine.Source}" 
-                   Aspect="AspectFit"
-                   Grid.Row="1"
-                   Grid.Column="0"
-                   Grid.ColumnSpan="2"/>
-            <Entry Text="{Binding Annuncio.NomeOggetto}"
-                   Grid.Row="2"
-                   Grid.Column="0"
-                   FontAttributes="Bold"
-                   VerticalOptions="Center"
-                   FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
-                   TextColor="#607D8B"
-                   FontSize="Large" />
-            <Editor Text="{Binding Annuncio.Prezzo, StringFormat='{0:F0}€'}"
-                   Grid.Row="2"
-                   Grid.Column="1"
-                   VerticalOptions="Center"
-                   FontAttributes="Bold"
-                   FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
-                   TextColor="#85bb65"
-                   FontSize="Medium"
-                   Margin="40,0,5,0"/>
-            <Frame BorderColor="#607D8B" 
-                   Grid.Row="3"
-                   Grid.Column="0"
-                   Grid.ColumnSpan="2"
-                   Margin="2,0,2,0" 
-                   BackgroundColor="WhiteSmoke">
-                <Editor Text="{Binding Annuncio.Descrizione}"
+            <Grid Margin="20,10,20,20">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30" />
+                    <RowDefinition Height="4*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="6*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="31*" />
+                    <ColumnDefinition Width="38*" />
+                    <ColumnDefinition Width="31*" />
+                </Grid.ColumnDefinitions>
+                <ContentView Grid.Row="1"
+                             Grid.Column="0"
+                             Grid.ColumnSpan="3"
+                             HorizontalOptions="Center"
+                             VerticalOptions="End">
+                    <carousel:CarouselViewControl ItemsSource="{Binding OggettiImmagine}"
+                                                  VerticalOptions="FillAndExpand"
+                                                  HorizontalOptions="FillAndExpand"
+                                                  Position="0"
+                                                  CurrentPageIndicatorTintColor="#607D8B"
+                                                  ShowIndicators="True">
+                        <carousel:CarouselViewControl.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="40" />
+                                    </Grid.RowDefinitions>
+                                    <Image Grid.Row="0"
+                                           Aspect="AspectFit"
+                                           Source="{Binding Immagine}" />
+                                </Grid>
+                            </DataTemplate>
+                        </carousel:CarouselViewControl.ItemTemplate>
+                    </carousel:CarouselViewControl>
+
+                </ContentView>
+                <Entry Text="{Binding Annuncio.NomeOggetto}"
+                       Grid.Row="2"
+                       Grid.Column="0"
+                       Grid.ColumnSpan="2"
+                       FontAttributes="Bold"
+                       VerticalOptions="Center"
                        FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
                        TextColor="#607D8B"
-                       FontSize="Medium"/>
-            </Frame>
-            <Button Text="MODIFICA"
-                    Command="{Binding ModificaAnnuncioCommand}"
-                    Grid.Row="4"
-                    Grid.Column="0"
-                    TextColor="#607D8B"
-                    FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
-                    BackgroundColor="WhiteSmoke"
-                    VerticalOptions="CenterAndExpand"
-                    BorderWidth="1"
-                    BorderColor="#607D8B"/>
-            <Button Text="RIMUOVI"
-                    Command="{Binding EliminaAnnuncioCommand}"
-                    Grid.Row="4"
-                    Grid.Column="1"
-                    TextColor="#607D8B"
-                    FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
-                    BackgroundColor="WhiteSmoke"
-                    VerticalOptions="CenterAndExpand"
-                    BorderWidth="1"
-                    BorderColor="#607D8B"/>
-        </Grid>
+                       FontSize="Medium" />
+                <Editor Text="{Binding Annuncio.Prezzo, StringFormat='{0:F0}€'}"
+                        Grid.Row="2"
+                        Grid.Column="2"
+                        VerticalOptions="Center"
+                        FontAttributes="Bold"
+                        FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
+                        TextColor="#85bb65"
+                        FontSize="Medium"
+                        Margin="40,0,5,0" />
+                <Frame BorderColor="#607D8B"
+                       Grid.Row="3"
+                       CornerRadius="25"
+                       Grid.Column="0"
+                       Grid.ColumnSpan="3"
+                       Margin="2,0,2,0"
+                       BackgroundColor="WhiteSmoke">
+                    <Editor Text="{Binding Annuncio.Descrizione}"
+                            FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
+                            TextColor="#607D8B"
+                            FontSize="Medium" />
+                </Frame>
+                <Button Text="MODIFICA"
+                        Command="{Binding ModificaAnnuncioCommand}"
+                        CornerRadius="25"
+                        Grid.Row="4"
+                        Grid.Column="0"
+                        TextColor="#607D8B"
+                        FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
+                        BackgroundColor="WhiteSmoke"
+                        VerticalOptions="CenterAndExpand"
+                        BorderWidth="1"
+                        BorderColor="#607D8B" />
+                <Button Margin="0,10,0,0"
+                        Text="PRENOTATO"
+                        CornerRadius="25"
+                        Grid.Row="4"
+                        Grid.Column="1"
+                        TextColor="#607D8B"
+                        FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
+                        BackgroundColor="WhiteSmoke"
+                        VerticalOptions="CenterAndExpand"
+                        BorderWidth="1"
+                        BorderColor="#607D8B"
+                        IsVisible="False" />
+                <Button Margin="0,10,0,0"
+                        Text="DISPONIBILE"
+                        CornerRadius="25"
+                        Grid.Row="4"
+                        Grid.Column="1"
+                        TextColor="#607D8B"
+                        FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
+                        BackgroundColor="WhiteSmoke"
+                        VerticalOptions="CenterAndExpand"
+                        BorderWidth="1"
+                        BorderColor="#607D8B" />
+                <Button Margin="0,10,0,0"
+                        Text="RIMUOVI"
+                        Command="{Binding EliminaAnnuncioCommand}"
+                        CornerRadius="25"
+                        Grid.Row="4"
+                        Grid.Column="2"
+                        TextColor="#607D8B"
+                        FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
+                        BackgroundColor="WhiteSmoke"
+                        VerticalOptions="CenterAndExpand"
+                        BorderWidth="1"
+                        BorderColor="#607D8B" />
+            </Grid>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

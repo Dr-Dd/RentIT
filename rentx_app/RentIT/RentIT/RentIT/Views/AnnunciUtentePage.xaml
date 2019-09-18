@@ -1,55 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="RentIT.Views.AnnunciUtentePage"
-             Title="I miei annunci">
-    <ContentPage.Content>
-        <ListView x:Name="listaAnnunci" 
-                  ItemsSource="{Binding Annunci}" 
-                  RowHeight="150"
-                  CachingStrategy="RecycleElement"
-                  ItemTapped="GestioneAnnuncio_ItemTapped">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="*"/>
-                                <RowDefinition Height="2*"/>
-                                <RowDefinition Height="*"/>
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-                            <Image Grid.Row="0" 
-                                   Grid.RowSpan="3"
-                                   Grid.Column="0" 
-                                   Source="{Binding Immagine.Source}"/>
-                            <Label Grid.Row="0"                                               
-                                   Grid.Column="1"                                               
-                                   Text="{Binding NomeOggetto}"                                               
-                                   VerticalTextAlignment="End"
-                                   FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"                                               
-                                   FontSize="Medium"                                         
-                                   TextColor="#607D8B"/>
-                            <Label Text="{Binding Descrizione}" 
-                                   Grid.Row="1" 
-                                   Grid.Column="1" 
-                                   Grid.ColumnSpan="2"
-                                   FontFamily="Quicksand-Light.ttf#Quicksand-Light" 
-                                   TextColor="#607D8B"/>
-                            <Label Grid.Row="2" 
-                                   Grid.Column="1" 
-                                   Text="{Binding Data, StringFormat='{0:dd/MM/yyyy}'}" 
-                                   VerticalTextAlignment="Center"
-                                   TextColor="#607D8B" 
-                                   FontFamily="Quicksand-Medium.ttf#Quicksand-Medium"/>
-                        </Grid>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-    </ContentPage.Content>
-</ContentPage>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:local="clr-namespace:RentIT.Views"
+            x:Class="RentIT.Views.AnnunciUtentePage"
+            Title="I miei annunci"
+            BarTextColor="#455A64"
+            BarBackgroundColor="#CFD8DC">
+    <local:AnnunciAttivi />
+    <local:AnnunciPrenotati />
+</TabbedPage>

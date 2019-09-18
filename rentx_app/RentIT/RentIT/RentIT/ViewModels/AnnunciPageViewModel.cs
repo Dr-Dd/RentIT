@@ -55,7 +55,7 @@ namespace RentIT.ViewModels
 
             Annunci.Clear();
 
-            // TODO: Aggiungere persistenza database
+            /*// TODO: Aggiungere persistenza database
             Annunci.Add(new Ad()
             {
                 NomeOggetto = "Tosaerba",
@@ -177,6 +177,7 @@ namespace RentIT.ViewModels
                 Posizione = "4 Km da te",
                 Data = DateTime.Now
             });
+            */
 
             IsBusy = false;
         }

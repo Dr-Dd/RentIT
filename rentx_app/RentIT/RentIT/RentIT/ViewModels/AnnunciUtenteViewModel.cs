@@ -16,8 +16,9 @@ namespace RentIT.ViewModels
 {
     public class AnnunciUtenteViewModel : BaseViewModel<SearchQuery>
     {
-        List<Ad> _annunci;
-        public List<Ad> Annunci
+
+        ObservableCollection<Ad> _annunci;
+        public ObservableCollection<Ad> Annunci
         {
             get { return _annunci; }
             set
@@ -33,18 +34,12 @@ namespace RentIT.ViewModels
             _annuncioService = annuncioService;
         }
 
-        public async override Task Init(SearchQuery query)
-        {
-            Annunci = await _annuncioService.GetMyNotBookedAds();
-            //Poi ci sarà la pagina con quelli booked
-            //AnnunciBook = await _annuncioService.GetMyBookedAds();
-            //await LoadEntries(); 
-        }
+
         /**
         * IMPORTANTE: Nello stato attuale, la ListView fa laggare
         * vistosamente l'app, trovare un modo di rendere più veloce
         * ed efficiente lo scroll
-        
+        */
         async Task LoadEntries()
         {
             if (IsBusy)
@@ -56,14 +51,19 @@ namespace RentIT.ViewModels
 
             Annunci.Clear();
 
-            // TODO: Aggiungere persistenza database
+            ObservableCollection<FileImageSource> percorsiImmagine = new ObservableCollection<FileImageSource>();
+            percorsiImmagine.Add("tosaerba.jpg");
+            percorsiImmagine.Add("tosaerba.jpg");
+            
+            
+            /*// TODO: Aggiungere persistenza database
             Annunci.Add(new Ad()
             {
                 NomeOggetto = "Tosaerba",
                 Descrizione = "Tosaerba BOSCHIA potente, alimentato a escrementi di piccione",
                 Prezzo = 13,
-                Immagine = new Image { Source = "tosaerba.jpg" },
-                Affittuario = new Utente { Name = "Gigi Finizio" },
+                PercorsiImmagine = percorsiImmagine,
+                NomeAffittuario = "Gigi Finizio",
                 Posizione = "4 Km da te",
                 Data = DateTime.Now
             });
@@ -73,8 +73,8 @@ namespace RentIT.ViewModels
                 NomeOggetto = "Tosaerba",
                 Descrizione = "Tosaerba BOSCHIA potente, alimentato a escermenti di piccione",
                 Prezzo = 13,
-                Immagine = new Image { Source = "tosaerba.jpg" },
-                Affittuario = new Utente { Name = "Gigi Finizio" },
+                PercorsiImmagine = percorsiImmagine,
+                NomeAffittuario = "Gigi Finizio",
                 Posizione = "4 Km da te",
                 Data = DateTime.Now
             });
@@ -84,8 +84,20 @@ namespace RentIT.ViewModels
                 NomeOggetto = "Tosaerba",
                 Descrizione = "Tosaerba BOSCHIA potente, alimentato a escermenti di piccione",
                 Prezzo = 13,
-                Immagine = new Image { Source = "tosaerba.jpg" },
-                Affittuario = new Utente { Name = "Gigi Finizio" },
+                PercorsiImmagine = percorsiImmagine,
+                NomeAffittuario = "Gigi Finizio",
+                Posizione = "4 Km da te",
+                Data = DateTime.Now
+            });
+
+
+            Annunci.Add(new Ad()
+            {
+                NomeOggetto = "Tosaerba",
+                Descrizione = "Tosaerba BOSCHIA potente, alimentato a escermenti di piccione",
+                Prezzo = 13,
+                PercorsiImmagine = percorsiImmagine,
+                NomeAffittuario = "Gigi Finizio",
                 Posizione = "4 Km da te",
                 Data = DateTime.Now
             });
@@ -95,19 +107,8 @@ namespace RentIT.ViewModels
                 NomeOggetto = "Tosaerba",
                 Descrizione = "Tosaerba BOSCHIA potente, alimentato a escermenti di piccione",
                 Prezzo = 13,
-                Immagine = new Image { Source = "tosaerba.jpg" },
-                Affittuario = new Utente { Name = "Gigi Finizio" },
-                Posizione = "4 Km da te",
-                Data = DateTime.Now
-            });
-
-            Annunci.Add(new Ad()
-            {
-                NomeOggetto = "Tosaerba",
-                Descrizione = "Tosaerba BOSCHIA potente, alimentato a escrementi di piccione",
-                Prezzo = 13,
-                Immagine = new Image { Source = "tosaerba.jpg" },
-                Affittuario = new Utente { Name = "Gigi Finizio" },
+                PercorsiImmagine = percorsiImmagine,
+                NomeAffittuario = "Gigi Finizio",
                 Posizione = "4 Km da te",
                 Data = DateTime.Now
             });
@@ -117,8 +118,8 @@ namespace RentIT.ViewModels
                 NomeOggetto = "Tosaerba",
                 Descrizione = "Tosaerba BOSCHIA potente, alimentato a escermenti di piccione",
                 Prezzo = 13,
-                Immagine = new Image { Source = "tosaerba.jpg" },
-                Affittuario = new Utente { Name = "Gigi Finizio" },
+                PercorsiImmagine = percorsiImmagine,
+                NomeAffittuario = "Gigi Finizio",
                 Posizione = "4 Km da te",
                 Data = DateTime.Now
             });
@@ -128,8 +129,8 @@ namespace RentIT.ViewModels
                 NomeOggetto = "Tosaerba",
                 Descrizione = "Tosaerba BOSCHIA potente, alimentato a escermenti di piccione",
                 Prezzo = 13,
-                Immagine = new Image { Source = "tosaerba.jpg" },
-                Affittuario = new Utente { Name = "Gigi Finizio" },
+                PercorsiImmagine = percorsiImmagine,
+                NomeAffittuario = "Gigi Finizio",
                 Posizione = "4 Km da te",
                 Data = DateTime.Now
             });
@@ -139,19 +140,20 @@ namespace RentIT.ViewModels
                 NomeOggetto = "Tosaerba",
                 Descrizione = "Tosaerba BOSCHIA potente, alimentato a escermenti di piccione",
                 Prezzo = 13,
-                Immagine = new Image { Source = "tosaerba.jpg" },
-                Affittuario = new Utente { Name = "Gigi Finizio" },
+                PercorsiImmagine = percorsiImmagine,
+                NomeAffittuario = "Gigi Finizio",
                 Posizione = "4 Km da te",
                 Data = DateTime.Now
             });
 
+
             Annunci.Add(new Ad()
             {
                 NomeOggetto = "Tosaerba",
-                Descrizione = "Tosaerba BOSCHIA potente, alimentato a escrementi di piccione",
+                Descrizione = "Tosaerba BOSCHIA potente, alimentato a escermenti di piccione",
                 Prezzo = 13,
-                Immagine = new Image { Source = "tosaerba.jpg" },
-                Affittuario = new Utente { Name = "Gigi Finizio" },
+                PercorsiImmagine = percorsiImmagine,
+                NomeAffittuario = "Gigi Finizio",
                 Posizione = "4 Km da te",
                 Data = DateTime.Now
             });
@@ -161,8 +163,8 @@ namespace RentIT.ViewModels
                 NomeOggetto = "Tosaerba",
                 Descrizione = "Tosaerba BOSCHIA potente, alimentato a escermenti di piccione",
                 Prezzo = 13,
-                Immagine = new Image { Source = "tosaerba.jpg" },
-                Affittuario = new Utente { Name = "Gigi Finizio" },
+                PercorsiImmagine = percorsiImmagine,
+                NomeAffittuario = "Gigi Finizio",
                 Posizione = "4 Km da te",
                 Data = DateTime.Now
             });
@@ -172,8 +174,8 @@ namespace RentIT.ViewModels
                 NomeOggetto = "Tosaerba",
                 Descrizione = "Tosaerba BOSCHIA potente, alimentato a escermenti di piccione",
                 Prezzo = 13,
-                Immagine = new Image { Source = "tosaerba.jpg" },
-                Affittuario = new Utente { Name = "Gigi Finizio" },
+                PercorsiImmagine = percorsiImmagine,
+                NomeAffittuario = "Gigi Finizio",
                 Posizione = "4 Km da te",
                 Data = DateTime.Now
             });
@@ -183,14 +185,16 @@ namespace RentIT.ViewModels
                 NomeOggetto = "Tosaerba",
                 Descrizione = "Tosaerba BOSCHIA potente, alimentato a escermenti di piccione",
                 Prezzo = 13,
-                Immagine = new Image { Source = "tosaerba.jpg" },
-                Affittuario = new Utente { Name = "Gigi Finizio" },
+                PercorsiImmagine = percorsiImmagine,
+                NomeAffittuario = "Gigi Finizio",
                 Posizione = "4 Km da te",
                 Data = DateTime.Now
             });
+            
+             */
 
             IsBusy = false;
-        }*/
+        }
 
         Command<Ad> _viewGestioneAnnuncio;
         public Command<Ad> ViewGestioneAnnuncio
@@ -205,6 +209,11 @@ namespace RentIT.ViewModels
         async Task ExecuteViewGestioneAnnuncio(Ad annuncio)
         {
             await NavService.NavigateTo<GestioneAnnuncioViewModel, Ad>(annuncio);
+        }
+
+        public async override Task Init(SearchQuery query)
+        {
+            //await LoadEntries();
         }
     }
 }

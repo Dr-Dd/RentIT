@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="RentIT.Views.AnnunciPage"
-             Title="Oggetti cercati"
+             Title="COSA a DOVE"
              BackgroundColor="#White">
     <ContentPage.Content>
         <ListView x:Name="listaAnnunci" 
@@ -26,9 +26,8 @@
                             </Grid.ColumnDefinitions>
                             <Image Grid.Row="0" 
                                    Grid.RowSpan="3"
-                                   Grid.Column="0" 
-                                   Source="{Binding Immagine.Source}"
-                                   />
+                                   Grid.Column="0"
+                                   Source="{Binding Immagine.Source}" />
                             <Label Grid.Row="0"                                               
                                    Grid.Column="1"                                               
                                    Text="{Binding NomeOggetto}"                                               
@@ -36,6 +35,14 @@
                                    FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"                                               
                                    FontSize="Medium"                                         
                                    TextColor="#607D8B"/>
+                            <Label Grid.Row="0" 
+                                   Grid.Column="2"
+                                   Text="{Binding Data, StringFormat='{0:dd/MM/yyyy}'}"
+                                   HorizontalTextAlignment="End"
+                                   VerticalTextAlignment="End"
+                                   FontFamily="Quicksand-Regular.ttf#Quicksand-Medium"
+                                   TextColor="#607D8B"
+                                   Margin="0,0,20,0"/>
                             <Label Text="{Binding Descrizione}" 
                                    Grid.Row="1" 
                                    Grid.Column="1" 
@@ -44,7 +51,7 @@
                                    TextColor="#607D8B"/>
                             <Label Grid.Row="2" 
                                    Grid.Column="1" 
-                                   Text="{Binding Data, StringFormat='{0:dd/MM/yyyy}'}" 
+                                   Text="{Binding Posizione}" 
                                    VerticalTextAlignment="Center"
                                    TextColor="#607D8B" 
                                    FontFamily="Quicksand-Medium.ttf#Quicksand-Medium"/>
