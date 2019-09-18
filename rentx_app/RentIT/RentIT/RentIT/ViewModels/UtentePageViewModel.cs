@@ -90,7 +90,7 @@ namespace RentIT.ViewModels
                     ?? (_annunciUtenteCommand = new Command(async () => await ExecuteAnnunciUtenteCommandAsync()));
             }
         }
-
+        //da implementare
         async Task ExecuteAnnunciUtenteCommandAsync()
         {
             await NavService.NavigateTo<AnnunciUtenteViewModel>();
