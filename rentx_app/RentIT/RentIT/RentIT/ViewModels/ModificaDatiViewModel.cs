@@ -110,6 +110,8 @@ namespace RentIT.ViewModels
                 //se esiste, si salva la foto nel db associandola all'utente
                 string base64 = _fotoService.fromStreamToString(stream);
                 await _fotoService.UploadUserImageAsync(base64);
+                //e poi si visualizza
+                Immagine = _fotoService.fromStringToImage(base64);
                 OnPropertyChanged();
             }
         }

@@ -18,7 +18,7 @@ namespace RentIT
         }
 
         private const string UserIdKey = "user_id_key";
-        private static readonly int UserIdDefault = 0;
+        private static readonly long UserIdDefault = 0;
 
         private const string AccessTokenKey = "access_token_key";
         private static readonly string AccessTokenDefault = string.Empty;
