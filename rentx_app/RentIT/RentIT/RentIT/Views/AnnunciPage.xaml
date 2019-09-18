@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="RentIT.Views.AnnunciPage"
-             Title="Oggetti cercati"
+             Title="COSA a DOVE"
              BackgroundColor="#White">
     <ContentPage.Content>
         <ListView x:Name="listaAnnunci" 
@@ -36,8 +36,8 @@
                                    FontSize="Medium"                                         
                                    TextColor="#607D8B"/>
                             <Label Grid.Row="0" 
-                                   Grid.Column="2" 
-                                   Text="{Binding NomeAffittuario}" 
+                                   Grid.Column="2"
+                                   Text="{Binding Data, StringFormat='{0:dd/MM/yyyy}'}"
                                    HorizontalTextAlignment="End"
                                    VerticalTextAlignment="End"
                                    FontFamily="Quicksand-Regular.ttf#Quicksand-Medium"
@@ -51,7 +51,7 @@
                                    TextColor="#607D8B"/>
                             <Label Grid.Row="2" 
                                    Grid.Column="1" 
-                                   Text="{Binding Data, StringFormat='{0:dd/MM/yyyy}'}" 
+                                   Text="{Binding Posizione}" 
                                    VerticalTextAlignment="Center"
                                    TextColor="#607D8B" 
                                    FontFamily="Quicksand-Medium.ttf#Quicksand-Medium"/>

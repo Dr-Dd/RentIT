@@ -87,7 +87,8 @@
                         VerticalOptions="CenterAndExpand"
                         BorderWidth="1"
                         BorderColor="#607D8B" />
-                <Button Text="PRENOTATO"
+                <Button Margin="0,10,0,0"
+                        Text="PRENOTATO"
                         CornerRadius="25"
                         Grid.Row="4"
                         Grid.Column="1"
@@ -98,7 +99,8 @@
                         BorderWidth="1"
                         BorderColor="#607D8B"
                         IsVisible="False" />
-                <Button Text="DISPONIBILE"
+                <Button Margin="0,10,0,0"
+                        Text="DISPONIBILE"
                         CornerRadius="25"
                         Grid.Row="4"
                         Grid.Column="1"
@@ -108,7 +110,8 @@
                         VerticalOptions="CenterAndExpand"
                         BorderWidth="1"
                         BorderColor="#607D8B" />
-                <Button Text="RIMUOVI"
+                <Button Margin="0,10,0,0"
+                        Text="RIMUOVI"
                         CornerRadius="25"
                         Grid.Row="4"
                         Grid.Column="2"

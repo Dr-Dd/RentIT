@@ -46,7 +46,7 @@
                                PlaceholderColor="#BDBDBD" />
                     <SearchBar x:Name="citySearchBar"
                                TextChanged="CitySearchBar_TextChanged"
-                               Placeholder="Indirizzo, Città"
+                               Placeholder="Città"
                                FontFamily="Quicksand-Light.ttf#Quicksand-Light"
                                PlaceholderColor="#BDBDBD" />
                     <ListView x:Name="suggestionListView"
