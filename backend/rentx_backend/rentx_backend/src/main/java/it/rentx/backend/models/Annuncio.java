@@ -3,12 +3,14 @@ package it.rentx.backend.models;
 import java.util.Date;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -34,6 +36,10 @@ public class Annuncio {
 	
 	@OneToOne(mappedBy = "immagineAnnuncio", cascade = CascadeType.ALL, fetch = FetchType.LAZY, optional = false)
 	private Image immagine;
+	
+	@Lob
+	@Column(name = "immagine_annuncio")
+	private byte[] anteprimaImg;
 	
 	private float prezzo;
 	

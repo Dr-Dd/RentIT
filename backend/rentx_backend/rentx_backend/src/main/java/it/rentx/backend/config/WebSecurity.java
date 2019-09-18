@@ -36,7 +36,7 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
 				.antMatchers("/annuncio/newAnnuncio").authenticated()
 				.antMatchers("/annuncio/elimina/**").authenticated()
 				.antMatchers("/annuncio/newAnnuncio").authenticated()
-				.antMatchers("/annuncio/annunciDi/**").authenticated()
+				.antMatchers("/annuncio/annunci/**").authenticated()
 				.anyRequest().authenticated()
 				.and().addFilter(new JWTAuthenticationFilter(authenticationManager(), utenteRepository))
 				.addFilter(new JWTAuthorizationFilter(authenticationManager()))

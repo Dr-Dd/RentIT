@@ -5,6 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import it.rentx.backend.models.ImageModel;
 import it.rentx.backend.models.Risposta;
 import it.rentx.backend.models.Utente;
 import it.rentx.backend.repository.UtenteRepository;
@@ -59,7 +61,7 @@ public class UtenteController {
     	if(!utente_modificato.getPassword().equals(utente_da_modificare.getPassword()))
     		utente_modificato.setPassword(bCryptPasswordEncoder.encode(utente_modificato.getPassword()));
     	
-    	
+    	utente_modificato.setFirstAccess(false);
     	this.utenteRepository.delete(utente_da_modificare);
 
     	this.utenteRepository.save(utente_modificato);
@@ -71,6 +73,23 @@ public class UtenteController {
     	this.utenteRepository.delete(this.utenteRepository.findByEmail(this.utenteService.estrazioneEmailDaToken(token)));
     	return ResponseEntity.ok().body(new Risposta("true", "", "Utente eliminato correttamente.", null));
     }
-	
+    
+    @PutMapping("/addImage")
+    public void aggiungiImmagine(@RequestHeader("Authorization") String token, @RequestBody byte[] image ) {
+    	Utente utente = this.utenteRepository.findByEmail(this.utenteService.estrazioneEmailDaToken(token));
+    	utente.setImage(image);
+    	this.utenteRepository.save(utente); 	
+    }
+    
+    @GetMapping("/image/{id}")
+    public ImageModel getImmagineUtente(@RequestHeader("Authorization") String token, @PathVariable Long id) {
+    	ImageModel immagine = null;
+    	if(id != null) {
+    		Utente u = this.utenteRepository.findById(id).get();
+    		immagine = new ImageModel(u.getImage(), u.getId());
+    	} 
+
+    	return immagine;
+    }
 
 }

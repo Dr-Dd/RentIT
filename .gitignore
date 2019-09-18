@@ -502,3 +502,7 @@ ASALocalRun/
 healthchecksdb
 
 # End of https://www.gitignore.io/api/vim,linux,emacs,windows,sublimetext,visualstudio,xamarinstudio,visualstudiocode
+
+backend/rentx_backend/rentx_backend/it.rentx.backend.models.Annuncio/segments_1
+
+*.lock

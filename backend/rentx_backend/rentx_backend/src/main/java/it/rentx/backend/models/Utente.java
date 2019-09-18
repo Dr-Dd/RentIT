@@ -9,8 +9,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -20,6 +20,9 @@ public class Utente {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private long id;
+	
+	@Column(name = "first_access")
+	private boolean isFirstAccess = true;
 	
 	@Column(name = "name_utente", nullable = false)
 	private String name;
@@ -39,15 +42,16 @@ public class Utente {
 	@Column(name = "address_utente")
 	private String address;
 	
-	@OneToOne(mappedBy = "utente", cascade = CascadeType.ALL, fetch = FetchType.LAZY, optional = false)
-	private Image image;
+	@Lob
+	@Column(name = "immagine_utente")
+	private byte[] image;
 	
 	@OneToMany(mappedBy = "affittuario", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<Annuncio> annunciUtente;
 	
 	public Utente() {}
 	
-	public Utente(long id, String name, String surname, String email, String password,  String numero, String address, Image image) {
+	public Utente(long id, String name, String surname, String email, String password,  String numero, String address, byte[] image) {
 		this.name = name;
 		this.surname = surname;
 		this.email = email;
@@ -63,6 +67,14 @@ public class Utente {
 
 	public void setId(long id) {
 		this.id = id;
+	}
+
+	public boolean isFirstAccess() {
+		return isFirstAccess;
+	}
+
+	public void setFirstAccess(boolean isFirstAccess) {
+		this.isFirstAccess = isFirstAccess;
 	}
 
 	public String getName() {
@@ -113,11 +125,11 @@ public class Utente {
 		this.address = address;
 	}
 
-	public Image getImage() {
+	public byte[] getImage() {
 		return image;
 	}
 
-	public void setImage(Image image) {
+	public void setImage(byte[] image) {
 		this.image = image;
 	}
 
@@ -128,6 +140,8 @@ public class Utente {
 	public void setAnnunciUtente(List<Annuncio> annunciUtente) {
 		this.annunciUtente = annunciUtente;
 	}
+	
+	
 	
 	
 	

@@ -67,7 +67,8 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 		out.write("\"hasSucceded\": \"true\",\n");
 		out.write("\"userId\":" + "\"" + userId + "\",\n");
 		out.write("\"accessToken\":" + "\"" + token + "\",\n");
-		out.write("\"responseMessage\":" + "\"Token creato con successo\"");
+		out.write("\"responseMessage\":" + "\"Token creato con successo\"\n");
+		out.write("\"isFirstAccess\":" + "\"" + utente.isFirstAccess() + "\",\n");
 		out.write("}");
 	}
 

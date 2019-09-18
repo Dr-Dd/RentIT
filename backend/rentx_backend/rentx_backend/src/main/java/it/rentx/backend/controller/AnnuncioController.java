@@ -83,7 +83,7 @@ public class AnnuncioController {
     	return ResponseEntity.ok().body(new Risposta("true", "", "Annuncio eliminato correttamente.", null));
     }
 	
-	@GetMapping("/annunciDi/{id}")
+	@GetMapping("/annunci/{id}")
 	public List<Annuncio> AnnunciUtente(@RequestHeader("Authorization") String token, @PathVariable("id") Long id) {
 		//Utente attuale = utenteRepository.findByEmail(utenteService.estrazioneEmailDaToken(token));
 		
