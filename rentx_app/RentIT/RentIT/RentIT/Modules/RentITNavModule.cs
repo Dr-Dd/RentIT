@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Xamarin.Forms;
+using RentIT.Views;
 
 namespace RentIT.Modules
 {
@@ -60,6 +61,9 @@ namespace RentIT.Modules
 
             navService.RegisterViewMapping(typeof(AnnunciPrenotatiViewModel),
                 typeof(AnnunciPrenotati));
+
+            navService.RegisterViewMapping(typeof(InfoUtenteViewModel),
+                typeof(InfoUtenti));
 
             Bind<INavService>()
                 .ToMethod(x => navService)

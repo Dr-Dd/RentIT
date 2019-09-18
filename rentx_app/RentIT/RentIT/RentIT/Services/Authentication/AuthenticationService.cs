@@ -7,7 +7,7 @@ using RentIT.Models;
 using RentIT.Services.Request;
 using Newtonsoft.Json;
 using RentIT.Models.User;
-
+using RentIT.DBmessages;
 
 namespace RentIT.Services.Authentication
 {
@@ -59,7 +59,7 @@ namespace RentIT.Services.Authentication
             var builder = new UriBuilder(Constants.AuthEndpointLogout());
             string uri = builder.ToString();
 
-            AuthenticationResponse logOutInfo = await requestService.DeleteAsync<AuthenticationResponse>(uri, AppSettings.AccessToken);
+            Response logOutInfo = await requestService.DeleteAsync<Response>(uri, AppSettings.AccessToken);
 
             if (logOutInfo.hasSucceded == true)
             {

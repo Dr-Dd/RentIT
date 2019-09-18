@@ -18,7 +18,7 @@ namespace RentIT.Models.Annuncio
 
         public string Descrizione { get; set; }
 
-        public string AnteprimaImg { get; set; }
+        public string AnteprimaImg { get; set; } 
        
         public decimal Prezzo { get; set; }
 
