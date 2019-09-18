@@ -40,7 +40,7 @@ public class AnnuncioController {
 	private UtenteRepository utenteRepository;
 
 	@PostMapping(value = "/search")
-	public List<Annuncio> search(@RequestHeader("Authorization") String token, @RequestBody SearchQuery sq) {
+	public List<Annuncio> search(@RequestBody SearchQuery sq) {
 		List<Annuncio> searchResults = null;
 		try {
 			searchResults = searchService.fuzzySearch(sq.getOggetto());
