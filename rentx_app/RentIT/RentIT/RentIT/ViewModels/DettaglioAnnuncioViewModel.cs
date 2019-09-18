@@ -133,22 +133,32 @@ namespace RentIT.ViewModels
 
         Command _emailCommand;
         public Command EmailCommand
-        Command _infoUtenteCommand;
-        public Command InfoUtenteCommand
+        
         {
             get
             {
                 return _emailCommand
                     ?? (_emailCommand = new Command(async () => await ExecuteEmailCommand()));
+                
+            }
+        }
+
+        Command _infoUtenteCommand;
+        public Command InfoUtenteCommand
+        {
+            get
+            {
                 return _infoUtenteCommand
                     ?? (_infoUtenteCommand = new Command(async () => await ExecuteInfoUtenteCommand()));
             }
         }
+            
 
         async Task ExecuteInfoUtenteCommand()
         {
             //Qui va passato un oggetto utente come soluzione momentanea passo solo il nome
             await NavService.NavigateTo<InfoUtenteViewModel, string>(Annuncio.NomeAffittuario);
+
         async Task ExecuteEmailCommand()
         {
             List<String> destinatario = new List<string>();
