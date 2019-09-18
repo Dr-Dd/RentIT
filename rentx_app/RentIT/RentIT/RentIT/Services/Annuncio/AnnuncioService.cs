@@ -40,8 +40,9 @@ namespace App.Services.Annuncio
         //altrimenti chiunque puo cancellare un qualsiasi annuncio)
         public async Task<Response> DeleteAdAsync(long idAd)
         {
-            var builder = new UriBuilder(Constants.eliminaAnnuncioEndpoint());
-            builder.Path = "/" + idAd;
+            
+            var baseUri = Constants.eliminaAnnuncioEndpoint();
+            var builder = new UriBuilder(String.Concat(baseUri, "/", idAd));
             var uri = builder.ToString();
 
             Response resp = await requestService.DeleteAsync<Response>(uri, AppSettings.AccessToken);
@@ -55,7 +56,7 @@ namespace App.Services.Annuncio
         //lo prendessimo dal db allora posso usarlo , in caso contrario me lo dovete passare , io qui presumo che ce l'ho nell'oggetto Ad(Annuncio)
         public async Task<Response> ModifyAdDataAsync(Ad a)
         {
-            var builder = new UriBuilder(Constants.modificaAnnuncioEndpoint());
+           
             if (a.Id==0)  //da capire se questo è giusto
             {
                 var errResp = new Response {
@@ -66,7 +67,8 @@ namespace App.Services.Annuncio
                 return errResp;
             }
 
-            builder.Path = "/" + a.Id;
+            var baseUri = Constants.modificaAnnuncioEndpoint();
+            var builder = new UriBuilder(String.Concat(baseUri, "/", a.Id));
             var uri = builder.ToString();
 
             Response resp = await requestService.PutAsync<Ad, Response>(uri, a, AppSettings.AccessToken);
@@ -92,8 +94,9 @@ namespace App.Services.Annuncio
 
         public async Task<ObservableCollection<Ad>> GetUserAds(long UserId,bool booked)
         {
-            var builder = new UriBuilder(Constants.AnnunciPerUserEndpoint());
-            builder.Path = "/" + UserId;
+            
+            var baseUri = Constants.AnnunciPerUserEndpoint();
+            var builder = new UriBuilder(String.Concat(baseUri, "/", UserId));
             var uri = builder.ToString();
 
 
