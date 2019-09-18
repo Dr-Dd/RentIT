@@ -14,7 +14,7 @@ namespace RentIT.ViewModels
 {
     public class AggiungiAnnuncioViewModel : BaseViewModel
     {
-        //Queste probabilmente saranno una lista
+
         Image _immagine;
         public Image Immagine
         {
@@ -135,8 +135,8 @@ namespace RentIT.ViewModels
                 NomeOggetto = NomeOggetto,
                 Descrizione = Descrizione,
                 Prezzo = Prezzo,
-                Data = DateTime.Now
-                //AnteprimaImg = base64
+                Data = DateTime.Now,
+                AnteprimaImg = base64
             };
             var response = await _annuncioService.AddAnnuncioAsync(annuncioRequest);
             if (response.hasSucceded)
