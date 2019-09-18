@@ -6,17 +6,14 @@ using System.Threading.Tasks;
 using RentIT.Models;
 using RentIT.Services;
 using Xamarin.Forms;
-using RentIT.Models.User;
-using RentIT.Models.Annuncio;
 
 namespace RentIT.ViewModels
 {
-    //prima c'era BaseViewModel<SearchQuery>
-    public class AnnunciPageViewModel : BaseViewModel<List<Ad>>
+    public class AnnunciPageViewModel : BaseViewModel<SearchQuery>
     {
 
-        List<Ad> _annunci;
-        public List<Ad> Annunci
+        ObservableCollection<Annuncio> _annunci;
+        public ObservableCollection<Annuncio> Annunci
         {
             get { return _annunci; }
             set
@@ -28,15 +25,7 @@ namespace RentIT.ViewModels
 
         public AnnunciPageViewModel(INavService navService) : base(navService)
         {
-            //Annunci = new ObservableCollection<Ad>();
-        }
-
-
-        public async override Task Init(List<Ad> annunci)
-        {
-            // TODO: Implementare la ricerca
-            //await LoadEntries();
-            Annunci = annunci;
+            Annunci = new ObservableCollection<Annuncio>();
         }
 
         /**
@@ -54,126 +43,140 @@ namespace RentIT.ViewModels
             IsBusy = true;
 
             Annunci.Clear();
-
+            ObservableCollection<FileImageSource> percorsiImmagine = new ObservableCollection<FileImageSource>();
+            percorsiImmagine.Add("tosaerba.jpg");
+            percorsiImmagine.Add("tosaerba.jpg");
             // TODO: Aggiungere persistenza database
-            Annunci.Add(new Ad()
+            Annunci.Add(new Annuncio()
             {
                 NomeOggetto = "Tosaerba",
                 Descrizione = "Tosaerba BOSCHIA potente, alimentato a escrementi di piccione",
                 Prezzo = 13,
-                Immagine = new Image { Source = "tosaerba.jpg" },
+                PercorsiImmagine = percorsiImmagine,
+                NomeAffittuario = "Gigi Finizio",
                 Posizione = "4 Km da te",
                 Data = DateTime.Now
             });
 
-            Annunci.Add(new Ad()
+            Annunci.Add(new Annuncio()
             {
                 NomeOggetto = "Tosaerba",
                 Descrizione = "Tosaerba BOSCHIA potente, alimentato a escermenti di piccione",
                 Prezzo = 13,
-                Immagine = new Image { Source = "tosaerba.jpg" },
+                PercorsiImmagine = percorsiImmagine,
+                NomeAffittuario = "Gigi Finizio",
                 Posizione = "4 Km da te",
                 Data = DateTime.Now
             });
 
-            Annunci.Add(new Ad()
+            Annunci.Add(new Annuncio()
             {
                 NomeOggetto = "Tosaerba",
                 Descrizione = "Tosaerba BOSCHIA potente, alimentato a escermenti di piccione",
                 Prezzo = 13,
-                Immagine = new Image { Source = "tosaerba.jpg" },
-                Posizione = "4 Km da te",
-                Data = DateTime.Now
-            });
-
-
-            Annunci.Add(new Ad()
-            {
-                NomeOggetto = "Tosaerba",
-                Descrizione = "Tosaerba BOSCHIA potente, alimentato a escermenti di piccione",
-                Prezzo = 13,
-                Immagine = new Image { Source = "tosaerba.jpg" },
-                Posizione = "4 Km da te",
-                Data = DateTime.Now
-            });
-
-            Annunci.Add(new Ad()
-            {
-                NomeOggetto = "Tosaerba",
-                Descrizione = "Tosaerba BOSCHIA potente, alimentato a escermenti di piccione",
-                Prezzo = 13,
-                Immagine = new Image { Source = "tosaerba.jpg" },
-                Posizione = "4 Km da te",
-                Data = DateTime.Now
-            });
-
-            Annunci.Add(new Ad()
-            {
-                NomeOggetto = "Tosaerba",
-                Descrizione = "Tosaerba BOSCHIA potente, alimentato a escermenti di piccione",
-                Prezzo = 13,
-                Immagine = new Image { Source = "tosaerba.jpg" },
-                Posizione = "4 Km da te",
-                Data = DateTime.Now
-            });
-
-            Annunci.Add(new Ad()
-            {
-                NomeOggetto = "Tosaerba",
-                Descrizione = "Tosaerba BOSCHIA potente, alimentato a escermenti di piccione",
-                Prezzo = 13,
-                Immagine = new Image { Source = "tosaerba.jpg" },
-                Posizione = "4 Km da te",
-                Data = DateTime.Now
-            });
-
-            Annunci.Add(new Ad()
-            {
-                NomeOggetto = "Tosaerba",
-                Descrizione = "Tosaerba BOSCHIA potente, alimentato a escermenti di piccione",
-                Prezzo = 13,
-                Immagine = new Image { Source = "tosaerba.jpg" },
+                PercorsiImmagine = percorsiImmagine,
+                NomeAffittuario = "Gigi Finizio",
                 Posizione = "4 Km da te",
                 Data = DateTime.Now
             });
 
 
-            Annunci.Add(new Ad()
+            Annunci.Add(new Annuncio()
             {
                 NomeOggetto = "Tosaerba",
                 Descrizione = "Tosaerba BOSCHIA potente, alimentato a escermenti di piccione",
                 Prezzo = 13,
-                Immagine = new Image { Source = "tosaerba.jpg" },
+                PercorsiImmagine = percorsiImmagine,
+                NomeAffittuario = "Gigi Finizio",
                 Posizione = "4 Km da te",
                 Data = DateTime.Now
             });
 
-            Annunci.Add(new Ad()
+            Annunci.Add(new Annuncio()
             {
                 NomeOggetto = "Tosaerba",
                 Descrizione = "Tosaerba BOSCHIA potente, alimentato a escermenti di piccione",
                 Prezzo = 13,
-                Immagine = new Image { Source = "tosaerba.jpg" },
+                PercorsiImmagine = percorsiImmagine,
+                NomeAffittuario = "Gigi Finizio",
                 Posizione = "4 Km da te",
                 Data = DateTime.Now
             });
 
-            Annunci.Add(new Ad()
+            Annunci.Add(new Annuncio()
             {
                 NomeOggetto = "Tosaerba",
                 Descrizione = "Tosaerba BOSCHIA potente, alimentato a escermenti di piccione",
                 Prezzo = 13,
-                Immagine = new Image { Source = "tosaerba.jpg" },
+                PercorsiImmagine = percorsiImmagine,
+                NomeAffittuario = "Gigi Finizio",
                 Posizione = "4 Km da te",
                 Data = DateTime.Now
             });
 
-            Annunci.Add(new Ad()
+            Annunci.Add(new Annuncio()
             {
                 NomeOggetto = "Tosaerba",
                 Descrizione = "Tosaerba BOSCHIA potente, alimentato a escermenti di piccione",
                 Prezzo = 13,
-                Immagine = new Image { Source = "tosaerba.jpg" },
+                PercorsiImmagine = percorsiImmagine,
+                NomeAffittuario = "Gigi Finizio",
+                Posizione = "4 Km da te",
+                Data = DateTime.Now
+            });
+
+            Annunci.Add(new Annuncio()
+            {
+                NomeOggetto = "Tosaerba",
+                Descrizione = "Tosaerba BOSCHIA potente, alimentato a escermenti di piccione",
+                Prezzo = 13,
+                PercorsiImmagine = percorsiImmagine,
+                NomeAffittuario = "Gigi Finizio",
+                Posizione = "4 Km da te",
+                Data = DateTime.Now
+            });
+
+
+            Annunci.Add(new Annuncio()
+            {
+                NomeOggetto = "Tosaerba",
+                Descrizione = "Tosaerba BOSCHIA potente, alimentato a escermenti di piccione",
+                Prezzo = 13,
+                PercorsiImmagine = percorsiImmagine,
+                NomeAffittuario = "Gigi Finizio",
+                Posizione = "4 Km da te",
+                Data = DateTime.Now
+            });
+
+            Annunci.Add(new Annuncio()
+            {
+                NomeOggetto = "Tosaerba",
+                Descrizione = "Tosaerba BOSCHIA potente, alimentato a escermenti di piccione",
+                Prezzo = 13,
+                PercorsiImmagine = percorsiImmagine,
+                NomeAffittuario = "Gigi Finizio",
+                Posizione = "4 Km da te",
+                Data = DateTime.Now
+            });
+
+            Annunci.Add(new Annuncio()
+            {
+                NomeOggetto = "Tosaerba",
+                Descrizione = "Tosaerba BOSCHIA potente, alimentato a escermenti di piccione",
+                Prezzo = 13,
+                PercorsiImmagine = percorsiImmagine,
+                NomeAffittuario = "Gigi Finizio",
+                Posizione = "4 Km da te",
+                Data = DateTime.Now
+            });
+
+            Annunci.Add(new Annuncio()
+            {
+                NomeOggetto = "Tosaerba",
+                Descrizione = "Tosaerba BOSCHIA potente, alimentato a escermenti di piccione",
+                Prezzo = 13,
+                PercorsiImmagine = percorsiImmagine,
+                NomeAffittuario = "Gigi Finizio",
                 Posizione = "4 Km da te",
                 Data = DateTime.Now
             });
@@ -181,19 +184,25 @@ namespace RentIT.ViewModels
             IsBusy = false;
         }
 
-        Command<Ad> _viewAnnuncio;
-        public Command<Ad> ViewAnnuncio
+        Command<Annuncio> _viewAnnuncio;
+        public Command<Annuncio> ViewAnnuncio
         {
             get
             {
                 return _viewAnnuncio
-                    ?? (new Command<Ad>(async (annuncio) => await ExecuteViewAnnuncio(annuncio)));
+                    ?? (new Command<Annuncio>(async (annuncio) => await ExecuteViewAnnuncio(annuncio)));
             }
         }
 
-        async Task ExecuteViewAnnuncio(Ad annuncio)
+        async Task ExecuteViewAnnuncio(Annuncio annuncio)
         {
-            await NavService.NavigateTo<DettaglioAnnuncioViewModel, Ad>(annuncio);
+            await NavService.NavigateTo<DettaglioAnnuncioViewModel, Annuncio>(annuncio);
+        }
+
+        public async override Task Init(SearchQuery query)
+        {
+            // TODO: Implementare la ricerca
+            await LoadEntries();
         }
     }
 }

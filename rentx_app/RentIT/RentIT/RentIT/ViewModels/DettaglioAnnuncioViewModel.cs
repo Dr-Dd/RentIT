@@ -1,10 +1,5 @@
-﻿using App.Models.Image;
-using App.Services.Foto;
-using RentIT.Models;
-using RentIT.Models.Annuncio;
-using RentIT.Models.User;
+﻿using RentIT.Models;
 using RentIT.Services;
-using RentIT.Services.User;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -16,10 +11,14 @@ using Xamarin.Essentials;
 
 namespace RentIT.ViewModels
 {
-    public class DettaglioAnnuncioViewModel : BaseViewModel<Ad>
+    /**
+     * Classe segnaposto, probabilmente in futuro ci sarà bisogno 
+     * di implementare l'aggiunta di un oggetto tramite API
+     */
+    public class DettaglioAnnuncioViewModel : BaseViewModel<Annuncio>
     {
-        Ad _annuncio;
-        public Ad Annuncio
+        Annuncio _annuncio;
+        public Annuncio Annuncio
         {
             get { return _annuncio; }
             set
@@ -29,29 +28,43 @@ namespace RentIT.ViewModels
             }
         }
 
-        Utente _affittuario;
-        public Utente Affittuario
+        ObservableCollection<OggettoImmagine> _oggettiImmagine;
+        public ObservableCollection<OggettoImmagine> OggettiImmagine
         {
-            get { return _affittuario; }
+            get
+            {
+                return _oggettiImmagine;
+            }
             set
             {
-                _affittuario = value;
+                _oggettiImmagine = value;
                 OnPropertyChanged();
             }
         }
 
-        Image _immagineUtente;
-        public Image ImmagineUtente
+        public DettaglioAnnuncioViewModel(INavService navService) : base(navService)
         {
-            get { return _immagineUtente; }
-            set
-            {
-                _immagineUtente = value;
-                OnPropertyChanged();
-            }
         }
 
-<<<<<<< HEAD
+        public async override Task Init(Annuncio annuncio)
+        {
+            Annuncio = annuncio;
+            OggettiImmagine = creaOggettiImmagine(Annuncio);
+        }
+
+        public ObservableCollection<OggettoImmagine> creaOggettiImmagine(Annuncio annuncio)
+        {
+            OggettiImmagine = new ObservableCollection<OggettoImmagine>();
+            foreach (FileImageSource image in Annuncio.PercorsiImmagine)
+            {
+                OggettiImmagine.Add(new OggettoImmagine()
+                {
+                    Immagine = image
+                });
+            }
+            return OggettiImmagine;
+        }
+
         Command _callCommand;
         public Command CallCommand
         {
@@ -98,32 +111,6 @@ namespace RentIT.ViewModels
             };
 
             await Email.ComposeAsync(message);
-=======
-        readonly FotoService _fotoService;
-        readonly IUserService _userService;
-        public DettaglioAnnuncioViewModel(INavService navService, FotoService fotoService, UserService userService) : base(navService)
-        {
-            _fotoService = fotoService;
-            _userService = userService;
         }
-
-        public async override Task Init(Ad annuncio)
-        {
-            Annuncio = annuncio;
-            //Affittuario = _userService.GetProfileAsync(annuncio.AffittuarioId);
-            //ImmagineUtente = await getPropic();
-        }
-
-        //Metodo per prendere l'immagine profilo dell'utente dal database
-        public async Task<Image> getPropic()
-        {
-            ImageModel foto = await _fotoService.GetUserImage(Annuncio.AffittuarioId);
-            Image img = new Image();
-            if (foto != null)
-                img = _fotoService.fromStringToImage(foto.data);
-            return img;
->>>>>>> origin/AggiungiAnnuncio
-        }
-
     }
 }
