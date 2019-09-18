@@ -20,17 +20,10 @@
             <StackLayout Orientation="Horizontal"
                          Grid.Row="0"
                          Grid.Column="0">
-<<<<<<< HEAD
                 <controls:CircleImage Source="meme.png"
                                       WidthRequest="80"
                                       HeightRequest="80" />
                 <Label Text="{Binding Annuncio.NomeAffittuario}"
-=======
-                <controls:CircleImage Source="{Binding ImmagineUtente.Source}" 
-                                      WidthRequest="80"
-                                      HeightRequest="80"/>
-                <Label Text="{Binding Affittuario.Name}"
->>>>>>> origin/AggiungiAnnuncio
                        FontSize="Small"
                        FontAttributes="Bold"
                        FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
@@ -45,17 +38,33 @@
                    HorizontalOptions="End"
                    FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
                    TextColor="#607D8B"
-<<<<<<< HEAD
                    Margin="0,0,20,0" />
-            <Image Source="{Binding Annuncio.PercorsoImmagine}"
-=======
-                   Margin="0,0,20,0"/>
-            <Image Source="{Binding Annuncio.Immagine.Source}" 
->>>>>>> origin/AggiungiAnnuncio
-                   Aspect="AspectFit"
-                   Grid.Row="1"
-                   Grid.Column="0"
-                   Grid.ColumnSpan="2" />
+            <ContentView Grid.Row="1"
+                         Grid.Column="0"
+                         Grid.ColumnSpan="2"
+                         HorizontalOptions="Center"
+                         VerticalOptions="End">
+                <carousel:CarouselViewControl ItemsSource="{Binding OggettiImmagine}"
+                                              VerticalOptions="FillAndExpand"
+                                              HorizontalOptions="FillAndExpand"
+                                              Position="0"
+                                              CurrentPageIndicatorTintColor="#607D8B"
+                                              ShowIndicators="True">
+                    <carousel:CarouselViewControl.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="40" />
+                                </Grid.RowDefinitions>
+                                <Image Grid.Row="0"
+                                       Aspect="AspectFit"
+                                       Source="{Binding Immagine}" />
+                            </Grid>
+                        </DataTemplate>
+                    </carousel:CarouselViewControl.ItemTemplate>
+                </carousel:CarouselViewControl>
+            </ContentView>
             <Label Text="{Binding Annuncio.NomeOggetto}"
                    Grid.Row="2"
                    Grid.Column="0"
@@ -88,7 +97,8 @@
                        TextColor="#607D8B"
                        FontSize="Medium" />
             </Frame>
-            <Button Grid.Row="4"
+            <Button Margin="0,10,0,0"
+                    Grid.Row="4"
                     BackgroundColor="WhiteSmoke"
                     Grid.Column="0"
                     CornerRadius="25"
@@ -99,8 +109,9 @@
                     Text="Chiama"
                     ImageSource="ic_local_phone.png"
                     ContentLayout="Left,10"
-                    Command="{Binding CallCommand}"/>
-            <Button Grid.Row="4"
+                    Command="{Binding CallCommand}" />
+            <Button Margin="0,10,0,0"
+                    Grid.Row="4"
                     BackgroundColor="WhiteSmoke"
                     Grid.Column="1"
                     CornerRadius="25"
@@ -111,7 +122,7 @@
                     Text="Email"
                     ImageSource="ic_email.png"
                     ContentLayout="Left,10"
-                    Command="{Binding EmailCommand}"/>
+                    Command="{Binding EmailCommand}" />
         </Grid>
     </ContentPage.Content>
 </ContentPage>
