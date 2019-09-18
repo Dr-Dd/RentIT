@@ -44,6 +44,7 @@
                                Placeholder="Cerca qualcosa"
                                x:Name="objectSearchBar"
                                FontFamily="Quicksand-Light.ttf#Quicksand-Light"
+<<<<<<< HEAD
                                PlaceholderColor="#BDBDBD" />
                     <SearchBar x:Name="citySearchBar"
                                TextChanged="CitySearchBar_TextChanged"
@@ -53,6 +54,19 @@
                                PlaceholderColor="#BDBDBD" />
                     <ListView x:Name="suggestionListView"
                               ItemTapped="SuggestionListView_ItemTapped" />
+=======
+                               PlaceholderColor="#BDBDBD"
+                               Text="{Binding Oggetto}"/>
+                    <SearchBar x:Name="citySearchBar" 
+                               TextChanged="CitySearchBar_TextChanged" 
+                               HorizontalOptions="Center" 
+                               Placeholder="Indirizzo, Città"
+                               FontFamily="Quicksand-Light.ttf#Quicksand-Light"
+                               PlaceholderColor="#BDBDBD"
+                               Text="{Binding Citta}"/>
+                    <ListView x:Name="suggestionListView" 
+                              ItemTapped="SuggestionListView_ItemTapped"/>
+>>>>>>> origin/AggiungiAnnuncio
                     <Button Text="CERCA"
                             CornerRadius="25"
                             TextColor="#607D8B"
@@ -60,7 +74,12 @@
                             BorderColor="#607D8B"
                             BorderWidth="1"
                             BackgroundColor="WhiteSmoke"
+<<<<<<< HEAD
                             Margin="0,0,0,20" />
+=======
+                            Margin="0,0,0,20"
+                            Command="{Binding CercaCommand}"/>
+>>>>>>> origin/AggiungiAnnuncio
                 </StackLayout>
             </Frame>
             <Button Grid.Row="2"

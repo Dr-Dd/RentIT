@@ -1,4 +1,5 @@
-﻿using Ninject.Modules;
+﻿using App.Services.Annuncio;
+using Ninject.Modules;
 using RentIT.Services.Authentication;
 using RentIT.Services.Request;
 using RentIT.Services.User;
@@ -32,6 +33,7 @@ namespace RentIT.Modules
             var requestService = new RequestService();
             var authService = new AuthenticationService(requestService);
             var userService = new UserService(requestService);
+            var annuncioService = new AnnuncioService(requestService);
 
             // Qui gli fai il binding come singoletto
             Bind<IRequestService>().
@@ -46,6 +48,11 @@ namespace RentIT.Modules
             // ***
             Bind<IUserService>()
                 .ToMethod(x => userService)
+                .InSingletonScope();
+
+            // ***
+            Bind<IAnnuncioService>()
+                .ToMethod(x => annuncioService)
                 .InSingletonScope();
 
         }

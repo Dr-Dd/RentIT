@@ -8,6 +8,7 @@ using RentIT.ViewModels;
 using RentIT.Services;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using RentIT.Models.Annuncio;
 
 namespace RentIT.Views
 {
@@ -26,7 +27,7 @@ namespace RentIT.Views
 
         async void Annuncio_ItemTapped(object sender, ItemTappedEventArgs e)
         {
-            var annuncio = (Annuncio)e.Item;
+            var annuncio = (Ad)e.Item;
             _vm.ViewAnnuncio.Execute(annuncio);
 
             listaAnnunci.SelectedItem = null;

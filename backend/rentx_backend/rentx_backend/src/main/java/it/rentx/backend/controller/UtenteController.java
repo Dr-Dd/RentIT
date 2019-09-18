@@ -34,7 +34,10 @@ public class UtenteController {
 
     @PostMapping("/registrazione")
     public ResponseEntity<Risposta> registrazioneUtente(@RequestBody Utente utente) {
-        utente.setPassword(bCryptPasswordEncoder.encode(utente.getPassword()));
+    	if(utenteRepository.findByEmail(utente.getEmail()) != null ) {
+    		return ResponseEntity.ok().body(new Risposta("false","","Email già registrata", null));
+    	}
+    	utente.setPassword(bCryptPasswordEncoder.encode(utente.getPassword()));
         utenteRepository.save(utente);
         return ResponseEntity.ok().body(new Risposta("true","","Utente iscritto correttamente", null));
     }
@@ -46,14 +49,21 @@ public class UtenteController {
     
     // Da terminare
     @PutMapping("/modifica")
-    public ResponseEntity<Risposta> modificaUtente(@RequestHeader("Authorization") String token, @RequestBody Utente dati_utente) {
+    public ResponseEntity<Risposta> modificaUtente(@RequestHeader("Authorization") String token, @RequestBody Utente utente_modificato) {
     	Utente utente_da_modificare = this.utenteRepository.findByEmail(this.utenteService.estrazioneEmailDaToken(token));
-    	utente_da_modificare.setNumero(dati_utente.getNumero());
-    	utente_da_modificare.setAddress(dati_utente.getAddress());
+    	//utente_da_modificare.setNumero(dati_utente.getNumero());
+    	//utente_da_modificare.setAddress(dati_utente.getAddress());
+    	//String password = utente_da_modificare.getPassword();
     	
-    	this.utenteRepository.save(utente_da_modificare);
+    	// Se la password dell'utente che arriva dalla richiesta è diversa da quello sul db la codifico e la setto altrimenti salvo direttamente
+    	if(!utente_modificato.getPassword().equals(utente_da_modificare.getPassword()))
+    		utente_modificato.setPassword(bCryptPasswordEncoder.encode(utente_modificato.getPassword()));
     	
-    	return ResponseEntity.ok().body(new Risposta("true", utente_da_modificare.getId(), "", "Dati modificati correttamente."));
+    	
+    	this.utenteRepository.delete(utente_da_modificare);
+
+    	this.utenteRepository.save(utente_modificato);
+    	return ResponseEntity.ok().body(new Risposta("true", utente_modificato.getId(), "", "Dati modificati correttamente."));
     }
     
     @DeleteMapping("/elimina")

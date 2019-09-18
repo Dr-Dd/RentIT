@@ -1,4 +1,7 @@
-﻿using RentIT.Models;
+﻿using App.Services.Annuncio;
+using RentIT.Models;
+using RentIT.Models.Annuncio;
+using RentIT.Models.User;
 using RentIT.Services;
 using System;
 using System.Collections.Generic;
@@ -13,8 +16,8 @@ namespace RentIT.ViewModels
 {
     public class AnnunciUtenteViewModel : BaseViewModel<SearchQuery>
     {
-        ObservableCollection<Annuncio> _annunci;
-        public ObservableCollection<Annuncio> Annunci
+        List<Ad> _annunci;
+        public List<Ad> Annunci
         {
             get { return _annunci; }
             set
@@ -23,16 +26,25 @@ namespace RentIT.ViewModels
                 OnPropertyChanged();
             }
         }
-        
-        public AnnunciUtenteViewModel(INavService navService) : base(navService)
+
+        readonly IAnnuncioService _annuncioService;
+        public AnnunciUtenteViewModel(INavService navService, AnnuncioService annuncioService) : base(navService)
         {
-            Annunci = new ObservableCollection<Annuncio>();
+            _annuncioService = annuncioService;
+        }
+
+        public async override Task Init(SearchQuery query)
+        {
+            Annunci = await _annuncioService.GetMyNotBookedAds();
+            //Poi ci sarà la pagina con quelli booked
+            //AnnunciBook = await _annuncioService.GetMyBookedAds();
+            //await LoadEntries(); 
         }
         /**
         * IMPORTANTE: Nello stato attuale, la ListView fa laggare
         * vistosamente l'app, trovare un modo di rendere più veloce
         * ed efficiente lo scroll
-        */
+        
         async Task LoadEntries()
         {
             if (IsBusy)
@@ -45,161 +57,154 @@ namespace RentIT.ViewModels
             Annunci.Clear();
 
             // TODO: Aggiungere persistenza database
-            Annunci.Add(new Annuncio()
+            Annunci.Add(new Ad()
             {
                 NomeOggetto = "Tosaerba",
                 Descrizione = "Tosaerba BOSCHIA potente, alimentato a escrementi di piccione",
                 Prezzo = 13,
-                PercorsoImmagine = "tosaerba.jpg",
-                NomeAffittuario = "Gigi Finizio",
+                Immagine = new Image { Source = "tosaerba.jpg" },
+                Affittuario = new Utente { Name = "Gigi Finizio" },
                 Posizione = "4 Km da te",
                 Data = DateTime.Now
             });
 
-            Annunci.Add(new Annuncio()
+            Annunci.Add(new Ad()
             {
                 NomeOggetto = "Tosaerba",
                 Descrizione = "Tosaerba BOSCHIA potente, alimentato a escermenti di piccione",
                 Prezzo = 13,
-                PercorsoImmagine = "tosaerba.jpg",
-                NomeAffittuario = "Gigi Finizio",
+                Immagine = new Image { Source = "tosaerba.jpg" },
+                Affittuario = new Utente { Name = "Gigi Finizio" },
                 Posizione = "4 Km da te",
                 Data = DateTime.Now
             });
 
-            Annunci.Add(new Annuncio()
+            Annunci.Add(new Ad()
             {
                 NomeOggetto = "Tosaerba",
                 Descrizione = "Tosaerba BOSCHIA potente, alimentato a escermenti di piccione",
                 Prezzo = 13,
-                PercorsoImmagine = "tosaerba.jpg",
-                NomeAffittuario = "Gigi Finizio",
+                Immagine = new Image { Source = "tosaerba.jpg" },
+                Affittuario = new Utente { Name = "Gigi Finizio" },
                 Posizione = "4 Km da te",
                 Data = DateTime.Now
             });
 
-
-            Annunci.Add(new Annuncio()
+            Annunci.Add(new Ad()
             {
                 NomeOggetto = "Tosaerba",
                 Descrizione = "Tosaerba BOSCHIA potente, alimentato a escermenti di piccione",
                 Prezzo = 13,
-                PercorsoImmagine = "tosaerba.jpg",
-                NomeAffittuario = "Gigi Finizio",
+                Immagine = new Image { Source = "tosaerba.jpg" },
+                Affittuario = new Utente { Name = "Gigi Finizio" },
                 Posizione = "4 Km da te",
                 Data = DateTime.Now
             });
 
-            Annunci.Add(new Annuncio()
+            Annunci.Add(new Ad()
             {
                 NomeOggetto = "Tosaerba",
-                Descrizione = "Tosaerba BOSCHIA potente, alimentato a escermenti di piccione",
+                Descrizione = "Tosaerba BOSCHIA potente, alimentato a escrementi di piccione",
                 Prezzo = 13,
-                PercorsoImmagine = "tosaerba.jpg",
-                NomeAffittuario = "Gigi Finizio",
+                Immagine = new Image { Source = "tosaerba.jpg" },
+                Affittuario = new Utente { Name = "Gigi Finizio" },
                 Posizione = "4 Km da te",
                 Data = DateTime.Now
             });
 
-            Annunci.Add(new Annuncio()
+            Annunci.Add(new Ad()
             {
                 NomeOggetto = "Tosaerba",
                 Descrizione = "Tosaerba BOSCHIA potente, alimentato a escermenti di piccione",
                 Prezzo = 13,
-                PercorsoImmagine = "tosaerba.jpg",
-                NomeAffittuario = "Gigi Finizio",
+                Immagine = new Image { Source = "tosaerba.jpg" },
+                Affittuario = new Utente { Name = "Gigi Finizio" },
                 Posizione = "4 Km da te",
                 Data = DateTime.Now
             });
 
-            Annunci.Add(new Annuncio()
+            Annunci.Add(new Ad()
             {
                 NomeOggetto = "Tosaerba",
                 Descrizione = "Tosaerba BOSCHIA potente, alimentato a escermenti di piccione",
                 Prezzo = 13,
-                PercorsoImmagine = "tosaerba.jpg",
-                NomeAffittuario = "Gigi Finizio",
+                Immagine = new Image { Source = "tosaerba.jpg" },
+                Affittuario = new Utente { Name = "Gigi Finizio" },
                 Posizione = "4 Km da te",
                 Data = DateTime.Now
             });
 
-            Annunci.Add(new Annuncio()
+            Annunci.Add(new Ad()
             {
                 NomeOggetto = "Tosaerba",
                 Descrizione = "Tosaerba BOSCHIA potente, alimentato a escermenti di piccione",
                 Prezzo = 13,
-                PercorsoImmagine = "tosaerba.jpg",
-                NomeAffittuario = "Gigi Finizio",
+                Immagine = new Image { Source = "tosaerba.jpg" },
+                Affittuario = new Utente { Name = "Gigi Finizio" },
                 Posizione = "4 Km da te",
                 Data = DateTime.Now
             });
 
-
-            Annunci.Add(new Annuncio()
+            Annunci.Add(new Ad()
             {
                 NomeOggetto = "Tosaerba",
-                Descrizione = "Tosaerba BOSCHIA potente, alimentato a escermenti di piccione",
+                Descrizione = "Tosaerba BOSCHIA potente, alimentato a escrementi di piccione",
                 Prezzo = 13,
-                PercorsoImmagine = "tosaerba.jpg",
-                NomeAffittuario = "Gigi Finizio",
+                Immagine = new Image { Source = "tosaerba.jpg" },
+                Affittuario = new Utente { Name = "Gigi Finizio" },
                 Posizione = "4 Km da te",
                 Data = DateTime.Now
             });
 
-            Annunci.Add(new Annuncio()
+            Annunci.Add(new Ad()
             {
                 NomeOggetto = "Tosaerba",
                 Descrizione = "Tosaerba BOSCHIA potente, alimentato a escermenti di piccione",
                 Prezzo = 13,
-                PercorsoImmagine = "tosaerba.jpg",
-                NomeAffittuario = "Gigi Finizio",
+                Immagine = new Image { Source = "tosaerba.jpg" },
+                Affittuario = new Utente { Name = "Gigi Finizio" },
                 Posizione = "4 Km da te",
                 Data = DateTime.Now
             });
 
-            Annunci.Add(new Annuncio()
+            Annunci.Add(new Ad()
             {
                 NomeOggetto = "Tosaerba",
                 Descrizione = "Tosaerba BOSCHIA potente, alimentato a escermenti di piccione",
                 Prezzo = 13,
-                PercorsoImmagine = "tosaerba.jpg",
-                NomeAffittuario = "Gigi Finizio",
+                Immagine = new Image { Source = "tosaerba.jpg" },
+                Affittuario = new Utente { Name = "Gigi Finizio" },
                 Posizione = "4 Km da te",
                 Data = DateTime.Now
             });
 
-            Annunci.Add(new Annuncio()
+            Annunci.Add(new Ad()
             {
                 NomeOggetto = "Tosaerba",
                 Descrizione = "Tosaerba BOSCHIA potente, alimentato a escermenti di piccione",
                 Prezzo = 13,
-                PercorsoImmagine = "tosaerba.jpg",
-                NomeAffittuario = "Gigi Finizio",
+                Immagine = new Image { Source = "tosaerba.jpg" },
+                Affittuario = new Utente { Name = "Gigi Finizio" },
                 Posizione = "4 Km da te",
                 Data = DateTime.Now
             });
 
             IsBusy = false;
-        }
+        }*/
 
-        Command<Annuncio> _viewGestioneAnnuncio;
-        public Command<Annuncio> ViewGestioneAnnuncio
+        Command<Ad> _viewGestioneAnnuncio;
+        public Command<Ad> ViewGestioneAnnuncio
         {
             get
             {
                 return _viewGestioneAnnuncio
-                    ?? (new Command<Annuncio>(async (annuncio) => await ExecuteViewGestioneAnnuncio(annuncio)));
+                    ?? (new Command<Ad>(async (annuncio) => await ExecuteViewGestioneAnnuncio(annuncio)));
             }
         }
 
-        async Task ExecuteViewGestioneAnnuncio(Annuncio annuncio)
+        async Task ExecuteViewGestioneAnnuncio(Ad annuncio)
         {
-            await NavService.NavigateTo<GestioneAnnuncioViewModel, Annuncio>(annuncio);
-        }
-
-        public async override Task Init(SearchQuery query)
-        {
-            await LoadEntries(); 
+            await NavService.NavigateTo<GestioneAnnuncioViewModel, Ad>(annuncio);
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿
-using App.Models.User;
+using App.Models.Image;
+using RentIT.DBmessages;
 using RentIT.Models.User;
 using System;
 using System.Collections.Generic;
@@ -13,14 +14,12 @@ namespace RentIT.Services.User
     {
         Task<Response> SignUpAsync(SignUpRequest request);
 
-        Task<Utente> GetCurrentProfileAsync();
-
-        Task UploadUserImageAsync(string imageAsBase64);
-
-        Task<ImageModel> GetUserImage();
+        Task<Utente> GetMyProfileAsync();
 
         Task<Response> ModifyUserData(Utente u);
 
         Task<Response> DeleteAccount();
+
+        Task<Utente> GetUserByIdAsync(long userId);
     }
 }

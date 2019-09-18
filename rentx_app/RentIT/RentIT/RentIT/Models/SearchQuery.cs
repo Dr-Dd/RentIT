@@ -2,8 +2,8 @@
 {
     public class SearchQuery
     {
-        private string QueryString { get; set; }
+        public string oggetto { get; set; }
 
-        private string Citta { get; set; }
+        public string citta { get; set; }
     }
 }
