@@ -53,6 +53,11 @@ public class AnnuncioService {
 	}
 	
 	@Transactional
+	public List<Annuncio> annunciUtenteBooked(Utente affittuario, boolean booked) {
+		return repo.findByAffittuarioAndBooked(affittuario, booked);
+	}
+	
+	@Transactional
 	public List<Annuncio> annunciPosizione(String posizione) {
 		return repo.findByPosizione(posizione);
 	}

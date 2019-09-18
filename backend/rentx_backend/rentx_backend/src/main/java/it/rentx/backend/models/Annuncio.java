@@ -2,17 +2,14 @@ package it.rentx.backend.models;
 
 import java.util.Date;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.hibernate.search.annotations.Field;
@@ -34,22 +31,25 @@ public class Annuncio {
 	@Field(termVector = TermVector.YES)
 	private String descrizione;
 	
-	@OneToOne(mappedBy = "immagineAnnuncio", cascade = CascadeType.ALL, fetch = FetchType.LAZY, optional = false)
-	private Image immagine;
-	
 	@Lob
 	@Column(name = "immagine_annuncio")
 	private byte[] anteprimaImg;
 	
+	@Column
 	private float prezzo;
 	
 	@ManyToOne
 	@JoinColumn(name="id_utente")
 	private Utente affittuario;
 	
+	@Column
 	private String posizione;
 	
+	@Column
 	private Date data;
+	
+	@Column
+	private boolean booked;
 	
 	public Annuncio() {}
 
@@ -75,14 +75,6 @@ public class Annuncio {
 
 	public void setDescrizione(String Descrizione) {
 		descrizione = Descrizione;
-	}
-
-	public Image getImmagine() {
-		return immagine;
-	}
-
-	public void setImmagine(Image Immagine) {
-		immagine = Immagine;
 	}
 
 	public float getPrezzo() {
@@ -115,6 +107,22 @@ public class Annuncio {
 
 	public void setData(Date Data) {
 		data = Data;
+	}
+
+	public byte[] getAnteprimaImg() {
+		return anteprimaImg;
+	}
+
+	public void setAnteprimaImg(byte[] anteprimaImg) {
+		this.anteprimaImg = anteprimaImg;
+	}
+
+	public boolean isBooked() {
+		return booked;
+	}
+
+	public void setBooked(boolean booked) {
+		this.booked = booked;
 	}
 	
 	

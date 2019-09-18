@@ -83,16 +83,15 @@ public class AnnuncioController {
     	return ResponseEntity.ok().body(new Risposta("true", "Annuncio eliminato correttamente."));
     }
 	
+	// Devo sistemare dato che devo prendere gli annunci dell'utente a cui corrisponde questo id (controlla i model)
 	@GetMapping("/annunci/{id}")
 	public List<Annuncio> AnnunciUtente(@RequestHeader("Authorization") String token, @PathVariable("id") Long id) {
-		//Utente attuale = utenteRepository.findByEmail(utenteService.estrazioneEmailDaToken(token));
-		
-		/*Quando c'è il token, se l'utente di cui chiede gli annunci è lo stesso estratto dal token
-		 * allora il metodo deve restituire quelli prenotati
-		 * Se non c'è il token, vanno restituiti tutti gli annunci non prenotati, a prescindere che siano
-		 * oppure no quelli dell'utente-token
-		 * Non so come farlo quindi per ora mi restituisco tutti gli annunci dell'utente
-		 */		
+		if(!token.isEmpty()) {
+			Utente attuale = this.utenteRepository.findByEmail(this.utenteService.estrazioneEmailDaToken(token));
+			if (attuale.getId() == id) {
+				return annuncioService.annunciUtenteBooked(attuale, true);
+			}
+		}
 		
     	return annuncioService.annunciUtente(utenteRepository.findById(id).get());
 	}
