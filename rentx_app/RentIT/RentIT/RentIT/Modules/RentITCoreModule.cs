@@ -26,6 +26,7 @@ namespace RentIT.Modules
             Bind<GestioneAnnuncioViewModel>().ToSelf();
             Bind<AnnunciAttiviViewModel>().ToSelf();
             Bind<AnnunciPrenotatiViewModel>().ToSelf();
+            Bind<InfoUtenteViewModel>().ToSelf();
 
             // E' importante fare il binding di tutti i servizi che
             // non servono in quantità molteplice nelle injection

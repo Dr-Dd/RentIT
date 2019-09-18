@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Essentials;
-
+using RentIT.Models.User;
 
 namespace RentIT.ViewModels
 {
@@ -111,6 +111,22 @@ namespace RentIT.ViewModels
             };
 
             await Email.ComposeAsync(message);
+        }
+
+        Command _infoUtenteCommand;
+        public Command InfoUtenteCommand
+        {
+            get
+            {
+                return _infoUtenteCommand
+                    ?? (_infoUtenteCommand = new Command(async () => await ExecuteInfoUtenteCommand()));
+            }
+        }
+
+        async Task ExecuteInfoUtenteCommand()
+        {
+            //Qui va passato un oggetto utente come soluzione momentanea passo solo il nome
+            await NavService.NavigateTo<InfoUtenteViewModel, string>(Annuncio.NomeAffittuario);
         }
     }
 }

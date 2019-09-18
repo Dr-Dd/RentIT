@@ -23,12 +23,14 @@
                 <controls:CircleImage Source="meme.png"
                                       WidthRequest="80"
                                       HeightRequest="80" />
-                <Label Text="{Binding Annuncio.NomeAffittuario}"
+                <Button Text="{Binding Annuncio.NomeAffittuario}"
+                       BackgroundColor="Transparent"
                        FontSize="Small"
                        FontAttributes="Bold"
                        FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
                        TextColor="#607D8B"
-                       VerticalOptions="Center" />
+                       VerticalOptions="Center" 
+                       Command="{Binding InfoUtenteCommand}"/>
             </StackLayout>
             <Label Text="{Binding Annuncio.Posizione}"
                    Grid.Row="0"
