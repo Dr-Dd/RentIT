@@ -10,9 +10,9 @@ namespace RentIT.Models.Annuncio
     public class Ad
     {
 
-        public int Id { get; set; }
+        public long Id { get; set; }
 
-        public int AffittuarioId { get; set; }
+        public long AffittuarioId { get; set; }
 
         public string NomeOggetto { get; set; }
 

@@ -14,7 +14,7 @@ namespace App.Services.Annuncio
 
         Task<Response> ModifyAdDataAsync(Ad a);
         
-        Task<Response> DeleteAdAsync(int idAnn);
+        Task<Response> DeleteAdAsync(long idAnn);
 
         Task<ObservableCollection<Ad>> GetLastAds(string citta,string oggetto);
 
