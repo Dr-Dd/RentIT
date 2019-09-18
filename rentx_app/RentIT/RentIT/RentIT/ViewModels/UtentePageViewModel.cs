@@ -114,7 +114,9 @@ namespace RentIT.ViewModels
             var response = await _authService.LogoutAsync();
             if (response)
             {
-                await NavService.NavigateToMainPage();
+                // Dovrebbe essere più corretta la soluzione sotto, testiamola
+                //await NavService.NavigateToMainPage();
+                await NavService.NavigateTo<SearchPageViewModel>();
             }
             else
             {

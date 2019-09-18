@@ -12,11 +12,11 @@ using RentIT.Models.Annuncio;
 namespace RentIT.ViewModels
 {
     //prima c'era BaseViewModel<SearchQuery>
-    public class AnnunciPageViewModel : BaseViewModel<List<Ad>>
+    public class AnnunciPageViewModel : BaseViewModel<ObservableCollection<Ad>>
     {
 
-        List<Ad> _annunci;
-        public List<Ad> Annunci
+        ObservableCollection<Ad> _annunci;
+        public ObservableCollection<Ad> Annunci
         {
             get { return _annunci; }
             set
@@ -32,7 +32,7 @@ namespace RentIT.ViewModels
         }
 
 
-        public async override Task Init(List<Ad> annunci)
+        public async override Task Init(ObservableCollection<Ad> annunci)
         {
             // TODO: Implementare la ricerca
             //await LoadEntries();

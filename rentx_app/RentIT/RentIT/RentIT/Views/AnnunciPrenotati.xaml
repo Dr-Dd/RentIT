@@ -4,7 +4,7 @@
              x:Class="RentIT.Views.AnnunciPrenotati"
              Title="PRENOTATI">
     <ListView x:Name="listaAnnunciPrenotati"
-              ItemsSource="{Binding Annunci}"
+              ItemsSource="{Binding AnnunciPrenotati}"
               RowHeight="150"
               CachingStrategy="RecycleElement"
               ItemTapped="GestioneAnnuncio_ItemTapped">

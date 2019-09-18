@@ -8,6 +8,7 @@ using RentIT.Models.User;
 using RentIT.Services.Request;
 using RentIT.DBmessages;
 using RentIT.Models;
+using System.Collections.ObjectModel;
 
 namespace App.Services.Annuncio
 {
@@ -74,7 +75,7 @@ namespace App.Services.Annuncio
         }
 
 
-        public async Task<List<Ad>> GetLastAds(string _citta,string _oggetto)
+        public async Task<ObservableCollection<Ad>> GetLastAds(string _citta,string _oggetto)
         {
             var builder = new UriBuilder(Constants.UltimiAnnunciEndpoint());
             var uri = builder.ToString();
@@ -85,11 +86,11 @@ namespace App.Services.Annuncio
                 oggetto = _oggetto
             };
 
-            return await requestService.PostAsync<SearchQuery,List<Ad>>(uri,sq, AppSettings.AccessToken);
+            return await requestService.PostAsync<SearchQuery,ObservableCollection<Ad>>(uri,sq, AppSettings.AccessToken);
 
         }
 
-        public async Task<List<Ad>> GetUserAds(long UserId,bool booked)
+        public async Task<ObservableCollection<Ad>> GetUserAds(long UserId,bool booked)
         {
             var builder = new UriBuilder(Constants.AnnunciPerUserEndpoint());
             builder.Path = "/" + UserId;
@@ -99,24 +100,24 @@ namespace App.Services.Annuncio
             //se voglio vedere quelli gia prenotati posso essere solo il possessore e nel backend dobbiamo fare il controllo che l'id corrisponda al token
             if (booked)
             {
-                return await requestService.GetAsync<List<Ad>>(uri, AppSettings.AccessToken);
+                return await requestService.GetAsync<ObservableCollection<Ad>>(uri, AppSettings.AccessToken);
             }
             //altrimenti non ti mando proprio il token tanto li puo vedere chiunque gli annunci non prenotati di un utente
             else
             {
-                return await requestService.GetAsync<List<Ad>>(uri);
+                return await requestService.GetAsync<ObservableCollection<Ad>>(uri);
             }
         }
 
 
         //annunci non prenotati dell'user 
-        public Task<List<Ad>> GetMyNotBookedAds()
+        public Task<ObservableCollection<Ad>> GetMyNotBookedAds()
         {
             return GetUserAds(AppSettings.UserId,false);
         }
 
         //annunci prenotati dell'user
-        public Task<List<Ad>> GetMyBookedAds()
+        public Task<ObservableCollection<Ad>> GetMyBookedAds()
         {
             return GetUserAds(AppSettings.UserId,true);
         }
