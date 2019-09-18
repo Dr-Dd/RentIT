@@ -37,11 +37,11 @@ public class UtenteController {
     @PostMapping("/registrazione")
     public ResponseEntity<Risposta> registrazioneUtente(@RequestBody Utente utente) {
     	if(utenteRepository.findByEmail(utente.getEmail()) != null ) {
-    		return ResponseEntity.ok().body(new Risposta("false","","Email già registrata", null));
+    		return ResponseEntity.ok().body(new Risposta("false","Email già registrata"));
     	}
     	utente.setPassword(bCryptPasswordEncoder.encode(utente.getPassword()));
         utenteRepository.save(utente);
-        return ResponseEntity.ok().body(new Risposta("true","","Utente iscritto correttamente", null));
+        return ResponseEntity.ok().body(new Risposta("true","Utente iscritto correttamente"));
     }
     
     @GetMapping("/profile")
@@ -51,27 +51,27 @@ public class UtenteController {
     
     // Da terminare
     @PutMapping("/modifica")
-    public ResponseEntity<Risposta> modificaUtente(@RequestHeader("Authorization") String token, @RequestBody Utente utente_modificato) {
+    public ResponseEntity<Risposta> modificaUtente(@RequestHeader("Authorization") String token, @RequestBody Utente dati_utente) {
     	Utente utente_da_modificare = this.utenteRepository.findByEmail(this.utenteService.estrazioneEmailDaToken(token));
-    	//utente_da_modificare.setNumero(dati_utente.getNumero());
-    	//utente_da_modificare.setAddress(dati_utente.getAddress());
-    	//String password = utente_da_modificare.getPassword();
+    	utente_da_modificare.setName(dati_utente.getName());
+    	utente_da_modificare.setSurname(dati_utente.getSurname());
+    	utente_da_modificare.setNumero(dati_utente.getNumero());
+    	utente_da_modificare.setAddress(dati_utente.getAddress());
     	
     	// Se la password dell'utente che arriva dalla richiesta è diversa da quello sul db la codifico e la setto altrimenti salvo direttamente
-    	if(!utente_modificato.getPassword().equals(utente_da_modificare.getPassword()))
-    		utente_modificato.setPassword(bCryptPasswordEncoder.encode(utente_modificato.getPassword()));
+    	if(!dati_utente.getPassword().equals(utente_da_modificare.getPassword()))
+    		utente_da_modificare.setPassword(bCryptPasswordEncoder.encode(dati_utente.getPassword()));
     	
-    	utente_modificato.setFirstAccess(false);
-    	this.utenteRepository.delete(utente_da_modificare);
+    	utente_da_modificare.setFirstAccess(false);
 
-    	this.utenteRepository.save(utente_modificato);
-    	return ResponseEntity.ok().body(new Risposta("true", utente_modificato.getId(), "", "Dati modificati correttamente."));
+    	this.utenteRepository.save(utente_da_modificare);
+    	return ResponseEntity.ok().body(new Risposta("true", "Dati modificati correttamente."));
     }
     
     @DeleteMapping("/elimina")
     public ResponseEntity<Risposta> cancellaUtente(@RequestHeader("Authorization") String token) {
     	this.utenteRepository.delete(this.utenteRepository.findByEmail(this.utenteService.estrazioneEmailDaToken(token)));
-    	return ResponseEntity.ok().body(new Risposta("true", "", "Utente eliminato correttamente.", null));
+    	return ResponseEntity.ok().body(new Risposta("true","Utente eliminato correttamente."));
     }
     
     @PutMapping("/addImage")

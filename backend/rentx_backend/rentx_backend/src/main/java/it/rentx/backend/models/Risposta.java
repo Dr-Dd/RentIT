@@ -21,6 +21,11 @@ public class Risposta {
 		this.responseMessage = responseMessage;
 		this.utente = utente;
 	}
+	
+	public Risposta(String hasSucceded, String responseMessage) {
+		this.hasSucceded = hasSucceded;
+		this.responseMessage = responseMessage;
+	}
 
 	public String getHasSucceded() {
 		return hasSucceded;

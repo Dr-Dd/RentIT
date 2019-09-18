@@ -17,4 +17,5 @@ public class UtenteService {
 				.verify(token.replace(SecurityConstants.TOKEN_PREFIX, "")) //Rimuovo bearer dal token
 				.getSubject();
 	}
+	
 }

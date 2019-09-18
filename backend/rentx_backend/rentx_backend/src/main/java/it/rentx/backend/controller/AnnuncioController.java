@@ -65,22 +65,22 @@ public class AnnuncioController {
     	annuncio.setAffittuario(utente);
     	annuncio.setPosizione(utente.getAddress());
 		annuncioService.salvaAnnuncio(annuncio);
-        return ResponseEntity.ok().body(new Risposta("true","","Annuncio salvato correttamente", null));
+        return ResponseEntity.ok().body(new Risposta("true","Annuncio salvato correttamente"));
     }
 	
 	@PutMapping("/modifica/{id}")
-	public ResponseEntity<Risposta> modificaAnnuncio(@RequestHeader("Authorization") String token,
-			@RequestBody Annuncio annuncio, @PathVariable("id") Long id) {
+	public ResponseEntity<Risposta> modificaAnnuncio(@RequestHeader("Authorization") String token,@RequestBody Annuncio annuncio, @PathVariable("id") Long id) {
     	
 		Annuncio adModificato = annuncioService.aggiornaAnnuncio(id, annuncio);
+		this.annuncioService.salvaAnnuncio(adModificato);
 		
-    	return ResponseEntity.ok().body(new Risposta("true", adModificato.getId(), "", "Dati modificati correttamente."));
+    	return ResponseEntity.ok().body(new Risposta("true", "Dati modificati correttamente."));
     }
 	
 	@DeleteMapping("/elimina/{id}")
     public ResponseEntity<Risposta> cancellaAnnuncio(@RequestHeader("Authorization") String token, @PathVariable("id") Long id) {
     	annuncioService.delete(annuncioService.annuncioPerId(id));
-    	return ResponseEntity.ok().body(new Risposta("true", "", "Annuncio eliminato correttamente.", null));
+    	return ResponseEntity.ok().body(new Risposta("true", "Annuncio eliminato correttamente."));
     }
 	
 	@GetMapping("/annunci/{id}")
