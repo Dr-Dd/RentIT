@@ -28,7 +28,7 @@ namespace RentIT.Models.Annuncio
 
         
 
-        //Gestiamo l'immagine come image o come stringa base64?
-        public Image Immagine { get; set; }
+        /*//Gestiamo l'immagine come image o come stringa base64?
+        public Image Immagine { get; set; }*/
     }
 }
