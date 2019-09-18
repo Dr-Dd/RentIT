@@ -72,7 +72,7 @@ namespace RentIT.Services.Authentication
             return logOutInfo.hasSucceded;
         }
 
-        public int GetCurrentUserId()
+        public long GetCurrentUserId()
         {
             return AppSettings.UserId;
         }
