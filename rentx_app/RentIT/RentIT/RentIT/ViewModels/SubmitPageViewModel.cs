@@ -138,7 +138,8 @@ namespace RentIT.ViewModels
             if (signUpResponse.hasSucceded)
             {
                 //c'è da fare il login da qui?
-                await NavService.NavigateToMainPage();
+                await App.Current.MainPage.DisplayAlert("Perfetto!", "Registrazione completata con successo", "Ok");
+                await NavService.NavigateTo<SearchPageViewModel>();
             }
             else
             {

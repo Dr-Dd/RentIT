@@ -10,9 +10,9 @@ namespace RentIT.Models.Annuncio
     public class Ad
     {
 
-        public int Id { get; set; }
+        public long Id { get; set; }
 
-        public int AffittuarioId { get; set; }
+        public long AffittuarioId { get; set; }
 
         public string NomeOggetto { get; set; }
 
@@ -28,7 +28,7 @@ namespace RentIT.Models.Annuncio
 
         
 
-        //Gestiamo l'immagine come image o come stringa base64?
-        public Image Immagine { get; set; }
+        /*//Gestiamo l'immagine come image o come stringa base64?
+        public Image Immagine { get; set; }*/
     }
 }

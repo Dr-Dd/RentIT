@@ -8,6 +8,6 @@ namespace App.Models.Image
     {
         public string data { get; set; }
 
-        public string idImg { get; set; }
+        public long idImg { get; set; }
     }
 }

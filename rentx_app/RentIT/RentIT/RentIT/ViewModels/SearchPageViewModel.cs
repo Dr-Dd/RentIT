@@ -141,8 +141,8 @@ namespace RentIT.ViewModels
 
         async Task ExecuteCercaCommand()
         {
-            List<Ad> risultati = await _annuncioService.GetLastAds(Citta, Oggetto);
-            await NavService.NavigateTo<AnnunciPageViewModel, List<Ad>>(risultati);
+            ObservableCollection<Ad> risultati = await _annuncioService.GetLastAds(Citta, Oggetto);
+            await NavService.NavigateTo<AnnunciPageViewModel, ObservableCollection<Ad>>(risultati);
         }
 
         /*

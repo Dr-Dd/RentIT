@@ -91,7 +91,7 @@ namespace App.Services.Foto
 
         /* Metodo per prendere dal db la foto di un utente conoscendone l'idUser che deve corrispondere con il token*/
         //qui serve l'id dell'utente e non solo il token
-        public async Task<ImageModel> GetUserImage(int idUser)
+        public async Task<ImageModel> GetUserImage(long idUser)
         {
 
             var builder = new UriBuilder(Constants.UserEndpointGetImage());

@@ -28,7 +28,7 @@ namespace RentIT
 
 
 
-        public static int UserId
+        public static long UserId
         {
             get
             {

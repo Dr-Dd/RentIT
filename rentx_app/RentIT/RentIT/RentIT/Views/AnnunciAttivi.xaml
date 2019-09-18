@@ -7,7 +7,7 @@
         <StackLayout>
             <ListView x:Uid="listaAnnunci"
                 x:Name="listaAnnunci"
-                      ItemsSource="{Binding Annunci}"
+                      ItemsSource="{Binding AnnunciNonPrenotati}"
                       RowHeight="150"
                       CachingStrategy="RecycleElement"
                       ItemTapped="GestioneAnnuncio_ItemTapped">

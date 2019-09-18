@@ -4,6 +4,7 @@ using RentIT.DBmessages;
 using RentIT.Models.Annuncio;
 using System.Collections.Generic;
 using RentIT.Models;
+using System.Collections.ObjectModel;
 
 namespace App.Services.Annuncio
 {
@@ -13,14 +14,14 @@ namespace App.Services.Annuncio
 
         Task<Response> ModifyAdDataAsync(Ad a);
         
-        Task<Response> DeleteAdAsync(int idAnn);
+        Task<Response> DeleteAdAsync(long idAnn);
 
-        Task<List<Ad>> GetLastAds(string citta,string oggetto);
+        Task<ObservableCollection<Ad>> GetLastAds(string citta,string oggetto);
 
-        Task<List<Ad>> GetUserAds(long UserId,bool b);
+        Task<ObservableCollection<Ad>> GetUserAds(long UserId,bool b);
 
-        Task<List<Ad>> GetMyNotBookedAds();
+        Task<ObservableCollection<Ad>> GetMyNotBookedAds();
 
-        Task<List<Ad>> GetMyBookedAds();
+        Task<ObservableCollection<Ad>> GetMyBookedAds();
     }
 }

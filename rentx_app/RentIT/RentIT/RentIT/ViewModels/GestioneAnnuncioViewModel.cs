@@ -51,10 +51,10 @@ namespace RentIT.ViewModels
         public async override Task Init(Ad annuncio)
         {
             Annuncio = annuncio;
-            OggettiImmagine = creaOggettiImmagine(Annuncio);
+            //OggettiImmagine = creaOggettiImmagine(Annuncio);
         }
 
-        public ObservableCollection<OggettoImmagine> creaOggettiImmagine(Ad annuncio)
+        /*public ObservableCollection<OggettoImmagine> creaOggettiImmagine(Ad annuncio)
         {
             OggettiImmagine = new ObservableCollection<OggettoImmagine>();
             foreach (FileImageSource image in Annuncio.PercorsiImmagine)
@@ -65,7 +65,7 @@ namespace RentIT.ViewModels
                 });
             }
             return OggettiImmagine;
-        }
+        }*/
 
     /*Comando per eliminare l'annuncio*/
     Command _eliminaAnnuncioCommand;

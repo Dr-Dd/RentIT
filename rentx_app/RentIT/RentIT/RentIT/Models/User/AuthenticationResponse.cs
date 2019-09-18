@@ -5,7 +5,7 @@
     {
         public bool hasSucceded { get; set; }
 
-        public int userId { get; set; }
+        public long userId { get; set; }
 
         public string accessToken { get; set; }
 

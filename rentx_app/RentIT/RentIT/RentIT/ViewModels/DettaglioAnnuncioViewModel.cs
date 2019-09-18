@@ -77,10 +77,10 @@ namespace RentIT.ViewModels
             Annuncio = annuncio;
             //Affittuario = _userService.GetProfileAsync(annuncio.AffittuarioId);
             //ImmagineUtente = await getPropic();
-            OggettiImmagine = creaOggettiImmagine(Annuncio);
+            //OggettiImmagine = creaOggettiImmagine(Annuncio);
         }
 
-        public ObservableCollection<OggettoImmagine> creaOggettiImmagine(Ad annuncio)
+        /*public ObservableCollection<OggettoImmagine> creaOggettiImmagine(Ad annuncio)
         {
             OggettiImmagine = new ObservableCollection<OggettoImmagine>();
             foreach (FileImageSource image in Annuncio.PercorsiImmagine)
@@ -91,7 +91,7 @@ namespace RentIT.ViewModels
                 });
             }
             return OggettiImmagine;
-        }
+        }*/
 
         //Metodo per prendere l'immagine profilo dell'utente dal database
         public async Task<Image> getPropic()
