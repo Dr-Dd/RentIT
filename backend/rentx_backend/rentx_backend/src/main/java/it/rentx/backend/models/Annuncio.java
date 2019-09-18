@@ -53,6 +53,20 @@ public class Annuncio {
 	
 	public Annuncio() {}
 
+	public Annuncio(String nomeOggetto, String descrizione, Image immagine, byte[] anteprimaImg, float prezzo,
+			Utente affittuario, String posizione, Date data) {
+		super();
+		this.nomeOggetto = nomeOggetto;
+		this.descrizione = descrizione;
+		this.immagine = immagine;
+		this.anteprimaImg = anteprimaImg;
+		this.prezzo = prezzo;
+		this.affittuario = affittuario;
+		this.posizione = posizione;
+		this.data = data;
+	}
+
+
 	public long getId() {
 		return id;
 	}

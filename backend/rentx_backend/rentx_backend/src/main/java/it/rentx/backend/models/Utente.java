@@ -51,7 +51,7 @@ public class Utente {
 	
 	public Utente() {}
 	
-	public Utente(long id, String name, String surname, String email, String password,  String numero, String address, byte[] image) {
+	public Utente(String name, String surname, String email, String password,  String numero, String address, byte[] image) {
 		this.name = name;
 		this.surname = surname;
 		this.email = email;
