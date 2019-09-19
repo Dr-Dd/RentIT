@@ -35,8 +35,17 @@ namespace RentIT.ViewModels
             _annuncioService = annuncioService;
         }
 
+        SearchQuery _query;
+        public SearchQuery Query
+        {
+            get { return _query; }
+            set
+            {
+                _query = value;
+                OnPropertyChanged();
+            }
+        }
 
-        SearchQuery Query;
         public async override Task Init(SearchQuery query)
         {
             // TODO: Implementare la ricerca

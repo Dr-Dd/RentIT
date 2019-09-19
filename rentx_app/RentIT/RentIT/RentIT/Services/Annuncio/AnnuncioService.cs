@@ -130,7 +130,6 @@ namespace RentIT.Services.Annuncio
 
             return await requestService.GetAsync<Ad>(uri, AppSettings.AccessToken);
         }
-
         
     }
 }
