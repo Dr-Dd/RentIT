@@ -42,7 +42,7 @@ namespace RentIT.Services.Authentication
             AuthenticationResponse authenticationInfo = await  requestService.PostAsync<AuthenticationRequest,AuthenticationResponse>(uri, auth);
             if (authenticationInfo.hasSucceded)
             {
-                AppSettings.UserId = authenticationInfo.userId;
+                AppSettings.UserId = authenticationInfo.id;
                 AppSettings.AccessToken = authenticationInfo.accessToken;
                 AppSettings.NewProfile = authenticationInfo.isFirstAccess;
             }

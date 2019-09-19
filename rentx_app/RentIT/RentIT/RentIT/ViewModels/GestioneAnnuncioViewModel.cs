@@ -71,7 +71,7 @@ namespace RentIT.ViewModels
         {
             IsBusy = true;
             
-            var response = await _annuncioService.DeleteAdAsync(Annuncio.Id);
+            var response = await _annuncioService.DeleteAdAsync(Annuncio.id);
             if (response.hasSucceded)
             {
                 await NavService.NavigateToMainPage();
@@ -86,9 +86,9 @@ namespace RentIT.ViewModels
 
         bool EmptyFields()
         {
-            var empty = string.IsNullOrWhiteSpace(Annuncio.NomeOggetto) ||
-                        string.IsNullOrWhiteSpace(Annuncio.Descrizione) ||
-                        (Annuncio.Prezzo == 0);
+            var empty = string.IsNullOrWhiteSpace(Annuncio.nomeOggetto) ||
+                        string.IsNullOrWhiteSpace(Annuncio.descrizione) ||
+                        (Annuncio.prezzo == 0);
             return empty;
         }
 

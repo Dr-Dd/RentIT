@@ -122,10 +122,10 @@ namespace RentIT.ViewModels
         //Funzione per verificare che siano stati inseriti sia il numero che la città
         bool EmptyFields()
         {
-            var empty = string.IsNullOrWhiteSpace(Utente.Name) ||
-                        string.IsNullOrWhiteSpace(Utente.Surname) ||
-                        string.IsNullOrWhiteSpace(Utente.Address) ||
-                        string.IsNullOrWhiteSpace(Utente.Numero);
+            var empty = string.IsNullOrWhiteSpace(Utente.name) ||
+                        string.IsNullOrWhiteSpace(Utente.surname) ||
+                        string.IsNullOrWhiteSpace(Utente.citta) ||
+                        string.IsNullOrWhiteSpace(Utente.numeroTel);
             return empty;
         }
 
@@ -157,7 +157,7 @@ namespace RentIT.ViewModels
             }
 
             if (!string.IsNullOrWhiteSpace(Password))
-                Utente.Password = Password;
+                Utente.password = Password;
 
             var response = await _userService.ModifyUserData(Utente);
             if (response.hasSucceded)

@@ -104,14 +104,14 @@ namespace RentIT.ViewModels
                 Annunci.Add(new Ad()
                 {
                     AffittuarioId = 1,
-                    Id = 5,
-                    NomeOggetto = "Tosaerba",
-                    Descrizione = "Tosaerba BOSCHIA potente, alimentato a escrementi di piccione",
-                    Prezzo = 13,
-                    AnteprimaImg = "tosa",
-                    Posizione = "Roma",
+                    id = 5,
+                    nomeOggetto = "Tosaerba",
+                    descrizione = "Tosaerba BOSCHIA potente, alimentato a escrementi di piccione",
+                    prezzo = 13,
+                    anteprimaImg = "tosa",
+                    posizione = "Roma",
                     Immagini = percorsiImmagine,
-                    Data = DateTime.Now
+                    data = DateTime.Now
                 });
             
             await NavService.NavigateTo<AnnunciPageViewModel, ObservableCollection<Ad>>(Annunci);

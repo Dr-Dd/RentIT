@@ -57,7 +57,7 @@ namespace RentIT.Services.Annuncio
         public async Task<Response> ModifyAdDataAsync(Ad a)
         {
            
-            if (a.Id==0)  //da capire se questo è giusto
+            if (a.id==0)  //da capire se questo è giusto
             {
                 var errResp = new Response {
                     hasSucceded = false,
@@ -68,7 +68,7 @@ namespace RentIT.Services.Annuncio
             }
 
             var baseUri = Constants.modificaAnnuncioEndpoint();
-            var builder = new UriBuilder(String.Concat(baseUri, "/", a.Id));
+            var builder = new UriBuilder(String.Concat(baseUri, "/", a.id));
             var uri = builder.ToString();
 
             Response resp = await requestService.PutAsync<Ad, Response>(uri, a, AppSettings.AccessToken);
@@ -99,11 +99,17 @@ namespace RentIT.Services.Annuncio
             var builder = new UriBuilder(String.Concat(baseUri, "/", UserId));
             var uri = builder.ToString();
 
-            
+            if (booked)
+            {
+                return await requestService.GetAsync<ObservableCollection<Ad>>(uri, AppSettings.AccessToken);
+            }
+            else
+            {
+                return await requestService.GetAsync<ObservableCollection<Ad>>(uri);
+            }
 
             //se voglio vedere quelli gia prenotati posso essere solo il possessore e nel backend dobbiamo fare il controllo che l'id corrisponda al token
-            
-          return await requestService.PostAsync<bool,ObservableCollection<Ad>>(uri,booked, AppSettings.AccessToken);
+          
        
         }
 

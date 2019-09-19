@@ -47,7 +47,7 @@ namespace RentIT.ViewModels
 
         async Task ExecuteVediAnnunciUtenteCommand()
         {
-            ObservableCollection<Ad> asd = await _annuncioService.GetUserAds(Utente.Id, false);
+            ObservableCollection<Ad> asd = await _annuncioService.GetUserAds(Utente.id, false);
             await NavService.NavigateTo<AnnunciPageViewModel, ObservableCollection<Ad>>(asd);
         }
     }

@@ -160,11 +160,11 @@ namespace RentIT.ViewModels
 
             var annuncioRequest = new Ad
             {
-                NomeOggetto = NomeOggetto,
-                Descrizione = Descrizione,
-                Prezzo = Prezzo,
-                Data = DateTime.Now,
-                AnteprimaImg = base64
+                nomeOggetto = NomeOggetto,
+                descrizione = Descrizione,
+                prezzo = Prezzo,
+                data = DateTime.Now,
+                anteprimaImg = base64
             };
             var response = await _annuncioService.AddAnnuncioAsync(annuncioRequest);
             if (response.hasSucceded)
