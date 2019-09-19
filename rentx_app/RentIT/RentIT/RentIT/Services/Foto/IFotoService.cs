@@ -9,15 +9,15 @@ namespace App.Services.Foto
     public interface IFotoService
     {   
         //upload delle immagini di un annuncio
-        Task UploadAdImagesAsync(int idAnn, string imageAsBase64);
+        Task UploadAdImagesAsync(long idAnn, string imageAsBase64);
 
         //fetch delle immagini di un annuncio
-        Task<List<ImageModel>> GetAdImagesAsync(int idAnn);
+        Task<List<ImageModel>> GetAdImagesAsync(long idAnn);
 
         //upload dell'immagine di un utente 
         Task UploadUserImageAsync(string imageAsBase64);
 
         //fetch dell'immagine di un utente
-        Task<ImageModel> GetUserImage(int idUser);
+        Task<ImageModel> GetUserImage(long idUser);
     }
 }

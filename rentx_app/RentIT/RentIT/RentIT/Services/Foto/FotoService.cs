@@ -10,7 +10,7 @@ using Xamarin.Forms;
 
 namespace App.Services.Foto
 {
-    public class FotoService
+    public class FotoService : IFotoService
     {
 
         private readonly IRequestService requestService;
@@ -46,7 +46,7 @@ namespace App.Services.Foto
         }
 
         //metodo per uploadare le foto di un annuncio nel db(una per volta se sono tante in una lista)
-        public async Task UploadAdImagesAsync(int idAnn, string imageAsBase64)
+        public async Task UploadAdImagesAsync(long idAnn, string imageAsBase64)
         {
             
             var baseUri = Constants.uploadImgsAnnuncioEndpoint();
@@ -63,7 +63,7 @@ namespace App.Services.Foto
 
 
         //metodo per prendere dal db le immagini relative ad un annuncio
-        public async Task<List<ImageModel>> GetAdImagesAsync(int idAnn) {
+        public async Task<List<ImageModel>> GetAdImagesAsync(long idAnn) {
 
             
             var baseUri = Constants.UserEndpointGetImage();
