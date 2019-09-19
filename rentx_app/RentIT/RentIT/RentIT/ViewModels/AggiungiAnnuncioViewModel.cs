@@ -1,19 +1,32 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.IO;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using App.Services.Annuncio;
 using App.Services.Foto;
+using Plugin.Permissions;
+using Plugin.Permissions.Abstractions;
 using RentIT.Models;
 using RentIT.Models.Annuncio;
+using RentIT.Models.Image;
 using RentIT.Services;
+using RentIT.Services.Immagini;
 using Xamarin.Forms;
 
 namespace RentIT.ViewModels
 {
-    public class AggiungiAnnuncioViewModel : BaseViewModel
+    public class AggiungiAnnuncioViewModel : BaseViewModel,INotifyPropertyChanged
     {
+        IMultiMediaPickerService _multiMediaPickerService;
+
+        public ObservableCollection<MediaFile> Media { get; set; }
+        public ICommand SelectImagesCommand { get; set; }
+        public ICommand SelectVideosCommand { get; set; }
+
         //Queste probabilmente saranno una lista
         Image _immagine;
         public Image Immagine
@@ -65,14 +78,66 @@ namespace RentIT.ViewModels
 
         readonly FotoService _fotoService;
         readonly IAnnuncioService _annuncioService;
-        public AggiungiAnnuncioViewModel(INavService navService, FotoService fotoService, AnnuncioService annuncioService) : base(navService)
+        public AggiungiAnnuncioViewModel(INavService navService, FotoService fotoService, AnnuncioService annuncioService, IMultiMediaPickerService multiMediaPickerService) : base(navService)
         {
             _fotoService = fotoService;
             _annuncioService = annuncioService;
+
+            _multiMediaPickerService = multiMediaPickerService;
+            SelectImagesCommand = new Command(async (obj) =>
+            {
+                var hasPermission = await CheckPermissionAsync();
+                if (hasPermission)
+                {
+                    Media = new ObservableCollection<MediaFile>();
+                    await _multiMediaPickerService.PickPhotosAsync();
+                }
+            });
+
+            _multiMediaPickerService.OnMediaPicked += (s, a) =>
+            {
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    Media.Add(a);
+                });
+            };
         }
 
-        public async override Task Init()
+        async Task<bool> CheckPermissionAsync()
         {
+            var retVal = false;
+            try
+            {
+                var status = await CrossPermissions.Current.CheckPermissionStatusAsync(Plugin.Permissions.Abstractions.Permission.Storage);
+                if (status != PermissionStatus.Granted)
+                {
+                    if (await CrossPermissions.Current.ShouldShowRequestPermissionRationaleAsync(Plugin.Permissions.Abstractions.Permission.Storage))
+                    {
+                        await App.Current.MainPage.DisplayAlert("Attenzione", "Hai bisogno del permesso per accedere alle tue foto.", "Ok");
+                    }
+
+                    var results = await CrossPermissions.Current.RequestPermissionsAsync(new[] { Plugin.Permissions.Abstractions.Permission.Storage });
+                    status = results[Plugin.Permissions.Abstractions.Permission.Storage];
+                }
+
+                if (status == PermissionStatus.Granted)
+                {
+                    retVal = true;
+
+                }
+                else if (status != PermissionStatus.Unknown)
+                {
+                    await App.Current.MainPage.DisplayAlert("Attenzione", "Permesso negato!", "Ok");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                await App.Current.MainPage.DisplayAlert("Attenzine", "Errore", "Ok");
+            }
+
+            return retVal;
+
         }
 
         bool EmptyFields()
@@ -84,31 +149,6 @@ namespace RentIT.ViewModels
             return empty;
         }
 
-        //Comando per aggiungere foto all'annuncio
-        Command _aggiungiFotoCommand;
-        public Command AggiungiFotoCommand
-        {
-            get
-            {
-                return _aggiungiFotoCommand
-                    ?? (_aggiungiFotoCommand = new Command(async () => await ExecuteAggiungiFotoCommand()));
-            }
-        }
-
-        async Task ExecuteAggiungiFotoCommand()
-        {
-            //Caricare un'immagine dalla galleria
-            Stream stream = await DependencyService.Get<IPicturePicker>().GetImageStreamAsync();
-
-            if (stream != null)
-            {
-                //se esiste, si salva nel db associato all'annuncio
-                base64 = _fotoService.fromStreamToString(stream);
-
-                //questa riga serve solo a visualizzare l'immagine in attesa del collegamento al db
-                Immagine = _fotoService.fromStringToImage(base64);
-            }
-        }
 
         //Comando per salvare l'annuncio
         Command _aggiungiAnnuncioCommand;
@@ -125,7 +165,8 @@ namespace RentIT.ViewModels
         {
             IsBusy = true;
 
-            if(EmptyFields()){
+            if (EmptyFields())
+            {
                 await App.Current.MainPage.DisplayAlert("Errore", "Non hai riempito uno o più campi", "Ok");
                 return;
             }
@@ -152,8 +193,15 @@ namespace RentIT.ViewModels
             {
                 await App.Current.MainPage.DisplayAlert("Errore", response.responseMessage, "Ok");
             }
-            
+
             IsBusy = false;
+        }
+
+        public async override Task Init()
+        {
+            
         }
     }
 }
+
+     

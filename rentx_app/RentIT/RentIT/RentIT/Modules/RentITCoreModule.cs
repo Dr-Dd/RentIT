@@ -1,5 +1,7 @@
 ﻿using Ninject.Modules;
+using RentIT.Models.Image;
 using RentIT.Services.Authentication;
+using RentIT.Services.Immagini;
 using RentIT.Services.Request;
 using RentIT.Services.User;
 using RentIT.ViewModels;
@@ -35,6 +37,7 @@ namespace RentIT.Modules
             var requestService = new RequestService();
             var authService = new AuthenticationService(requestService);
             var userService = new UserService(requestService);
+
 
             // Qui gli fai il binding come singoletto
             Bind<IRequestService>().

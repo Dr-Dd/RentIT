@@ -152,12 +152,13 @@ namespace RentIT.ViewModels
                     ?? (_infoUtenteCommand = new Command(async () => await ExecuteInfoUtenteCommand()));
             }
         }
-            
+
 
         async Task ExecuteInfoUtenteCommand()
         {
             //Qui va passato un oggetto utente come soluzione momentanea passo solo il nome
-            await NavService.NavigateTo<InfoUtenteViewModel, string>(Annuncio.NomeAffittuario);
+            await NavService.NavigateTo<InfoUtenteViewModel, string>("Tizio Caio");
+        }
 
         async Task ExecuteEmailCommand()
         {

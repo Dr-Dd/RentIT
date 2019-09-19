@@ -12,6 +12,7 @@ using System.IO;
 using System.Threading.Tasks;
 using Android.Content;
 using Xamd.ImageCarousel.Forms.Plugin.Droid;
+using Plugin.Permissions;
 
 namespace RentIT.Droid
 {
@@ -30,7 +31,7 @@ namespace RentIT.Droid
             base.OnCreate(savedInstanceState);
             InitControls();
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
-            LoadApplication(new App(new RentITPlatformModule()));
+            LoadApplication(new App(MultiMediaPickerService.SharedInstance));
         }
 
         private void InitControls()
@@ -44,24 +45,16 @@ namespace RentIT.Droid
 
         public TaskCompletionSource<Stream> PickImageTaskCompletionSource { set; get; }
 
-        protected override void OnActivityResult(int requestCode, Result resultCode, Intent intent)
+        public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
         {
-            base.OnActivityResult(requestCode, resultCode, intent);
-
-            if (requestCode == PickImageId)
-            {
-                if ((resultCode == Result.Ok) && (intent != null))
-                {
-                    Android.Net.Uri uri = intent.Data;
-                    Stream stream = ContentResolver.OpenInputStream(uri);
-
-                    PickImageTaskCompletionSource.SetResult(stream);
-                }
-                else
-                {
-                    PickImageTaskCompletionSource.SetResult(null);
-                }
-            }
+            PermissionsImplementation.Current.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+            base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
-    }
+
+        protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
+        {
+            base.OnActivityResult(requestCode, resultCode, data);
+
+            MultiMediaPickerService.SharedInstance.OnActivityResult(requestCode, resultCode, data);
+        }
 }

@@ -1,6 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:flv="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              x:Class="RentIT.Views.AggiungiAnnuncioPage">
     <ContentPage.Content>
         <ScrollView Margin="0,0,0,20">
@@ -30,35 +32,59 @@
                                HorizontalOptions="Center"
                                FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
                                FontSize="25"
-                               TextColor="#607D8B" 
-                               />
+                               TextColor="#607D8B" />
                         <Entry Grid.Row="1"
                                x:Name="nomeOggetto"
                                Text="{Binding Path=NomeOggetto}"
                                FontFamily="Quicksand-Light.ttf#Quicksand-Light"
-                               Placeholder="nome oggetto"/>
+                               Placeholder="nome oggetto" />
                         <Entry Grid.Row="2"
                                x:Name="descrizioneOggetto"
                                Placeholder="descrizione"
                                Text="{Binding Path=Descrizione}"
-                               FontFamily="Quicksand-Light.ttf#Quicksand-Light"/>
+                               FontFamily="Quicksand-Light.ttf#Quicksand-Light" />
                         <Entry Grid.Row="3"
                                x:Name="prezzo"
-                               Placeholder="prezzo" 
+                               Placeholder="prezzo"
                                Text="{Binding Path=Prezzo}"
-                               FontFamily="Quicksand-Light.ttf#Quicksand-Light"/>
-                        <Frame Grid.Row="4"
-                               BorderColor="#607D8B"
-                               CornerRadius="25">
-                            <Image x:Name="image"
-                                   Aspect="AspectFit"
-                                   HeightRequest="150"
-                                   WidthRequest="100"
-                                   Source="{Binding Immagine.Source}"/>
-                        </Frame>
+                               FontFamily="Quicksand-Light.ttf#Quicksand-Light" />
+                        <StackLayout Grid.Row="4">
+                            <flv:FlowListView FlowColumnCount="3"
+                                              x:Name="listItems"
+                                              FlowItemsSource="{Binding Media}"
+                                              SeparatorVisibility="None"
+                                              HasUnevenRows="false"
+                                              RowHeight="100">
+                                <flv:FlowListView.FlowColumnTemplate>
+                                    <DataTemplate>
+                                        <Grid>
+                                            <ffimageloading:CachedImage  DownsampleToViewSize="true"
+                                                                         HeightRequest="100"
+                                                                         Source="{Binding PreviewPath}"
+                                                                         Aspect="AspectFill"
+                                                                         HorizontalOptions="FillAndExpand">
+                                            </ffimageloading:CachedImage>
+                                            <Image Source="play"
+                                                   IsVisible="false"
+                                                   HorizontalOptions="End"
+                                                   VerticalOptions="End">
+                                                <Image.Triggers>
+                                                    <DataTrigger TargetType="Image"
+                                                                 Binding="{Binding Type}"
+                                                                 Value="Video">
+                                                        <Setter Property="IsVisible"
+                                                                Value="True" />
+                                                    </DataTrigger>
+                                                </Image.Triggers>
+                                            </Image>
+                                        </Grid>
+                                    </DataTemplate>
+                                </flv:FlowListView.FlowColumnTemplate>
+                            </flv:FlowListView>
+                        </StackLayout>
                         <Button x:Name="pickPictureButton"
                                 Grid.Row="5"
-                                Text="+ Inserisci immagine"
+                                Text="+ Inserisci immagini"
                                 TextColor="#607D8B"
                                 BorderWidth="1"
                                 BorderColor="#607D8B"
@@ -66,7 +92,7 @@
                                 CornerRadius="25"
                                 HorizontalOptions="Center"
                                 BackgroundColor="WhiteSmoke"
-                                Command="{Binding AggiungiFotoCommand}"/>
+                                Command="{Binding SelectImagesCommand}" />
                     </Grid>
                 </Frame>
                 <Button Grid.Row="1"
@@ -77,7 +103,7 @@
                         BorderColor="#607D8B"
                         Margin="70,0,70,0"
                         BackgroundColor="WhiteSmoke"
-                        Command="{Binding AggiungiAnnuncioCommand}"/>
+                        Command="{Binding AggiungiAnnuncioCommand}" />
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>
