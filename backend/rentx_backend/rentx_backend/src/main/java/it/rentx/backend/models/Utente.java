@@ -2,10 +2,8 @@ package it.rentx.backend.models;
 
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -21,44 +19,42 @@ public class Utente {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private long id;
 	
-	@Column(name = "first_access")
 	private boolean isFirstAccess = true;
 	
-	@Column(name = "name_utente", nullable = false)
+	@Column(nullable = false)
 	private String name;
 	
-	@Column(name = "surname_utente", nullable = false)
+	@Column(nullable = false)
 	private String surname;
 	
-	@Column(name = "email_utente", nullable = false, unique = true)
+	@Column(nullable = false, unique = true)
 	private String email;
 	
-	@Column(name = "password_utente", nullable = false)
+	@Column(nullable = false)
 	private String password;
 	
-	@Column(name = "numero_utente")
-	private String numero;
+	private String numeroTel;
 	
-	@Column(name = "address_utente")
-	private String address;
+	private String citta;
 	
 	@Lob
-	@Column(name = "immagine_utente")
-	private byte[] image;
+	@Column(name = "foto_profilo", length = 100000)
+	private byte[] fotoProfilo;
 	
-	@OneToMany(mappedBy = "affittuario", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "affittuario")
 	private List<Annuncio> annunciUtente;
 	
 	public Utente() {}
 	
-	public Utente(String name, String surname, String email, String password,  String numero, String address, byte[] image) {
+	public Utente(String name, String surname, String email, String password,  String numeroTel, String citta, byte[] fotoProfilo) {
+		super();
 		this.name = name;
 		this.surname = surname;
 		this.email = email;
 		this.password = password;
-		this.numero = numero;
-		this.address = address;
-		this.image = image;
+		this.numeroTel = numeroTel;
+		this.citta = citta;
+		this.fotoProfilo = fotoProfilo;
 	}
 
 	public long getId() {
@@ -109,28 +105,28 @@ public class Utente {
 		this.password = password;
 	}
 
-	public String getNumero() {
-		return numero;
+	public String getNumeroTel() {
+		return numeroTel;
 	}
 
-	public void setNumero(String numero) {
-		this.numero = numero;
+	public void setNumeroTel(String numeroTel) {
+		this.numeroTel = numeroTel;
 	}
 
-	public String getAddress() {
-		return address;
+	public String getCitta() {
+		return citta;
 	}
 
-	public void setAddress(String address) {
-		this.address = address;
+	public void setCitta(String citta) {
+		this.citta = citta;
 	}
 
-	public byte[] getImage() {
-		return image;
+	public byte[] getFotoProfilo() {
+		return fotoProfilo;
 	}
 
-	public void setImage(byte[] image) {
-		this.image = image;
+	public void setFotoProfilo(byte[] fotoProfilo) {
+		this.fotoProfilo = fotoProfilo;
 	}
 
 	public List<Annuncio> getAnnunciUtente() {
@@ -140,13 +136,6 @@ public class Utente {
 	public void setAnnunciUtente(List<Annuncio> annunciUtente) {
 		this.annunciUtente = annunciUtente;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
+
 	
 }

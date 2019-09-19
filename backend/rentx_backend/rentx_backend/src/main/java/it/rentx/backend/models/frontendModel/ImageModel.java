@@ -1,4 +1,4 @@
-package it.rentx.backend.models;
+package it.rentx.backend.models.frontendModel;
 
 
 public class ImageModel {

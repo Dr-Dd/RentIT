@@ -1,25 +1,23 @@
-package it.rentx.backend.models;
+package it.rentx.backend.models.frontendModel;
 
 public class Risposta {
 
 	private String hasSucceded;
-	private Long userId;
+	private Long id;
 	private String accessToken;
 	private String responseMessage;
-	private Utente utente;
 	
-	public Risposta(String hasSucceded, Long userId, String accessToken, String responseMessage) {
+	public Risposta(String hasSucceded, Long Id, String accessToken, String responseMessage) {
 		this.hasSucceded = hasSucceded;
-		this.userId = userId;
+		this.id = Id;
 		this.accessToken = accessToken;
 		this.responseMessage = responseMessage;
 	}
 	
-	public Risposta(String hasSucceded, String accessToken, String responseMessage, Utente utente) {
+	public Risposta(String hasSucceded, String responseMessage,Long id) {
 		this.hasSucceded = hasSucceded;
-		this.accessToken = accessToken;
 		this.responseMessage = responseMessage;
-		this.utente = utente;
+		this.id=id;
 	}
 	
 	public Risposta(String hasSucceded, String responseMessage) {
@@ -35,12 +33,12 @@ public class Risposta {
 		this.hasSucceded = hasSucceded;
 	}
 
-	public Long getUserId() {
-		return userId;
+	public Long getId() {
+		return id;
 	}
 
-	public void setUserId(Long userId) {
-		this.userId = userId;
+	public void setUserId(Long id) {
+		this.id = id;
 	}
 
 	public String getAccessToken() {
@@ -59,13 +57,10 @@ public class Risposta {
 		this.responseMessage = responseMessage;
 	}
 
-	public Utente getUtente() {
-		return utente;
+	public void setId(Long id) {
+		this.id = id;
 	}
-
-	public void setUtente(Utente utente) {
-		this.utente = utente;
-	}
+	
 	
 	
 	
