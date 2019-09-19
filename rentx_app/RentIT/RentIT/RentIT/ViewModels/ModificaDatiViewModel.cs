@@ -1,20 +1,15 @@
 ﻿using RentIT.Services;
-using RentIT.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using System.IO;
 using RentIT.Services.User;
-using App.Services.Foto;
 using RentIT.Models.User;
 using App.Models.Image;
+using RentIT.Services.Foto;
 
 namespace RentIT.ViewModels
 {
-	public class ModificaDatiViewModel : BaseViewModel
+    public class ModificaDatiViewModel : BaseViewModel
 	{
         Utente _utente;
         public Utente Utente
@@ -148,16 +143,16 @@ namespace RentIT.ViewModels
         async Task ExecuteModificaDatiCommand()
         {
             IsBusy = true;
+            
+            if (EmptyFields())
+            {
+                await App.Current.MainPage.DisplayAlert("Errore", "Devi inserire sia il numero che la città", "Ok");
+                return;
+            }
 
             if (!PasswordsAreTheSame())
             {
                 await App.Current.MainPage.DisplayAlert("Errore", "Le due password non corrispondono", "Ok");
-                return;
-            }
-
-            if (EmptyFields())
-            {
-                await App.Current.MainPage.DisplayAlert("Errore", "Devi inserire sia il numero che la città", "Ok");
                 return;
             }
 

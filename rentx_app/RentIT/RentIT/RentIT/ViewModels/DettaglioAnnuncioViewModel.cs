@@ -1,19 +1,15 @@
 ﻿using App.Models.Image;
-using App.Services.Foto;
-using RentIT.Models;
 using RentIT.Models.Annuncio;
 using RentIT.Models.User;
 using RentIT.Services;
+using RentIT.Services.Foto;
 using RentIT.Services.User;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
-using Xamarin.Essentials;
-using RentIT.Models.User;
 
 namespace RentIT.ViewModels
 {
@@ -82,7 +78,8 @@ namespace RentIT.ViewModels
             * ImmagineUtente = await getPropic();
             * var imagesModel = await _fotoService.GetAdImagesAsync(Annuncio.Id);
             * Immagini = _fotoService.creaImmagini(imagesModel);
-            */
+            *
+            * La riga seguente serve solo a visualizzare l'annuncio dal menu a tendina */
             Immagini = _fotoService.creaImmagini(Annuncio.Immagini);
         }
 
@@ -96,6 +93,28 @@ namespace RentIT.ViewModels
             return img;
         }
 
+        /*
+         * Cliccando sul nome utente si apre la sua scheda
+         */
+        Command _infoUtenteCommand;
+        public Command InfoUtenteCommand
+        {
+            get
+            {
+                return _infoUtenteCommand
+                    ?? (_infoUtenteCommand = new Command(async () => await ExecuteInfoUtenteCommand()));
+            }
+        }
+
+
+        async Task ExecuteInfoUtenteCommand()
+        {
+            await NavService.NavigateTo<InfoUtenteViewModel, Utente>(Affittuario);
+        }
+
+        /*
+         * Comando associato al bottone "chiama"
+         */
         Command _callCommand;
         public Command CallCommand
         {
@@ -110,7 +129,8 @@ namespace RentIT.ViewModels
         {
             try
             {
-                PhoneDialer.Open("6666666666666");
+                //Da rimuovere le virgolette
+                PhoneDialer.Open("Affittuario.Numero");
             }
             catch (FeatureNotSupportedException ex)
             {
@@ -122,6 +142,9 @@ namespace RentIT.ViewModels
             }
         }
 
+        /*
+         * Comando associato al bottone "manda email"
+         */
         Command _emailCommand;
         public Command EmailCommand
         
@@ -137,30 +160,13 @@ namespace RentIT.ViewModels
         async Task ExecuteEmailCommand()
         {
             List<String> destinatario = new List<string>();
-            destinatario.Add("tiziocaio@papapa.it");
+            destinatario.Add("Affittuario.Email");
             var message = new EmailMessage
             {
                 To = destinatario,
             };
 
             await Email.ComposeAsync(message);
-        }
-
-        Command _infoUtenteCommand;
-        public Command InfoUtenteCommand
-        {
-            get
-            {
-                return _infoUtenteCommand
-                    ?? (_infoUtenteCommand = new Command(async () => await ExecuteInfoUtenteCommand()));
-            }
-        }
-
-
-        async Task ExecuteInfoUtenteCommand()
-        {
-            //Qui va passato un oggetto utente come soluzione momentanea passo solo il nome
-            //await NavService.NavigateTo<InfoUtenteViewModel, long>(Annuncio.AffittuarioId);
         }
     }
 }

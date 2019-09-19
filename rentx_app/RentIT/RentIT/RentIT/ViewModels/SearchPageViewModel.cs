@@ -1,13 +1,10 @@
 ﻿using App.Models.Image;
-using App.Services.Annuncio;
-using RentIT.Models;
 using RentIT.Models.Annuncio;
 using RentIT.Services;
-using RentIT.Views;
+using RentIT.Services.Annuncio;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.IO;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
@@ -187,7 +184,7 @@ namespace RentIT.ViewModels
 
         async Task ExecuteAddAnnuncioCommandAsync()
         {
-            /*if(!IsLogged())
+            if(!IsLogged())
             {
                 await App.Current.MainPage.DisplayAlert("RentIT", "Iscriviti o effettua il login per aggiungere un annuncio!", "Ok");
                 await NavService.NavigateTo<LoginPageViewModel>();
@@ -198,7 +195,7 @@ namespace RentIT.ViewModels
                 await App.Current.MainPage.DisplayAlert("RentIT", "Aggiorna i tuoi dati prima di aggiungere un annuncio!", "Ok");
                 await NavService.NavigateTo<ModificaDatiViewModel>();
                 return;
-            }*/
+            }
             await NavService.NavigateTo<AggiungiAnnuncioViewModel>();
         }
     }

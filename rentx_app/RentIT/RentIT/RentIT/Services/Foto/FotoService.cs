@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
-namespace App.Services.Foto
+namespace RentIT.Services.Foto
 {
     public class FotoService : IFotoService
     {

@@ -1,10 +1,7 @@
-﻿using App.Services.Annuncio;
-using App.Services.Foto;
-using RentIT.Models;
-using RentIT.Models.Annuncio;
+﻿using RentIT.Models.Annuncio;
 using RentIT.Services;
-using System;
-using System.Collections.Generic;
+using RentIT.Services.Annuncio;
+using RentIT.Services.Foto;
 using System.Collections.ObjectModel;
 using System.Text;
 using System.Threading.Tasks;
@@ -53,7 +50,8 @@ namespace RentIT.ViewModels
         public async override Task Init(Ad annuncio)
         {
             Annuncio = annuncio;
-            /* var imagesModel = await _fotoService.GetAdImagesAsync(Annuncio.Id);
+            /* Da decommentare
+            * var imagesModel = await _fotoService.GetAdImagesAsync(Annuncio.Id);
             * Immagini = _fotoService.creaImmagini(imagesModel);
             */
         }

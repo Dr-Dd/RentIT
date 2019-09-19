@@ -7,7 +7,8 @@ namespace RentIT.Models.User
 {
     public class Utente
     {
-        // tutti i campi effettivi di una classe Utente , da decidere bene quali sono 
+        // tutti i campi effettivi di una classe Utente , da decidere bene quali sono
+        public long Id { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
         public string Email { get; set; }

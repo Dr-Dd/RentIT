@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace App.Services.Foto
+namespace RentIT.Services.Foto
 {
     public interface IFotoService
     {   

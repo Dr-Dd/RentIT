@@ -68,13 +68,8 @@ namespace RentIT.ViewModels
             {
                 _confermaPassword = value;
                 OnPropertyChanged();
-                //SignInCommand.ChangeCanExecute(); // Nota come, nel viewModel, la funzione di set
-            }                                     // viene eseguita ogni qualvolta l'utente modifica il campo
-        }                                         // interessato. Questo vuol dire che possiamo usarla per eseguire
-                                                  // delle operazioni ogniqualvolta un utente modifica il campo! 
-                                                  // Qui, ad esempio, sto utilizzando una funzione dei comandi, che permette di 
-                                                  // attivare o disattivare un elemento ui in base alla funzione booleana associata
-                                                  // al comando interessato (vedi sotto)
+            }
+        }
 
         public override async Task Init()
         {
@@ -115,6 +110,12 @@ namespace RentIT.ViewModels
         async Task ExecuteSignInCommand()
         {
             IsBusy = true;
+            
+            if (EmptyFields())
+            {
+                await App.Current.MainPage.DisplayAlert("Errore", "Non hai riempito uno o più campi", "Ok");
+                return;
+            }
 
             if (!PasswordsAreTheSameAndNotEmpty())
             {
@@ -122,11 +123,6 @@ namespace RentIT.ViewModels
                 return;
             }
 
-            if (EmptyFields())
-            {
-                await App.Current.MainPage.DisplayAlert("Errore", "Non hai riempito uno o più campi", "Ok");
-                return;
-            }
             var signUpRequest = new SignUpRequest
             {
                 name = Name,

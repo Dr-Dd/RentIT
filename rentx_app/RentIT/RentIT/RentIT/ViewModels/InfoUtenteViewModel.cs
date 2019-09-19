@@ -1,18 +1,16 @@
-﻿using RentIT.Models;
+﻿using RentIT.Models.Annuncio;
 using RentIT.Models.User;
 using RentIT.Services;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using RentIT.Services.Annuncio;
+using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace RentIT.ViewModels
 {
-    public class InfoUtenteViewModel : BaseViewModel<string>
+    public class InfoUtenteViewModel : BaseViewModel<Utente>
     {
-        /*Servirà in  un secondo momento quando si metterà Utente al posto di string
-         * Utente _utente;
+        Utente _utente;
         public Utente Utente
         {
             get
@@ -25,26 +23,16 @@ namespace RentIT.ViewModels
                 OnPropertyChanged();
             }
         }
-        */
 
-        string _nomeUtente;
-        public String NomeUtente
+        readonly IAnnuncioService _annuncioService;
+        public InfoUtenteViewModel(INavService navService, AnnuncioService annuncioService) : base(navService)
         {
-            get { return _nomeUtente; }
-            set
-            {
-                _nomeUtente = value;
-                OnPropertyChanged();
-            }
-        }
-        public InfoUtenteViewModel(INavService navService) : base(navService)
-        {
-
+            _annuncioService = annuncioService;
         }
 
-        public async override Task Init(string nomeUtente)
+        public async override Task Init(Utente utente)
         {
-            NomeUtente = nomeUtente;
+            Utente = utente;
         }
 
         Command _vediAnnunciUtenteCommand;
@@ -59,8 +47,8 @@ namespace RentIT.ViewModels
 
         async Task ExecuteVediAnnunciUtenteCommand()
         {
-            /*Qua in qualche modo andrà specificato che gli annunci sono relativi solo a quell'utente*/
-            await NavService.NavigateTo<AnnunciPageViewModel>();
+            ObservableCollection<Ad> asd = await _annuncioService.GetUserAds(Utente.Id, false);
+            await NavService.NavigateTo<AnnunciPageViewModel, ObservableCollection<Ad>>(asd);
         }
     }
 }

@@ -1,15 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Text;
 using System.Threading.Tasks;
-using App.Services.Annuncio;
-using App.Services.Foto;
-using RentIT.Models;
 using RentIT.Models.Annuncio;
 using RentIT.Models.Image;
 using RentIT.Services;
+using RentIT.Services.Annuncio;
+using RentIT.Services.Foto;
 using Xamarin.Forms;
 
 namespace RentIT.ViewModels

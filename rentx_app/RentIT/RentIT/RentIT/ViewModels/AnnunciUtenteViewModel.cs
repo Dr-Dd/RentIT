@@ -1,17 +1,11 @@
-﻿using App.Services.Annuncio;
-using RentIT.Models;
-using RentIT.Models.Annuncio;
-using RentIT.Models.User;
+﻿using RentIT.Models.Annuncio;
 using RentIT.Services;
-using System;
-using System.Collections.Generic;
+using RentIT.Services.Annuncio;
 using System.Collections.ObjectModel;
-using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
 
-//Da modificare
 namespace RentIT.ViewModels
 {
     public class AnnunciUtenteViewModel : BaseViewModel
@@ -31,10 +25,10 @@ namespace RentIT.ViewModels
         ObservableCollection<Ad> _annunciNonPrenotati;
         public ObservableCollection<Ad> AnnunciNonPrenotati
         {
-            get { return _annunciPrenotati; }
+            get { return _annunciNonPrenotati; }
             set
             {
-                _annunciPrenotati = value;
+                _annunciNonPrenotati = value;
                 OnPropertyChanged();
             }
         }
@@ -45,34 +39,21 @@ namespace RentIT.ViewModels
             _annuncioService = annuncioService;
         }
 
+        public async override Task Init()
+        {
+            AnnunciPrenotati.Clear();
+            AnnunciNonPrenotati.Clear();
+
+            //Da decommentare dopo che il collegamento al db funziona
+            //AnnunciPrenotati = await _annuncioService.GetMyBookedAds();
+            //AnnunciNonPrenotati = await _annuncioService.GetMyNotBookedAds();
+        }
 
         /**
         * IMPORTANTE: Nello stato attuale, la ListView fa laggare
         * vistosamente l'app, trovare un modo di rendere più veloce
         * ed efficiente lo scroll
         */
-        async Task LoadEntries()
-        {
-            if (IsBusy)
-            {
-                return;
-            }
-
-            IsBusy = true;
-
-            AnnunciPrenotati.Clear();
-            AnnunciNonPrenotati.Clear();
-
-            AnnunciPrenotati = await _annuncioService.GetMyBookedAds();
-            AnnunciNonPrenotati = await _annuncioService.GetMyNotBookedAds();
-
-            // Da modificare
-            ObservableCollection<FileImageSource> percorsiImmagine = new ObservableCollection<FileImageSource>();
-            percorsiImmagine.Add("tosaerba.jpg");
-            percorsiImmagine.Add("tosaerba.jpg");
-
-            IsBusy = false;
-        }
 
         Command<Ad> _viewGestioneAnnuncio;
         public Command<Ad> ViewGestioneAnnuncio
@@ -87,11 +68,6 @@ namespace RentIT.ViewModels
         async Task ExecuteViewGestioneAnnuncio(Ad annuncio)
         {
             await NavService.NavigateTo<GestioneAnnuncioViewModel, Ad>(annuncio);
-        }
-
-        public async override Task Init()
-        {
-            // non fa nada
         }
 
     }
