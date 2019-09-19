@@ -1,6 +1,6 @@
 package it.rentx.backend.service;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import it.rentx.backend.models.Annuncio;
+import it.rentx.backend.models.frontendModel.AnnuncioModel;
 import it.rentx.backend.repository.AnnuncioRepository;
 
 @Service
@@ -29,6 +30,11 @@ public class AnnuncioService {
 	@Transactional
 	public void deleteAll() {
 		this.repo.deleteAll();
+	}
+	
+	@Transactional
+	public void cancellaTuttiPerId(Long id) {
+		this.repo.deleteAllByAffittuario_id(id);
 	}
 	
 	@Transactional
@@ -54,7 +60,7 @@ public class AnnuncioService {
 	
 	@Transactional
 	public List<Annuncio> annunciBookedPerUtente(long id){
-		List<Annuncio> lista=new LinkedList<>();
+		List<Annuncio> lista=new ArrayList<>();
 		for(Annuncio a : this.repo.findByAffittuario_id(id)) {
 			if(a.isBooked()) lista.add(a);
 		}
@@ -63,11 +69,26 @@ public class AnnuncioService {
 	
 	@Transactional
 	public List<Annuncio> annunciNotBookedPerUtente(long id){
-		List<Annuncio> lista=new LinkedList<>();
+		List<Annuncio> lista=new ArrayList<>();
 		for(Annuncio a : this.repo.findByAffittuario_id(id)) {
 			if(a.isBooked()==false) lista.add(a);
 		}
 		return lista;
+	}
+	
+	public AnnuncioModel parseToAnnuncio(Annuncio a) {
+		AnnuncioModel am=new AnnuncioModel(a.getId(),a.getAffittuario().getId(), a.getAnteprimaImg(),
+				a.getNomeOggetto(), a.getDescrizione(), a.getPrezzo(), a.getPosizione(), a.getData());
+		return am;
+	}
+	
+	public List<AnnuncioModel> parseToAnnuncioList(List<Annuncio> lista){
+		List<AnnuncioModel> l=new ArrayList<>();
+		for(Annuncio a: lista) {
+			AnnuncioModel tmp= this.parseToAnnuncio(a);
+			l.add(tmp);
+		}
+		return l;
 	}
 }
 

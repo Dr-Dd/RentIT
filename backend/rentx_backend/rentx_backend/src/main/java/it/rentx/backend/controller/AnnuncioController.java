@@ -21,6 +21,7 @@ import it.rentx.backend.models.Image;
 import it.rentx.backend.models.SearchQuery;
 import it.rentx.backend.models.Utente;
 import it.rentx.backend.models.frontendModel.AnnuncioModel;
+import it.rentx.backend.models.frontendModel.ImageModel;
 import it.rentx.backend.models.frontendModel.Risposta;
 import it.rentx.backend.service.AnnuncioService;
 import it.rentx.backend.service.HibernateSearchService;
@@ -101,22 +102,22 @@ public class AnnuncioController {
 	
 	// Da Modificare
 	@GetMapping("/annunci/{id}")
-	public List<Annuncio> AnnunciUtente(@RequestHeader("Authorization") String token, @PathVariable("id") Long id, @RequestBody	 boolean booked) {
+	public List<AnnuncioModel> AnnunciUtente(@RequestHeader("Authorization") String token, @PathVariable("id") Long id, @RequestBody boolean booked) {
 		if(booked == true) {	
 			if(id == this.utenteService.getUtenteByEmail(this.utenteService.estrazioneEmailDaToken(token)).getId()) {
-					return this.annuncioService.annunciBookedPerUtente(id);
+					return this.annuncioService.parseToAnnuncioList(this.annuncioService.annunciBookedPerUtente(id));
 				}
 				else return Collections.emptyList();
 			} else
-				return this.annuncioService.annunciNotBookedPerUtente(id);
+				return this.annuncioService.parseToAnnuncioList(this.annuncioService.annunciNotBookedPerUtente(id));
 	}
 	
 	@GetMapping("/annuncio/{id}")
-	public Annuncio SingoloAnnuncio(@PathVariable("id") Long id) {
+	public AnnuncioModel SingoloAnnuncio(@PathVariable("id") Long id) {
 		
-		Annuncio a=this.annuncioService.annuncioPerId(id);
+		AnnuncioModel am=this.annuncioService.parseToAnnuncio(this.annuncioService.annuncioPerId(id));
 		
-		return a;
+		return am;
 	}
 	
 	@PutMapping("/addImage/{id}")
@@ -131,9 +132,9 @@ public class AnnuncioController {
 	}
 	
 	@GetMapping("/images/{id}")
-	public List<Image> getAnnuncioImages(@PathVariable("id") Long id){
+	public List<ImageModel> getAnnuncioImages(@PathVariable("id") Long id){
 		if(this.annuncioService.esiste(id)) {
-			return this.imageService.getImagePerIdAnn(id);
+			return this.imageService.parseToImageList(this.imageService.getImagePerIdAnn(id));
 		}
 		else return Collections.emptyList();
 	}

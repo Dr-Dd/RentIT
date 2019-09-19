@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import it.rentx.backend.models.Utente;
 import it.rentx.backend.models.frontendModel.ImageModel;
 import it.rentx.backend.models.frontendModel.Risposta;
+import it.rentx.backend.models.frontendModel.UtenteModel;
 import it.rentx.backend.service.UtenteService;
 
 @RestController
@@ -42,15 +43,15 @@ public class UtenteController {
     }
     
     @GetMapping("/profile")
-    public Utente profiloUtente(@RequestHeader("Authorization") String token) {
-    	return this.utenteService.getUtenteByEmail(this.utenteService.estrazioneEmailDaToken(token));
+    public UtenteModel profiloUtente(@RequestHeader("Authorization") String token) {
+    	return this.utenteService.parseToUtente(this.utenteService.getUtenteByEmail(this.utenteService.estrazioneEmailDaToken(token)));
     }
     
     @GetMapping("/profile/{id}")
-    public Utente profiloUtenteconId(@PathVariable Long id) {
+    public UtenteModel profiloUtenteconId(@PathVariable Long id) {
     	//controlla se l'id esiste e in quel caso ritorna l'utente con quell'id (no campi di password ecc)
     	if(this.utenteService.esiste(id)) {
-    		return this.utenteService.trova(id);
+    		return this.utenteService.parseToUtente(this.utenteService.trova(id));
     	}
     	return null;
     }
@@ -79,8 +80,14 @@ public class UtenteController {
     	
     	//controllare che l'utente non abbia annunci prenotati 
     	//cancellare in caso quelli non prenotati
-    	
-    	this.utenteService.cancella(this.utenteService.getUtenteByEmail(this.utenteService.estrazioneEmailDaToken(token)));
+    	Utente u=this.utenteService.getUtenteByEmail(this.utenteService.estrazioneEmailDaToken(token));
+    	if(this.utenteService.haAnnunciPrenotati(u.getId())) {
+    		return ResponseEntity.ok().body(new Risposta("false","Non puoi cancellare l'account finche hai annunci prenotati."));
+    	}
+    	else if (this.utenteService.haAnnunciNonPrenotati(u.getId())) {
+    		this.utenteService.eliminaMieiAnnunci(u.getId());
+    	}
+    	this.utenteService.cancella(u);
     	return ResponseEntity.ok().body(new Risposta("true","Utente eliminato correttamente."));
     }
     

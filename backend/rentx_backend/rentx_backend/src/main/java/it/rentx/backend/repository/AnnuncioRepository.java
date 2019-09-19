@@ -10,4 +10,6 @@ public interface AnnuncioRepository extends CrudRepository<Annuncio, Long>{
 	
 	public List<Annuncio> findByAffittuario_id(Long affituario_id);
 	
+	public void deleteAllByAffittuario_id(Long affittuario_id);
+	
 }

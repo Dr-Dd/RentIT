@@ -3,8 +3,6 @@ package it.rentx.backend.models.frontendModel;
 
 public class UtenteModel {
 	
-	private boolean isFirstAccess;
-	
 	private String name;
 	
 	private String surname;
@@ -27,13 +25,7 @@ public class UtenteModel {
 		this.citta = citta;
 	}
 
-	public boolean isFirstAccess() {
-		return isFirstAccess;
-	}
-
-	public void setFirstAccess(boolean isFirstAccess) {
-		this.isFirstAccess = isFirstAccess;
-	}
+	
 
 	public String getName() {
 		return name;
