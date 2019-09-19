@@ -142,6 +142,20 @@ public class AnnuncioController {
 		else return Collections.emptyList();
 	}
 	
+	@PostMapping("/prenota/{id}")
+	public void prenotaAnnuncio(@RequestHeader("Authorization") String token, @PathVariable("id") Long id) {
+		Annuncio a= this.annuncioService.annuncioPerId(id);
+		if(a.getAffittuario().getId()==this.utenteService.getUtenteByEmail(this.utenteService.estrazioneEmailDaToken(token)).getId()) {
+			a.setBooked(true);
+		}
+	}	
 	
+	@PostMapping("/libera/{id}")
+	public void liberaAnnuncio(@RequestHeader("Authorization") String token, @PathVariable("id") Long id) {
+		Annuncio a= this.annuncioService.annuncioPerId(id);
+		if(a.getAffittuario().getId()==this.utenteService.getUtenteByEmail(this.utenteService.estrazioneEmailDaToken(token)).getId()) {
+			a.setBooked(false);
+		}
+	}	
 
 }
