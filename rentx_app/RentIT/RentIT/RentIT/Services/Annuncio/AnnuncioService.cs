@@ -125,6 +125,17 @@ namespace App.Services.Annuncio
             return GetUserAds(AppSettings.UserId,true);
         }
 
+        //va aggiunto getSingoloAnnuncio 
+
+        public async Task<Ad> GetSingoloAnnuncio(long idAnn)
+        {
+            var baseUri = Constants.AnnuncioPerId();
+            var builder = new UriBuilder(String.Concat(baseUri, "/", idAnn));
+            var uri = builder.ToString();
+
+            return await requestService.GetAsync<Ad>(uri, AppSettings.AccessToken);
+        }
+
         
     }
 }

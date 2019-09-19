@@ -86,9 +86,20 @@ namespace RentIT
             return string.Format(Constants.defaultAnnuncioEndpoint, "addImage");
         }
 
+        public static string getImgsAnnuncioEndpoint()
+        {
+            return string.Format(Constants.defaultAnnuncioEndpoint, "images");
+        }
+
+
         public static string AnnunciPerUserEndpoint()
         {
             return string.Format(Constants.defaultAnnuncioEndpoint, "annunci");
+        }
+
+        public static string AnnuncioPerId()
+        {
+            return string.Format(Constants.defaultAnnuncioEndpoint, "annuncio");
         }
 
         public static string UltimiAnnunciEndpoint()

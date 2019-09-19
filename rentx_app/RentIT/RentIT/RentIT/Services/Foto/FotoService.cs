@@ -80,21 +80,18 @@ namespace App.Services.Foto
         public async Task<List<ImageModel>> GetAdImagesAsync(long idAnn) {
 
             
-            var baseUri = Constants.UserEndpointGetImage();
+            var baseUri = Constants.getImgsAnnuncioEndpoint();
             var builder = new UriBuilder(String.Concat(baseUri, "/", idAnn));
             var uri = builder.ToString();
 
-            return await requestService.GetAsync<List<ImageModel>>(uri, AppSettings.AccessToken);
+            return await requestService.GetAsync<List<ImageModel>>(uri);
         }
 
         //metodo per uploadare l'immagine dell'utente
         public async Task UploadUserImageAsync(string imageAsBase64)
         {
             //nel caso l'immagine gia ci sia nel db bisogna fare il controllo e sostituirla anziche aggiungerla
-
-            var baseUri = Constants.UserEndpointUpImage();
-            var builder = new UriBuilder(String.Concat(baseUri, "/", AppSettings.UserId));
-           
+            var builder = new UriBuilder(Constants.UserEndpointUpImage());
             var uri = builder.ToString();
 
             var img = new ImageModel
