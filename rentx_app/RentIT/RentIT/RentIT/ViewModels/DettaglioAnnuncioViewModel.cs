@@ -112,7 +112,7 @@ namespace RentIT.ViewModels
         {
             try
             {
-                PhoneDialer.Open("6666666666666");
+                PhoneDialer.Open(Affittuario.Numero);
             }
             catch (FeatureNotSupportedException ex)
             {
@@ -139,7 +139,7 @@ namespace RentIT.ViewModels
         async Task ExecuteEmailCommand()
         {
             List<String> destinatario = new List<string>();
-            destinatario.Add("tiziocaio@papapa.it");
+            destinatario.Add(Affittuario.Email);
             var message = new EmailMessage
             {
                 To = destinatario,

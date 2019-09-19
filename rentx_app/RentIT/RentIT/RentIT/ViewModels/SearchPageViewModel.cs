@@ -112,7 +112,7 @@ namespace RentIT.ViewModels
                     NomeOggetto = "Tosaerba",
                     Descrizione = "Tosaerba BOSCHIA potente, alimentato a escrementi di piccione",
                     Prezzo = 13,
-                    AnteprimaImg = "tosa",
+                    AnteprimaImg = tosa,
                     Posizione = "Roma",
                     Immagini = percorsiImmagine,
                     Data = DateTime.Now
