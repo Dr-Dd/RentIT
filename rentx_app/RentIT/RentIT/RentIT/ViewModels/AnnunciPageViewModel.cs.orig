@@ -4,13 +4,16 @@ using RentIT.Services;
 using Xamarin.Forms;
 using RentIT.Models.Annuncio;
 using RentIT.Services.Annuncio;
-using RentIT.Models;
 
 namespace RentIT.ViewModels
 {
+<<<<<<< HEAD
+    public class AnnunciPageViewModel : BaseViewModel<ObservableCollection<Ad>>
+=======
     //prima c'era BaseViewModel<SearchQuery>
     //ora c'è di nuovo >>
     public class AnnunciPageViewModel : BaseViewModel<SearchQuery>
+>>>>>>> sys-interf-implem
     {
 
         ObservableCollection<Ad> _annunci;
@@ -27,8 +30,11 @@ namespace RentIT.ViewModels
         readonly IAnnuncioService _annuncioService;
         public AnnunciPageViewModel(INavService navService, AnnuncioService annuncioService) : base(navService)
         {
+<<<<<<< HEAD
+=======
             Annunci = new ObservableCollection<Ad>();
             _annuncioService = annuncioService;
+>>>>>>> sys-interf-implem
         }
 
         SearchQuery _query;
@@ -44,6 +50,16 @@ namespace RentIT.ViewModels
 
         public async override Task Init(SearchQuery query)
         {
+<<<<<<< HEAD
+            Annunci = annunci;
+        }
+
+        /**
+         * IMPORTANTE: Nello stato attuale, la ListView fa laggare
+         * vistosamente l'app, trovare un modo di rendere più veloce
+         * ed efficiente lo scroll
+         */
+=======
             // TODO: Implementare la ricerca
             Query = query;
             await LoadEntries();
@@ -63,6 +79,7 @@ namespace RentIT.ViewModels
 
             IsBusy = false;
         }
+>>>>>>> sys-interf-implem
 
         Command<Ad> _viewAnnuncio;
         public Command<Ad> ViewAnnuncio

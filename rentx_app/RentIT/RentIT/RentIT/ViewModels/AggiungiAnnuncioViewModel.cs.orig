@@ -1,14 +1,21 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Text;
 using System.Threading.Tasks;
+<<<<<<< HEAD
+=======
+using App.Services.Foto;
+using RentIT.Models;
+>>>>>>> sys-interf-implem
 using RentIT.Models.Annuncio;
 using RentIT.Models.Image;
 using RentIT.Services;
 using RentIT.Services.Annuncio;
+<<<<<<< HEAD
 using RentIT.Services.Foto;
+=======
+>>>>>>> sys-interf-implem
 using Xamarin.Forms;
 
 namespace RentIT.ViewModels
@@ -163,11 +170,19 @@ namespace RentIT.ViewModels
 
             var annuncioRequest = new Ad
             {
+<<<<<<< HEAD
                 nomeOggetto = NomeOggetto,
                 descrizione = Descrizione,
                 prezzo = Prezzo,
                 data = DateTime.Now,
-                anteprimaImg = listaImmaginiInBase64[0]
+                anteprimaImg = base64
+=======
+                NomeOggetto = NomeOggetto,
+                Descrizione = Descrizione,
+                Prezzo = Prezzo,
+                Data = DateTime.Now,
+                AnteprimaImg = listaImmaginiInBase64[0]
+>>>>>>> sys-interf-implem
             };
             var response = await _annuncioService.AddAnnuncioAsync(annuncioRequest);
             if (response.hasSucceded)
@@ -175,7 +190,7 @@ namespace RentIT.ViewModels
                 // Per ogni stringa immagine in base 64 caricata...
                 foreach (var imgB64 in listaImmaginiInBase64) {
                     // La invio al db con l'id del nuovo annuncio appena generato!!
-                    await _fotoService.UploadAdImagesAsync(response.id, imgB64);
+                    await _fotoService.UploadAdImagesAsync(response.idGen, imgB64);
                 }
                 StringBuilder successo = new StringBuilder();
                 successo.AppendLine("Annuncio aggiunto con successo!");

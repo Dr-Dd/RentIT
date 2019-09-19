@@ -40,19 +40,19 @@
                     <Entry Grid.Row="1"
                            Grid.ColumnSpan="2"
                            x:Name="nomeOggetto"
-                           Text="{Binding Path=NomeOggetto}"
+                           Text="{Binding Path=nomeOggetto}"
                            FontFamily="Quicksand-Light.ttf#Quicksand-Light"
                            Placeholder="nome oggetto" />
                     <Editor Grid.Row="2"
                             Grid.ColumnSpan="2"
                             x:Name="descrizioneOggetto"
                             Placeholder="descrizione"
-                            Text="{Binding Path=Descrizione}"
+                            Text="{Binding Path=descrizione}"
                             FontFamily="Quicksand-Light.ttf#Quicksand-Light" />
                     <Entry Grid.Row="3"
                            x:Name="prezzo"
                            Placeholder="prezzo"
-                           Text="{Binding Path=Prezzo}"
+                           Text="{Binding Path=prezzo}"
                            FontFamily="Quicksand-Light.ttf#Quicksand-Light" />
                     <Label Text="€"
                            Grid.Row="3"
@@ -64,7 +64,7 @@
                                  Grid.Row="4">
                         <fli:FlowListView FlowColumnCount="3"
                                           x:Name="listItems"
-                                          FlowItemsSource="{Binding Immagini}"
+                                          FlowItemsSource="{Binding immagini}"
                                           SeparatorVisibility="None"
                                           HasUnevenRows="false"
                                           RowHeight="100">

@@ -73,14 +73,14 @@ namespace RentIT.ViewModels
         public async override Task Init(Ad annuncio)
         {
             Annuncio = annuncio;
-            /*Va tutto decommentato dopo che i metodi del db funzionano
-            * Affittuario = await _userService.GetUserByIdAsync(annuncio.AffittuarioId);
-            * ImmagineUtente = await getPropic();
-            * var imagesModel = await _fotoService.GetAdImagesAsync(Annuncio.Id);
-            * Immagini = _fotoService.creaImmagini(imagesModel);
-            *
-            * La riga seguente serve solo a visualizzare l'annuncio dal menu a tendina */
-            Immagini = _fotoService.creaImmagini(Annuncio.Immagini);
+            //Va tutto decommentato dopo che i metodi del db funzionano
+            Affittuario = await _userService.GetUserByIdAsync(annuncio.AffittuarioId);
+            ImmagineUtente = await getPropic();
+            var imagesModel = await _fotoService.GetAdImagesAsync(Annuncio.id);
+            Immagini = _fotoService.creaImmagini(imagesModel);
+            
+            // La riga seguente serve solo a visualizzare l'annuncio dal menu a tendina */
+            //Immagini = _fotoService.creaImmagini(Annuncio.Immagini);
         }
 
         //Metodo per prendere l'immagine profilo dell'utente dal database
