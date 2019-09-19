@@ -6,7 +6,7 @@ public class AnnuncioModel {
 
 	private long id;
 	
-	private long idAffituario;
+	private long AffittuarioId;
 
 	private byte[] anteprimaImg;
 
@@ -19,21 +19,17 @@ public class AnnuncioModel {
 	private String posizione;
 
 	private Date data;
-	
-	private boolean booked;
 
 	public AnnuncioModel(long id, long idAffituario, byte[] anteprimaImg, String nomeOggetto, String descrizione,
-			float prezzo, String posizione, Date data, boolean booked) {
+			float prezzo, String posizione, Date data) {
 		super();
 		this.id = id;
-		this.idAffituario = idAffituario;
 		this.anteprimaImg = anteprimaImg;
 		this.nomeOggetto = nomeOggetto;
 		this.descrizione = descrizione;
 		this.prezzo = prezzo;
 		this.posizione = posizione;
 		this.data = data;
-		this.booked = booked;
 	}
 
 	public long getId() {
@@ -42,14 +38,6 @@ public class AnnuncioModel {
 
 	public void setId(long id) {
 		this.id = id;
-	}
-
-	public long getIdAffituario() {
-		return idAffituario;
-	}
-
-	public void setIdAffituario(long idAffituario) {
-		this.idAffituario = idAffituario;
 	}
 
 	public byte[] getAnteprimaImg() {
@@ -100,13 +88,14 @@ public class AnnuncioModel {
 		this.data = data;
 	}
 
-	public boolean isBooked() {
-		return booked;
+	public long getAffittuarioId() {
+		return AffittuarioId;
 	}
 
-	public void setBooked(boolean booked) {
-		this.booked = booked;
+	public void setAffittuarioId(long affittuarioId) {
+		AffittuarioId = affittuarioId;
 	}
+	
 	
 	
 }

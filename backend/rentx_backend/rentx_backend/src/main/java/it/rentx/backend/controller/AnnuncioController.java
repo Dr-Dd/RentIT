@@ -14,15 +14,14 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import it.rentx.backend.models.Annuncio;
 import it.rentx.backend.models.Image;
 import it.rentx.backend.models.SearchQuery;
 import it.rentx.backend.models.Utente;
+import it.rentx.backend.models.frontendModel.AnnuncioModel;
 import it.rentx.backend.models.frontendModel.Risposta;
-import it.rentx.backend.repository.AnnuncioRepository;
 import it.rentx.backend.service.AnnuncioService;
 import it.rentx.backend.service.HibernateSearchService;
 import it.rentx.backend.service.ImageService;
@@ -78,23 +77,26 @@ public class AnnuncioController {
 	
 	
 	@PostMapping(value = "/search")
-	public List<Annuncio> search(@RequestBody SearchQuery sq) {
+	public List<AnnuncioModel> search(@RequestBody SearchQuery sq) {
 		List<Annuncio> searchResults = null;
+		List<AnnuncioModel> annunci = new ArrayList<>();
 		try {
 			searchResults = this.searchService.fuzzySearch(sq.getOggetto());
 		} catch (Exception e) {
 			// decidere cosa (e se) gestire eccezioni
 		}
 		for (Annuncio annuncio : searchResults) {
-			if((annuncio.getPosizione() != sq.getCitta()) ||  (annuncio.isBooked()))
-				searchResults.remove(annuncio);
+			if((annuncio.getPosizione() == sq.getCitta()) &&  !(annuncio.isBooked())) {
+				AnnuncioModel tmp = new AnnuncioModel(annuncio.getId(), annuncio.getAffittuario().getId(), annuncio.getAnteprimaImg(), annuncio.getNomeOggetto(), annuncio.getDescrizione(), annuncio.getPrezzo(), annuncio.getPosizione(), annuncio.getData());
+				annunci.add(tmp);
+			}
 		}
 		/*Ovviamente questa è una cafonata, mi serviva solo per provare velocemente
 		 * il metodo. Probabilmente va implementata passando 
 		 * 	annuncioService.annunciPosizione(sq.getCitta());
 		 * come insieme su cui fare la ricerca fuzzy
 		 */
-		return searchResults;
+		return annunci;
 	}
 	
 	// Da Modificare

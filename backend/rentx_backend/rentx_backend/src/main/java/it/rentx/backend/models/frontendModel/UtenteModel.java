@@ -16,15 +16,8 @@ public class UtenteModel {
 	private String numeroTel;
 	
 	private String citta;
-	
-	private byte[] fotoProfilo;
-	
-	
-	
-	
-	
-	
-	public UtenteModel(String name, String surname, String email, String password,  String numeroTel, String citta, byte[] fotoProfilo) {
+
+	public UtenteModel(String name, String surname, String email, String password,  String numeroTel, String citta) {
 		super();
 		this.name = name;
 		this.surname = surname;
@@ -32,15 +25,6 @@ public class UtenteModel {
 		this.password = password;
 		this.numeroTel = numeroTel;
 		this.citta = citta;
-		this.fotoProfilo = fotoProfilo;
-	}
-
-	public long getId() {
-		return id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
 	}
 
 	public boolean isFirstAccess() {
@@ -99,12 +83,5 @@ public class UtenteModel {
 		this.citta = citta;
 	}
 
-	public byte[] getFotoProfilo() {
-		return fotoProfilo;
-	}
-
-	public void setFotoProfilo(byte[] fotoProfilo) {
-		this.fotoProfilo = fotoProfilo;
-	}
 
 }
