@@ -1,4 +1,5 @@
 ﻿using App.Services.Annuncio;
+using App.Services.Foto;
 using RentIT.Models;
 using RentIT.Models.Annuncio;
 using RentIT.Services;
@@ -27,45 +28,35 @@ namespace RentIT.ViewModels
             }
         }
 
-        ObservableCollection<OggettoImmagine> _oggettiImmagine;
-        public ObservableCollection<OggettoImmagine> OggettiImmagine
+        ObservableCollection<Image> _immagini;
+        public ObservableCollection<Image> Immagini
         {
             get
             {
-                return _oggettiImmagine;
+                return _immagini;
             }
             set
             {
-                _oggettiImmagine = value;
+                _immagini = value;
                 OnPropertyChanged();
             }
         }
 
-
+        readonly FotoService _fotoService;
         readonly IAnnuncioService _annuncioService;
-        public GestioneAnnuncioViewModel(INavService navService, AnnuncioService annuncioService) : base(navService)
+        public GestioneAnnuncioViewModel(INavService navService, AnnuncioService annuncioService, FotoService fotoService) : base(navService)
         {
             _annuncioService = annuncioService;
+            _fotoService = fotoService;
         }
 
         public async override Task Init(Ad annuncio)
         {
             Annuncio = annuncio;
-            //OggettiImmagine = creaOggettiImmagine(Annuncio);
+            /* var imagesModel = await _fotoService.GetAdImagesAsync(Annuncio.Id);
+            * Immagini = _fotoService.creaImmagini(imagesModel);
+            */
         }
-
-        /*public ObservableCollection<OggettoImmagine> creaOggettiImmagine(Ad annuncio)
-        {
-            OggettiImmagine = new ObservableCollection<OggettoImmagine>();
-            foreach (FileImageSource image in Annuncio.PercorsiImmagine)
-            {
-                OggettiImmagine.Add(new OggettoImmagine()
-                {
-                    Immagine = image
-                });
-            }
-            return OggettiImmagine;
-        }*/
 
     /*Comando per eliminare l'annuncio*/
     Command _eliminaAnnuncioCommand;

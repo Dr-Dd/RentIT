@@ -1,4 +1,5 @@
-﻿using App.Services.Annuncio;
+﻿using App.Models.Image;
+using App.Services.Annuncio;
 using RentIT.Models;
 using RentIT.Models.Annuncio;
 using RentIT.Services;
@@ -6,6 +7,7 @@ using RentIT.Views;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
@@ -90,7 +92,32 @@ namespace RentIT.ViewModels
 
         async Task ExecuteAnnunciPageCommand()
         {
-            await NavService.NavigateTo<AnnunciPageViewModel>();
+            string tosa = ***REMOVED***
+            ImageModel image = new ImageModel
+            {
+                data = tosa
+            };
+
+            List<ImageModel> percorsiImmagine = new List<ImageModel>();
+            percorsiImmagine.Add(image);
+            percorsiImmagine.Add(image);
+            percorsiImmagine.Add(image);
+
+            ObservableCollection<Ad> Annunci = new ObservableCollection<Ad>();
+                Annunci.Add(new Ad()
+                {
+                    AffittuarioId = 1,
+                    Id = 5,
+                    NomeOggetto = "Tosaerba",
+                    Descrizione = "Tosaerba BOSCHIA potente, alimentato a escrementi di piccione",
+                    Prezzo = 13,
+                    AnteprimaImg = "tosa",
+                    Posizione = "Roma",
+                    Immagini = percorsiImmagine,
+                    Data = DateTime.Now
+                });
+            
+            await NavService.NavigateTo<AnnunciPageViewModel, ObservableCollection<Ad>>(Annunci);
         }
 
 
