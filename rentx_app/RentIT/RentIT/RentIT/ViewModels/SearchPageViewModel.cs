@@ -117,7 +117,7 @@ namespace RentIT.ViewModels
                     Data = DateTime.Now
                 });
             
-            await NavService.NavigateTo<AnnunciPageViewModel, ObservableCollection<Ad>>(Annunci);
+            await NavService.NavigateTo<AnnunciPageViewModel, SearchQuery>(Annunci);
         }
 
 
@@ -168,8 +168,10 @@ namespace RentIT.ViewModels
 
         async Task ExecuteCercaCommand()
         {
-            ObservableCollection<Ad> risultati = await _annuncioService.GetLastAds(Citta, Oggetto);
-            await NavService.NavigateTo<AnnunciPageViewModel, ObservableCollection<Ad>>(risultati);
+            SearchQuery query = new SearchQuery();
+            query.citta = Citta;
+            query.oggetto = Oggetto;
+            await NavService.NavigateTo<AnnunciPageViewModel, SearchQuery>(query);
         }
 
         /*

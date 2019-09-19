@@ -8,11 +8,13 @@ using RentIT.Services;
 using Xamarin.Forms;
 using RentIT.Models.User;
 using RentIT.Models.Annuncio;
+using RentIT.Services.Annuncio;
 
 namespace RentIT.ViewModels
 {
     //prima c'era BaseViewModel<SearchQuery>
-    public class AnnunciPageViewModel : BaseViewModel<ObservableCollection<Ad>>
+    //ora c'è di nuovo >>
+    public class AnnunciPageViewModel : BaseViewModel<SearchQuery>
     {
 
         ObservableCollection<Ad> _annunci;
@@ -26,24 +28,22 @@ namespace RentIT.ViewModels
             }
         }
 
-        public AnnunciPageViewModel(INavService navService) : base(navService)
+        readonly IAnnuncioService _annuncioService;
+        public AnnunciPageViewModel(INavService navService, AnnuncioService annuncioService) : base(navService)
         {
-            //Annunci = new ObservableCollection<Ad>();
+            Annunci = new ObservableCollection<Ad>();
+            _annuncioService = annuncioService;
         }
 
 
-        public async override Task Init(ObservableCollection<Ad> annunci)
+        SearchQuery Query;
+        public async override Task Init(SearchQuery query)
         {
             // TODO: Implementare la ricerca
-            //await LoadEntries();
-            Annunci = annunci;
+            Query = query;
+            await LoadEntries();
         }
 
-        /**
-         * IMPORTANTE: Nello stato attuale, la ListView fa laggare
-         * vistosamente l'app, trovare un modo di rendere più veloce
-         * ed efficiente lo scroll
-         */
         async Task LoadEntries()
         {
             if (IsBusy)
@@ -54,130 +54,7 @@ namespace RentIT.ViewModels
             IsBusy = true;
 
             Annunci.Clear();
-
-            /*// TODO: Aggiungere persistenza database
-            Annunci.Add(new Ad()
-            {
-                NomeOggetto = "Tosaerba",
-                Descrizione = "Tosaerba BOSCHIA potente, alimentato a escrementi di piccione",
-                Prezzo = 13,
-                Immagine = new Image { Source = "tosaerba.jpg" },
-                Posizione = "4 Km da te",
-                Data = DateTime.Now
-            });
-
-            Annunci.Add(new Ad()
-            {
-                NomeOggetto = "Tosaerba",
-                Descrizione = "Tosaerba BOSCHIA potente, alimentato a escermenti di piccione",
-                Prezzo = 13,
-                Immagine = new Image { Source = "tosaerba.jpg" },
-                Posizione = "4 Km da te",
-                Data = DateTime.Now
-            });
-
-            Annunci.Add(new Ad()
-            {
-                NomeOggetto = "Tosaerba",
-                Descrizione = "Tosaerba BOSCHIA potente, alimentato a escermenti di piccione",
-                Prezzo = 13,
-                Immagine = new Image { Source = "tosaerba.jpg" },
-                Posizione = "4 Km da te",
-                Data = DateTime.Now
-            });
-
-
-            Annunci.Add(new Ad()
-            {
-                NomeOggetto = "Tosaerba",
-                Descrizione = "Tosaerba BOSCHIA potente, alimentato a escermenti di piccione",
-                Prezzo = 13,
-                Immagine = new Image { Source = "tosaerba.jpg" },
-                Posizione = "4 Km da te",
-                Data = DateTime.Now
-            });
-
-            Annunci.Add(new Ad()
-            {
-                NomeOggetto = "Tosaerba",
-                Descrizione = "Tosaerba BOSCHIA potente, alimentato a escermenti di piccione",
-                Prezzo = 13,
-                Immagine = new Image { Source = "tosaerba.jpg" },
-                Posizione = "4 Km da te",
-                Data = DateTime.Now
-            });
-
-            Annunci.Add(new Ad()
-            {
-                NomeOggetto = "Tosaerba",
-                Descrizione = "Tosaerba BOSCHIA potente, alimentato a escermenti di piccione",
-                Prezzo = 13,
-                Immagine = new Image { Source = "tosaerba.jpg" },
-                Posizione = "4 Km da te",
-                Data = DateTime.Now
-            });
-
-            Annunci.Add(new Ad()
-            {
-                NomeOggetto = "Tosaerba",
-                Descrizione = "Tosaerba BOSCHIA potente, alimentato a escermenti di piccione",
-                Prezzo = 13,
-                Immagine = new Image { Source = "tosaerba.jpg" },
-                Posizione = "4 Km da te",
-                Data = DateTime.Now
-            });
-
-            Annunci.Add(new Ad()
-            {
-                NomeOggetto = "Tosaerba",
-                Descrizione = "Tosaerba BOSCHIA potente, alimentato a escermenti di piccione",
-                Prezzo = 13,
-                Immagine = new Image { Source = "tosaerba.jpg" },
-                Posizione = "4 Km da te",
-                Data = DateTime.Now
-            });
-
-
-            Annunci.Add(new Ad()
-            {
-                NomeOggetto = "Tosaerba",
-                Descrizione = "Tosaerba BOSCHIA potente, alimentato a escermenti di piccione",
-                Prezzo = 13,
-                Immagine = new Image { Source = "tosaerba.jpg" },
-                Posizione = "4 Km da te",
-                Data = DateTime.Now
-            });
-
-            Annunci.Add(new Ad()
-            {
-                NomeOggetto = "Tosaerba",
-                Descrizione = "Tosaerba BOSCHIA potente, alimentato a escermenti di piccione",
-                Prezzo = 13,
-                Immagine = new Image { Source = "tosaerba.jpg" },
-                Posizione = "4 Km da te",
-                Data = DateTime.Now
-            });
-
-            Annunci.Add(new Ad()
-            {
-                NomeOggetto = "Tosaerba",
-                Descrizione = "Tosaerba BOSCHIA potente, alimentato a escermenti di piccione",
-                Prezzo = 13,
-                Immagine = new Image { Source = "tosaerba.jpg" },
-                Posizione = "4 Km da te",
-                Data = DateTime.Now
-            });
-
-            Annunci.Add(new Ad()
-            {
-                NomeOggetto = "Tosaerba",
-                Descrizione = "Tosaerba BOSCHIA potente, alimentato a escermenti di piccione",
-                Prezzo = 13,
-                Immagine = new Image { Source = "tosaerba.jpg" },
-                Posizione = "4 Km da te",
-                Data = DateTime.Now
-            });
-            */
+            Annunci = await _annuncioService.GetLastAds(Query.citta, Query.oggetto);
 
             IsBusy = false;
         }
