@@ -55,7 +55,7 @@ public class UtenteService {
 	 }
 	
 	 public UtenteModel parseToUtente(Utente u) {
-		 UtenteModel um=new UtenteModel(u.getName(), u.getSurname(), u.getEmail(), "", u.getNumeroTel(), u.getCitta());
+		 UtenteModel um=new UtenteModel(u.getId(),u.getName(), u.getSurname(), u.getEmail(), "", u.getNumeroTel(), u.getCitta());
 		 return um;
 	 }
 	 

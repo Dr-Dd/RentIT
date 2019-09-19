@@ -77,8 +77,9 @@ public class AnnuncioService {
 	}
 	
 	public AnnuncioModel parseToAnnuncio(Annuncio a) {
-		AnnuncioModel am=new AnnuncioModel(a.getId(),a.getAffittuario().getId(), a.getAnteprimaImg(),
+		AnnuncioModel am=new AnnuncioModel(a.getId(),0, a.getAnteprimaImg(),
 				a.getNomeOggetto(), a.getDescrizione(), a.getPrezzo(), a.getPosizione(), a.getData());
+		am.setAffittuarioId(a.getAffittuario().getId());
 		return am;
 	}
 	

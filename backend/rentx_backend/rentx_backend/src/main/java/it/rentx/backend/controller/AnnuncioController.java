@@ -49,8 +49,11 @@ public class AnnuncioController {
 		Utente utente = this.utenteService.getUtenteByEmail(this.utenteService.estrazioneEmailDaToken(token));
     	annuncio.setAffittuario(utente);
     	annuncio.setPosizione(utente.getCitta());
-		annuncioService.salvaAnnuncio(annuncio);
-        return ResponseEntity.ok().body(new Risposta("true","Annuncio salvato correttamente"));
+		
+    	//mi serve l'id dell'annuncio
+    	Annuncio a= this.annuncioService.salvaAnnuncio(annuncio);
+		
+        return ResponseEntity.ok().body(new Risposta("true","Annuncio salvato correttamente",a.getId()));
     }
 	
 	@DeleteMapping("/elimina/{id}")
@@ -102,8 +105,8 @@ public class AnnuncioController {
 	
 	// Da Modificare
 	@GetMapping("/annunci/{id}")
-	public List<AnnuncioModel> AnnunciUtente(@RequestHeader("Authorization") String token, @PathVariable("id") Long id, @RequestBody boolean booked) {
-		if(booked == true) {	
+	public List<AnnuncioModel> AnnunciUtente(@RequestHeader("Authorization") String token, @PathVariable("id") Long id) {
+		if(token!=null) {	
 			if(id == this.utenteService.getUtenteByEmail(this.utenteService.estrazioneEmailDaToken(token)).getId()) {
 					return this.annuncioService.parseToAnnuncioList(this.annuncioService.annunciBookedPerUtente(id));
 				}

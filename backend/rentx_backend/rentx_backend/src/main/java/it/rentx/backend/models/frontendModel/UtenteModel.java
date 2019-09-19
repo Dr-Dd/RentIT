@@ -3,6 +3,8 @@ package it.rentx.backend.models.frontendModel;
 
 public class UtenteModel {
 	
+	private Long id;
+	
 	private String name;
 	
 	private String surname;
@@ -15,8 +17,9 @@ public class UtenteModel {
 	
 	private String citta;
 
-	public UtenteModel(String name, String surname, String email, String password,  String numeroTel, String citta) {
+	public UtenteModel(Long id,String name, String surname, String email, String password,  String numeroTel, String citta) {
 		super();
+		this.id=id;
 		this.name = name;
 		this.surname = surname;
 		this.email = email;
@@ -26,6 +29,18 @@ public class UtenteModel {
 	}
 
 	
+
+	public Long getId() {
+		return id;
+	}
+
+
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+
 
 	public String getName() {
 		return name;
