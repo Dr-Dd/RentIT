@@ -160,7 +160,7 @@ namespace RentIT.ViewModels
 
         async Task ExecuteAddAnnuncioCommandAsync()
         {
-            if(!IsLogged())
+            /*if(!IsLogged())
             {
                 await App.Current.MainPage.DisplayAlert("RentIT", "Iscriviti o effettua il login per aggiungere un annuncio!", "Ok");
                 await NavService.NavigateTo<LoginPageViewModel>();
@@ -171,7 +171,7 @@ namespace RentIT.ViewModels
                 await App.Current.MainPage.DisplayAlert("RentIT", "Aggiorna i tuoi dati prima di aggiungere un annuncio!", "Ok");
                 await NavService.NavigateTo<ModificaDatiViewModel>();
                 return;
-            }
+            }*/
             await NavService.NavigateTo<AggiungiAnnuncioViewModel>();
         }
     }

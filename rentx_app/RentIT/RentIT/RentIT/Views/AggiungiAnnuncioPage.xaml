@@ -1,84 +1,103 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ffi="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:fli="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
              x:Class="RentIT.Views.AggiungiAnnuncioPage">
     <ContentPage.Content>
-        <ScrollView Margin="0,0,0,20">
-            <StackLayout>
-                <Grid>
+        <StackLayout Padding="0,0,0,5">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+            </Grid>
+            <Frame Grid.Row="0"
+                   BorderColor="#607D8B"
+                   BackgroundColor="WhiteSmoke"
+                   CornerRadius="25"
+                   Margin="20,20,20,20">
+                <Grid VerticalOptions="Start">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="*" />
-                        <RowDefinition Height="*" />
+                        <RowDefinition Height="10*" />
+                        <RowDefinition Height="10*" />
+                        <RowDefinition Height="10*" />
+                        <RowDefinition Height="10*" />
+                        <RowDefinition Height="50*" />
+                        <RowDefinition Height="10*" />
                     </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="95*" />
+                        <ColumnDefinition Width="5*" />
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Row="0"
+                           Grid.ColumnSpan="2"
+                           Text="Inserisci annuncio"
+                           HorizontalOptions="Center"
+                           FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
+                           FontSize="25"
+                           TextColor="#607D8B" />
+                    <Entry Grid.Row="1"
+                           Grid.ColumnSpan="2"
+                           x:Name="nomeOggetto"
+                           Text="{Binding Path=NomeOggetto}"
+                           FontFamily="Quicksand-Light.ttf#Quicksand-Light"
+                           Placeholder="nome oggetto" />
+                    <Editor Grid.Row="2"
+                            Grid.ColumnSpan="2"
+                            x:Name="descrizioneOggetto"
+                            Placeholder="descrizione"
+                            Text="{Binding Path=Descrizione}"
+                            FontFamily="Quicksand-Light.ttf#Quicksand-Light" />
+                    <Entry Grid.Row="3"
+                           x:Name="prezzo"
+                           Placeholder="prezzo"
+                           Text="{Binding Path=Prezzo}"
+                           FontFamily="Quicksand-Light.ttf#Quicksand-Light" />
+                    <Label Text="€"
+                           Grid.Row="3"
+                           Grid.Column="1"
+                           FontFamily="Quicksand-Light.ttf#Quicksand-Light" 
+                           VerticalOptions="Center"/>
+                    <StackLayout Grid.ColumnSpan="2"
+                                 Grid.Column="0"
+                                 Grid.Row="4">
+                        <fli:FlowListView FlowColumnCount="3"
+                                          x:Name="listItems"
+                                          FlowItemsSource="{Binding Immagini}"
+                                          SeparatorVisibility="None"
+                                          HasUnevenRows="false"
+                                          RowHeight="100">
+                            <fli:FlowListView.FlowColumnTemplate>
+                                <DataTemplate>
+                                    <Image Source="{Binding SorgenteImmagine}" Margin="0,0,3,3" Scale="1"/>
+                                </DataTemplate>
+                            </fli:FlowListView.FlowColumnTemplate>
+                        </fli:FlowListView>
+                    </StackLayout>
+                    <Button x:Name="pickPictureButton"
+                            Grid.ColumnSpan="2"
+                            Grid.Row="5"
+                            Text="+ Inserisci immagine"
+                            TextColor="#607D8B"
+                            BorderWidth="1"
+                            BorderColor="#607D8B"
+                            Margin="0,5,0,0"
+                            CornerRadius="25"
+                            HorizontalOptions="Center"
+                            BackgroundColor="WhiteSmoke"
+                            Command="{Binding AggiungiFotoCommand}" />
                 </Grid>
-                <Frame Grid.Row="0"
-                       BorderColor="#607D8B"
-                       BackgroundColor="WhiteSmoke"
-                       CornerRadius="25"
-                       Margin="20,20,20,20">
-                    <Grid VerticalOptions="Start">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="5*" />
-                            <RowDefinition Height="5*" />
-                            <RowDefinition Height="5*" />
-                            <RowDefinition Height="5*" />
-                            <RowDefinition Height="40*" />
-                            <RowDefinition Height="5*" />
-                        </Grid.RowDefinitions>
-                        <Label Grid.Row="0"
-                               Text="Inserisci annuncio"
-                               HorizontalOptions="Center"
-                               FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
-                               FontSize="25"
-                               TextColor="#607D8B" 
-                               />
-                        <Entry Grid.Row="1"
-                               x:Name="nomeOggetto"
-                               Text="{Binding Path=NomeOggetto}"
-                               FontFamily="Quicksand-Light.ttf#Quicksand-Light"
-                               Placeholder="nome oggetto"/>
-                        <Entry Grid.Row="2"
-                               x:Name="descrizioneOggetto"
-                               Placeholder="descrizione"
-                               Text="{Binding Path=Descrizione}"
-                               FontFamily="Quicksand-Light.ttf#Quicksand-Light"/>
-                        <Entry Grid.Row="3"
-                               x:Name="prezzo"
-                               Placeholder="prezzo" 
-                               Text="{Binding Path=Prezzo}"
-                               FontFamily="Quicksand-Light.ttf#Quicksand-Light"/>
-                        <Frame Grid.Row="4"
-                               BorderColor="#607D8B"
-                               CornerRadius="25">
-                            <Image x:Name="image"
-                                   Aspect="AspectFit"
-                                   HeightRequest="150"
-                                   WidthRequest="100"
-                                   Source="{Binding Immagine.Source}"/>
-                        </Frame>
-                        <Button x:Name="pickPictureButton"
-                                Grid.Row="5"
-                                Text="+ Inserisci immagine"
-                                TextColor="#607D8B"
-                                BorderWidth="1"
-                                BorderColor="#607D8B"
-                                Margin="0,5,0,0"
-                                CornerRadius="25"
-                                HorizontalOptions="Center"
-                                BackgroundColor="WhiteSmoke"
-                                Command="{Binding AggiungiFotoCommand}"/>
-                    </Grid>
-                </Frame>
-                <Button Grid.Row="1"
-                        CornerRadius="25"
-                        Text="Aggiungi annuncio"
-                        TextColor="#607D8B"
-                        BorderWidth="1"
-                        BorderColor="#607D8B"
-                        Margin="70,0,70,0"
-                        BackgroundColor="WhiteSmoke"
-                        Command="{Binding AggiungiAnnuncioCommand}"/>
-            </StackLayout>
-        </ScrollView>
+            </Frame>
+            <Button Grid.Row="1"
+                    CornerRadius="25"
+                    Text="Aggiungi annuncio"
+                    TextColor="#607D8B"
+                    BorderWidth="1"
+                    BorderColor="#607D8B"
+                    Margin="70,0,70,0"
+                    BackgroundColor="WhiteSmoke"
+                    Command="{Binding AggiungiAnnuncioCommand}" />
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>
