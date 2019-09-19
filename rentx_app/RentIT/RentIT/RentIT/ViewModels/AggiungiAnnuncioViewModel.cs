@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Text;
 using System.Threading.Tasks;
@@ -7,6 +8,7 @@ using App.Services.Annuncio;
 using App.Services.Foto;
 using RentIT.Models;
 using RentIT.Models.Annuncio;
+using RentIT.Models.Image;
 using RentIT.Services;
 using Xamarin.Forms;
 
@@ -18,10 +20,21 @@ namespace RentIT.ViewModels
         Image _immagine;
         public Image Immagine
         {
-            get { return _immagine ?? (new Image()); }
+            get { return _immagine; }
             set
             {
                 _immagine = value;
+                OnPropertyChanged();
+            }
+        }
+
+        ObservableCollection<ElementoListaImmagine> _immagini;
+        public ObservableCollection<ElementoListaImmagine> Immagini
+        {
+            get { return _immagini; }
+            set
+            {
+                _immagini = value;
                 OnPropertyChanged();
             }
         }
@@ -69,6 +82,7 @@ namespace RentIT.ViewModels
         {
             _fotoService = fotoService;
             _annuncioService = annuncioService;
+            Immagini = new ObservableCollection<ElementoListaImmagine>();
         }
 
         public async override Task Init()
@@ -102,11 +116,27 @@ namespace RentIT.ViewModels
 
             if (stream != null)
             {
+                //MemoryStream ms = new MemoryStream();
+                //stream.CopyTo(ms);
+                //byte[] arrayImmagine = ms.ToArray();
+
                 //se esiste, si salva nel db associato all'annuncio
-                base64 = _fotoService.fromStreamToString(stream);
+                string base64 = _fotoService.fromStreamToString(stream);
+                //Image immagineTemp = new Image();
+                //immagineTemp.Source = ImageSource.FromStream(() => new MemoryStream(arrayImmagine));
 
                 //questa riga serve solo a visualizzare l'immagine in attesa del collegamento al db
-                Immagine = _fotoService.fromStringToImage(base64);
+                //Image immagineContainer = new Image();
+                //Immagine = _fotoService.fromStringToImage(base64);
+                //immagineContainer.Source = Immagine.Source;
+                ElementoListaImmagine elemLista = new ElementoListaImmagine();
+                byte[] fromBase64ToByte = Convert.FromBase64String(base64);
+                elemLista.SorgenteImmagine = ImageSource.FromStream(() => new MemoryStream(fromBase64ToByte));
+                Immagini.Add(elemLista);
+            }
+            else
+            {
+                System.Console.WriteLine("Mannaggia");
             }
         }
 
