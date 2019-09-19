@@ -147,6 +147,7 @@ public class AnnuncioController {
 		Annuncio a= this.annuncioService.annuncioPerId(id);
 		if(a.getAffittuario().getId()==this.utenteService.getUtenteByEmail(this.utenteService.estrazioneEmailDaToken(token)).getId()) {
 			a.setBooked(true);
+			this.annuncioService.salvaAnnuncio(a);
 		}
 	}	
 	
@@ -155,6 +156,7 @@ public class AnnuncioController {
 		Annuncio a= this.annuncioService.annuncioPerId(id);
 		if(a.getAffittuario().getId()==this.utenteService.getUtenteByEmail(this.utenteService.estrazioneEmailDaToken(token)).getId()) {
 			a.setBooked(false);
+			this.annuncioService.salvaAnnuncio(a);
 		}
 	}	
 
