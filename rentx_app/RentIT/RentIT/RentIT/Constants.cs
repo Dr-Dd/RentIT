@@ -107,6 +107,16 @@ namespace RentIT
             return string.Format(Constants.defaultAnnuncioEndpoint, "search");
         }
 
+        public static string PrenotaAnnuncio()
+        {
+            return string.Format(Constants.defaultAnnuncioEndpoint, "prenota");
+        }
+
+        public static string LiberaAnnuncio()
+        {
+            return string.Format(Constants.defaultAnnuncioEndpoint, "libera");
+        }
+
 
         public static string ItemEndpoint()
         {

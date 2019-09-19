@@ -126,7 +126,7 @@ namespace RentIT.Services.Annuncio
             return GetUserAds(AppSettings.UserId,true);
         }
 
-        //va aggiunto getSingoloAnnuncio 
+        
 
         public async Task<Ad> GetSingoloAnnuncio(long idAnn)
         {
@@ -137,6 +137,24 @@ namespace RentIT.Services.Annuncio
             return await requestService.GetAsync<Ad>(uri, AppSettings.AccessToken);
         }
 
-        
+        public async Task prenotaAd(long idAnn)
+        {
+            var baseUri = Constants.PrenotaAnnuncio();
+            var builder = new UriBuilder(String.Concat(baseUri, "/", idAnn));
+            var uri = builder.ToString();
+
+            await requestService.PutAsync(uri, AppSettings.AccessToken);
+        }
+
+        public async Task liberaAd(long idAnn)
+        {
+            var baseUri = Constants.LiberaAnnuncio();
+            var builder = new UriBuilder(String.Concat(baseUri, "/", idAnn));
+            var uri = builder.ToString();
+
+            await requestService.PutAsync(uri, AppSettings.AccessToken);
+        }
+
+
     }
 }
