@@ -3,10 +3,13 @@ using System.Threading.Tasks;
 using RentIT.Services;
 using Xamarin.Forms;
 using RentIT.Models.Annuncio;
+using RentIT.Services.Annuncio;
 
 namespace RentIT.ViewModels
 {
-    public class AnnunciPageViewModel : BaseViewModel<ObservableCollection<Ad>>
+    //prima c'era BaseViewModel<SearchQuery>
+    //ora c'è di nuovo >>
+    public class AnnunciPageViewModel : BaseViewModel<SearchQuery>
     {
 
         ObservableCollection<Ad> _annunci;
@@ -20,21 +23,45 @@ namespace RentIT.ViewModels
             }
         }
 
-        public AnnunciPageViewModel(INavService navService) : base(navService)
+        readonly IAnnuncioService _annuncioService;
+        public AnnunciPageViewModel(INavService navService, AnnuncioService annuncioService) : base(navService)
         {
+            Annunci = new ObservableCollection<Ad>();
+            _annuncioService = annuncioService;
         }
 
-
-        public async override Task Init(ObservableCollection<Ad> annunci)
+        SearchQuery _query;
+        public SearchQuery Query
         {
-            Annunci = annunci;
+            get { return _query; }
+            set
+            {
+                _query = value;
+                OnPropertyChanged();
+            }
         }
 
-        /**
-         * IMPORTANTE: Nello stato attuale, la ListView fa laggare
-         * vistosamente l'app, trovare un modo di rendere più veloce
-         * ed efficiente lo scroll
-         */
+        public async override Task Init(SearchQuery query)
+        {
+            // TODO: Implementare la ricerca
+            Query = query;
+            await LoadEntries();
+        }
+
+        async Task LoadEntries()
+        {
+            if (IsBusy)
+            {
+                return;
+            }
+
+            IsBusy = true;
+
+            Annunci.Clear();
+            Annunci = await _annuncioService.GetLastAds(Query.citta, Query.oggetto);
+
+            IsBusy = false;
+        }
 
         Command<Ad> _viewAnnuncio;
         public Command<Ad> ViewAnnuncio

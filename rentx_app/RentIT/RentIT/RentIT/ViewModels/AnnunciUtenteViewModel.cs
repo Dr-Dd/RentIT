@@ -1,4 +1,6 @@
-﻿using RentIT.Models.Annuncio;
+﻿using RentIT.Services.Annuncio;
+using RentIT.Models;
+using RentIT.Models.Annuncio;
 using RentIT.Services;
 using RentIT.Services.Annuncio;
 using System.Collections.ObjectModel;

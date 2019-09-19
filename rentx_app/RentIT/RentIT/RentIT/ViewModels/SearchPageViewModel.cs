@@ -1,4 +1,6 @@
 ﻿using App.Models.Image;
+using RentIT.Services.Annuncio;
+using RentIT.Models;
 using RentIT.Models.Annuncio;
 using RentIT.Services;
 using RentIT.Services.Annuncio;
@@ -74,10 +76,10 @@ namespace RentIT.ViewModels
             }
         }
 
-        /*
+        /* 
          * Comandi nel menù a tendina
          */
-        Command _annunciPageCommand;
+        /*Command _annunciPageCommand; // Momentaneamente commentato, da discutere la possibilità di dividere la view degli annunci e la view degli annunci utente 
         public Command AnnunciPageCommand
         {
             get
@@ -87,6 +89,7 @@ namespace RentIT.ViewModels
             }
         }
 
+        // Momentaneamente commentato 
         async Task ExecuteAnnunciPageCommand()
         {
             string tosa = ***REMOVED***
@@ -114,8 +117,8 @@ namespace RentIT.ViewModels
                     data = DateTime.Now
                 });
             
-            await NavService.NavigateTo<AnnunciPageViewModel, ObservableCollection<Ad>>(Annunci);
-        }
+            await NavService.NavigateTo<AnnunciPageViewModel, SearchQuery>(Annunci);
+        }*/
 
 
         Command _submitCommand;
@@ -165,8 +168,10 @@ namespace RentIT.ViewModels
 
         async Task ExecuteCercaCommand()
         {
-            ObservableCollection<Ad> risultati = await _annuncioService.GetLastAds(Citta, Oggetto);
-            await NavService.NavigateTo<AnnunciPageViewModel, ObservableCollection<Ad>>(risultati);
+            SearchQuery query = new SearchQuery();
+            query.citta = Citta;
+            query.oggetto = Oggetto;
+            await NavService.NavigateTo<AnnunciPageViewModel, SearchQuery>(query);
         }
 
         /*

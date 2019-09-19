@@ -39,7 +39,7 @@ namespace RentIT.ViewModels
         /* Questa stringa serve per mantenere il riferimento all'immagine
          * in quanto, dopo che viene caricata, viene subito visualizzata
          */
-        string base64;
+        List<string> listaImmaginiInBase64;
 
         string _nomeOggetto;
         public string NomeOggetto
@@ -81,6 +81,7 @@ namespace RentIT.ViewModels
             _fotoService = fotoService;
             _annuncioService = annuncioService;
             Immagini = new ObservableCollection<ElementoListaImmagine>();
+            listaImmaginiInBase64 = new List<string>();
         }
 
         public async override Task Init()
@@ -92,7 +93,7 @@ namespace RentIT.ViewModels
             var empty = string.IsNullOrWhiteSpace(NomeOggetto) ||
                         string.IsNullOrWhiteSpace(Descrizione) ||
                         (Prezzo == 0) ||
-                        string.IsNullOrEmpty(base64);
+                        (Immagini.Count == 0);
             return empty;
         }
 
@@ -119,7 +120,8 @@ namespace RentIT.ViewModels
                 //byte[] arrayImmagine = ms.ToArray();
 
                 //se esiste, si salva nel db associato all'annuncio
-                string base64 = _fotoService.fromStreamToString(stream);
+                string immagineInBase64 = _fotoService.fromStreamToString(stream);
+                listaImmaginiInBase64.Add(immagineInBase64);
                 //Image immagineTemp = new Image();
                 //immagineTemp.Source = ImageSource.FromStream(() => new MemoryStream(arrayImmagine));
 
@@ -128,7 +130,7 @@ namespace RentIT.ViewModels
                 //Immagine = _fotoService.fromStringToImage(base64);
                 //immagineContainer.Source = Immagine.Source;
                 ElementoListaImmagine elemLista = new ElementoListaImmagine();
-                byte[] fromBase64ToByte = Convert.FromBase64String(base64);
+                byte[] fromBase64ToByte = Convert.FromBase64String(immagineInBase64);
                 elemLista.SorgenteImmagine = ImageSource.FromStream(() => new MemoryStream(fromBase64ToByte));
                 Immagini.Add(elemLista);
             }
@@ -160,16 +162,20 @@ namespace RentIT.ViewModels
 
             var annuncioRequest = new Ad
             {
-                nomeOggetto = NomeOggetto,
-                descrizione = Descrizione,
-                prezzo = Prezzo,
-                data = DateTime.Now,
-                anteprimaImg = base64
+                NomeOggetto = NomeOggetto,
+                Descrizione = Descrizione,
+                Prezzo = Prezzo,
+                Data = DateTime.Now,
+                AnteprimaImg = listaImmaginiInBase64[0]
             };
             var response = await _annuncioService.AddAnnuncioAsync(annuncioRequest);
             if (response.hasSucceded)
             {
-                //per salvare la foto serve IDannuncio
+                // Per ogni stringa immagine in base 64 caricata...
+                foreach (var imgB64 in listaImmaginiInBase64) {
+                    // La invio al db con l'id del nuovo annuncio appena generato!!
+                    await _fotoService.UploadAdImagesAsync(response.idGen, imgB64);
+                }
                 StringBuilder successo = new StringBuilder();
                 successo.AppendLine("Annuncio aggiunto con successo!");
                 successo.AppendLine("Puoi trovarlo nella sezione 'I MIEI ANNUNCI' sul tuo profilo");
