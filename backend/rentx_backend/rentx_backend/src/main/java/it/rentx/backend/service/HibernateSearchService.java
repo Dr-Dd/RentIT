@@ -37,11 +37,12 @@ public class HibernateSearchService {
 		}
 	}
 	
+	@SuppressWarnings("unchecked") // Per ignorare la mancanza di typeSafety di listaAnnuncio (inevitabile)
 	@Transactional
 	public List<Annuncio> fuzzySearch(String searchTerm) {
 		FullTextEntityManager fullTextEntityManager = Search.getFullTextEntityManager(centityManager);
 		QueryBuilder qb = fullTextEntityManager.getSearchFactory().buildQueryBuilder().forEntity(Annuncio.class).get();
-		Query luceneQuery = qb.keyword().fuzzy().withEditDistanceUpTo(1).withPrefixLength(1).onFields("nomeOggetto").matching(searchTerm).createQuery();
+		Query luceneQuery = qb.keyword().fuzzy().withEditDistanceUpTo(1).withPrefixLength(1).onFields("nomeOggetto", "descrizione").matching(searchTerm).createQuery();
 		
 		javax.persistence.Query jpaQuery = fullTextEntityManager.createFullTextQuery(luceneQuery, Annuncio.class);
 		
@@ -53,6 +54,13 @@ public class HibernateSearchService {
 		} catch (NoResultException nre) {
 			nre.printStackTrace();
 		}
+		// Per testing, togliere il commento se necessario
+		/*for(Annuncio a : listaAnnuncio) {
+			System.out.println("[DEBUG] Trovato l'elemento: ");
+			System.out.println("[DEBUG] \t" + a.getNomeOggetto());
+			System.out.println("[DEBUG] con descrizione: " );
+			System.out.println("[DEBUG] \t" + a.getDescrizione());
+		}*/
 		return listaAnnuncio;
 	}
 }

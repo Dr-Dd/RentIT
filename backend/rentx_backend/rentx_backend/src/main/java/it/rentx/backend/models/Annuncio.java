@@ -35,10 +35,10 @@ public class Annuncio {
 	@Column(name = "immagine_copertina", length = 100000)
 	private byte[] anteprimaImg;
 	
-	@Field(index=Index.YES, analyze=Analyze.YES, store=Store.NO)
+	@Field
 	private String nomeOggetto;
 	
-	@Field(index=Index.YES, analyze=Analyze.YES, store=Store.NO)
+	@Field
 	private String descrizione;
 	
 	private float prezzo;
