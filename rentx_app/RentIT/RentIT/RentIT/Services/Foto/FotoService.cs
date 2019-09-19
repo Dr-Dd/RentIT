@@ -1,5 +1,7 @@
-﻿using App.Models.Image;
+﻿
+using App.Services.Foto;
 using RentIT;
+using RentIT.Models.Immagine;
 using RentIT.Services.Request;
 using System;
 using System.Collections.Generic;
@@ -9,7 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
-namespace App.Services.Foto
+namespace RentIT.Services.Foto
 {
     public class FotoService : IFotoService
     {

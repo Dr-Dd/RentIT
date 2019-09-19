@@ -1,4 +1,5 @@
-﻿using App.Models.Image;
+﻿
+using RentIT.Models.Immagine;
 using RentIT.Models.User;
 using System;
 using System.Collections.Generic;

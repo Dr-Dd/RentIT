@@ -1,4 +1,4 @@
-﻿using App.Models.Image;
+﻿
 using App.Services.Foto;
 using RentIT.Models;
 using RentIT.Models.Annuncio;
@@ -14,6 +14,8 @@ using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Essentials;
 using RentIT.Models.User;
+using RentIT.Services.Foto;
+using RentIT.Models.Immagine;
 
 namespace RentIT.ViewModels
 {

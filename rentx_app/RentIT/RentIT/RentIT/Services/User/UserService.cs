@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
-using App.Models.Image;
 using RentIT.Models.User;
 using RentIT.Services.Authentication;
 using RentIT.Services.Request;

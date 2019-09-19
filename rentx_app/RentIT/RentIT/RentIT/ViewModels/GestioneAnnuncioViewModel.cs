@@ -3,6 +3,7 @@ using App.Services.Foto;
 using RentIT.Models;
 using RentIT.Models.Annuncio;
 using RentIT.Services;
+using RentIT.Services.Foto;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;

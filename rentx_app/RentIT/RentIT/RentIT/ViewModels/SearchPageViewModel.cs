@@ -1,7 +1,8 @@
-﻿using App.Models.Image;
+﻿
 using App.Services.Annuncio;
 using RentIT.Models;
 using RentIT.Models.Annuncio;
+using RentIT.Models.Immagine;
 using RentIT.Services;
 using RentIT.Views;
 using System;
