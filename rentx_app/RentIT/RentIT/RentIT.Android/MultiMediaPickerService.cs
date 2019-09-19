@@ -30,7 +30,7 @@ namespace RentIT.Droid
         int MultiPickerResultCode = 9793;
         const string TemporalDirectoryName = "TmpMedia";
 
-        MultiMediaPickerService()
+        public MultiMediaPickerService()
         {
         }
 

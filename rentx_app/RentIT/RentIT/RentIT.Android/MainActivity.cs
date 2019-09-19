@@ -26,12 +26,12 @@ namespace RentIT.Droid
             ToolbarResource = Resource.Layout.Toolbar;
 
             Instance = this;
-            
+
 
             base.OnCreate(savedInstanceState);
             InitControls();
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
-            LoadApplication(new App(MultiMediaPickerService.SharedInstance));
+            LoadApplication(new App(new RentITPlatformModule()));
         }
 
         private void InitControls()
@@ -57,4 +57,5 @@ namespace RentIT.Droid
 
             MultiMediaPickerService.SharedInstance.OnActivityResult(requestCode, resultCode, data);
         }
+    }
 }

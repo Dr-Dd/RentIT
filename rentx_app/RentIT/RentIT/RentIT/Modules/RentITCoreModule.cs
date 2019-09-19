@@ -8,6 +8,8 @@ using RentIT.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Xamarin.Forms;
+using Xamarin.Forms.PlatformConfiguration;
 
 namespace RentIT.Modules
 {
@@ -37,6 +39,7 @@ namespace RentIT.Modules
             var requestService = new RequestService();
             var authService = new AuthenticationService(requestService);
             var userService = new UserService(requestService);
+
 
 
             // Qui gli fai il binding come singoletto
