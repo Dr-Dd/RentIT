@@ -10,7 +10,7 @@ using RentIT.DBmessages;
 using RentIT.Models;
 using System.Collections.ObjectModel;
 
-namespace App.Services.Annuncio
+namespace RentIT.Services.Annuncio
 {
     public class AnnuncioService : IAnnuncioService
     {

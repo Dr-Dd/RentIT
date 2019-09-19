@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using RentIT.Models;
 using System.Collections.ObjectModel;
 
-namespace App.Services.Annuncio
+namespace RentIT.Services.Annuncio
 {
     public interface IAnnuncioService
     {
