@@ -52,16 +52,16 @@ namespace RentIT.ViewModels
             }
         }
 
-        ObservableCollection<OggettoImmagine> _oggettiImmagine;
-        public ObservableCollection<OggettoImmagine> OggettiImmagine
+        ObservableCollection<Image> _immagini;
+        public ObservableCollection<Image> Immagini
         {
             get
             {
-                return _oggettiImmagine;
+                return _immagini;
             }
             set
             {
-                _oggettiImmagine = value;
+                _immagini = value;
                 OnPropertyChanged();
             }
         }
@@ -77,23 +77,14 @@ namespace RentIT.ViewModels
         public async override Task Init(Ad annuncio)
         {
             Annuncio = annuncio;
-            //Affittuario = _userService.GetProfileAsync(annuncio.AffittuarioId);
-            //ImmagineUtente = await getPropic();
-            //OggettiImmagine = creaOggettiImmagine(Annuncio);
+            /*Va tutto decommentato dopo che i metodi del db funzionano
+            * Affittuario = await _userService.GetUserByIdAsync(annuncio.AffittuarioId);
+            * ImmagineUtente = await getPropic();
+            * var imagesModel = await _fotoService.GetAdImagesAsync(Annuncio.Id);
+            * Immagini = _fotoService.creaImmagini(imagesModel);
+            */
+            Immagini = _fotoService.creaImmagini(Annuncio.Immagini);
         }
-
-        /*public ObservableCollection<OggettoImmagine> creaOggettiImmagine(Ad annuncio)
-        {
-            OggettiImmagine = new ObservableCollection<OggettoImmagine>();
-            foreach (FileImageSource image in Annuncio.PercorsiImmagine)
-            {
-                OggettiImmagine.Add(new OggettoImmagine()
-                {
-                    Immagine = image
-                });
-            }
-            return OggettiImmagine;
-        }*/
 
         //Metodo per prendere l'immagine profilo dell'utente dal database
         public async Task<Image> getPropic()
@@ -143,6 +134,18 @@ namespace RentIT.ViewModels
             }
         }
 
+        async Task ExecuteEmailCommand()
+        {
+            List<String> destinatario = new List<string>();
+            destinatario.Add("tiziocaio@papapa.it");
+            var message = new EmailMessage
+            {
+                To = destinatario,
+            };
+
+            await Email.ComposeAsync(message);
+        }
+
         Command _infoUtenteCommand;
         public Command InfoUtenteCommand
         {
@@ -157,19 +160,7 @@ namespace RentIT.ViewModels
         async Task ExecuteInfoUtenteCommand()
         {
             //Qui va passato un oggetto utente come soluzione momentanea passo solo il nome
-            await NavService.NavigateTo<InfoUtenteViewModel, long>(Annuncio.AffittuarioId);
-        }
-
-        async Task ExecuteEmailCommand()
-        {
-            List<String> destinatario = new List<string>();
-            destinatario.Add("tiziocaio@papapa.it");
-            var message = new EmailMessage
-            {
-                To = destinatario,
-            };
-
-            await Email.ComposeAsync(message);
+            //await NavService.NavigateTo<InfoUtenteViewModel, long>(Annuncio.AffittuarioId);
         }
     }
 }

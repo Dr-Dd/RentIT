@@ -3,6 +3,7 @@ using RentIT;
 using RentIT.Services.Request;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Text;
 using System.Threading.Tasks;
@@ -43,6 +44,19 @@ namespace App.Services.Foto
             //Creazione stringa
             string base64 = Convert.ToBase64String(bytes);
             return base64;
+        }
+
+        /*Questo metodo prende le immagini dal db, sotto forma di lista di stringhe
+         * e le rende visualizzabili sotto forma di Image
+         */
+        public ObservableCollection<Image> creaImmagini(List<ImageModel> imagesModel)
+        {
+            var Immagini = new ObservableCollection<Image>();
+            foreach (ImageModel image in imagesModel)
+            {
+                Immagini.Add(this.fromStringToImage(image.data));
+            }
+            return Immagini;
         }
 
         //metodo per uploadare le foto di un annuncio nel db(una per volta se sono tante in una lista)

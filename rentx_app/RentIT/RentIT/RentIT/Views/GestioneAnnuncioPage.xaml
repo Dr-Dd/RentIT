@@ -25,7 +25,7 @@
                              Grid.ColumnSpan="3"
                              HorizontalOptions="Center"
                              VerticalOptions="End">
-                    <carousel:CarouselViewControl ItemsSource="{Binding OggettiImmagine}"
+                    <carousel:CarouselViewControl ItemsSource="{Binding Immagini}"
                                                   VerticalOptions="FillAndExpand"
                                                   HorizontalOptions="FillAndExpand"
                                                   Position="0"
@@ -40,7 +40,7 @@
                                     </Grid.RowDefinitions>
                                     <Image Grid.Row="0"
                                            Aspect="AspectFit"
-                                           Source="{Binding Immagine}" />
+                                           Source="{Binding Source}" />
                                 </Grid>
                             </DataTemplate>
                         </carousel:CarouselViewControl.ItemTemplate>
