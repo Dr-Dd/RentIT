@@ -24,8 +24,8 @@ namespace RentIT.ViewModels
         IMultiMediaPickerService _multiMediaPickerService;
 
         public ObservableCollection<MediaFile> Media { get; set; }
-        public ICommand SelectImagesCommand { get; set; }
-        public ICommand SelectVideosCommand { get; set; }
+        //public ICommand SelectImagesCommand { get; set; }
+        //public ICommand SelectVideosCommand { get; set; }
 
         //Queste probabilmente saranno una lista
         Image _immagine;
@@ -84,7 +84,7 @@ namespace RentIT.ViewModels
             _annuncioService = annuncioService;
 
             _multiMediaPickerService = multiMediaPickerService;
-            SelectImagesCommand = new Command(async (obj) =>
+            /*SelectImagesCommand = new Command(async (obj) =>
             {
                 var hasPermission = await CheckPermissionAsync();
                 if (hasPermission)
@@ -100,8 +100,38 @@ namespace RentIT.ViewModels
                 {
                     Media.Add(a);
                 });
+            };*/
+        }
+
+        Command _selectImagesCommand;
+        public Command SelectImagesCommand
+        {
+            get
+            {
+                return _selectImagesCommand
+                    ?? (_selectImagesCommand = new Command(async () => await ExecuteSelectImagesCommand()));
+            }
+        }
+
+        public async Task ExecuteSelectImagesCommand()
+        {
+            var hasPermission = await CheckPermissionAsync();
+            if (hasPermission)
+            {
+                Media = new ObservableCollection<MediaFile>();
+                await _multiMediaPickerService.PickPhotosAsync();
+            }
+
+            _multiMediaPickerService.OnMediaPicked += (s, a) =>
+            {
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    Media.Add(a);
+                });
             };
         }
+
+
 
         async Task<bool> CheckPermissionAsync()
         {
@@ -123,7 +153,7 @@ namespace RentIT.ViewModels
                 if (status == PermissionStatus.Granted)
                 {
                     retVal = true;
-
+                     
                 }
                 else if (status != PermissionStatus.Unknown)
                 {
