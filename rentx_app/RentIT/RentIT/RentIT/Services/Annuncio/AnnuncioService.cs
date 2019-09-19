@@ -99,17 +99,12 @@ namespace App.Services.Annuncio
             var builder = new UriBuilder(String.Concat(baseUri, "/", UserId));
             var uri = builder.ToString();
 
+            
 
             //se voglio vedere quelli gia prenotati posso essere solo il possessore e nel backend dobbiamo fare il controllo che l'id corrisponda al token
-            if (booked)
-            {
-                return await requestService.GetAsync<ObservableCollection<Ad>>(uri, AppSettings.AccessToken);
-            }
-            //altrimenti non ti mando proprio il token tanto li puo vedere chiunque gli annunci non prenotati di un utente
-            else
-            {
-                return await requestService.GetAsync<ObservableCollection<Ad>>(uri);
-            }
+            
+          return await requestService.PostAsync<bool,ObservableCollection<Ad>>(uri,booked, AppSettings.AccessToken);
+       
         }
 
 
