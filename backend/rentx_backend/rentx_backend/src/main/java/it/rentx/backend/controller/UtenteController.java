@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import it.rentx.backend.models.ImageModel;
-import it.rentx.backend.models.Risposta;
 import it.rentx.backend.models.Utente;
+import it.rentx.backend.models.frontendModel.ImageModel;
+import it.rentx.backend.models.frontendModel.Risposta;
 import it.rentx.backend.service.UtenteService;
 
 @RestController

@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import it.rentx.backend.models.Risposta;
+import it.rentx.backend.models.frontendModel.Risposta;
 import it.rentx.backend.repository.UtenteRepository;
 import it.rentx.backend.service.UtenteService;
 

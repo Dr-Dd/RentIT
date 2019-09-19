@@ -19,9 +19,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import it.rentx.backend.models.Annuncio;
 import it.rentx.backend.models.Image;
-import it.rentx.backend.models.Risposta;
 import it.rentx.backend.models.SearchQuery;
 import it.rentx.backend.models.Utente;
+import it.rentx.backend.models.frontendModel.Risposta;
 import it.rentx.backend.repository.AnnuncioRepository;
 import it.rentx.backend.service.AnnuncioService;
 import it.rentx.backend.service.HibernateSearchService;

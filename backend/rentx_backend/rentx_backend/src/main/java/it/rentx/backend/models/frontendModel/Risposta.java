@@ -1,4 +1,6 @@
-package it.rentx.backend.models;
+package it.rentx.backend.models.frontendModel;
+
+import it.rentx.backend.models.Utente;
 
 public class Risposta {
 
