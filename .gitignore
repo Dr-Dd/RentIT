@@ -506,3 +506,13 @@ healthchecksdb
 backend/rentx_backend/rentx_backend/it.rentx.backend.models.Annuncio/segments_1
 
 *.lock
+
+*.si
+
+*.cfe
+
+*.cfs
+
+backend/rentx_backend/rentx_backend/it.rentx.backend.models.Annuncio/segments_3
+
+backend/rentx_backend/rentx_backend/it.rentx.backend.models.Annuncio/segments_b

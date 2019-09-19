@@ -6,8 +6,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -18,22 +18,19 @@ public class Image {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	
-	@OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_utente")
-	private Utente utente;
+	@ManyToOne(fetch = FetchType.LAZY)
+	private Annuncio annuncio;
 	
-	@OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_annuncio")
-	private Annuncio immagineAnnuncio;
-	
-	@Column(name = "immagine")
-	private Byte[] image;
+	@Lob
+	@Column(name = "image_data", length = 100000)
+	private byte[] data;
 	
 	public Image() {}
-	
-	public Image(Long id, Utente utente) {
-		this.id = id;
-		this.utente = utente;
+
+	public Image(Annuncio annuncio, byte[] data) {
+		super();
+		this.annuncio = annuncio;
+		this.data = data;
 	}
 
 	public long getId() {
@@ -44,31 +41,20 @@ public class Image {
 		this.id = id;
 	}
 
-	public Utente getUtente() {
-		return utente;
+	public Annuncio getAnnuncio() {
+		return annuncio;
 	}
 
-	public void setUtente(Utente utente) {
-		this.utente = utente;
+	public void setAnnuncio(Annuncio annuncio) {
+		this.annuncio = annuncio;
 	}
 
-	public Byte[] getImage() {
-		return image;
+	public byte[] getData() {
+		return data;
 	}
 
-	public void setImage(Byte[] image) {
-		this.image = image;
-	}
-
-	public Annuncio getImmagineAnnuncio() {
-		return immagineAnnuncio;
-	}
-
-	public void setImmagineAnnuncio(Annuncio immagineAnnuncio) {
-		this.immagineAnnuncio = immagineAnnuncio;
-	}
-	
-	
-	
+	public void setData(byte[] data) {
+		this.data = data;
+	}	
 	
 }

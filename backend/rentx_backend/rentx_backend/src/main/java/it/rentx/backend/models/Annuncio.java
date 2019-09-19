@@ -1,18 +1,16 @@
 package it.rentx.backend.models;
 
 import java.util.Date;
+import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.search.annotations.Field;
@@ -25,8 +23,15 @@ import org.hibernate.search.annotations.TermVector;
 public class Annuncio {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private long id;
+	
+	@ManyToOne
+	private Utente affittuario;
+	
+	@Lob
+	@Column(name = "immagine_copertina", length = 100000)
+	private byte[] anteprimaImg;
 	
 	@Field(termVector = TermVector.YES)
 	private String nomeOggetto;
@@ -34,38 +39,30 @@ public class Annuncio {
 	@Field(termVector = TermVector.YES)
 	private String descrizione;
 	
-	@OneToOne(mappedBy = "immagineAnnuncio", cascade = CascadeType.ALL, fetch = FetchType.LAZY, optional = false)
-	private Image immagine;
-	
-	@Lob
-	@Column(name = "immagine_annuncio")
-	private byte[] anteprimaImg;
-	
 	private float prezzo;
-	
-	@ManyToOne
-	@JoinColumn(name="id_utente")
-	private Utente affittuario;
 	
 	private String posizione;
 	
 	private Date data;
 	
+	private boolean booked = false;
+	
+	@OneToMany(mappedBy = "annuncio")
+	private List<Image> immagini;
+	
 	public Annuncio() {}
 
-	public Annuncio(String nomeOggetto, String descrizione, Image immagine, byte[] anteprimaImg, float prezzo,
-			Utente affittuario, String posizione, Date data) {
+	public Annuncio(String nomeOggetto, String descrizione, byte[] anteprimaImg, float prezzo, Utente affittuario, String posizione, Date data, List<Image> immagini) {
 		super();
 		this.nomeOggetto = nomeOggetto;
 		this.descrizione = descrizione;
-		this.immagine = immagine;
 		this.anteprimaImg = anteprimaImg;
 		this.prezzo = prezzo;
 		this.affittuario = affittuario;
 		this.posizione = posizione;
 		this.data = data;
+		this.immagini = immagini;
 	}
-
 
 	public long getId() {
 		return id;
@@ -75,62 +72,76 @@ public class Annuncio {
 		this.id = id;
 	}
 
+	public Utente getAffittuario() {
+		return affittuario;
+	}
+
+	public void setAffittuario(Utente affittuario) {
+		this.affittuario = affittuario;
+	}
+
+	public byte[] getAnteprimaImg() {
+		return anteprimaImg;
+	}
+
+	public void setAnteprimaImg(byte[] anteprimaImg) {
+		this.anteprimaImg = anteprimaImg;
+	}
+
 	public String getNomeOggetto() {
 		return nomeOggetto;
 	}
 
-	public void setNomeOggetto(String NomeOggetto) {
-		nomeOggetto = NomeOggetto;
+	public void setNomeOggetto(String nomeOggetto) {
+		this.nomeOggetto = nomeOggetto;
 	}
 
 	public String getDescrizione() {
 		return descrizione;
 	}
 
-	public void setDescrizione(String Descrizione) {
-		descrizione = Descrizione;
-	}
-
-	public Image getImmagine() {
-		return immagine;
-	}
-
-	public void setImmagine(Image Immagine) {
-		immagine = Immagine;
+	public void setDescrizione(String descrizione) {
+		this.descrizione = descrizione;
 	}
 
 	public float getPrezzo() {
 		return prezzo;
 	}
 
-	public void setPrezzo(float Prezzo) {
-		prezzo = Prezzo;
-	}
-
-	public Utente getAffittuario() {
-		return affittuario;
-	}
-
-	public void setAffittuario(Utente Affittuario) {
-		affittuario = Affittuario;
+	public void setPrezzo(float prezzo) {
+		this.prezzo = prezzo;
 	}
 
 	public String getPosizione() {
 		return posizione;
 	}
 
-	public void setPosizione(String Posizione) {
-		posizione = Posizione;
+	public void setPosizione(String posizione) {
+		this.posizione = posizione;
 	}
 
 	public Date getData() {
 		return data;
 	}
 
-	public void setData(Date Data) {
-		data = Data;
+	public void setData(Date data) {
+		this.data = data;
 	}
-	
-	
+
+	public boolean isBooked() {
+		return booked;
+	}
+
+	public void setBooked(boolean booked) {
+		this.booked = booked;
+	}
+
+	public List<Image> getImmagini() {
+		return immagini;
+	}
+
+	public void setImmagini(List<Image> immagini) {
+		this.immagini = immagini;
+	}
 	
 }

@@ -48,7 +48,7 @@ public class HibernateSearchService {
 		
 		List<Annuncio> listaAnnuncio = null;
 		try {
-			listaAnnuncio = jpaQuery.getResultList();
+			listaAnnuncio =  jpaQuery.getResultList();
 		} catch (NoResultException nre) {
 			// stoppa l'esecuzione (non fa nulla)
 		}
