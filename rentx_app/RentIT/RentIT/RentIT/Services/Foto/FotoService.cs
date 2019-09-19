@@ -48,8 +48,9 @@ namespace App.Services.Foto
         //metodo per uploadare le foto di un annuncio nel db(una per volta se sono tante in una lista)
         public async Task UploadAdImagesAsync(int idAnn, string imageAsBase64)
         {
-            var builder = new UriBuilder(Constants.uploadImgsAnnuncioEndpoint());
-            builder.Path = "/" + idAnn;     //lo mettiamo?? 
+            
+            var baseUri = Constants.uploadImgsAnnuncioEndpoint();
+            var builder = new UriBuilder(String.Concat(baseUri, "/", idAnn));
             var uri = builder.ToString();
 
             var img = new ImageModel
@@ -64,8 +65,9 @@ namespace App.Services.Foto
         //metodo per prendere dal db le immagini relative ad un annuncio
         public async Task<List<ImageModel>> GetAdImagesAsync(int idAnn) {
 
-            var builder = new UriBuilder(Constants.UserEndpointGetImage());
-            builder.Path = "/" + idAnn;
+            
+            var baseUri = Constants.UserEndpointGetImage();
+            var builder = new UriBuilder(String.Concat(baseUri, "/", idAnn));
             var uri = builder.ToString();
 
             return await requestService.GetAsync<List<ImageModel>>(uri, AppSettings.AccessToken);
@@ -75,9 +77,10 @@ namespace App.Services.Foto
         public async Task UploadUserImageAsync(string imageAsBase64)
         {
             //nel caso l'immagine gia ci sia nel db bisogna fare il controllo e sostituirla anziche aggiungerla
+
             var baseUri = Constants.UserEndpointUpImage();
             var builder = new UriBuilder(String.Concat(baseUri, "/", AppSettings.UserId));
-            //builder.Path = "/" + AppSettings.UserId;     //lo mettiamo?? 
+           
             var uri = builder.ToString();
 
             var img = new ImageModel
@@ -95,8 +98,9 @@ namespace App.Services.Foto
         public async Task<ImageModel> GetUserImage(long idUser)
         {
 
-            var builder = new UriBuilder(Constants.UserEndpointGetImage());
-            builder.Path = "/" + idUser;
+            var baseUri = Constants.UserEndpointGetImage();
+            var builder = new UriBuilder(String.Concat(baseUri, "/", idUser));
+           
             var uri = builder.ToString();
 
             return await requestService.GetAsync<ImageModel>(uri, AppSettings.AccessToken);

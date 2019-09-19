@@ -41,9 +41,9 @@ namespace RentIT.Services.User
 
         public Task<Utente> GetUserByIdAsync(long userId)
         {
-
-            var builder = new UriBuilder(Constants.UserEndpointProfileData());
-            builder.Path = "/" + userId;
+            
+            var baseUri = Constants.UserEndpointProfileData();
+            var builder = new UriBuilder(String.Concat(baseUri, "/", userId));
             var uri = builder.ToString();
 
             //non mando il token
