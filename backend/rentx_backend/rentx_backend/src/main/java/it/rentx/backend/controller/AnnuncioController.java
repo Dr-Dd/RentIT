@@ -82,15 +82,15 @@ public class AnnuncioController {
 	
 	@PostMapping(value = "/search")
 	public List<AnnuncioModel> search(@RequestBody SearchQuery sq) {
-		List<Annuncio> searchResults = null;
+		List<Annuncio> searchResults = new ArrayList<>();
 		List<AnnuncioModel> annunci = new ArrayList<>();
 		try {
 			searchResults = this.searchService.fuzzySearch(sq.getOggetto());
 		} catch (Exception e) {
-			// decidere cosa (e se) gestire eccezioni
+			e.printStackTrace();
 		}
 		for (Annuncio annuncio : searchResults) {
-			if((annuncio.getPosizione() == sq.getCitta()) &&  !(annuncio.isBooked())) {
+			if((annuncio.getPosizione().equals(sq.getCitta())) &&  !(annuncio.isBooked())) {
 				AnnuncioModel tmp = new AnnuncioModel(annuncio.getId(), annuncio.getAffittuario().getId(), annuncio.getAnteprimaImg(), annuncio.getNomeOggetto(), annuncio.getDescrizione(), annuncio.getPrezzo(), annuncio.getPosizione(), annuncio.getData());
 				annunci.add(tmp);
 			}

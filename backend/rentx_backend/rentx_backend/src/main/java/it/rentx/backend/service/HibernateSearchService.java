@@ -1,5 +1,6 @@
 package it.rentx.backend.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -40,7 +41,7 @@ public class HibernateSearchService {
 	public List<Annuncio> fuzzySearch(String searchTerm) {
 		FullTextEntityManager fullTextEntityManager = Search.getFullTextEntityManager(centityManager);
 		QueryBuilder qb = fullTextEntityManager.getSearchFactory().buildQueryBuilder().forEntity(Annuncio.class).get();
-		Query luceneQuery = qb.keyword().fuzzy().withEditDistanceUpTo(1).withPrefixLength(1).onFields("<INSERT-FIELD-HERE>").matching(searchTerm).createQuery();
+		Query luceneQuery = qb.keyword().fuzzy().withEditDistanceUpTo(1).withPrefixLength(1).onFields("nomeOggetto").matching(searchTerm).createQuery();
 		
 		javax.persistence.Query jpaQuery = fullTextEntityManager.createFullTextQuery(luceneQuery, Annuncio.class);
 		
@@ -50,7 +51,7 @@ public class HibernateSearchService {
 		try {
 			listaAnnuncio =  jpaQuery.getResultList();
 		} catch (NoResultException nre) {
-			// stoppa l'esecuzione (non fa nulla)
+			nre.printStackTrace();
 		}
 		return listaAnnuncio;
 	}

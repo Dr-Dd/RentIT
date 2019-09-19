@@ -13,9 +13,11 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.search.annotations.Analyze;
 import org.hibernate.search.annotations.Field;
+import org.hibernate.search.annotations.Index;
 import org.hibernate.search.annotations.Indexed;
-import org.hibernate.search.annotations.TermVector;
+import org.hibernate.search.annotations.Store;
 
 @Entity
 @Indexed
@@ -33,10 +35,10 @@ public class Annuncio {
 	@Column(name = "immagine_copertina", length = 100000)
 	private byte[] anteprimaImg;
 	
-	@Field(termVector = TermVector.YES)
+	@Field(index=Index.YES, analyze=Analyze.YES, store=Store.NO)
 	private String nomeOggetto;
 	
-	@Field(termVector = TermVector.YES)
+	@Field(index=Index.YES, analyze=Analyze.YES, store=Store.NO)
 	private String descrizione;
 	
 	private float prezzo;
