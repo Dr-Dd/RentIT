@@ -77,10 +77,10 @@ namespace RentIT.ViewModels
             }
         }
 
-        /*
+        /* 
          * Comandi nel menù a tendina
          */
-        Command _annunciPageCommand;
+        /*Command _annunciPageCommand; // Momentaneamente commentato, da discutere la possibilità di dividere la view degli annunci e la view degli annunci utente 
         public Command AnnunciPageCommand
         {
             get
@@ -90,6 +90,7 @@ namespace RentIT.ViewModels
             }
         }
 
+        // Momentaneamente commentato 
         async Task ExecuteAnnunciPageCommand()
         {
             string tosa = ***REMOVED***
@@ -118,7 +119,7 @@ namespace RentIT.ViewModels
                 });
             
             await NavService.NavigateTo<AnnunciPageViewModel, SearchQuery>(Annunci);
-        }
+        }*/
 
 
         Command _submitCommand;

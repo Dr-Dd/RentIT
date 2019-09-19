@@ -56,12 +56,6 @@ namespace RentIT.Modules
             navService.RegisterViewMapping(typeof(GestioneAnnuncioViewModel),
                 typeof(GestioneAnnuncioPage));
 
-            navService.RegisterViewMapping(typeof(AnnunciAttiviViewModel),
-                typeof(AnnunciAttivi));
-
-            navService.RegisterViewMapping(typeof(AnnunciPrenotatiViewModel),
-                typeof(AnnunciPrenotati));
-
             navService.RegisterViewMapping(typeof(InfoUtenteViewModel),
                 typeof(InfoUtenti));
 
