@@ -33,6 +33,8 @@ namespace RentIT.Services
                 return XamarinFormsNav.NavigationStack != null
                     && XamarinFormsNav.NavigationStack.Count > 0;
             }
+
+
         }
 
         public async Task GoBack()
@@ -110,7 +112,7 @@ namespace RentIT.Services
 
             for (var i = 0; i < XamarinFormsNav.NavigationStack.Count; i++)
             {
-                await XamarinFormsNav.PopAsync();
+                await XamarinFormsNav.PopToRootAsync();
             }
         }
 
