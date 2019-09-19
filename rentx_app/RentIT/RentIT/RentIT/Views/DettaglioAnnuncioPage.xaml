@@ -8,7 +8,7 @@
         <Grid Margin="20,20,20,20">
             <Grid.RowDefinitions>
                 <RowDefinition Height="100" />
-                <RowDefinition Height="2*" />
+                <RowDefinition Height="200" />
                 <RowDefinition Height="50" />
                 <RowDefinition Height="2*" />
                 <RowDefinition Height="50" />
@@ -60,7 +60,9 @@
                                     <RowDefinition Height="40" />
                                 </Grid.RowDefinitions>
                                 <Image Grid.Row="0"
-                                       Aspect="AspectFit"
+                                       HeightRequest="90"
+                                       WidthRequest="90"
+                                       VerticalOptions="Start"
                                        Source="{Binding Source}" />
                             </Grid>
                         </DataTemplate>
