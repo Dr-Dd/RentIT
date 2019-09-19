@@ -29,7 +29,8 @@
                                                   VerticalOptions="FillAndExpand"
                                                   HorizontalOptions="FillAndExpand"
                                                   Position="0"
-                                                  CurrentPageIndicatorTintColor="#607D8B"
+                                                  IndicatorsTintColor="#F0F4C3"
+                                                  CurrentPageIndicatorTintColor="#4CAF50"
                                                   ShowIndicators="True">
                         <carousel:CarouselViewControl.ItemTemplate>
                             <DataTemplate>

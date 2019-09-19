@@ -5,7 +5,7 @@ using System.IO;
 using System.Text;
 using System.Threading.Tasks;
 using RentIT.Models.Annuncio;
-using RentIT.Models.Image;
+using RentIT.Models.Immagine;
 using RentIT.Services;
 using RentIT.Services.Annuncio;
 using RentIT.Services.Foto;

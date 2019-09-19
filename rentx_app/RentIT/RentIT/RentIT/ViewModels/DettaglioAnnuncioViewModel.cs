@@ -1,8 +1,9 @@
 ﻿using App.Models.Image;
+using App.Services.Foto;
+using RentIT.Models;
 using RentIT.Models.Annuncio;
 using RentIT.Models.User;
 using RentIT.Services;
-using RentIT.Services.Foto;
 using RentIT.Services.User;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,10 @@ using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
+using Xamarin.Essentials;
+using RentIT.Models.User;
+using RentIT.Services.Foto;
+using RentIT.Models.Immagine;
 
 namespace RentIT.ViewModels
 {

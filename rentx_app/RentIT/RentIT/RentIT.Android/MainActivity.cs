@@ -16,7 +16,7 @@ using DLToolkit.Forms.Controls;
 
 namespace RentIT.Droid
 {
-    [Activity(Label = "RentIT", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+    [Activity(Label = "RentIT", Icon = "@drawable/rentIT_launcher", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         public static MainActivity Instance { get; private set; }
@@ -26,8 +26,8 @@ namespace RentIT.Droid
             ToolbarResource = Resource.Layout.Toolbar;
 
             Instance = this;
-            
 
+            Instance.RequestedOrientation = Android.Content.PM.ScreenOrientation.Portrait;
             base.OnCreate(savedInstanceState);
             InitControls();
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);

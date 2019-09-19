@@ -3,128 +3,135 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
              xmlns:carousel="clr-namespace:CarouselView.FormsPlugin.Abstractions;assembly=CarouselView.FormsPlugin.Abstractions"
+             xmlns:indicators="clr-namespace:RentIT.Models"
              x:Class="RentIT.Views.DettaglioAnnuncioPage">
     <ContentPage.Content>
-        <Grid Margin="20,20,20,20">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="100" />
-                <RowDefinition Height="2*" />
-                <RowDefinition Height="50" />
-                <RowDefinition Height="2*" />
-                <RowDefinition Height="50" />
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-            <StackLayout Orientation="Horizontal"
-                         Grid.Row="0"
-                         Grid.Column="0">
-                <controls:CircleImage Source="{Binding ImmagineUtente.Source}" 
-                                      WidthRequest="80"
-                                      HeightRequest="80" />
-                <Button Text="{Binding Annuncio.NomeAffittuario}"
-                       BackgroundColor="Transparent"
+        <ScrollView>
+            <Grid Margin="20,20,20,20">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="60" />
+                    <RowDefinition Height="2*" />
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="50" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <StackLayout Orientation="Horizontal"
+                             Grid.Row="0"
+                             Grid.Column="0">
+                    <controls:CircleImage Source="{Binding ImmagineUtente.Source}"
+                                          WidthRequest="60"
+                                          HeightRequest="60" />
+                    <Button Text="{Binding Annuncio.NomeAffittuario}"
+                            BackgroundColor="Transparent"
+                            FontSize="Small"
+                            FontAttributes="Bold"
+                            FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
+                            TextColor="#607D8B"
+                            VerticalOptions="Center"
+                            Command="{Binding InfoUtenteCommand}" />
+                </StackLayout>
+                <Label Text="{Binding Annuncio.Posizione}"
+                       Grid.Row="0"
+                       Grid.Column="1"
                        FontSize="Small"
+                       VerticalOptions="Center"
+                       HorizontalOptions="End"
+                       FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
+                       TextColor="#607D8B"
+                       Margin="0,0,20,0" />
+                <ContentView Grid.Row="1"
+                             Grid.Column="0"
+                             Grid.ColumnSpan="2"
+                             HorizontalOptions="Center"
+                             VerticalOptions="Center">
+                    <carousel:CarouselViewControl ItemsSource="{Binding Immagini}"
+                                                  VerticalOptions="Start"
+                                                  HorizontalOptions="Center"
+                                                  Position="0"
+                                                  IndicatorsTintColor="#F0F4C3"
+                                                  CurrentPageIndicatorTintColor="#4CAF50"
+                                                  ShowIndicators="True">
+                        <carousel:CarouselViewControl.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="100" />
+                                    </Grid.RowDefinitions>
+                                    <Image Grid.Row="0"
+                                           VerticalOptions="Start"
+                                           Source="{Binding Source}"
+                                           />
+                                    <Label Text=" "
+                                           Grid.Row="1" />
+                                </Grid>
+                            </DataTemplate>
+                        </carousel:CarouselViewControl.ItemTemplate>
+                    </carousel:CarouselViewControl>
+                </ContentView>
+                <Label Text="{Binding Annuncio.NomeOggetto}"
+                       Grid.Row="2"
+                       Grid.Column="0"
+                       FontAttributes="Bold"
+                       VerticalOptions="Center"
+                       FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
+                       TextColor="#607D8B"
+                       FontSize="Large"
+                       Margin="20,0,0,0" />
+                <Label Text="{Binding Annuncio.Prezzo, StringFormat='{0:F0}€'}"
+                       Grid.Row="2"
+                       Grid.Column="1"
+                       VerticalOptions="Center"
+                       HorizontalOptions="End"
                        FontAttributes="Bold"
                        FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
-                       TextColor="#607D8B"
-                       VerticalOptions="Center" 
-                       Command="{Binding InfoUtenteCommand}"/>
-            </StackLayout>
-            <Label Text="{Binding Annuncio.Posizione}"
-                   Grid.Row="0"
-                   Grid.Column="1"
-                   FontSize="Small"
-                   VerticalOptions="Center"
-                   HorizontalOptions="End"
-                   FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
-                   TextColor="#607D8B"
-                   Margin="0,0,20,0" />
-            <ContentView Grid.Row="1"
-                         Grid.Column="0"
-                         Grid.ColumnSpan="2"
-                         HorizontalOptions="Center"
-                         VerticalOptions="End">
-                <carousel:CarouselViewControl ItemsSource="{Binding Immagini}"
-                                              VerticalOptions="FillAndExpand"
-                                              HorizontalOptions="FillAndExpand"
-                                              Position="0"
-                                              CurrentPageIndicatorTintColor="#607D8B"
-                                              ShowIndicators="True">
-                    <carousel:CarouselViewControl.ItemTemplate>
-                        <DataTemplate>
-                            <Grid>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="*" />
-                                    <RowDefinition Height="40" />
-                                </Grid.RowDefinitions>
-                                <Image Grid.Row="0"
-                                       Aspect="AspectFit"
-                                       Source="{Binding Source}" />
-                            </Grid>
-                        </DataTemplate>
-                    </carousel:CarouselViewControl.ItemTemplate>
-                </carousel:CarouselViewControl>
-            </ContentView>
-            <Label Text="{Binding Annuncio.NomeOggetto}"
-                   Grid.Row="2"
-                   Grid.Column="0"
-                   FontAttributes="Bold"
-                   VerticalOptions="Center"
-                   FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
-                   TextColor="#607D8B"
-                   FontSize="Large"
-                   Margin="20,0,0,0" />
-            <Label Text="{Binding Annuncio.Prezzo, StringFormat='{0:F0}€'}"
-                   Grid.Row="2"
-                   Grid.Column="1"
-                   VerticalOptions="Center"
-                   HorizontalOptions="End"
-                   FontAttributes="Bold"
-                   FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
-                   TextColor="#85bb65"
-                   FontSize="Medium"
-                   Margin="0,0,20,0" />
-            <Frame BorderColor="#607D8B"
-                   CornerRadius="25"
-                   Grid.Row="3"
-                   Grid.Column="0"
-                   Grid.ColumnSpan="2"
-                   Margin="2,0,2,0"
-                   BackgroundColor="WhiteSmoke">
-                <Label Text="{Binding Annuncio.Descrizione}"
-                       LineBreakMode="WordWrap"
-                       FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
-                       TextColor="#607D8B"
-                       FontSize="Medium" />
-            </Frame>
-            <Button Margin="0,10,0,0"
-                    Grid.Row="4"
-                    BackgroundColor="WhiteSmoke"
-                    Grid.Column="0"
-                    CornerRadius="25"
-                    BorderWidth="1"
-                    BorderColor="#607D8B"
-                    FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
-                    TextColor="#607D8B"
-                    Text="Chiama"
-                    ImageSource="ic_local_phone.png"
-                    ContentLayout="Left,10"
-                    Command="{Binding CallCommand}" />
-            <Button Margin="0,10,0,0"
-                    Grid.Row="4"
-                    BackgroundColor="WhiteSmoke"
-                    Grid.Column="1"
-                    CornerRadius="25"
-                    BorderWidth="1"
-                    BorderColor="#607D8B"
-                    FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
-                    TextColor="#607D8B"
-                    Text="Email"
-                    ImageSource="ic_email.png"
-                    ContentLayout="Left,10"
-                    Command="{Binding EmailCommand}" />
-        </Grid>
+                       TextColor="#85bb65"
+                       FontSize="Medium"
+                       Margin="0,0,20,0" />
+                <Frame BorderColor="#607D8B"
+                       CornerRadius="25"
+                       Grid.Row="3"
+                       Grid.Column="0"
+                       Grid.ColumnSpan="2"
+                       Margin="2,0,2,0"
+                       BackgroundColor="WhiteSmoke">
+                    <Label Text="{Binding Annuncio.Descrizione}"
+                           LineBreakMode="WordWrap"
+                           FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
+                           TextColor="#607D8B"
+                           FontSize="Medium" />
+                </Frame>
+                <Button Margin="0,10,0,0"
+                        Grid.Row="4"
+                        BackgroundColor="WhiteSmoke"
+                        Grid.Column="0"
+                        CornerRadius="25"
+                        BorderWidth="1"
+                        BorderColor="#607D8B"
+                        FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
+                        TextColor="#607D8B"
+                        Text="Chiama"
+                        ImageSource="ic_local_phone.png"
+                        ContentLayout="Left,10"
+                        Command="{Binding CallCommand}" />
+                <Button Margin="0,10,0,0"
+                        Grid.Row="4"
+                        BackgroundColor="WhiteSmoke"
+                        Grid.Column="1"
+                        CornerRadius="25"
+                        BorderWidth="1"
+                        BorderColor="#607D8B"
+                        FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
+                        TextColor="#607D8B"
+                        Text="Email"
+                        ImageSource="ic_email.png"
+                        ContentLayout="Left,10"
+                        Command="{Binding EmailCommand}" />
+            </Grid>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

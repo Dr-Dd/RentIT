@@ -1,5 +1,7 @@
-﻿using App.Models.Image;
+﻿
+using App.Services.Foto;
 using RentIT;
+using RentIT.Models.Immagine;
 using RentIT.Services.Request;
 using System;
 using System.Collections.Generic;

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace App.Models.Image
+namespace RentIT.Models.Immagine
 {
     public class ImageModel
     {
