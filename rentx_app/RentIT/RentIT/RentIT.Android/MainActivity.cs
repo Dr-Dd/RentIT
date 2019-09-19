@@ -26,8 +26,8 @@ namespace RentIT.Droid
             ToolbarResource = Resource.Layout.Toolbar;
 
             Instance = this;
-            
 
+            Instance.RequestedOrientation = Android.Content.PM.ScreenOrientation.Portrait;
             base.OnCreate(savedInstanceState);
             InitControls();
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
