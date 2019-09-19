@@ -1,4 +1,4 @@
-﻿using App.Models.Image;
+﻿using RentIT.Models.Immagine;
 using System;
 using System.Collections.Generic;
 

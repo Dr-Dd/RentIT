@@ -1,5 +1,4 @@
 ﻿
-using App.Services.Foto;
 using RentIT.Models.Immagine;
 using RentIT.Models.User;
 using RentIT.Services;

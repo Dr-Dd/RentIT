@@ -1,4 +1,4 @@
-﻿using App.Models.Image;
+﻿
 using RentIT.Services.Annuncio;
 using RentIT.Models;
 using RentIT.Models.Annuncio;
