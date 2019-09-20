@@ -93,30 +93,8 @@ namespace RentIT.ViewModels
         // Momentaneamente commentato 
         async Task ExecuteAnnunciPageCommand()
         {
-            string tosa = ***REMOVED***
-            ImageModel image = new ImageModel
-            {
-                data = tosa
-            };
 
-            List<ImageModel> percorsiImmagine = new List<ImageModel>();
-            percorsiImmagine.Add(image);
-            percorsiImmagine.Add(image);
-            percorsiImmagine.Add(image);
-
-            ObservableCollection<Ad> Annunci = new ObservableCollection<Ad>();
-                Annunci.Add(new Ad()
-                {
-                    AffittuarioId = 1,
-                    id = 5,
-                    nomeOggetto = "Tosaerba",
-                    descrizione = "Tosaerba BOSCHIA potente, alimentato a escrementi di piccione",
-                    prezzo = 13,
-                    anteprimaImg = tosa,
-                    posizione = "Roma",
-                    immagini = percorsiImmagine,
-                    data = DateTime.Now
-                });
+            ObservableCollection<Ad> Annunci = await _annuncioService.GetLastAds(Citta, Oggetto);
             
             await NavService.NavigateTo<AnnunciPageViewModel, ObservableCollection<Ad>>(Annunci);
         }
