@@ -29,5 +29,7 @@ namespace RentIT.Services.Annuncio
         Task liberaAd(long idAnn);
 
         Task<Ad> GetSingoloAnnuncio(long idAnn);
+
+        Task<bool> isAdBooked(long idAnn);
     }
 }

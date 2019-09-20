@@ -80,13 +80,12 @@ namespace RentIT.ViewModels
         public async override Task Init(Ad annuncio)
         {
             Annuncio = annuncio;
-            /* Da decommentare
-            * var imagesModel = await _fotoService.GetAdImagesAsync(Annuncio.id);
-            * Immagini = _fotoService.creaImmagini(imagesModel);
+
+            var imagesModel = await _fotoService.GetAdImagesAsync(Annuncio.id);
+            Immagini = _fotoService.creaImmagini(imagesModel);
             
-            IsPrenotato = _annuncioService.isPrenotato(Annuncio.id);
+            IsPrenotato = await _annuncioService.isAdBooked(Annuncio.id);
             IsNotPrenotato = !IsPrenotato;
-            */
         }
 
     /*Comando per eliminare l'annuncio*/
