@@ -72,6 +72,7 @@ namespace RentIT.ViewModels
         {
             _fotoService = fotoService;
             _userService = userService;
+            Immagini = new List<Image>();
         }
 
         public async override Task Init(Ad annuncio)
