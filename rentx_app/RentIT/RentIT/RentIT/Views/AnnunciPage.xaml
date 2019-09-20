@@ -2,11 +2,16 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="RentIT.Views.AnnunciPage"
+             xmlns:converter="clr-namespace:RentIT.Converters"
              Title="{Binding Query.oggetto} a {Binding Query.citta}"
              BackgroundColor="#White">
-    <ContentPage.Content>
-        <ListView x:Name="listaAnnunci" 
-                  ItemsSource="{Binding Annunci}" 
+    <ContentPage.Resources >
+        <converter:StringToImageConverter x:Key="StringToImageConverter">
+        </converter:StringToImageConverter>
+    </ContentPage.Resources>
+<ContentPage.Content>
+        <ListView x:Name="listaAnnunci"
+                  ItemsSource="{Binding Annunci}"
                   RowHeight="150"
                   ItemTapped="Annuncio_ItemTapped"
                   CachingStrategy="RecycleElement">
@@ -15,54 +20,57 @@
                     <ViewCell>
                         <Grid>
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="*"/>
-                                <RowDefinition Height="2*"/>
-                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="2*" />
+                                <RowDefinition Height="*" />
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
-                            <Image Grid.Row="0" 
+                            <Image x:Name="imgCopertina"
+                                   Grid.Row="0"
                                    Grid.RowSpan="3"
                                    Grid.Column="0"
-                                   Source="{Binding AnteprimaImg}" />
-                            <Label Grid.Row="0"                                               
-                                   Grid.Column="1"                                               
-                                   Text="{Binding NomeOggetto}"                                               
+                                   Source="{Binding Path=anteprimaImg , Converter={StaticResource StringToImageConverter}, ConverterParameter={Binding anteprimaImg}}"
+                                   
+                                   />
+                            <Label Grid.Row="0"
+                                   Grid.Column="1"
+                                   Text="{Binding nomeOggetto}"
                                    VerticalTextAlignment="End"
-                                   FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"                                               
-                                   FontSize="Medium"                                         
-                                   TextColor="#607D8B"/>
-                            <Label Grid.Row="0" 
+                                   FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
+                                   FontSize="Medium"
+                                   TextColor="#607D8B" />
+                            <Label Grid.Row="0"
                                    Grid.Column="2"
-                                   Text="{Binding Data, StringFormat='{0:dd/MM/yyyy}'}"
+                                   Text="{Binding data, StringFormat='{0:dd/MM/yyyy}'}"
                                    HorizontalTextAlignment="End"
                                    VerticalTextAlignment="End"
                                    FontFamily="Quicksand-Regular.ttf#Quicksand-Medium"
                                    TextColor="#607D8B"
-                                   Margin="0,0,20,0"/>
-                            <Label Text="{Binding Descrizione}" 
-                                   Grid.Row="1" 
-                                   Grid.Column="1" 
+                                   Margin="0,0,20,0" />
+                            <Label Text="{Binding descrizione}"
+                                   Grid.Row="1"
+                                   Grid.Column="1"
                                    Grid.ColumnSpan="2"
-                                   FontFamily="Quicksand-Light.ttf#Quicksand-Light" 
-                                   TextColor="#607D8B"/>
-                            <Label Grid.Row="2" 
-                                   Grid.Column="1" 
-                                   Text="{Binding Posizione}" 
+                                   FontFamily="Quicksand-Light.ttf#Quicksand-Light"
+                                   TextColor="#607D8B" />
+                            <Label Grid.Row="2"
+                                   Grid.Column="1"
+                                   Text="{Binding posizione}"
                                    VerticalTextAlignment="Center"
-                                   TextColor="#607D8B" 
-                                   FontFamily="Quicksand-Medium.ttf#Quicksand-Medium"/>
-                            <Label Grid.Row="2" 
-                                   Grid.Column="2"         
-                                   Text="{Binding Prezzo, StringFormat='{0:F0}€'}" 
+                                   TextColor="#607D8B"
+                                   FontFamily="Quicksand-Medium.ttf#Quicksand-Medium" />
+                            <Label Grid.Row="2"
+                                   Grid.Column="2"
+                                   Text="{Binding prezzo, StringFormat='{0:F0}€'}"
                                    HorizontalTextAlignment="End"
                                    VerticalTextAlignment="Center"
                                    FontFamily="Quicksand-Medium.ttf#Quicksand-Medium"
                                    TextColor="#607D8B"
-                                   Margin="0,0,20,0"/>
+                                   Margin="0,0,20,0" />
                         </Grid>
                     </ViewCell>
                 </DataTemplate>

@@ -25,6 +25,6 @@ namespace RentIT.Models.Annuncio
         public DateTime data { get; set; }
 
         //Questa è momentanea, le immagini vengono in realtà gestite solo nel vm
-        //public List<ImageModel> Immagini { get; set; }
+        public List<ImageModel> immagini { get; set; }
     }
 }

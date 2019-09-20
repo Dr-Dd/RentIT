@@ -80,7 +80,7 @@ namespace RentIT.ViewModels
         /* 
          * Comandi nel menù a tendina
          */
-        /*Command _annunciPageCommand; // Momentaneamente commentato, da discutere la possibilità di dividere la view degli annunci e la view degli annunci utente 
+        Command _annunciPageCommand; // Momentaneamente commentato, da discutere la possibilità di dividere la view degli annunci e la view degli annunci utente 
         public Command AnnunciPageCommand
         {
             get
@@ -112,14 +112,14 @@ namespace RentIT.ViewModels
                     nomeOggetto = "Tosaerba",
                     descrizione = "Tosaerba BOSCHIA potente, alimentato a escrementi di piccione",
                     prezzo = 13,
-                    anteprimaImg = "tosa",
+                    anteprimaImg = tosa,
                     posizione = "Roma",
-                    Immagini = percorsiImmagine,
+                    immagini = percorsiImmagine,
                     data = DateTime.Now
                 });
             
-            await NavService.NavigateTo<AnnunciPageViewModel, SearchQuery>(Annunci);
-        }*/
+            await NavService.NavigateTo<AnnunciPageViewModel, ObservableCollection<Ad>>(Annunci);
+        }
 
 
         Command _submitCommand;
@@ -172,7 +172,8 @@ namespace RentIT.ViewModels
             SearchQuery query = new SearchQuery();
             query.citta = Citta;
             query.oggetto = Oggetto;
-            await NavService.NavigateTo<AnnunciPageViewModel, SearchQuery>(query);
+            ObservableCollection<Ad> annunci = await _annuncioService.GetLastAds(query.citta, query.oggetto);
+            await NavService.NavigateTo<AnnunciPageViewModel, ObservableCollection<Ad>>(annunci);
         }
 
         /*

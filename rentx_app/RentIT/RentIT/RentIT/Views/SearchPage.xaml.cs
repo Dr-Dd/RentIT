@@ -44,10 +44,10 @@ namespace RentIT.Views
             _vm.LoginCommand.Execute(null);
         }
 
-        /*async void AnnunciPage_Tapped(object sender, EventArgs e) // Momentaneamente commentato 
+        async void AnnunciPage_Tapped(object sender, EventArgs e) // Momentaneamente commentato 
         {
             _vm.AnnunciPageCommand.Execute(null);
-        }*/
+        }
 
         async void Submit_Tapped(object sender, EventArgs e)
         {

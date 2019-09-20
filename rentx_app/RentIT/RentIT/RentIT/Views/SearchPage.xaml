@@ -37,7 +37,7 @@
                                            TextColor="#CDDC39"/>
                                 </StackLayout>
                             </ViewCell>
-                            <!--<ViewCell Tapped="AnnunciPage_Tapped">
+                            <ViewCell Tapped="AnnunciPage_Tapped">
                                 <StackLayout VerticalOptions="FillAndExpand"
                                              Orientation="Horizontal"
                                              Padding="20,10,0,10"
@@ -46,9 +46,9 @@
                                            FontSize="Medium"
                                            FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
                                            VerticalOptions="End"
-                                           TextColor="#CDDC39"/>
+                                           TextColor="#CDDC39" />
                                 </StackLayout>
-                            </ViewCell>-->
+                            </ViewCell>
                             <ViewCell Tapped="Submit_Tapped">
                                 <StackLayout VerticalOptions="FillAndExpand"
                                              Orientation="Horizontal"

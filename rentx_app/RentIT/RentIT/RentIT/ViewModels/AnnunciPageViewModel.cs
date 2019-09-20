@@ -5,12 +5,13 @@ using Xamarin.Forms;
 using RentIT.Models.Annuncio;
 using RentIT.Services.Annuncio;
 using RentIT.Models;
+using RentIT.Services.Foto;
 
 namespace RentIT.ViewModels
 {
     //prima c'era BaseViewModel<SearchQuery>
     //ora c'è di nuovo >>
-    public class AnnunciPageViewModel : BaseViewModel<SearchQuery>
+    public class AnnunciPageViewModel : BaseViewModel<ObservableCollection<Ad>>
     {
 
         ObservableCollection<Ad> _annunci;
@@ -25,10 +26,12 @@ namespace RentIT.ViewModels
         }
 
         readonly IAnnuncioService _annuncioService;
-        public AnnunciPageViewModel(INavService navService, AnnuncioService annuncioService) : base(navService)
+        readonly FotoService _fotoService;
+        public AnnunciPageViewModel(INavService navService, AnnuncioService annuncioService, FotoService fotoService) : base(navService)
         {
             Annunci = new ObservableCollection<Ad>();
             _annuncioService = annuncioService;
+            _fotoService = fotoService;
         }
 
         SearchQuery _query;
@@ -42,11 +45,12 @@ namespace RentIT.ViewModels
             }
         }
 
-        public async override Task Init(SearchQuery query)
+        public async override Task Init(ObservableCollection<Ad> annnunci)
         {
             // TODO: Implementare la ricerca
-            Query = query;
-            await LoadEntries();
+            //Query = query;
+            //await LoadEntries();
+            Annunci = annnunci;
         }
 
         async Task LoadEntries()
@@ -77,6 +81,11 @@ namespace RentIT.ViewModels
         async Task ExecuteViewAnnuncio(Ad annuncio)
         {
             await NavService.NavigateTo<DettaglioAnnuncioViewModel, Ad>(annuncio);
+        }
+
+        public Image StringToImageConverter(string base64)
+        {
+            return _fotoService.fromStringToImage(base64);
         }
     }
 }

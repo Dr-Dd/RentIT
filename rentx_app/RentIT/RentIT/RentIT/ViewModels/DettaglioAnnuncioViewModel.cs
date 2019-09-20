@@ -53,7 +53,7 @@ namespace RentIT.ViewModels
         }
 
         ObservableCollection<Image> _immagini;
-        public ObservableCollection<Image> Immagini
+        public ObservableCollection<Image> immagini
         {
             get
             {
@@ -81,10 +81,10 @@ namespace RentIT.ViewModels
             Affittuario = await _userService.GetUserByIdAsync(annuncio.AffittuarioId);
             ImmagineUtente = await getPropic();
             var imagesModel = await _fotoService.GetAdImagesAsync(Annuncio.id);
-            Immagini = _fotoService.creaImmagini(imagesModel);
+            //immagini = _fotoService.creaImmagini(imagesModel);
             
             // La riga seguente serve solo a visualizzare l'annuncio dal menu a tendina */
-            //Immagini = _fotoService.creaImmagini(Annuncio.Immagini);
+            immagini = _fotoService.creaImmagini(Annuncio.immagini);
         }
 
         //Metodo per prendere l'immagine profilo dell'utente dal database

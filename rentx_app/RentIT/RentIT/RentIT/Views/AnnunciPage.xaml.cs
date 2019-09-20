@@ -9,6 +9,7 @@ using RentIT.Services;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using RentIT.Models.Annuncio;
+using System.IO;
 
 namespace RentIT.Views
 {
@@ -31,6 +32,14 @@ namespace RentIT.Views
             _vm.ViewAnnuncio.Execute(annuncio);
 
             listaAnnunci.SelectedItem = null;
+        }
+
+        public Image StringToImageConverter(string imageBase64)
+        {
+            Byte[] bytes = Convert.FromBase64String(imageBase64);
+            //Creazione immagine
+            var img = new Image { Source = ImageSource.FromStream(() => new MemoryStream(bytes)) };
+            return img;
         }
     }
 }

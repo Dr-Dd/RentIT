@@ -50,14 +50,14 @@
                             <Entry Grid.Row="0"
                                    Placeholder="Nome"
                                    Grid.ColumnSpan="2"
-                                   Text="{Binding Utente.Name}"
+                                   Text="{Binding Utente.name}"
                                    TextColor="#607D8B"
                                    PlaceholderColor="#BDBDBD"
                                    FontFamily="Quicksand-Bold.ttf#Quicksand-Bold" />
                             <Entry Grid.Row="1"
                                    Placeholder="Cognome"
                                    Grid.ColumnSpan="2"
-                                   Text="{Binding Utente.Surname}"
+                                   Text="{Binding Utente.surname}"
                                    TextColor="#607D8B"
                                    PlaceholderColor="#BDBDBD"
                                    FontFamily="Quicksand-Bold.ttf#Quicksand-Bold" />
@@ -86,7 +86,7 @@
                                    Grid.Column="0"
                                    Grid.ColumnSpan="2"
                                    x:Name="nuovoIndirizzo"
-                                   Text="{Binding Utente.Address}"
+                                   Text="{Binding Utente.citta}"
                                    TextColor="#607D8B"
                                    PlaceholderColor="#BDBDBD"
                                    FontFamily="Quicksand-Bold.ttf#Quicksand-Bold" />
@@ -95,7 +95,7 @@
                                    Grid.ColumnSpan="2"
                                    Placeholder="Telefono"
                                    x:Name="nuovoTelefono"
-                                   Text="{Binding Utente.Numero}"
+                                   Text="{Binding Utente.numeroTel}"
                                    TextColor="#607D8B"
                                    PlaceholderColor="#BDBDBD"
                                    FontFamily="Quicksand-Bold.ttf#Quicksand-Bold" />

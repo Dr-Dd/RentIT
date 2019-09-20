@@ -42,7 +42,6 @@ namespace RentIT.ViewModels
             {
                 _password = value;
                 OnPropertyChanged();
-                ModificaDatiCommand.ChangeCanExecute();
             }
         }
 
@@ -54,7 +53,6 @@ namespace RentIT.ViewModels
             {
                 _confermaPassword = value;
                 OnPropertyChanged();
-                ModificaDatiCommand.ChangeCanExecute();
             }
         }                                                         
 
@@ -163,6 +161,7 @@ namespace RentIT.ViewModels
             if (response.hasSucceded)
             {
                 AppSettings.NewProfile = false;
+                await App.Current.MainPage.DisplayAlert("RentIT", response.responseMessage, "Ok");
                 await NavService.NavigateToMainPage();
             }
             else
