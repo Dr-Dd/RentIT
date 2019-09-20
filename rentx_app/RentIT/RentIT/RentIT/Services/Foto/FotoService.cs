@@ -29,8 +29,9 @@ namespace RentIT.Services.Foto
         {
             //Conversione in un array di byte
             Byte[] bytes = Convert.FromBase64String(imageBase64);
+            var source = ImageSource.FromStream(() => new MemoryStream(bytes));
             //Creazione immagine
-            var img = new Image { Source = ImageSource.FromStream(() => new MemoryStream(bytes)) };
+            var img = new Image { Source = source };
             return img;
         }
 
