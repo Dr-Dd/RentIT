@@ -103,12 +103,13 @@ namespace RentIT.Services.Annuncio
             {
                 return await requestService.GetAsync<ObservableCollection<Ad>>(uri, AppSettings.AccessToken);
             }
+            //se voglio vedere quelli gia prenotati posso essere solo il possessore e nel backend dobbiamo fare il controllo che l'id corrisponda al token
             else
             {
                 return await requestService.GetAsync<ObservableCollection<Ad>>(uri);
             }
 
-            //se voglio vedere quelli gia prenotati posso essere solo il possessore e nel backend dobbiamo fare il controllo che l'id corrisponda al token
+            
           
        
         }
@@ -117,7 +118,7 @@ namespace RentIT.Services.Annuncio
         //annunci non prenotati dell'user 
         public Task<ObservableCollection<Ad>> GetMyNotBookedAds()
         {
-            return GetUserAds(AppSettings.UserId,false);
+            return GetUserAds(AppSettings.UserId,true); //da rimettere a false
         }
 
         //annunci prenotati dell'user

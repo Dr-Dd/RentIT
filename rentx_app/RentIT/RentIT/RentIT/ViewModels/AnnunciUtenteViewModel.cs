@@ -40,6 +40,8 @@ namespace RentIT.ViewModels
         {
             _annuncioService = annuncioService;
             _fotoService = fotoService;
+            AnnunciNonPrenotati = new ObservableCollection<Ad>();
+            AnnunciPrenotati = new ObservableCollection<Ad>();
         }
 
         public async override Task Init()

@@ -31,7 +31,7 @@ public class Annuncio {
 	@ManyToOne
 	private Utente affittuario;
 	
-	@Lob
+	//@Lob
 	@Column(name = "immagine_copertina", length = 100000)
 	private byte[] anteprimaImg;
 	
