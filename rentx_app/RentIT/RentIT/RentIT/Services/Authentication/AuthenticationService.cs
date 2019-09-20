@@ -8,6 +8,7 @@ using RentIT.Services.Request;
 using Newtonsoft.Json;
 using RentIT.Models.User;
 using RentIT.DBmessages;
+using Android.App;
 
 namespace RentIT.Services.Authentication
 {

@@ -43,8 +43,9 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 
 		try {
 			Utente credenziali = new ObjectMapper().readValue(req.getInputStream(), Utente.class);
-			return authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(credenziali.getEmail(), credenziali.getPassword(), new ArrayList<>()));
+			return authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(credenziali.getEmail(), credenziali.getPassword()));
 		} catch (IOException e) {
+			e.printStackTrace();
 			throw new BadCredentialsException("Credenziali non valide");
 		}
 
@@ -62,16 +63,17 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 		PrintWriter out = res.getWriter();
 		String email = auth.getName();
 		Utente utente = this.utenteRepository.findByEmail(email);
-		Long userId = utente.getId();
+		Long id = utente.getId();
 		out.write("{");
 		out.write("\"hasSucceded\": \"true\",\n");
-		out.write("\"userId\":" + "\"" + userId + "\",\n");
+		out.write("\"id\":" + "\"" + id + "\",\n");
 		out.write("\"accessToken\":" + "\"" + token + "\",\n");
 		out.write("\"responseMessage\":" + "\"Token creato con successo\",\n");
 		out.write("\"isFirstAccess\":" + "\"" + utente.isFirstAccess() + "\"");
 		out.write("}");
 	}
 
+	
 	@Override
 	protected void unsuccessfulAuthentication(HttpServletRequest req, HttpServletResponse res, AuthenticationException failed) throws IOException, ServletException {
 

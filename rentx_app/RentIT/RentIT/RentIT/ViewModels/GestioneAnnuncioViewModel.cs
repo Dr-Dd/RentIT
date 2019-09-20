@@ -40,6 +40,35 @@ namespace RentIT.ViewModels
             }
         }
 
+        bool _isPrenotato;
+        public bool IsPrenotato
+        {
+            get
+            {
+                return _isPrenotato;
+            }
+
+            set
+            {
+                _isPrenotato = value;
+                OnPropertyChanged();
+            }
+        }
+
+        bool _isNotPrenotato;
+        public bool IsNotPrenotato
+        {
+            get
+            {
+                return _isNotPrenotato;
+            }
+
+            set
+            {
+                _isNotPrenotato = value;
+                OnPropertyChanged();
+            }
+        }
         readonly FotoService _fotoService;
         readonly IAnnuncioService _annuncioService;
         public GestioneAnnuncioViewModel(INavService navService, AnnuncioService annuncioService, FotoService fotoService) : base(navService)
@@ -51,10 +80,12 @@ namespace RentIT.ViewModels
         public async override Task Init(Ad annuncio)
         {
             Annuncio = annuncio;
-            /* Da decommentare
-            * var imagesModel = await _fotoService.GetAdImagesAsync(Annuncio.Id);
-            * Immagini = _fotoService.creaImmagini(imagesModel);
-            */
+
+            var imagesModel = await _fotoService.GetAdImagesAsync(Annuncio.id);
+            Immagini = _fotoService.creaImmagini(imagesModel);
+            
+            IsPrenotato = await _annuncioService.isAdBooked(Annuncio.id);
+            IsNotPrenotato = !IsPrenotato;
         }
 
     /*Comando per eliminare l'annuncio*/
@@ -127,6 +158,54 @@ namespace RentIT.ViewModels
                 await App.Current.MainPage.DisplayAlert("Errore", response.responseMessage, "Ok");
             }
             
+            IsBusy = false;
+        }
+
+        /*Comando per prenotare l'annuncio*/
+        Command _prenotaAnnuncioCommand;
+        public Command PrenotaAnnuncioCommand
+        {
+            get
+            {
+                return _prenotaAnnuncioCommand
+                    ?? (_prenotaAnnuncioCommand = new Command(async () => await ExecutePrenotaAnnuncioCommand()));
+            }
+        }
+
+        async Task ExecutePrenotaAnnuncioCommand()
+        {
+            IsBusy = true;
+
+            await _annuncioService.prenotaAd(Annuncio.id);
+            StringBuilder successo = new StringBuilder();
+            successo.Append("Annuncio prenotato con successo!");
+            await App.Current.MainPage.DisplayAlert("RentIT", successo.ToString(), "ok");
+            await NavService.NavigateToMainPage();
+
+            IsBusy = false;
+        }
+
+        /*Comando per liberare l'annuncio prenotato*/
+        Command _liberaAnnuncioCommand;
+        public Command LiberaAnnuncioCommand
+        {
+            get
+            {
+                return _liberaAnnuncioCommand
+                    ?? (_liberaAnnuncioCommand = new Command(async () => await ExecuteLiberaAnnuncioCommand()));
+            }
+        }
+
+        async Task ExecuteLiberaAnnuncioCommand()
+        {
+            IsBusy = true;
+
+            await _annuncioService.prenotaAd(Annuncio.id);
+            StringBuilder successo = new StringBuilder();
+            successo.Append("Annuncio liberato con successo!");
+            await App.Current.MainPage.DisplayAlert("RentIT", successo.ToString(), "ok");
+            await NavService.NavigateToMainPage();
+
             IsBusy = false;
         }
     }
