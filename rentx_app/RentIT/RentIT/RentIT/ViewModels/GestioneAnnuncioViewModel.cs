@@ -7,6 +7,8 @@ using System.Collections.ObjectModel;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using System.Collections.Generic;
+using System;
 
 namespace RentIT.ViewModels
 {
@@ -26,8 +28,8 @@ namespace RentIT.ViewModels
             }
         }
 
-        ObservableCollection<Image> _immagini;
-        public ObservableCollection<Image> Immagini
+        List<Image> _immagini;
+        public List<Image> Immagini
         {
             get
             {
@@ -69,27 +71,44 @@ namespace RentIT.ViewModels
                 OnPropertyChanged();
             }
         }
+
         readonly FotoService _fotoService;
         readonly IAnnuncioService _annuncioService;
         public GestioneAnnuncioViewModel(INavService navService, AnnuncioService annuncioService, FotoService fotoService) : base(navService)
         {
             _annuncioService = annuncioService;
             _fotoService = fotoService;
+            Immagini = new List<Image>();
         }
 
         public async override Task Init(Ad annuncio)
         {
             Annuncio = annuncio;
 
-            var imagesModel = await _fotoService.GetAdImagesAsync(Annuncio.id);
-            Immagini = _fotoService.creaImmagini(imagesModel);
+            Immagini = await LoadAdImages();
             
+            // setto lo stato di prenotazione dell'annuncio
             IsPrenotato = await _annuncioService.isAdBooked(Annuncio.id);
             IsNotPrenotato = !IsPrenotato;
         }
 
-    /*Comando per eliminare l'annuncio*/
-    Command _eliminaAnnuncioCommand;
+        public async Task<List<Image>> LoadAdImages()
+        {
+            var listaImagesModel = await _fotoService.GetAdImagesAsync(Annuncio.id);
+            var listaImages = new List<Image>();
+
+            // spacchetto tutto...
+            foreach (var imgModel in listaImagesModel)
+            {
+                // e inserisco fra le immagini dell'annuncio
+                listaImages.Add(_fotoService.fromStringToImage(imgModel.data));
+            }
+
+            return listaImages;
+        }
+
+        /*Comando per eliminare l'annuncio*/
+        Command _eliminaAnnuncioCommand;
         public Command EliminaAnnuncioCommand
         {
             get
@@ -144,7 +163,10 @@ namespace RentIT.ViewModels
                 await App.Current.MainPage.DisplayAlert("Errore", "Non hai riempito uno o più campi", "Ok");
                 return;
             }
-            
+
+            Annuncio.nomeOggetto.Trim();
+            Annuncio.descrizione.Trim();
+
             var response = await _annuncioService.ModifyAdDataAsync(Annuncio);
             if (response.hasSucceded)
             {

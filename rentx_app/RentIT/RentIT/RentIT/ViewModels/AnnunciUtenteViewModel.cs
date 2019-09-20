@@ -5,7 +5,7 @@ using RentIT.Services;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using Xamarin.Forms;
-
+using RentIT.Services.Foto;
 
 namespace RentIT.ViewModels
 {
@@ -34,12 +34,12 @@ namespace RentIT.ViewModels
             }
         }
 
+        readonly FotoService _fotoService;
         readonly IAnnuncioService _annuncioService;
-        public AnnunciUtenteViewModel(INavService navService, AnnuncioService annuncioService) : base(navService)
+        public AnnunciUtenteViewModel(INavService navService, AnnuncioService annuncioService, FotoService fotoService) : base(navService)
         {
             _annuncioService = annuncioService;
-            AnnunciNonPrenotati = new ObservableCollection<Ad>;
-            AnnunciPrenotati = new ObservableCollection<Ad>;
+            _fotoService = fotoService;
         }
 
         public async override Task Init()
@@ -82,6 +82,18 @@ namespace RentIT.ViewModels
 
             AnnunciPrenotati = await _annuncioService.GetMyBookedAds();
             AnnunciNonPrenotati = await _annuncioService.GetMyNotBookedAds();
+
+            // Carico le immagini...
+            foreach (var annuncio in AnnunciPrenotati)
+            {
+                annuncio.anteprimaImgXam = _fotoService.fromStringToImage(annuncio.anteprimaImg);
+            }
+
+            // Stessa cosa per quelli non prenotati
+            foreach (var annuncio in AnnunciNonPrenotati)
+            {
+                annuncio.anteprimaImgXam = _fotoService.fromStringToImage(annuncio.anteprimaImg);
+            }
 
             IsBusy = false;
         }

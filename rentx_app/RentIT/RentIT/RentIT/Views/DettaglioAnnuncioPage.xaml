@@ -48,7 +48,7 @@
                              Grid.ColumnSpan="2"
                              HorizontalOptions="Center"
                              VerticalOptions="Center">
-                    <carousel:CarouselViewControl ItemsSource="{Binding immagini}"
+                    <carousel:CarouselViewControl ItemsSource="{Binding Immagini}"
                                                   VerticalOptions="Start"
                                                   HorizontalOptions="Center"
                                                   Position="0"

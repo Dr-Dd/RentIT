@@ -70,7 +70,7 @@
                                           RowHeight="100">
                             <fli:FlowListView.FlowColumnTemplate>
                                 <DataTemplate>
-                                    <Image Source="{Binding SorgenteImmagine}" Margin="0,0,3,3" Scale="1"/>
+                                    <Image Source="{Binding Source}" Margin="0,0,3,3" Scale="1"/>
                                 </DataTemplate>
                             </fli:FlowListView.FlowColumnTemplate>
                         </fli:FlowListView>

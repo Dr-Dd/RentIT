@@ -6,6 +6,7 @@ using RentIT.Models.Annuncio;
 using RentIT.Services.Annuncio;
 using RentIT.Models;
 using RentIT.Services.Foto;
+using System;
 
 namespace RentIT.ViewModels
 {
@@ -34,7 +35,7 @@ namespace RentIT.ViewModels
             _fotoService = fotoService;
         }
 
-        SearchQuery _query;
+        /*SearchQuery _query;
         public SearchQuery Query
         {
             get { return _query; }
@@ -43,17 +44,23 @@ namespace RentIT.ViewModels
                 _query = value;
                 OnPropertyChanged();
             }
-        }
+        }*/
 
-        public async override Task Init(ObservableCollection<Ad> annnunci)
+        public async override Task Init(ObservableCollection<Ad> annunci)
         {
-            // TODO: Implementare la ricerca
-            //Query = query;
-            //await LoadEntries();
-            Annunci = annnunci;
+            Annunci = annunci;
+            await LoadImages();
         }
 
-        async Task LoadEntries()
+        private async Task LoadImages()
+        {
+            foreach (var annuncio in Annunci)
+            {
+                annuncio.anteprimaImgXam = _fotoService.fromStringToImage(annuncio.anteprimaImg);
+            }
+        }
+
+        /*async Task LoadEntries()
         {
             if (IsBusy)
             {
@@ -66,7 +73,7 @@ namespace RentIT.ViewModels
             Annunci = await _annuncioService.GetLastAds(Query.citta, Query.oggetto);
 
             IsBusy = false;
-        }
+        }*/
 
         Command<Ad> _viewAnnuncio;
         public Command<Ad> ViewAnnuncio
@@ -81,11 +88,6 @@ namespace RentIT.ViewModels
         async Task ExecuteViewAnnuncio(Ad annuncio)
         {
             await NavService.NavigateTo<DettaglioAnnuncioViewModel, Ad>(annuncio);
-        }
-
-        public Image StringToImageConverter(string base64)
-        {
-            return _fotoService.fromStringToImage(base64);
         }
     }
 }

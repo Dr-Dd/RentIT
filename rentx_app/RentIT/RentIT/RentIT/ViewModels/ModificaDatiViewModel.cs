@@ -80,7 +80,6 @@ namespace RentIT.ViewModels
             if (foto.data != null)
                 img = _fotoService.fromStringToImage(foto.data);
             return img;
-
         }
 
         //Comando per aggiungere o modificare la propic
@@ -149,6 +148,11 @@ namespace RentIT.ViewModels
                 return;
             }
 
+            Utente.name.Trim();
+            Utente.surname.Trim();
+            Utente.citta.Trim();
+            Utente.numeroTel.Trim();
+
             if (!PasswordsAreTheSame())
             {
                 await App.Current.MainPage.DisplayAlert("Errore", "Le due password non corrispondono", "Ok");
@@ -157,6 +161,7 @@ namespace RentIT.ViewModels
 
             if (!string.IsNullOrWhiteSpace(Password))
                 Utente.password = Password;
+
 
             var response = await _userService.ModifyUserData(Utente);
             if (response.hasSucceded)
