@@ -43,8 +43,9 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 
 		try {
 			Utente credenziali = new ObjectMapper().readValue(req.getInputStream(), Utente.class);
-			return authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(credenziali.getEmail(), credenziali.getPassword(), new ArrayList<>()));
+			return authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(credenziali.getEmail(), credenziali.getPassword()));
 		} catch (IOException e) {
+			e.printStackTrace();
 			throw new BadCredentialsException("Credenziali non valide");
 		}
 
@@ -72,6 +73,7 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 		out.write("}");
 	}
 
+	
 	@Override
 	protected void unsuccessfulAuthentication(HttpServletRequest req, HttpServletResponse res, AuthenticationException failed) throws IOException, ServletException {
 
