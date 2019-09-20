@@ -15,9 +15,9 @@ namespace RentIT.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AnnunciAttivi : ContentPage
     {
-        AnnunciUtenteViewModel _vm
+        AnnunciAttiviViewModel _vm
         {
-            get { return BindingContext as AnnunciUtenteViewModel; }
+            get { return BindingContext as AnnunciAttiviViewModel; }
         }
 
         public AnnunciAttivi()

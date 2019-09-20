@@ -28,11 +28,5 @@ namespace RentIT.Views
             if (_vm != null)
                 await _vm.Init();
         }
-
-        async void GestioneAnnuncio_ItemTapped(object sender, ItemTappedEventArgs e)
-        {
-            var annuncio = (Ad)e.Item;
-            _vm.ViewGestioneAnnuncio.Execute(annuncio);
-        }
     }
 }
