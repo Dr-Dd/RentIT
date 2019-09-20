@@ -124,12 +124,12 @@ public class AnnuncioController {
 	}
 	
 	@PutMapping("/addImage/{id}")
-	public void aggiungiImmagine(@RequestHeader("Authorization") String token, @PathVariable("id") Long id,@RequestBody byte[] image) {
+	public void aggiungiImmagine(@RequestHeader("Authorization") String token, @PathVariable("id") Long id,@RequestBody ImageModel img) {
 		Annuncio a= this.annuncioService.annuncioPerId(id);
 		if(a.getAffittuario().getId()==this.utenteService.getUtenteByEmail(this.utenteService.estrazioneEmailDaToken(token)).getId()) {
 			Image i=new Image();
 			i.setAnnuncio(a);
-			i.setData(image);
+			i.setData(img.getData());
 			this.imageService.inserisci(i);
 		}
 	}
