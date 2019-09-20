@@ -42,12 +42,7 @@ namespace RentIT.ViewModels
 
         public async override Task Init()
         {
-            AnnunciPrenotati.Clear();
-            AnnunciNonPrenotati.Clear();
-
-            //Da decommentare dopo che il collegamento al db funziona
-            //AnnunciPrenotati = await _annuncioService.GetMyBookedAds();
-            //AnnunciNonPrenotati = await _annuncioService.GetMyNotBookedAds();
+            await LoadEntries();
         }
 
         /**
@@ -71,5 +66,22 @@ namespace RentIT.ViewModels
             await NavService.NavigateTo<GestioneAnnuncioViewModel, Ad>(annuncio);
         }
 
+        async Task LoadEntries()
+        {
+            if (IsBusy)
+            {
+                return;
+            }
+
+            IsBusy = true;
+
+            AnnunciPrenotati.Clear();
+            AnnunciNonPrenotati.Clear();
+
+            AnnunciPrenotati = await _annuncioService.GetMyBookedAds();
+            AnnunciNonPrenotati = await _annuncioService.GetMyNotBookedAds();
+
+            IsBusy = false;
+        }
     }
 }
