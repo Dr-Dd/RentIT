@@ -46,7 +46,7 @@ namespace RentIT.Services.User
             var uri = builder.ToString();
 
             //non mando il token
-            return requestService.GetAsync<Utente>(uri);   //assolutamente non ritornare anche la password altrimenti c'è un leggero problema di sicurezza
+            return requestService.GetAsync<Utente>(uri,AppSettings.AccessToken);   //assolutamente non ritornare anche la password altrimenti c'è un leggero problema di sicurezza
         }
 
 
