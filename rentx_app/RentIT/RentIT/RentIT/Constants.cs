@@ -117,6 +117,11 @@ namespace RentIT
             return string.Format(Constants.defaultAnnuncioEndpoint, "libera");
         }
 
+        public static string isAdBooked()
+        {
+            return string.Format(Constants.defaultAnnuncioEndpoint, "isBooked");
+        }
+
 
         public static string ItemEndpoint()
         {

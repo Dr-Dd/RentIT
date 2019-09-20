@@ -155,6 +155,15 @@ namespace RentIT.Services.Annuncio
             await requestService.PutAsync(uri, AppSettings.AccessToken);
         }
 
+        public async Task<bool> isAdBooked(long idAnn)
+        {
+            var baseUri = Constants.isAdBooked();
+            var builder = new UriBuilder(String.Concat(baseUri, "/", idAnn));
+            var uri = builder.ToString();
+
+            return await requestService.GetAsync<bool>(uri, AppSettings.AccessToken);
+        }
+
 
     }
 }

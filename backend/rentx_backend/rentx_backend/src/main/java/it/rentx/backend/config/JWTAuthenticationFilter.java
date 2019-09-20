@@ -63,10 +63,10 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 		PrintWriter out = res.getWriter();
 		String email = auth.getName();
 		Utente utente = this.utenteRepository.findByEmail(email);
-		Long userId = utente.getId();
+		Long id = utente.getId();
 		out.write("{");
 		out.write("\"hasSucceded\": \"true\",\n");
-		out.write("\"userId\":" + "\"" + userId + "\",\n");
+		out.write("\"id\":" + "\"" + id + "\",\n");
 		out.write("\"accessToken\":" + "\"" + token + "\",\n");
 		out.write("\"responseMessage\":" + "\"Token creato con successo\",\n");
 		out.write("\"isFirstAccess\":" + "\"" + utente.isFirstAccess() + "\"");
