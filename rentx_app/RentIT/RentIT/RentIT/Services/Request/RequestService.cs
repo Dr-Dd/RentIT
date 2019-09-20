@@ -44,7 +44,7 @@ namespace RentIT.Services.Request
 
         public Task<TResult> PostAsync<TResult>(string uri, TResult data,string token="")
         {
-            return PostAsync<TResult, TResult>(uri, data,token);
+            return PostAsync<TResult, TResult>(uri, data, token);
         }
 
 
@@ -63,7 +63,7 @@ namespace RentIT.Services.Request
 
         public Task<TResult> PutAsync<TResult>(string uri, TResult data,string token="")
         {
-            return PutAsync<TResult, TResult>(uri, data,token);
+            return PutAsync<TResult, TResult>(uri, data, token);
         }
 
 
