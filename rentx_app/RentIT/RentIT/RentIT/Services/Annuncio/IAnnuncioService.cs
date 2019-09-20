@@ -23,5 +23,11 @@ namespace RentIT.Services.Annuncio
         Task<ObservableCollection<Ad>> GetMyNotBookedAds();
 
         Task<ObservableCollection<Ad>> GetMyBookedAds();
+
+        Task prenotaAd(long idAnn);
+
+        Task liberaAd(long idAnn);
+
+        Task<Ad> GetSingoloAnnuncio(long idAnn);
     }
 }

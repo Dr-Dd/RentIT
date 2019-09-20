@@ -90,7 +90,8 @@
                         BorderWidth="1"
                         BorderColor="#607D8B" />
                 <Button Margin="0,10,0,0"
-                        Text="PRENOTATO"
+                        Text="PRENOTALO"
+                        IsVisible="{Binding IsNotPrenotato}"
                         CornerRadius="25"
                         Grid.Row="4"
                         Grid.Column="1"
@@ -100,9 +101,10 @@
                         VerticalOptions="CenterAndExpand"
                         BorderWidth="1"
                         BorderColor="#607D8B"
-                        IsVisible="False" />
+                        Command="{Binding PrenotaAnnuncioCommand}"/>
                 <Button Margin="0,10,0,0"
-                        Text="DISPONIBILE"
+                        Text="LIBERA"
+                        IsVisible="{Binding IsPrenotato}"
                         CornerRadius="25"
                         Grid.Row="4"
                         Grid.Column="1"
@@ -111,7 +113,8 @@
                         BackgroundColor="WhiteSmoke"
                         VerticalOptions="CenterAndExpand"
                         BorderWidth="1"
-                        BorderColor="#607D8B" />
+                        BorderColor="#607D8B"
+                        Command="{Binding LiberaAnnuncioCommand}"/>
                 <Button Margin="0,10,0,0"
                         Text="RIMUOVI"
                         Command="{Binding EliminaAnnuncioCommand}"
