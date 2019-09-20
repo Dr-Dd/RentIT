@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using RentIT.Models.Annuncio;
 using RentIT.Models.Immagine;
@@ -177,6 +178,7 @@ namespace RentIT.ViewModels
                     // La invio al db con l'id del nuovo annuncio appena generato!!
                     await _fotoService.UploadAdImagesAsync(response.id, imgB64);
                 }
+
                 StringBuilder successo = new StringBuilder();
                 successo.AppendLine("Annuncio aggiunto con successo!");
                 successo.AppendLine("Puoi trovarlo nella sezione 'I MIEI ANNUNCI' sul tuo profilo");

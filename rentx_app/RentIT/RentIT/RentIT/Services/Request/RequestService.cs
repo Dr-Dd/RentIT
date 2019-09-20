@@ -63,7 +63,7 @@ namespace RentIT.Services.Request
 
         public Task<TResult> PutAsync<TResult>(string uri, TResult data,string token="")
         {
-            return PutAsync<TResult, TResult>(uri, data);
+            return PutAsync<TResult, TResult>(uri, data, token);
         }
 
 
