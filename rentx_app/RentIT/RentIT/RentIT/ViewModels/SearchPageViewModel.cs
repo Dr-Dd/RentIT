@@ -145,8 +145,18 @@ namespace RentIT.ViewModels
             }
         }
 
+        bool isEmpty()
+        {
+            return (string.IsNullOrWhiteSpace(Oggetto)) && (string.IsNullOrWhiteSpace(Citta));
+        }
+
         async Task ExecuteCercaCommand()
         {
+            if (isEmpty())
+            {
+                await App.Current.MainPage.DisplayAlert("Errore", "Riempi entrambi i campi di ricerca", "Ok");
+                return;
+            }
             SearchQuery query = new SearchQuery();
             query.citta = Citta;
             query.oggetto = Oggetto;
