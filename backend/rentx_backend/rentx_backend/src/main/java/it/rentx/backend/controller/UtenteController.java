@@ -44,14 +44,16 @@ public class UtenteController {
     
     @GetMapping("/profile")
     public UtenteModel profiloUtente(@RequestHeader("Authorization") String token) {
-    	return this.utenteService.parseToUtente(this.utenteService.getUtenteByEmail(this.utenteService.estrazioneEmailDaToken(token)));
+    	Utente u=this.utenteService.getUtenteByEmail(this.utenteService.estrazioneEmailDaToken(token));
+    	return this.utenteService.parseToUtente(u);
     }
     
     @GetMapping("/profile/{id}")
     public UtenteModel profiloUtenteconId(@PathVariable Long id) {
     	//controlla se l'id esiste e in quel caso ritorna l'utente con quell'id (no campi di password ecc)
     	if(this.utenteService.esiste(id)) {
-    		return this.utenteService.parseToUtente(this.utenteService.trova(id));
+    		Utente u=this.utenteService.trova(id);
+    		return this.utenteService.parseToUtente(u);
     	}
     	return null;
     }
