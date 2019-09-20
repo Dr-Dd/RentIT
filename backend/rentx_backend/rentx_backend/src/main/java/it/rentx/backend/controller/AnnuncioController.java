@@ -160,5 +160,11 @@ public class AnnuncioController {
 			this.annuncioService.salvaAnnuncio(a);
 		}
 	}	
+	
+	@GetMapping("/isBooked/{id}")
+	public boolean isBooked(@PathVariable("id") Long id) {
+		Annuncio a = this.annuncioService.annuncioPerId(id);
+		return a.isBooked();
+	}
 
 }
