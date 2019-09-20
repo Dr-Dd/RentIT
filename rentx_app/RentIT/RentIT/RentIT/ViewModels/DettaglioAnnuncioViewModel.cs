@@ -145,7 +145,7 @@ namespace RentIT.ViewModels
             try
             {
                 //Da rimuovere le virgolette
-                PhoneDialer.Open("Affittuario.Numero");
+                PhoneDialer.Open(Affittuario.numeroTel);
             }
             catch (FeatureNotSupportedException ex)
             {
@@ -175,7 +175,7 @@ namespace RentIT.ViewModels
         async Task ExecuteEmailCommand()
         {
             List<String> destinatario = new List<string>();
-            destinatario.Add("Affittuario.Email");
+            destinatario.Add(Affittuario.email);
             var message = new EmailMessage
             {
                 To = destinatario,
