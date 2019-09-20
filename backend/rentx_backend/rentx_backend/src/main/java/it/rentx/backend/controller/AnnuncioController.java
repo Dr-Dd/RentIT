@@ -95,15 +95,11 @@ public class AnnuncioController {
 				annunci.add(tmp);
 			}
 		}
-		/*Ovviamente questa è una cafonata, mi serviva solo per provare velocemente
-		 * il metodo. Probabilmente va implementata passando 
-		 * 	annuncioService.annunciPosizione(sq.getCitta());
-		 * come insieme su cui fare la ricerca fuzzy
-		 */
+		
 		return annunci;
 	}
 	
-	// Da Modificare
+	
 	@GetMapping("/annunci/{id}")
 	public List<AnnuncioModel> AnnunciUtente(@RequestHeader("Authorization") String token, @PathVariable("id") Long id) {
 		if(token!=null) {	
