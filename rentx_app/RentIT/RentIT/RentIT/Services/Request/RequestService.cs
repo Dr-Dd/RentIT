@@ -44,7 +44,7 @@ namespace RentIT.Services.Request
 
         public Task<TResult> PostAsync<TResult>(string uri, TResult data,string token="")
         {
-            return PostAsync<TResult, TResult>(uri, data);
+            return PostAsync<TResult, TResult>(uri, data,token);
         }
 
 
@@ -63,7 +63,7 @@ namespace RentIT.Services.Request
 
         public Task<TResult> PutAsync<TResult>(string uri, TResult data,string token="")
         {
-            return PutAsync<TResult, TResult>(uri, data, token);
+            return PutAsync<TResult, TResult>(uri, data,token);
         }
 
 
@@ -80,7 +80,7 @@ namespace RentIT.Services.Request
             return await Task.Run(() => JsonConvert.DeserializeObject<TResult>(responseData, serializerSettings));
         }
 
-        public async Task<TResult> DeleteAsync<TResult>(string uri, string token = "")
+        public async Task<TResult> DeleteAsync<TResult>(string uri, string token ="")
         {
             HttpClient httpClient = CreateHttpClient(token);
             HttpResponseMessage response =  await httpClient.DeleteAsync(uri);
