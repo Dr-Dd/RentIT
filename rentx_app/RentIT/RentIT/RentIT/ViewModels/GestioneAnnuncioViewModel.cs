@@ -2,7 +2,6 @@
 using RentIT.Models;
 using RentIT.Models.Annuncio;
 using RentIT.Services;
-using RentIT.Services.Annuncio;
 using RentIT.Services.Foto;
 using System.Collections.ObjectModel;
 using System.Text;

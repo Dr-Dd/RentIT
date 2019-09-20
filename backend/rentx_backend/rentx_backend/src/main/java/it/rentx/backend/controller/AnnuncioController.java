@@ -69,8 +69,8 @@ public class AnnuncioController {
 	
 	@PutMapping("/modifica/{id}")
 	public ResponseEntity<Risposta> modificaAnnuncio(@RequestHeader("Authorization") String token,@RequestBody Annuncio annuncio, @PathVariable("id") Long id) {
-    	
-		if(this.annuncioService.annuncioPerId(id)!=null) {
+		
+		if(this.annuncioService.esiste(id)) {
 			Annuncio adModificato = annuncioService.aggiornaAnnuncio(id, annuncio);
 			this.annuncioService.salvaAnnuncio(adModificato);
 			return ResponseEntity.ok().body(new Risposta("true", "Dati modificati correttamente."));
@@ -95,30 +95,30 @@ public class AnnuncioController {
 				annunci.add(tmp);
 			}
 		}
-		/*Ovviamente questa è una cafonata, mi serviva solo per provare velocemente
-		 * il metodo. Probabilmente va implementata passando 
-		 * 	annuncioService.annunciPosizione(sq.getCitta());
-		 * come insieme su cui fare la ricerca fuzzy
-		 */
 		return annunci;
 	}
 	
-	// Da Modificare
+	
 	@GetMapping("/annunci/{id}")
 	public List<AnnuncioModel> AnnunciUtente(@RequestHeader("Authorization") String token, @PathVariable("id") Long id) {
+		List<Annuncio> lista;
 		if(token!=null) {	
 			if(id == this.utenteService.getUtenteByEmail(this.utenteService.estrazioneEmailDaToken(token)).getId()) {
-					return this.annuncioService.parseToAnnuncioList(this.annuncioService.annunciBookedPerUtente(id));
+					lista=this.annuncioService.annunciBookedPerUtente(id);
+					return this.annuncioService.parseToAnnuncioList(lista);
 				}
 				else return Collections.emptyList();
-			} else
-				return this.annuncioService.parseToAnnuncioList(this.annuncioService.annunciNotBookedPerUtente(id));
+			} 
+		else {
+			lista=this.annuncioService.annunciNotBookedPerUtente(id);
+			return this.annuncioService.parseToAnnuncioList(lista);
+		}
 	}
 	
 	@GetMapping("/annuncio/{id}")
 	public AnnuncioModel SingoloAnnuncio(@PathVariable("id") Long id) {
-		
-		AnnuncioModel am=this.annuncioService.parseToAnnuncio(this.annuncioService.annuncioPerId(id));
+		Annuncio a=this.annuncioService.annuncioPerId(id);
+		AnnuncioModel am=this.annuncioService.parseToAnnuncio(a);
 		
 		return am;
 	}
@@ -137,7 +137,8 @@ public class AnnuncioController {
 	@GetMapping("/images/{id}")
 	public List<ImageModel> getAnnuncioImages(@PathVariable("id") Long id){
 		if(this.annuncioService.esiste(id)) {
-			return this.imageService.parseToImageList(this.imageService.getImagePerIdAnn(id));
+			List<Image> listaImg=this.imageService.getImagePerIdAnn(id);
+			return this.imageService.parseToImageList(listaImg);
 		}
 		else return Collections.emptyList();
 	}
