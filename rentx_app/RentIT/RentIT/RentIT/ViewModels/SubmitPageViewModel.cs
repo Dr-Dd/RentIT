@@ -75,6 +75,20 @@ namespace RentIT.ViewModels
         {
         }
 
+        /* Controlla che l'email sia valida */
+        bool IsValidEmail(string email)
+        {
+            try
+            {
+                var addr = new System.Net.Mail.MailAddress(email);
+                return addr.Address == email;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
         /**
          * Funzione di controllo password, viene attivata ogniqualvolta una delle due password viene modificata
          */
@@ -111,6 +125,12 @@ namespace RentIT.ViewModels
         {
             IsBusy = true;
             
+            if (IsValidEmail(Email))
+            {
+                await App.Current.MainPage.DisplayAlert("Errore", "Inserisci un indirizzo email valido", "Ok");
+                return;
+            }
+
             if (EmptyFields())
             {
                 await App.Current.MainPage.DisplayAlert("Errore", "Non hai riempito uno o più campi", "Ok");
@@ -123,6 +143,9 @@ namespace RentIT.ViewModels
                 return;
             }
 
+            Name.Trim();
+            Surname.Trim();
+            Email.Trim();
             var signUpRequest = new SignUpRequest
             {
                 name = Name,
