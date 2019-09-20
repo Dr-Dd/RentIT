@@ -79,7 +79,6 @@ namespace RentIT.ViewModels
             if (foto != null)
                 img = _fotoService.fromStringToImage(foto.data);
             return img;
-
         }
 
         //Comando per aggiungere o modificare la propic

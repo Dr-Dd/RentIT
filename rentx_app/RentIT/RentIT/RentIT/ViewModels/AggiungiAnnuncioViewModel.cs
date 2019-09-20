@@ -28,8 +28,8 @@ namespace RentIT.ViewModels
             }
         }
 
-        ObservableCollection<ElementoListaImmagine> _immagini;
-        public ObservableCollection<ElementoListaImmagine> Immagini
+        ObservableCollection<Image> _immagini;
+        public ObservableCollection<Image> Immagini
         {
             get { return _immagini; }
             set
@@ -82,7 +82,7 @@ namespace RentIT.ViewModels
         {
             _fotoService = fotoService;
             _annuncioService = annuncioService;
-            Immagini = new ObservableCollection<ElementoListaImmagine>();
+            Immagini = new ObservableCollection<Image>();
             listaImmaginiInBase64 = new List<string>();
         }
 
@@ -117,24 +117,15 @@ namespace RentIT.ViewModels
 
             if (stream != null)
             {
-                //MemoryStream ms = new MemoryStream();
-                //stream.CopyTo(ms);
-                //byte[] arrayImmagine = ms.ToArray();
-
                 //se esiste, si salva nel db associato all'annuncio
                 string immagineInBase64 = _fotoService.fromStreamToString(stream);
+                // Lista di stringhe da inviare al db nel salvataggio dell'annuncio
                 listaImmaginiInBase64.Add(immagineInBase64);
-                //Image immagineTemp = new Image();
-                //immagineTemp.Source = ImageSource.FromStream(() => new MemoryStream(arrayImmagine));
 
-                //questa riga serve solo a visualizzare l'immagine in attesa del collegamento al db
-                //Image immagineContainer = new Image();
-                //Immagine = _fotoService.fromStringToImage(base64);
-                //immagineContainer.Source = Immagine.Source;
-                ElementoListaImmagine elemLista = new ElementoListaImmagine();
-                byte[] fromBase64ToByte = Convert.FromBase64String(immagineInBase64);
-                elemLista.SorgenteImmagine = ImageSource.FromStream(() => new MemoryStream(fromBase64ToByte));
-                Immagini.Add(elemLista);
+                // NB: fromStringToImage setta già la source di image
+                Image img = new Image();
+                img = _fotoService.fromStringToImage(immagineInBase64);
+                Immagini.Add(img);
             }
             else
             {
