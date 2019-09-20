@@ -68,7 +68,7 @@ public class UtenteController {
     	utente_da_modificare.setCitta(dati_utente.getCitta());
     	
     	// Se la password dell'utente che arriva dalla richiesta è diversa da quello sul db la codifico e la setto altrimenti salvo direttamente
-    	if(!dati_utente.getPassword().equals(utente_da_modificare.getPassword()))
+    	if(!(dati_utente.getPassword().equals(utente_da_modificare.getPassword())) && !dati_utente.getPassword().isEmpty())
     		utente_da_modificare.setPassword(bCryptPasswordEncoder.encode(dati_utente.getPassword()));
     	
     	utente_da_modificare.setFirstAccess(false);
