@@ -94,15 +94,15 @@ public class UtenteController {
     }
     
     @PutMapping("/addImage")
-    public void aggiungiImmagine(@RequestHeader("Authorization") String token, @RequestBody byte[] image ) {
+    public void aggiungiImmagine(@RequestHeader("Authorization") String token, @RequestBody ImageModel img) {
     	Utente utente = this.utenteService.getUtenteByEmail(this.utenteService.estrazioneEmailDaToken(token));
-    	utente.setFotoProfilo(image);
+    	utente.setFotoProfilo(img.getData());
     	
     	this.utenteService.inserisci(utente);
     }
     
     @GetMapping("/image/{id}")
-    public ImageModel getImmagineUtente(@RequestHeader("Authorization") String token, @PathVariable Long id) {
+    public ImageModel getImmagineUtente(@PathVariable Long id) {
     	ImageModel immagine = null;
     	if(id != null) {
     		Utente u = this.utenteService.trova(id);

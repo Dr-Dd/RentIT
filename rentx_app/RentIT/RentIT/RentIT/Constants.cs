@@ -16,13 +16,13 @@ namespace RentIT
          */
 
         // URL of REST service
-        public static string RestUrl = "http://10.25.137.212:8080/{0}";
+        public static string RestUrl = "http://10.25.21.204:8080/{0}";
 
         // defaul Endpoints for api
-        const string defaultAuthenticationEndpoint = "http://10.25.137.212:8080/auth/{0}";
-        const string defaultItemEndpoint = "http://10.25.137.212:8080/item/{0}";
-        const string defaultAnnuncioEndpoint = "http://10.25.137.212:8080/annuncio/{0}";
-        const string defaultUserEndpoint = "http://10.25.137.212:8080/utente/{0}";
+        const string defaultAuthenticationEndpoint = "http://10.25.21.204:8080/auth/{0}";
+        const string defaultItemEndpoint = "http://10.25.21.204:8080/item/{0}";
+        const string defaultAnnuncioEndpoint = "http://10.25.21.204:8080/annuncio/{0}";
+        const string defaultUserEndpoint = "http://10.25.21.204:8080/utente/{0}";
 
 
         public static string AuthEndpointLogin()
