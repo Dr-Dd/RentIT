@@ -7,6 +7,9 @@ namespace RentIT.DBmessages
     public class Request
     {
         public long id { get; set; }
+
         public bool b { get; set; }
+
+        public string s { get; set; }
     }
 }
