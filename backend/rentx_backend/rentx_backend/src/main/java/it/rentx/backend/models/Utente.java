@@ -37,7 +37,7 @@ public class Utente {
 	
 	private String citta;
 	
-	@Lob
+	//@Lob
 	@Column(name = "foto_profilo", length = 100000)
 	private byte[] fotoProfilo;
 	

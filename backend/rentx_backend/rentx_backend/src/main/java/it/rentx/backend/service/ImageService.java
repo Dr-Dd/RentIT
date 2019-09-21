@@ -39,6 +39,7 @@ public class ImageService {
 		return this.imageRepo.existsById(id);
 	}
 	
+	@Transactional
 	public ImageModel parseToImage(Image i) {
 		ImageModel im=new ImageModel(i.getData(), i.getId());
 		return im;

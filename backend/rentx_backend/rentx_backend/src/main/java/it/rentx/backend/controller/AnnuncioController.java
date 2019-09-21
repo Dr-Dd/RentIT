@@ -91,7 +91,7 @@ public class AnnuncioController {
 		}
 		for (Annuncio annuncio : searchResults) {
 			if((annuncio.getPosizione().equals(sq.getCitta())) &&  !(annuncio.isBooked())) {
-				AnnuncioModel tmp = new AnnuncioModel(annuncio.getId(), annuncio.getAffittuario().getId(), annuncio.getAnteprimaImg(), annuncio.getNomeOggetto(), annuncio.getDescrizione(), annuncio.getPrezzo(), annuncio.getPosizione(), annuncio.getData());
+				AnnuncioModel tmp=this.annuncioService.parseToAnnuncio(annuncio);
 				annunci.add(tmp);
 			}
 		}

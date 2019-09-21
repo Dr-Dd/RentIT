@@ -15,9 +15,9 @@ namespace RentIT.Views
     public partial class AnnunciPrenotati : ContentPage
     {
 
-        AnnunciUtenteViewModel _vm
+        AnnunciPrenotatiViewModel _vm
         {
-            get { return BindingContext as AnnunciUtenteViewModel; }
+            get { return BindingContext as AnnunciPrenotatiViewModel; }
         }
 
         public AnnunciPrenotati()

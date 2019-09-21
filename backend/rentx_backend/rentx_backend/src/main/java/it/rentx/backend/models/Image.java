@@ -21,7 +21,7 @@ public class Image {
 	@ManyToOne(fetch = FetchType.LAZY)
 	private Annuncio annuncio;
 	
-	@Lob
+	//@Lob
 	@Column(name = "image_data", length = 100000)
 	private byte[] data;
 	

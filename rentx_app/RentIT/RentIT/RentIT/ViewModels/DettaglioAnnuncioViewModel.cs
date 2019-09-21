@@ -52,8 +52,8 @@ namespace RentIT.ViewModels
             }
         }
 
-        ObservableCollection<Image> _immagini;
-        public ObservableCollection<Image> immagini
+        List<Image> _immagini;
+        public List<Image> Immagini
         {
             get
             {
@@ -72,6 +72,7 @@ namespace RentIT.ViewModels
         {
             _fotoService = fotoService;
             _userService = userService;
+            Immagini = new List<Image>();
         }
 
         public async override Task Init(Ad annuncio)
@@ -80,11 +81,21 @@ namespace RentIT.ViewModels
             //Va tutto decommentato dopo che i metodi del db funzionano
             Affittuario = await _userService.GetUserByIdAsync(annuncio.AffittuarioId);
             ImmagineUtente = await getPropic();
-            var imagesModel = await _fotoService.GetAdImagesAsync(Annuncio.id);
-            //immagini = _fotoService.creaImmagini(imagesModel);
-            
-            // La riga seguente serve solo a visualizzare l'annuncio dal menu a tendina */
-            immagini = _fotoService.creaImmagini(Annuncio.immagini);
+            Immagini = await LoadAdImages();
+
+        }
+
+        public async Task<List<Image>> LoadAdImages()
+        {
+            var listaImageModel = await _fotoService.GetAdImagesAsync(Annuncio.id);
+            var listaImmaginiAnnuncio = new List<Image>();
+
+            foreach (var imgModel in listaImageModel)
+            {
+                listaImmaginiAnnuncio.Add(_fotoService.fromStringToImage(imgModel.data));
+            }
+
+            return listaImmaginiAnnuncio;
         }
 
         //Metodo per prendere l'immagine profilo dell'utente dal database
@@ -134,7 +145,7 @@ namespace RentIT.ViewModels
             try
             {
                 //Da rimuovere le virgolette
-                PhoneDialer.Open("Affittuario.Numero");
+                PhoneDialer.Open(Affittuario.numeroTel);
             }
             catch (FeatureNotSupportedException ex)
             {
@@ -164,7 +175,7 @@ namespace RentIT.ViewModels
         async Task ExecuteEmailCommand()
         {
             List<String> destinatario = new List<string>();
-            destinatario.Add("Affittuario.Email");
+            destinatario.Add(Affittuario.email);
             var message = new EmailMessage
             {
                 To = destinatario,

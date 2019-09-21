@@ -125,7 +125,7 @@ namespace RentIT.ViewModels
         {
             IsBusy = true;
             
-            if (IsValidEmail(Email))
+            if (!IsValidEmail(Email))
             {
                 await App.Current.MainPage.DisplayAlert("Errore", "Inserisci un indirizzo email valido", "Ok");
                 return;

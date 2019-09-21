@@ -2,10 +2,24 @@
 <TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
             xmlns:local="clr-namespace:RentIT.Views"
+            xmlns:viewModels="clr-namespace:RentIT.ViewModels"
             x:Class="RentIT.Views.AnnunciUtentePage"
             Title="I miei annunci"
             BarTextColor="#455A64"
             BarBackgroundColor="#CFD8DC">
-    <local:AnnunciAttivi />
-    <local:AnnunciPrenotati />
+    <local:AnnunciAttivi>
+    <!--
+        <local:AnnunciAttivi.BindingContext>
+            <viewModels:AnnunciAttiviViewModel/>
+        </local:AnnunciAttivi.BindingContext>
+    -->
+    </local:AnnunciAttivi>
+
+    <local:AnnunciPrenotati>
+    <!--
+        <local:AnnunciPrenotati.BindingContext>
+            <viewModels:AnnunciPrenotatiPageViewModel/>
+        </local:AnnunciPrenotati.BindingContext>       
+    -->
+    </local:AnnunciPrenotati>
 </TabbedPage>

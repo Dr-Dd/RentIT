@@ -46,13 +46,10 @@
                                PlaceholderColor="#BDBDBD" 
                                Text="{Binding Oggetto}"/>
                     <SearchBar x:Name="citySearchBar"
-                               TextChanged="CitySearchBar_TextChanged"
                                Placeholder="Città"
                                FontFamily="Quicksand-Light.ttf#Quicksand-Light"
                                PlaceholderColor="#BDBDBD" 
                                Text="{Binding Citta}"/>
-                    <ListView x:Name="suggestionListView"
-                              ItemTapped="SuggestionListView_ItemTapped" />
                     <Button Text="CERCA"
                             CornerRadius="25"
                             TextColor="#607D8B"
