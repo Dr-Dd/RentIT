@@ -10,6 +10,9 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using RentIT.Services.User;
+using RentIT.Models.User;
+using RentIT.Services.Authentication;
 
 namespace RentIT.ViewModels
 {
@@ -38,6 +41,28 @@ namespace RentIT.ViewModels
             }
         }
 
+        string _titolo;
+        public string Titolo
+        {
+            get { return _titolo; }
+            set
+            {
+                _titolo = value;
+                OnPropertyChanged();
+            }
+        }
+
+        Utente _utente;
+        public Utente Utente
+        {
+            get { return _utente; }
+            set
+            {
+                _utente = value;
+                OnPropertyChanged();
+            }
+        }
+
         string _citta;
         public string Citta
         {
@@ -50,15 +75,37 @@ namespace RentIT.ViewModels
         }
 
         readonly IAnnuncioService _annuncioService;
-        public SearchPageViewModel(INavService navService, AnnuncioService annuncioService) : base(navService)
+        readonly IUserService _userService;
+        readonly IAuthenticationService _authService;
+        public SearchPageViewModel(INavService navService, AnnuncioService annuncioService, UserService userService, AuthenticationService authService) : base(navService)
         {
+            _userService = userService;
             _annuncioService = annuncioService;
+            _authService = authService;
             ListaCitta = MiscCostants.tutteCitta;
         }
 
-        /*public override async Task Init()
+        bool _isLoggedVar;
+        public bool IsLoggedVar
         {
-        }*/
+            get { return _isLoggedVar; }
+            set
+            {
+                _isLoggedVar = value;
+                OnPropertyChanged();
+            }
+        }
+
+        bool _isNotLoggedVar;
+        public bool IsNotLoggedVar
+        {
+            get { return _isNotLoggedVar; }
+            set
+            {
+                _isNotLoggedVar = value;
+                OnPropertyChanged();
+            }
+        }
 
         bool IsLogged()
         {
@@ -108,7 +155,7 @@ namespace RentIT.ViewModels
         {
 
             ObservableCollection<Ad> Annunci = await _annuncioService.GetLastAds(Citta, Oggetto);
-            
+
             await NavService.NavigateTo<AnnunciPageViewModel, ObservableCollection<Ad>>(Annunci);
         }
 
@@ -144,6 +191,52 @@ namespace RentIT.ViewModels
         {
             await NavService.NavigateTo<UtentePageViewModel>();
         }
+
+        Command _annunciUtenteCommand;
+        public Command AnnunciUtenteCommand
+        {
+            get
+            {
+                return _annunciUtenteCommand
+                    ?? (_annunciUtenteCommand = new Command(async () => await ExecuteAnnunciUtenteCommandAsync()));
+            }
+        }
+
+        async Task ExecuteAnnunciUtenteCommandAsync()
+        {
+            await NavService.NavigateTo<AnnunciUtenteViewModel>();
+        }
+
+        //Comando per eseguire il log out
+        Command _logOutCommand;
+        public Command LogOutCommand
+        {
+            get
+            {
+                return _logOutCommand
+                    ?? (_logOutCommand = new Command(async () => await ExecuteLogOutCommandAsync()));
+            }
+        }
+
+        async Task ExecuteLogOutCommandAsync()
+        {
+            IsBusy = true;
+
+            var response = await _authService.LogoutAsync();
+            if (response)
+            {
+                await App.Current.MainPage.DisplayAlert("RentIT", "A presto!", "Ok");
+                await NavService.NavigateTo<SearchPageViewModel>();
+            }
+            else
+            {
+                await App.Current.MainPage.DisplayAlert("Errore", "Impossibile effettuare il log out", "Ok");
+            }
+
+            IsBusy = false;
+
+        }
+
 
         /*
          * Pulsante cerca
@@ -189,9 +282,10 @@ namespace RentIT.ViewModels
             }
         }
 
+
         async Task ExecuteAddAnnuncioCommandAsync()
         {
-            if(!IsLogged())
+            if (!IsLogged())
             {
                 await App.Current.MainPage.DisplayAlert("RentIT", "Iscriviti o effettua il login per aggiungere un annuncio!", "Ok");
                 await NavService.NavigateTo<LoginPageViewModel>();
@@ -208,6 +302,13 @@ namespace RentIT.ViewModels
 
         public async override Task Init()
         {
+            IsLoggedVar = IsLogged();
+            IsNotLoggedVar = !IsLoggedVar;
+            if (IsLoggedVar)
+            {
+                Utente = await _userService.GetMyProfileAsync();
+                Titolo = "Benvenuto " + Utente.name + "!";
+            }
         }
     }
 }

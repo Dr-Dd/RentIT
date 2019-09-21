@@ -39,26 +39,20 @@ namespace RentIT.Views
             Detail = new NavigationPage((Page)Activator.CreateInstance(typeof(SearchPageDetail)));
         }
 
-        async void Login_Tapped(object sender, EventArgs e)
+        async void IMieiAnnunciPage_Tapped(object sender, EventArgs e)    
+        {
+            _vm.AnnunciUtenteCommand.Execute(null);
+        }
+
+        async void Logout_Tapped(object sender, EventArgs e)    
+        {
+            _vm.LogOutCommand.Execute(null);
+        }
+
+        async void Login_Tapped(object sender, EventArgs e)    
         {
             _vm.LoginCommand.Execute(null);
         }
-
-        async void AnnunciPage_Tapped(object sender, EventArgs e) // Momentaneamente commentato 
-        {
-            _vm.AnnunciPageCommand.Execute(null);
-        }
-
-        async void Submit_Tapped(object sender, EventArgs e)
-        {
-            _vm.SubmitCommand.Execute(null);
-        }
-
-        async void Utente_Tapped(object sender, EventArgs e)
-        {
-            _vm.UtenteCommand.Execute(null);
-        }
-
         /* L'override di questo metodo è necessario poichè non è possibile
          * avviare attraverso qualche comando la login page, prima pagina
          * del programma (ecco perché ci serve '_vm')*/
@@ -68,6 +62,11 @@ namespace RentIT.Views
 
             if (_vm != null)
                 await _vm.Init();
+        }
+
+        private void TextCell_Tapped(object sender, EventArgs e)
+        {
+
         }
     }
 }
