@@ -38,8 +38,8 @@ namespace RentIT.ViewModels
         public AnnunciUtenteViewModel(INavService navService, AnnuncioService annuncioService) : base(navService)
         {
             _annuncioService = annuncioService;
-            AnnunciNonPrenotati = new ObservableCollection<Ad>;
-            AnnunciPrenotati = new ObservableCollection<Ad>;
+            AnnunciNonPrenotati = new ObservableCollection<Ad>();
+            AnnunciPrenotati = new ObservableCollection<Ad>();
         }
 
         public async override Task Init()
