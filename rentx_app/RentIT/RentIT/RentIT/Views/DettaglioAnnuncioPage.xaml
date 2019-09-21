@@ -25,7 +25,7 @@
                     <controls:CircleImage Source="{Binding ImmagineUtente.Source}"
                                           WidthRequest="60"
                                           HeightRequest="60" />
-                    <Button Text="{Binding Affittuario.name}"
+                    <Button Text="{Binding NomeAffittuario}"
                             BackgroundColor="Transparent"
                             FontSize="Small"
                             FontAttributes="Bold"

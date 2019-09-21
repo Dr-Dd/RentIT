@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:control="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
+             Title="Informazioni utente"
              x:Class="RentIT.Views.InfoUtenti">
     <ContentPage.Content>
         <Grid BackgroundColor="WhiteSmoke"
@@ -36,16 +37,6 @@
                    LineBreakMode="MiddleTruncation"
                    TextColor="#607D8B"
                    FontSize="Large" />
-            <Label Grid.Row="1"
-                   Grid.Column="1"
-                   Grid.ColumnSpan="2"
-                   Text="{Binding Utente.name}"
-                   FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
-                   HorizontalOptions="CenterAndExpand"
-                   VerticalOptions="StartAndExpand"
-                   LineBreakMode="TailTruncation"
-                   FontSize="Large"
-                   TextColor="#607D8B" />
             <Label Grid.Row="2"
                    Grid.Column="0"
                    Grid.ColumnSpan="3"

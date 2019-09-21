@@ -30,7 +30,7 @@ namespace RentIT.ViewModels
         public Image Immagine
         {
             //se _immagine è null, non ci sono foto nel db e ne carica una di default
-            get { return _immagine ?? (new Image { Source = "meme.png" }); }
+            get { return _immagine; }
             set
             {
                 _immagine = value;
@@ -61,11 +61,18 @@ namespace RentIT.ViewModels
         //Metodo per prendere l'immagine profilo dal database
         public async Task<Image> getPropic()
         {
-            ImageModel foto = await _fotoService.GetUserImage(AppSettings.UserId);
-            Image img = null;
-            if(foto.data != null)
-                img = _fotoService.fromStringToImage(foto.data);
-            return img;
+            ImageModel imgModel = await _fotoService.GetUserImage(Utente.id);
+            if (imgModel.data != null)
+            {
+                Image img = _fotoService.fromStringToImage(imgModel.data);
+                return img;
+            }
+            else
+            {
+                Image img = new Image();
+                img.Source = "meme.png";
+                return img;
+            }
         }
 
         //Comando per modificare i dati

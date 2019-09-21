@@ -7,13 +7,22 @@ using RentIT.Services.Annuncio;
 using RentIT.Models;
 using RentIT.Services.Foto;
 using System;
+using RentIT.Models.User;
 
 namespace RentIT.ViewModels
 {
-    //prima c'era BaseViewModel<SearchQuery>
-    //ora c'è di nuovo >>
-    public class AnnunciPageViewModel : BaseViewModel<ObservableCollection<Ad>>
+    public class AnnunciPageViewModel : BaseViewModel<Utente>
     {
+        Utente _utente;
+        public Utente Utente
+        {
+            get { return _utente; }
+            set
+            {
+                _utente = value;
+                OnPropertyChanged();
+            }
+        }
 
         ObservableCollection<Ad> _annunci;
         public ObservableCollection<Ad> Annunci
@@ -26,30 +35,34 @@ namespace RentIT.ViewModels
             }
         }
 
+        /*Questa proprietà serve esclusivamente a visualizzare il titolo*/
+        string _titolo;
+        public string Titolo
+        {
+            get
+            { return _titolo; }
+            set
+            {
+                _titolo = value;
+                OnPropertyChanged();
+            }
+        }
+
         readonly IAnnuncioService _annuncioService;
         readonly FotoService _fotoService;
         public AnnunciPageViewModel(INavService navService, AnnuncioService annuncioService, FotoService fotoService) : base(navService)
         {
-            Annunci = new ObservableCollection<Ad>();
             _annuncioService = annuncioService;
             _fotoService = fotoService;
+            Annunci = new ObservableCollection<Ad>();
         }
-
-        /*SearchQuery _query;
-        public SearchQuery Query
+        
+        public async override Task Init(Utente utente)
         {
-            get { return _query; }
-            set
-            {
-                _query = value;
-                OnPropertyChanged();
-            }
-        }*/
-
-        public async override Task Init(ObservableCollection<Ad> annunci)
-        {
-            Annunci = annunci;
+            Utente = utente;
+            Annunci = await _annuncioService.GetUserAds(Utente.id, false);
             await LoadImages();
+            Titolo = String.Format("Annunci di {0} {1}", Utente.name, Utente.surname);
         }
 
         private async Task LoadImages()
@@ -59,22 +72,7 @@ namespace RentIT.ViewModels
                 annuncio.anteprimaImgXam = _fotoService.fromStringToImage(annuncio.anteprimaImg);
             }
         }
-
-        /*async Task LoadEntries()
-        {
-            if (IsBusy)
-            {
-                return;
-            }
-
-            IsBusy = true;
-
-            Annunci.Clear();
-            Annunci = await _annuncioService.GetLastAds(Query.citta, Query.oggetto);
-
-            IsBusy = false;
-        }*/
-
+        
         Command<Ad> _viewAnnuncio;
         public Command<Ad> ViewAnnuncio
         {

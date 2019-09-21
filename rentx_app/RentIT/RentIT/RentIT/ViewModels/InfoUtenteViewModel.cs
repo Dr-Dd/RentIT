@@ -44,6 +44,19 @@ namespace RentIT.ViewModels
             }
         }
 
+        /*Questa proprietà serve esclusivamente a visualizzare il nome e cognome vicini*/
+        string _nomeUtente;
+        public string NomeUtente
+        {
+            get
+            { return _nomeUtente; }
+            set
+            {
+                _nomeUtente = value;
+                OnPropertyChanged();
+            }
+        }
+
         readonly UserService _utenteService;
         readonly FotoService _fotoService;
         readonly IAnnuncioService _annuncioService;
@@ -60,6 +73,8 @@ namespace RentIT.ViewModels
         {
             Utente = utente;
             Immagine = await LoadUserPic(utente.id);
+            NomeUtente = String.Format("{0} {1}", Utente.name, Utente.surname);
+
         }
 
         public async Task<Image> LoadUserPic(long id)
@@ -91,7 +106,7 @@ namespace RentIT.ViewModels
         async Task ExecuteVediAnnunciUtenteCommand()
         {
             ObservableCollection<Ad> asd = await _annuncioService.GetUserAds(Utente.id, false);
-            await NavService.NavigateTo<AnnunciPageViewModel, ObservableCollection<Ad>>(asd);
+            await NavService.NavigateTo<AnnunciPageViewModel, Utente>(Utente);
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Ninject.Modules;
 using RentIT.Services.Authentication;
+using RentIT.Services.Foto;
 using RentIT.Services.Request;
 using RentIT.Services.User;
 using RentIT.ViewModels;
@@ -27,6 +28,7 @@ namespace RentIT.Modules
             Bind<InfoUtenteViewModel>().ToSelf();
             Bind<AnnunciAttiviViewModel>().ToSelf();
             Bind<AnnunciPrenotatiViewModel>().ToSelf();
+            Bind<AnnunciQueryViewModel>().ToSelf();
 
             // E' importante fare il binding di tutti i servizi che
             // non servono in quantità molteplice nelle injection
@@ -35,6 +37,7 @@ namespace RentIT.Modules
             var requestService = new RequestService();
             var authService = new AuthenticationService(requestService);
             var userService = new UserService(requestService);
+            var fotoService = new FotoService(requestService);
 
             // Qui gli fai il binding come singoletto
             Bind<IRequestService>().
@@ -51,6 +54,10 @@ namespace RentIT.Modules
                 .ToMethod(x => userService)
                 .InSingletonScope();
 
+            // ***
+            Bind<IFotoService>()
+                .ToMethod(x => fotoService)
+                .InSingletonScope();
         }
     }
 }

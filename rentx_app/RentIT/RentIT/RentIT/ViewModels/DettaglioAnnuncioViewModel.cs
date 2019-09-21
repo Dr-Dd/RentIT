@@ -66,6 +66,20 @@ namespace RentIT.ViewModels
             }
         }
 
+        /*Questa proprietà serve esclusivamente a visualizzare il nome e cognome vicini*/
+        string _nomeAffittuario;
+        public string NomeAffittuario
+        {
+            get
+            {    return _nomeAffittuario;   }
+            set
+            {
+                _nomeAffittuario = value;
+                OnPropertyChanged();
+            }
+        }
+
+
         readonly FotoService _fotoService;
         readonly IUserService _userService;
         public DettaglioAnnuncioViewModel(INavService navService, FotoService fotoService, UserService userService) : base(navService)
@@ -78,10 +92,10 @@ namespace RentIT.ViewModels
         public async override Task Init(Ad annuncio)
         {
             Annuncio = annuncio;
-            //Va tutto decommentato dopo che i metodi del db funzionano
-            Affittuario = await _userService.GetUserByIdAsync(annuncio.AffittuarioId);
-            ImmagineUtente = await getPropic();
             Immagini = await LoadAdImages();
+            Affittuario = await _userService.GetUserByIdAsync(Annuncio.AffittuarioId);
+            ImmagineUtente = await getPropic();
+            NomeAffittuario = String.Format("{0} {1}", Affittuario.name, Affittuario.surname);
 
         }
 
@@ -98,16 +112,22 @@ namespace RentIT.ViewModels
             return listaImmaginiAnnuncio;
         }
 
-        //Metodo per prendere l'immagine profilo dell'utente dal database
         public async Task<Image> getPropic()
         {
-            ImageModel foto = await _fotoService.GetUserImage(Annuncio.AffittuarioId);
-            Image img = new Image();
-            if (foto != null)
-                img = _fotoService.fromStringToImage(foto.data);
-            return img;
+            ImageModel imgModel = await _fotoService.GetUserImage(Affittuario.id);
+            if (imgModel.data != null)
+            {
+                Image img = _fotoService.fromStringToImage(imgModel.data);
+                return img;
+            }
+            else
+            {
+                Image img = new Image();
+                img.Source = "meme.png";
+                return img;
+            }
         }
-
+        
         /*
          * Cliccando sul nome utente si apre la sua scheda
          */

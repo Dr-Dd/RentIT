@@ -160,8 +160,7 @@ namespace RentIT.ViewModels
             SearchQuery query = new SearchQuery();
             query.citta = Citta;
             query.oggetto = Oggetto;
-            ObservableCollection<Ad> annunci = await _annuncioService.GetLastAds(query.citta, query.oggetto);
-            await NavService.NavigateTo<AnnunciPageViewModel, ObservableCollection<Ad>>(annunci);
+            await NavService.NavigateTo<AnnunciQueryViewModel, SearchQuery>(query);
         }
 
         /*
