@@ -112,7 +112,7 @@ namespace RentIT.ViewModels
             await NavService.NavigateTo<SubmitPageViewModel>();
         }
 
-        //Comando di log in
+        //Comando di reset password
         Command _resetPasswordCommand;
         public Command ResetPasswordCommand
         {
