@@ -160,7 +160,7 @@ namespace RentIT.ViewModels
 
         bool isEmpty()
         {
-            return (string.IsNullOrWhiteSpace(Oggetto)) && (string.IsNullOrWhiteSpace(Citta));
+            return (string.IsNullOrWhiteSpace(Oggetto)) || (string.IsNullOrWhiteSpace(Citta));
         }
 
         async Task ExecuteCercaCommand()

@@ -77,6 +77,7 @@ namespace RentIT.ViewModels
             _userService = userService;
             _fotoService = fotoService;
             Immagine = new Image();
+            ListaCitta = MiscCostants.tutteCitta;
         }
 
         public override async Task Init()
