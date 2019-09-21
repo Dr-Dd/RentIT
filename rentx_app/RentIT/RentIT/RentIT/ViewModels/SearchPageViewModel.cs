@@ -158,8 +158,8 @@ namespace RentIT.ViewModels
                 return;
             }
             SearchQuery query = new SearchQuery();
-            query.citta = Citta;
-            query.oggetto = Oggetto;
+            query.citta = Citta.Trim();
+            query.oggetto = Oggetto.Trim();
             await NavService.NavigateTo<AnnunciQueryViewModel, SearchQuery>(query);
         }
 

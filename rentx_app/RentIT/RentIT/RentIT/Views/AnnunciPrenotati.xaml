@@ -28,12 +28,12 @@
                                Source="{Binding anteprimaImgXam.Source}" />
                         <Label Grid.Row="0"
                                Grid.Column="1"
-                               Text="{Binding NomeOggetto}"
+                               Text="{Binding nomeOggetto}"
                                VerticalTextAlignment="End"
                                FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
                                FontSize="Medium"
                                TextColor="#607D8B" />
-                        <Label Text="{Binding Descrizione}"
+                        <Label Text="{Binding descrizione}"
                                Grid.Row="1"
                                Grid.Column="1"
                                Grid.ColumnSpan="2"
@@ -41,7 +41,7 @@
                                TextColor="#607D8B" />
                         <Label Grid.Row="2"
                                Grid.Column="1"
-                               Text="{Binding Data, StringFormat='{0:dd/MM/yyyy}'}"
+                               Text="{Binding data, StringFormat='{0:dd/MM/yyyy}'}"
                                VerticalTextAlignment="Center"
                                TextColor="#607D8B"
                                FontFamily="Quicksand-Medium.ttf#Quicksand-Medium" />

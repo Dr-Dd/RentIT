@@ -158,14 +158,14 @@ namespace RentIT.ViewModels
         {
             IsBusy = true;
 
-            if (!EmptyFields())
+            if (EmptyFields())
             {
                 await App.Current.MainPage.DisplayAlert("Errore", "Non hai riempito uno o più campi", "Ok");
                 return;
             }
 
-            Annuncio.nomeOggetto.Trim();
-            Annuncio.descrizione.Trim();
+            Annuncio.nomeOggetto = Annuncio.nomeOggetto.Trim();
+            Annuncio.descrizione = Annuncio.descrizione.Trim();
 
             var response = await _annuncioService.ModifyAdDataAsync(Annuncio);
             if (response.hasSucceded)

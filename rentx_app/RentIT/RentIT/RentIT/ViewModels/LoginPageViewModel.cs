@@ -62,7 +62,11 @@ namespace RentIT.ViewModels
         async Task ExecuteLogInCommand()
         {
             IsBusy = true;
-            var authResponse = await _authService.LoginAsync(_email, _password);
+
+            Email = Email.Trim();
+            Password = Password.Trim();
+
+            var authResponse = await _authService.LoginAsync(Email, Password);
             if (authResponse.hasSucceded)
             {
                 if (AppSettings.NewProfile)

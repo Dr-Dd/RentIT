@@ -48,7 +48,7 @@
                     </carousel:CarouselViewControl>
 
                 </ContentView>
-                <Entry Text="{Binding Annuncio.NomeOggetto}"
+                <Entry Text="{Binding Annuncio.nomeOggetto}"
                        Grid.Row="2"
                        Grid.Column="0"
                        Grid.ColumnSpan="2"
@@ -57,7 +57,7 @@
                        FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
                        TextColor="#607D8B"
                        FontSize="Medium" />
-                <Editor Text="{Binding Annuncio.Prezzo, StringFormat='{0:F0}€'}"
+                <Editor Text="{Binding Annuncio.prezzo, StringFormat='{0:F0}'}"
                         Grid.Row="2"
                         Grid.Column="2"
                         VerticalOptions="Center"
@@ -65,7 +65,18 @@
                         FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
                         TextColor="#85bb65"
                         FontSize="Medium"
-                        Margin="40,0,5,0" />
+                        Margin="40,0,5,0"/>
+                <Label Text="€"
+                       Grid.Row="2"
+                       Grid.Column="2"
+                       VerticalOptions="Center"
+                       FontAttributes="Bold"
+                       FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
+                       TextColor="#85bb65"
+                       FontSize="Medium"
+                        Margin="40,0,5,0"
+                       HorizontalTextAlignment="End"
+                       HorizontalOptions="End"/>
                 <Frame BorderColor="#607D8B"
                        Grid.Row="3"
                        CornerRadius="25"
@@ -73,7 +84,7 @@
                        Grid.ColumnSpan="3"
                        Margin="2,0,2,0"
                        BackgroundColor="WhiteSmoke">
-                    <Editor Text="{Binding Annuncio.Descrizione}"
+                    <Editor Text="{Binding Annuncio.descrizione}"
                             FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
                             TextColor="#607D8B"
                             FontSize="Medium" />

@@ -155,8 +155,8 @@ namespace RentIT.ViewModels
 
             var annuncioRequest = new Ad
             {
-                nomeOggetto = NomeOggetto,
-                descrizione = Descrizione,
+                nomeOggetto = NomeOggetto.Trim(),
+                descrizione = Descrizione.Trim(),
                 prezzo = Prezzo,
                 data = DateTime.Now,
                 anteprimaImg = listaImmaginiInBase64[0]

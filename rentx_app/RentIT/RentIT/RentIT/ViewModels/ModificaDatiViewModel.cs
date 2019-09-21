@@ -119,7 +119,7 @@ namespace RentIT.ViewModels
         //Funzione di controllo password
         bool PasswordsAreTheSame()
         {
-            var isValid = Password == ConfermaPassword;
+            var isValid = Password.Trim() == ConfermaPassword.Trim();
 
             return isValid;
         }
@@ -155,21 +155,21 @@ namespace RentIT.ViewModels
                 return;
             }
 
-            Utente.name.Trim();
-            Utente.surname.Trim();
-            Utente.citta.Trim();
-            Utente.numeroTel.Trim();
-
-            if (!PasswordsAreTheSame())
-            {
-                await App.Current.MainPage.DisplayAlert("Errore", "Le due password non corrispondono", "Ok");
-                return;
-            }
-
+            Utente.name = Utente.name.Trim();
+            Utente.surname = Utente.surname.Trim();
+            Utente.citta = Utente.citta.Trim();
+            Utente.numeroTel = Utente.numeroTel.Trim();
+            
             if (!string.IsNullOrWhiteSpace(Password))
-                Utente.password = Password;
-
-
+            {
+                if (!PasswordsAreTheSame())
+                {
+                    await App.Current.MainPage.DisplayAlert("Errore", "Le due password non corrispondono", "Ok");
+                    return;
+                }
+                Utente.password = Password.Trim();
+            }
+                
             var response = await _userService.ModifyUserData(Utente);
             if (response.hasSucceded)
             {

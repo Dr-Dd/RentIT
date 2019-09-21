@@ -80,8 +80,8 @@ namespace RentIT.ViewModels
         {
             try
             {
-                var addr = new System.Net.Mail.MailAddress(email);
-                return addr.Address == email;
+                var addr = new System.Net.Mail.MailAddress(email.Trim());
+                return addr.Address == email.Trim();
             }
             catch
             {
@@ -94,7 +94,7 @@ namespace RentIT.ViewModels
          */
         bool PasswordsAreTheSameAndNotEmpty()
         {
-            var isValid = (Password == ConfermaPassword && 
+            var isValid = (Password.Trim() == ConfermaPassword.Trim() && 
                 !string.IsNullOrWhiteSpace(Password));
 
             return isValid;
@@ -142,16 +142,13 @@ namespace RentIT.ViewModels
                 await App.Current.MainPage.DisplayAlert("Errore", "Le due password non corrispondono", "Ok");
                 return;
             }
-
-            Name.Trim();
-            Surname.Trim();
-            Email.Trim();
+            
             var signUpRequest = new SignUpRequest
             {
-                name = Name,
-                surname = Surname,
-                email = Email,
-                password = Password
+                name = Name.Trim(),
+                surname = Surname.Trim(),
+                email = Email.Trim(),
+                password = Password.Trim()
             };
             var signUpResponse = await _userService.SignUpAsync(signUpRequest);
             if (signUpResponse.hasSucceded)
