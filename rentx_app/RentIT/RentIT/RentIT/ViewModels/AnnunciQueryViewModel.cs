@@ -72,6 +72,7 @@ namespace RentIT.ViewModels
         
         public async override Task Init(SearchQuery query)
         {
+            Annunci.Clear();
             Query = query;
             NessunRisultato = false;
             await LoadEntries();

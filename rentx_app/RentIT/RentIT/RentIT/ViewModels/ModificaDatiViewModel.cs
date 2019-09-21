@@ -6,6 +6,7 @@ using RentIT.Services.User;
 using RentIT.Models.User;
 using RentIT.Services.Foto;
 using RentIT.Models.Immagine;
+using System.Text;
 
 namespace RentIT.ViewModels
 {
@@ -68,7 +69,6 @@ namespace RentIT.ViewModels
         public override async Task Init()
         {
             Utente = await _userService.GetMyProfileAsync();
-            //TODO: da decommentare dopo fatto il collegamento al db
             Immagine = await getPropic();
         }
 
@@ -201,6 +201,10 @@ namespace RentIT.ViewModels
             var response = await _userService.DeleteAccount();
             if(response.hasSucceded)
             {
+                StringBuilder successo = new StringBuilder();
+                successo.AppendLine("Ci dispiace che tu te ne vada!");
+                successo.Append("I tuoi dati sono stati eliminati correttamente");
+                await App.Current.MainPage.DisplayAlert("RentIT", successo.ToString(), "ok");
                 await NavService.NavigateToMainPage();
             }
             else

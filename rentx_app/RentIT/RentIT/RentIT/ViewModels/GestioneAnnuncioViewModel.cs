@@ -125,6 +125,9 @@ namespace RentIT.ViewModels
             var response = await _annuncioService.DeleteAdAsync(Annuncio.id);
             if (response.hasSucceded)
             {
+                StringBuilder successo = new StringBuilder();
+                successo.Append("Annuncio eliminato con successo!");
+                await App.Current.MainPage.DisplayAlert("RentIT", successo.ToString(), "ok");
                 await NavService.NavigateToMainPage();
             }
             else
@@ -197,8 +200,8 @@ namespace RentIT.ViewModels
         async Task ExecutePrenotaAnnuncioCommand()
         {
             IsBusy = true;
-
             await _annuncioService.prenotaAd(Annuncio.id);
+                
             StringBuilder successo = new StringBuilder();
             successo.Append("Annuncio prenotato con successo!");
             await App.Current.MainPage.DisplayAlert("RentIT", successo.ToString(), "ok");

@@ -54,7 +54,6 @@ namespace RentIT.ViewModels
         public async override Task Init()
         {
             Utente = await _userService.GetMyProfileAsync();
-            //TODO: da decommentare dopo fatto il collegamento al db
             Immagine = await getPropic();
         }
 
@@ -101,7 +100,7 @@ namespace RentIT.ViewModels
                     ?? (_annunciUtenteCommand = new Command(async () => await ExecuteAnnunciUtenteCommandAsync()));
             }
         }
-        //da implementare
+
         async Task ExecuteAnnunciUtenteCommandAsync()
         {
             await NavService.NavigateTo<AnnunciUtenteViewModel>();
@@ -125,6 +124,7 @@ namespace RentIT.ViewModels
             var response = await _authService.LogoutAsync();
             if (response)
             {
+                await App.Current.MainPage.DisplayAlert("RentIT", "A presto!", "Ok");
                 await NavService.NavigateToMainPage();
             }
             else
