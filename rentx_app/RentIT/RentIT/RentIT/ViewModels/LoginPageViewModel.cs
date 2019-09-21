@@ -13,7 +13,7 @@ namespace RentIT.ViewModels
 {
     public class LoginPageViewModel : BaseViewModel
     {
-        readonly IAuthenticationService _authService;
+        readonly AuthenticationService _authService;
         public LoginPageViewModel(INavService navService, AuthenticationService authService) : base(navService)
         {
             // TODO: Ancora non è ben chiaro cosa andrebbe costruito, 
@@ -136,7 +136,7 @@ namespace RentIT.ViewModels
 
                 Email = Email.Trim();
             
-            var authResponse = await _authService.ResetPassword(Email);
+            var authResponse = await _authService.resetPassword(Email);
             if (authResponse.hasSucceded)
             {
                 StringBuilder benvenuto = new StringBuilder();

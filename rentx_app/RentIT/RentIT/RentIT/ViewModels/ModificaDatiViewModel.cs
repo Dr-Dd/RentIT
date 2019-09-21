@@ -229,10 +229,5 @@ namespace RentIT.ViewModels
             IsBusy = false;
         }
 
-        public async override Task Init()
-        {
-            Utente = await _userService.GetMyProfileAsync();
-            Immagine = await getPropic();
-        }
     }
 }
