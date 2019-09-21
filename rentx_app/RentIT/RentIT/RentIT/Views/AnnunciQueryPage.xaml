@@ -13,6 +13,11 @@
     </ContentPage.Resources>
     <ContentPage.Content>
         <Grid>
+            <ActivityIndicator IsVisible="{Binding IsBusy}"
+                           IsRunning="{Binding IsBusy}"
+                           Color="#607D8B"
+                           >
+            </ActivityIndicator>
             <ListView x:Name="listaAnnunci"
                   ItemsSource="{Binding Annunci}"
                   RowHeight="150"

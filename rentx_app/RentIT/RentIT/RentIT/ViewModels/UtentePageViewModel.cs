@@ -53,8 +53,10 @@ namespace RentIT.ViewModels
 
         public async override Task Init()
         {
+            IsBusy = true;
             Utente = await _userService.GetMyProfileAsync();
             Immagine = await getPropic();
+            IsBusy = false;
         }
 
         //Metodo per prendere l'immagine profilo dal database

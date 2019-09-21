@@ -47,13 +47,14 @@ namespace RentIT.ViewModels
 
         public async override Task Init()
         {
+            IsBusy = true;
             AnnunciNonPrenotati.Clear();
             AnnunciNonPrenotati = await _annuncioService.GetMyNotBookedAds();
             await LoadImages(AnnunciNonPrenotati);
             AnnunciPrenotati.Clear();
             AnnunciPrenotati = await _annuncioService.GetMyBookedAds();
             await LoadImages(AnnunciPrenotati);
-            
+            IsBusy = false;
         }
 
         private async Task LoadImages(ObservableCollection<Ad> Annunci)

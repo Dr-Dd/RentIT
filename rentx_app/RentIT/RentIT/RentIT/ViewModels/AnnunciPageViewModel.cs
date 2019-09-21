@@ -59,10 +59,12 @@ namespace RentIT.ViewModels
         
         public async override Task Init(Utente utente)
         {
+            IsBusy = true;
             Utente = utente;
             Annunci = await _annuncioService.GetUserAds(Utente.id, false);
             await LoadImages();
             Titolo = String.Format("Annunci di {0} {1}", Utente.name, Utente.surname);
+            IsBusy = false;
         }
 
         private async Task LoadImages()

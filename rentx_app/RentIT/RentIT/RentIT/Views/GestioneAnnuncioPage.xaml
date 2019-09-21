@@ -6,7 +6,8 @@
              xmlns:local="clr-namespace:XamarinImageSlider"
              xmlns:controls="clr-namespace:Xamd.ImageCarousel.Forms.Plugin.Abstractions;assembly=Xamd.ImageCarousel.Forms.Plugin.Abstractions">
     <ContentPage.Content>
-        <StackLayout>
+        <Grid>
+            <StackLayout>
             <Grid Margin="20,10,20,20">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="30" />
@@ -20,7 +21,15 @@
                     <ColumnDefinition Width="38*" />
                     <ColumnDefinition Width="31*" />
                 </Grid.ColumnDefinitions>
-                <ContentView Grid.Row="1"
+                    <ActivityIndicator IsVisible="{Binding IsBusy}"
+                           IsRunning="{Binding IsBusy}"
+                           Color="#607D8B"
+                           Grid.Row="1"
+                           Grid.Column="0"
+                           Grid.ColumnSpan="3"
+                           >
+                    </ActivityIndicator>
+                    <ContentView Grid.Row="1"
                              Grid.Column="0"
                              Grid.ColumnSpan="3"
                              HorizontalOptions="Center"
@@ -138,7 +147,8 @@
                         VerticalOptions="CenterAndExpand"
                         BorderWidth="1"
                         BorderColor="#607D8B" />
-            </Grid>
-        </StackLayout>
+                </Grid>
+            </StackLayout>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

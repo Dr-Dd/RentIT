@@ -72,11 +72,13 @@ namespace RentIT.ViewModels
         
         public async override Task Init(SearchQuery query)
         {
+            IsBusy = true;
             Annunci.Clear();
             Query = query;
             NessunRisultato = false;
             await LoadEntries();
             MessaggioTitolo = String.Format("{0} a {1}", Query.oggetto, Query.citta);
+            IsBusy = false;
         }
 
         private async Task LoadEntries()

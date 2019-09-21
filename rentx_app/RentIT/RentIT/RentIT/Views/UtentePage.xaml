@@ -25,6 +25,14 @@
                     <ColumnDefinition Width="25*" />
                 </Grid.ColumnDefinitions>
 
+                <ActivityIndicator IsVisible="{Binding IsBusy}"
+                           IsRunning="{Binding IsBusy}"
+                           Color="#607D8B"
+                           Grid.Row="4"
+                           Grid.Column="0"
+                           Margin="60,40,80,40"
+                           >
+                </ActivityIndicator>
                 <controls:CircleImage x:Name="imgProfile"
                                   Grid.Row="0"
                                   Grid.RowSpan="2"

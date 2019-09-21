@@ -4,7 +4,12 @@
              x:Class="RentIT.Views.AnnunciAttivi"
              Title="ATTIVI">
     <ContentPage.Content>
-        <StackLayout>
+        <Grid>
+            <ActivityIndicator IsVisible="{Binding IsBusy}"
+                           IsRunning="{Binding IsBusy}"
+                           Color="#607D8B"
+                           >
+            </ActivityIndicator>
             <ListView x:Uid="listaAnnunci"
                 x:Name="listaAnnunci"
                       ItemsSource="{Binding AnnunciNonPrenotati}"
@@ -54,6 +59,6 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-        </StackLayout>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

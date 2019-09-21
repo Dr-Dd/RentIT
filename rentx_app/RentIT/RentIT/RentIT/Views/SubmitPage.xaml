@@ -88,6 +88,17 @@
                             BorderColor="#607D8B"
                             TextColor="#607D8B"
                             FontFamily="Quicksand-Bold.ttf#Quicksand-Bold" />
+                    <Grid Grid.Row="3">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50" />
+                            <RowDefinition Height="50" />
+                        </Grid.RowDefinitions>
+                        <ActivityIndicator IsVisible="{Binding IsBusy}"
+                                    IsRunning="{Binding IsBusy}"
+                                    Color="#607D8B"
+                                    Grid.Row="0">
+                        </ActivityIndicator>
+                    </Grid>
                 </Grid>
             </StackLayout>
         </ScrollView>
