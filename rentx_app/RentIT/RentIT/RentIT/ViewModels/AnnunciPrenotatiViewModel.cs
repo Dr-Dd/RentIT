@@ -69,6 +69,8 @@ namespace RentIT.ViewModels
             foreach (var annuncio in AnnunciPrenotati)
             {
                 annuncio.anteprimaImgXam = _fotoService.fromStringToImage(annuncio.anteprimaImg);
+                Console.WriteLine("[DEBUG-AnnunciAttivi] Annuncio nome: " + annuncio.nomeOggetto);
+                Console.WriteLine("[DEBUG-AnnunciAttivi] Annuncio descrizione: " + annuncio.descrizione);
             }
 
             IsBusy = false;

@@ -1,10 +1,13 @@
 ﻿
+using RentIT.Models.Annuncio;
 using RentIT.Models.Immagine;
 using RentIT.Models.User;
 using RentIT.Services;
+using RentIT.Services.Annuncio;
 using RentIT.Services.Authentication;
 using RentIT.Services.Foto;
 using RentIT.Services.User;
+using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
@@ -38,11 +41,13 @@ namespace RentIT.ViewModels
         readonly IAuthenticationService _authService;
         readonly IUserService _userService;
         readonly FotoService _fotoService;
-        public UtentePageViewModel(INavService navService, AuthenticationService authService, UserService userService, FotoService fotoService) : base(navService)
+        readonly AnnuncioService _annuncioService;
+        public UtentePageViewModel(INavService navService, AuthenticationService authService, UserService userService, FotoService fotoService, AnnuncioService annuncioService) : base(navService)
         {
             _authService = authService;
             _userService = userService;
             _fotoService = fotoService;
+            _annuncioService = annuncioService;
             Immagine = new Image();
         }
 
@@ -92,7 +97,8 @@ namespace RentIT.ViewModels
         //da implementare
         async Task ExecuteAnnunciUtenteCommandAsync()
         {
-            await NavService.NavigateTo<AnnunciUtenteViewModel>();
+            var annunciNonPrenotati = await _annuncioService.GetMyNotBookedAds();
+            await NavService.NavigateTo<AnnunciUtenteViewModel, ObservableCollection<Ad>>(annunciNonPrenotati);
         }
 
         //Comando per eseguire il log out
