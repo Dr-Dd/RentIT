@@ -50,6 +50,19 @@ namespace RentIT.Services.Authentication
             return authenticationInfo;
         }
 
+        public async Task<Response> resetPassword(string email)
+        {
+            var builder = new UriBuilder(Constants.ResetPwd());
+            string uri = builder.ToString();
+
+            var req = new DBmessages.Request
+            {
+                s = email
+            };
+
+            return await requestService.PostAsync<DBmessages.Request,Response>(uri,req);
+        }
+
 
         //metodo per effettuare il logout , viene cancellato l'utente salvato localmente 
         public async Task<bool> LogoutAsync()
@@ -77,7 +90,6 @@ namespace RentIT.Services.Authentication
         {
             return AppSettings.UserId;
         }
-
 
 
     }

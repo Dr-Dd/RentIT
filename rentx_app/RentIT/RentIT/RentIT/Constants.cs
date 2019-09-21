@@ -35,6 +35,11 @@ namespace RentIT
             return string.Format(Constants.defaultAuthenticationEndpoint, "logout");
         }
 
+        public static string ResetPwd()
+        {
+            return string.Format(Constants.defaultAuthenticationEndpoint, "resetPwd");
+        }
+
         public static string UserEndpointIscrizione()
         {
             
