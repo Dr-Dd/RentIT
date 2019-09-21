@@ -17,6 +17,9 @@ public class AnnuncioService {
 	@Autowired
 	AnnuncioRepository repo;
 	
+	@Autowired
+	ImageService imageService;
+	
 	@Transactional
 	public Annuncio salvaAnnuncio(Annuncio annuncio) {
 		return this.repo.save(annuncio);
@@ -39,6 +42,7 @@ public class AnnuncioService {
 	
 	@Transactional
 	public void delete(Annuncio a) {
+		this.imageService.cancellaImgPerIdAnn(a.getId());
 		this.repo.delete(a);
 	}
 	
@@ -91,5 +95,7 @@ public class AnnuncioService {
 		}
 		return l;
 	}
+	
+	
 }
 

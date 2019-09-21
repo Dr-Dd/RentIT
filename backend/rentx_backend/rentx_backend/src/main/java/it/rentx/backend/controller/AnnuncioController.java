@@ -63,7 +63,7 @@ public class AnnuncioController {
     	if(a.isBooked())
     		return ResponseEntity.ok().body(new Risposta("false", "l'annuncio è ancora prenotato"));
     	else {
-    		annuncioService.delete(a);
+    		this.annuncioService.delete(a);
 	    	return ResponseEntity.ok().body(new Risposta("true", "Annuncio eliminato correttamente."));
 	    	}
     }
@@ -144,22 +144,26 @@ public class AnnuncioController {
 		else return Collections.emptyList();
 	}
 	
-	@PutMapping("/prenota/{id}")
-	public void prenotaAnnuncio(@RequestHeader("Authorization") String token, @PathVariable("id") Long id) {
+	@GetMapping("/prenota/{id}")
+	public boolean prenotaAnnuncio(@RequestHeader("Authorization") String token, @PathVariable("id") Long id) {
 		Annuncio a= this.annuncioService.annuncioPerId(id);
 		if(a.getAffittuario().getId()==this.utenteService.getUtenteByEmail(this.utenteService.estrazioneEmailDaToken(token)).getId()) {
 			a.setBooked(true);
 			this.annuncioService.salvaAnnuncio(a);
+			return true;
 		}
+		return false;
 	}	
 	
-	@PutMapping("/libera/{id}")
-	public void liberaAnnuncio(@RequestHeader("Authorization") String token, @PathVariable("id") Long id) {
+	@GetMapping("/libera/{id}")
+	public boolean liberaAnnuncio(@RequestHeader("Authorization") String token, @PathVariable("id") Long id) {
 		Annuncio a= this.annuncioService.annuncioPerId(id);
 		if(a.getAffittuario().getId()==this.utenteService.getUtenteByEmail(this.utenteService.estrazioneEmailDaToken(token)).getId()) {
 			a.setBooked(false);
 			this.annuncioService.salvaAnnuncio(a);
+			return true;
 		}
+		return false;
 	}	
 	
 	@GetMapping("/isBooked/{id}")

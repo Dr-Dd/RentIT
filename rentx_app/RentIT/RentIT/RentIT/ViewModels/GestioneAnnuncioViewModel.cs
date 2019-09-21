@@ -222,7 +222,7 @@ namespace RentIT.ViewModels
         {
             IsBusy = true;
 
-            await _annuncioService.prenotaAd(Annuncio.id);
+            await _annuncioService.liberaAd(Annuncio.id);
             StringBuilder successo = new StringBuilder();
             successo.Append("Annuncio liberato con successo!");
             await App.Current.MainPage.DisplayAlert("RentIT", successo.ToString(), "ok");

@@ -136,7 +136,7 @@ namespace RentIT.Services.Annuncio
             var builder = new UriBuilder(String.Concat(baseUri, "/", idAnn));
             var uri = builder.ToString();
 
-            await requestService.PutAsync(uri, AppSettings.AccessToken);
+            await requestService.GetAsync<bool>(uri, AppSettings.AccessToken);
         }
 
         public async Task liberaAd(long idAnn)
@@ -145,7 +145,7 @@ namespace RentIT.Services.Annuncio
             var builder = new UriBuilder(String.Concat(baseUri, "/", idAnn));
             var uri = builder.ToString();
 
-            await requestService.PutAsync(uri, AppSettings.AccessToken);
+            await requestService.GetAsync<bool>(uri, AppSettings.AccessToken);
         }
 
         public async Task<bool> isAdBooked(long idAnn)
