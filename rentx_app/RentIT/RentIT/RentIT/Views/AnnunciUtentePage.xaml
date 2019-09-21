@@ -7,19 +7,8 @@
             Title="I miei annunci"
             BarTextColor="#455A64"
             BarBackgroundColor="#CFD8DC">
-    <local:AnnunciAttivi>
-    <!--
-        <local:AnnunciAttivi.BindingContext>
-            <viewModels:AnnunciAttiviViewModel/>
-        </local:AnnunciAttivi.BindingContext>
-    -->
-    </local:AnnunciAttivi>
-
-    <local:AnnunciPrenotati>
-    <!--
-        <local:AnnunciPrenotati.BindingContext>
-            <viewModels:AnnunciPrenotatiPageViewModel/>
-        </local:AnnunciPrenotati.BindingContext>       
-    -->
-    </local:AnnunciPrenotati>
+    <TabbedPage.Children>
+        <local:AnnunciAttivi />
+        <local:AnnunciPrenotati />
+    </TabbedPage.Children>
 </TabbedPage>

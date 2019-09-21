@@ -127,8 +127,6 @@ namespace RentIT.Services.Annuncio
             return GetUserAds(AppSettings.UserId,true);
         }
 
-        
-
         public async Task<Ad> GetSingoloAnnuncio(long idAnn)
         {
             var baseUri = Constants.AnnuncioPerId();
