@@ -12,4 +12,6 @@ import it.rentx.backend.models.Image;
 public interface ImageRepository extends CrudRepository<Image, Long>{
 	
 	public List<Image> findByAnnuncio_id(Long annuncio_id);
+	
+	public List<Image> deleteAllByAnnuncio_id(Long annuncio_id);
 }

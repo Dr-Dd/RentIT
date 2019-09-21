@@ -1,5 +1,7 @@
 package it.rentx.backend.service;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +11,7 @@ import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 
 import it.rentx.backend.config.SecurityConstants;
+import it.rentx.backend.models.Annuncio;
 import it.rentx.backend.models.Utente;
 import it.rentx.backend.models.frontendModel.UtenteModel;
 import it.rentx.backend.repository.UtenteRepository;
@@ -21,6 +24,9 @@ public class UtenteService {
 	 
 	 @Autowired
 	 private AnnuncioService annuncioService;
+	 
+	 @Autowired 
+	 private ImageService imageService;
 	
 	public String estrazioneEmailDaToken(String token) {
 		return JWT.require(Algorithm.HMAC512(SecurityConstants.SECRET.getBytes()))
@@ -72,10 +78,19 @@ public class UtenteService {
 			 return false;
 		 return true;
 	 }
+	 
+	 @Transactional
+	 public void eliminaImmaginiDiUser(Long id) {
+		 List<Annuncio> lista=this.annuncioService.annunciNotBookedPerUtente(id);
+		 for(Annuncio a: lista) {
+			 this.imageService.cancellaImgPerIdAnn(a.getId());
+		 }
+	 }
 	
 	 @Transactional
 	 public void eliminaMieiAnnunci(Long id) {
-		 this.annuncioService.cancellaTuttiPerId(id);
+		 this.eliminaImmaginiDiUser(id);
+		 this.annuncioService.cancellaTuttiPerIdUsr(id);
 	 }
 	
 }

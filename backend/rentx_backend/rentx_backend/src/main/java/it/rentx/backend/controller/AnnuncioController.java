@@ -22,6 +22,7 @@ import it.rentx.backend.models.SearchQuery;
 import it.rentx.backend.models.Utente;
 import it.rentx.backend.models.frontendModel.AnnuncioModel;
 import it.rentx.backend.models.frontendModel.ImageModel;
+import it.rentx.backend.models.frontendModel.Richiesta;
 import it.rentx.backend.models.frontendModel.Risposta;
 import it.rentx.backend.service.AnnuncioService;
 import it.rentx.backend.service.HibernateSearchService;
@@ -99,10 +100,10 @@ public class AnnuncioController {
 	}
 	
 	
-	@GetMapping("/annunci/{id}")
-	public List<AnnuncioModel> AnnunciUtente(@RequestHeader("Authorization") String token, @PathVariable("id") Long id) {
+	@PostMapping("/annunci/{id}")
+	public List<AnnuncioModel> AnnunciUtente(@RequestHeader("Authorization") String token, @PathVariable("id") Long id,@RequestBody Richiesta r) {
 		List<Annuncio> lista;
-		if(token!=null) {	
+		if(r.isB()) {	
 			if(id == this.utenteService.getUtenteByEmail(this.utenteService.estrazioneEmailDaToken(token)).getId()) {
 					lista=this.annuncioService.annunciBookedPerUtente(id);
 					return this.annuncioService.parseToAnnuncioList(lista);

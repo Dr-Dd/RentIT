@@ -33,7 +33,7 @@ public class AnnuncioService {
 	}
 	
 	@Transactional
-	public void cancellaTuttiPerId(Long id) {
+	public void cancellaTuttiPerIdUsr(Long id) {
 		this.repo.deleteAllByAffittuario_id(id);
 	}
 	

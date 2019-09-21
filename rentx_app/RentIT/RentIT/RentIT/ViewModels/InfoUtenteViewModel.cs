@@ -47,11 +47,13 @@ namespace RentIT.ViewModels
         readonly UserService _utenteService;
         readonly FotoService _fotoService;
         readonly IAnnuncioService _annuncioService;
+
         public InfoUtenteViewModel(INavService navService, AnnuncioService annuncioService, FotoService fotoService, UserService utenteService) : base(navService)
         {
             _annuncioService = annuncioService;
             _fotoService = fotoService;
             _utenteService = utenteService;
+
         }
 
         public async override Task Init(Utente utente)
@@ -63,7 +65,7 @@ namespace RentIT.ViewModels
         public async Task<Image> LoadUserPic(long id)
         {
             ImageModel imgModel = await _fotoService.GetUserImage(id);
-            if(imgModel != null)
+            if(imgModel.data != null)
             {
                 Image img = _fotoService.fromStringToImage(imgModel.data);
                 return img;

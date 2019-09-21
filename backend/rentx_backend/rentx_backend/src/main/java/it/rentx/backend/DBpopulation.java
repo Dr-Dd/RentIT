@@ -1,5 +1,5 @@
 package it.rentx.backend;
-
+/*
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +12,7 @@ import it.rentx.backend.models.Annuncio;
 import it.rentx.backend.models.Utente;
 import it.rentx.backend.repository.UtenteRepository;
 import it.rentx.backend.service.AnnuncioService;
-/*
+
 @Component
 
 public class DBpopulation implements ApplicationRunner {

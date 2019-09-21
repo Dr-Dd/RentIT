@@ -99,26 +99,20 @@ namespace RentIT.Services.Annuncio
             var builder = new UriBuilder(String.Concat(baseUri, "/", UserId));
             var uri = builder.ToString();
 
-            if (booked)
+            var rq = new DBmessages.Request
             {
-                return await requestService.GetAsync<ObservableCollection<Ad>>(uri, AppSettings.AccessToken);
-            }
-            //se voglio vedere quelli gia prenotati posso essere solo il possessore e nel backend dobbiamo fare il controllo che l'id corrisponda al token
-            else
-            {
-                return await requestService.GetAsync<ObservableCollection<Ad>>(uri);
-            }
+                b = booked,
+            };
 
-            
-          
-       
-        }
+            return await requestService.PostAsync<DBmessages.Request, ObservableCollection<Ad>>(uri, rq, AppSettings.AccessToken);
+
+         }
 
 
         //annunci non prenotati dell'user 
         public Task<ObservableCollection<Ad>> GetMyNotBookedAds()
         {
-            return GetUserAds(AppSettings.UserId,true); //da rimettere a false
+            return GetUserAds(AppSettings.UserId,false);
         }
 
         //annunci prenotati dell'user

@@ -15,36 +15,41 @@ import it.rentx.backend.repository.ImageRepository;
 
 @Service
 public class ImageService {
-	
+
 	@Autowired
-	 private ImageRepository imageRepo;
-	
+	private ImageRepository imageRepo;
+
 	@Transactional
-	 public Image inserisci(Image i) {
-		 return this.imageRepo.save(i);
-	 }
-	
+	public void cancellaImgPerIdAnn(Long id) {
+		this.imageRepo.deleteAllByAnnuncio_id(id);
+	}
+
+	@Transactional
+	public Image inserisci(Image i) {
+		return this.imageRepo.save(i);
+	}
+
 	@Transactional
 	public List<Image> getImagePerIdAnn(Long id){
 		return this.imageRepo.findByAnnuncio_id(id);
 	}
-	
+
 	@Transactional
 	public Image trovaImmagine(Long id) {
 		return this.imageRepo.findById(id).get();
 	}
-	
+
 	@Transactional
 	public boolean esiste(Long id) {
 		return this.imageRepo.existsById(id);
 	}
-	
+
 	@Transactional
 	public ImageModel parseToImage(Image i) {
 		ImageModel im=new ImageModel(i.getData(), i.getId());
 		return im;
 	}
-	
+
 	public List<ImageModel> parseToImageList(List<Image> lista){
 		List<ImageModel> l=new ArrayList<>();
 		for(Image i: lista) {
