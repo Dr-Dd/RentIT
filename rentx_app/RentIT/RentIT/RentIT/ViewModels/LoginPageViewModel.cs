@@ -111,5 +111,46 @@ namespace RentIT.ViewModels
         {
             await NavService.NavigateTo<SubmitPageViewModel>();
         }
+
+        //Comando di reset password
+        Command _resetPasswordCommand;
+        public Command ResetPasswordCommand
+        {
+            get
+            {
+                return _resetPasswordCommand
+                    ?? (_resetPasswordCommand = new Command(async () => await ExecuteResetPasswordCommand()));
+            }
+        }
+
+        async Task ExecuteResetPasswordCommand()
+        {
+            IsBusy = true;
+
+            if (string.IsNullOrWhiteSpace(Email)) {
+                StringBuilder benvenuto = new StringBuilder();
+                benvenuto.AppendLine("Inserisci la mail nel form qui sopra");
+                await App.Current.MainPage.DisplayAlert("RentIT", benvenuto.ToString(), "Ok");
+                return;
+            }
+
+                Email = Email.Trim();
+            
+            var authResponse = await _authService.ResetPassword(Email);
+            if (authResponse.hasSucceded)
+            {
+                StringBuilder benvenuto = new StringBuilder();
+                benvenuto.AppendLine("Ti abbiamo inviato la password sostituitiva.");
+                benvenuto.Append("Controlla la tua mail");
+                await App.Current.MainPage.DisplayAlert("RentIT", benvenuto.ToString(), "Ok");
+                await NavService.NavigateToMainPage();
+            }
+            else
+            {
+                await App.Current.MainPage.DisplayAlert("Errore", authResponse.responseMessage, "Ok");
+            }
+
+            IsBusy = false;
+        }
     }
 }

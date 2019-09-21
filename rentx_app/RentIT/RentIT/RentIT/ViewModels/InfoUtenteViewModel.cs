@@ -71,10 +71,11 @@ namespace RentIT.ViewModels
 
         public async override Task Init(Utente utente)
         {
+            IsBusy = true;
             Utente = utente;
             Immagine = await LoadUserPic(utente.id);
             NomeUtente = String.Format("{0} {1}", Utente.name, Utente.surname);
-
+            IsBusy = false;
         }
 
         public async Task<Image> LoadUserPic(long id)

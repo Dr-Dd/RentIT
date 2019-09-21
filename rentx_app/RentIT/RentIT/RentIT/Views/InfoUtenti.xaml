@@ -5,39 +5,55 @@
              Title="Informazioni utente"
              x:Class="RentIT.Views.InfoUtenti">
     <ContentPage.Content>
-        <Grid BackgroundColor="WhiteSmoke"
+        <Grid>
+            <ActivityIndicator IsVisible="{Binding IsBusy}"
+                           IsRunning="{Binding IsBusy}"
+                           Color="#607D8B"
+                           >
+            </ActivityIndicator>
+            <Grid BackgroundColor="WhiteSmoke"
               VerticalOptions="FillAndExpand"
               HorizontalOptions="FillAndExpand">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*" />
-                <RowDefinition Height="*" />
-                <RowDefinition Height="0.7*" />
-                <RowDefinition Height="0.7*" />
-                <RowDefinition Height="0.7*" />
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="50*" />
-                <ColumnDefinition Width="25*" />
-                <ColumnDefinition Width="25*" />
-            </Grid.ColumnDefinitions>
-            <control:CircleImage x:Name="imgProfile"
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="0.7*" />
+                    <RowDefinition Height="0.7*" />
+                    <RowDefinition Height="0.7*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="50*" />
+                    <ColumnDefinition Width="25*" />
+                    <ColumnDefinition Width="25*" />
+                </Grid.ColumnDefinitions>
+                <control:CircleImage x:Name="imgProfile"
                                  Grid.Row="0"
                                  Grid.RowSpan="2"
                                  Grid.Column="0"
                                  Source="{Binding Immagine.Source}"
                                  Aspect="AspectFit"
                                  Margin="30,10,20,10" />
-            <Label Grid.Row="0"
+                <Label Grid.Row="0"
                    Grid.Column="1"
                    Grid.ColumnSpan="2"
-                   Text="{Binding NomeUtente}"
+                   Text="{Binding Utente.name}"
                    FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
                    HorizontalOptions="CenterAndExpand"
                    VerticalOptions="EndAndExpand"
                    LineBreakMode="MiddleTruncation"
                    TextColor="#607D8B"
                    FontSize="Large" />
-            <Label Grid.Row="2"
+                <Label Grid.Row="1"
+                   Grid.Column="1"
+                   Grid.ColumnSpan="2"
+                   Text="{Binding Utente.surname}"
+                   FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
+                   HorizontalOptions="CenterAndExpand"
+                   VerticalOptions="StartAndExpand"
+                   LineBreakMode="MiddleTruncation"
+                   TextColor="#607D8B"
+                   FontSize="Large"/>
+                <Label Grid.Row="2"
                    Grid.Column="0"
                    Grid.ColumnSpan="3"
                    Text="{Binding Utente.email}"
@@ -46,7 +62,7 @@
                    TextColor="#607D8B"
                    FontSize="Large"
                    Margin="25,30,25,30" />
-            <Label Grid.Row="3"
+                <Label Grid.Row="3"
                    Grid.Column="0"
                    Grid.ColumnSpan="3"
                    Text="{Binding Utente.citta}"
@@ -55,7 +71,7 @@
                    TextColor="#607D8B"
                    Margin="25,30,25,30"
                    FontSize="Large" />
-            <Button Grid.Row="4"
+                <Button Grid.Row="4"
                     Grid.Column="0"
                     Grid.ColumnSpan="3"
                     CornerRadius="20"
@@ -67,6 +83,7 @@
                     Text="VEDI ANNUNCI"
                     Margin="25,30,25,30"
                     Command="{Binding VediAnnunciUtenteCommand}" />
+            </Grid>
         </Grid>
     </ContentPage.Content>
 </ContentPage>

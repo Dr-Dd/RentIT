@@ -10,39 +10,45 @@
         </converter:StringToImageConverter>
     </ContentPage.Resources>
 <ContentPage.Content>
-        <ListView x:Name="listaAnnunci"
+        <Grid>
+            <ActivityIndicator IsVisible="{Binding IsBusy}"
+                           IsRunning="{Binding IsBusy}"
+                           Color="#607D8B"
+                           >
+            </ActivityIndicator>
+            <ListView x:Name="listaAnnunci"
                   ItemsSource="{Binding Annunci}"
                   RowHeight="150"
                   ItemTapped="Annuncio_ItemTapped"
                   CachingStrategy="RecycleElement">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="*" />
-                                <RowDefinition Height="2*" />
-                                <RowDefinition Height="*" />
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="*" />
-                            </Grid.ColumnDefinitions>
-                            <Image x:Name="imgCopertina"
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="2*" />
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Image x:Name="imgCopertina"
                                    Grid.Row="0"
                                    Grid.RowSpan="3"
                                    Grid.Column="0"
                                    Source="{Binding anteprimaImgXam.Source}"
                                    />
-                            <Label Grid.Row="0"
+                                <Label Grid.Row="0"
                                    Grid.Column="1"
                                    Text="{Binding nomeOggetto}"
                                    VerticalTextAlignment="End"
                                    FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
                                    FontSize="Medium"
                                    TextColor="#607D8B" />
-                            <Label Grid.Row="0"
+                                <Label Grid.Row="0"
                                    Grid.Column="2"
                                    Text="{Binding data, StringFormat='{0:dd/MM/yyyy}'}"
                                    HorizontalTextAlignment="End"
@@ -50,19 +56,19 @@
                                    FontFamily="Quicksand-Regular.ttf#Quicksand-Medium"
                                    TextColor="#607D8B"
                                    Margin="0,0,20,0" />
-                            <Label Text="{Binding descrizione}"
+                                <Label Text="{Binding descrizione}"
                                    Grid.Row="1"
                                    Grid.Column="1"
                                    Grid.ColumnSpan="2"
                                    FontFamily="Quicksand-Light.ttf#Quicksand-Light"
                                    TextColor="#607D8B" />
-                            <Label Grid.Row="2"
+                                <Label Grid.Row="2"
                                    Grid.Column="1"
                                    Text="{Binding posizione}"
                                    VerticalTextAlignment="Center"
                                    TextColor="#607D8B"
                                    FontFamily="Quicksand-Medium.ttf#Quicksand-Medium" />
-                            <Label Grid.Row="2"
+                                <Label Grid.Row="2"
                                    Grid.Column="2"
                                    Text="{Binding prezzo, StringFormat='{0:F0}€'}"
                                    HorizontalTextAlignment="End"
@@ -70,11 +76,12 @@
                                    FontFamily="Quicksand-Medium.ttf#Quicksand-Medium"
                                    TextColor="#607D8B"
                                    Margin="0,0,20,0" />
-                        </Grid>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>
     

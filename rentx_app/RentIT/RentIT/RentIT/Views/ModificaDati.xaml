@@ -134,6 +134,18 @@
                             BackgroundColor="WhiteSmoke"
                             VerticalOptions="StartAndExpand"
                             Command="{Binding EliminaCommand}" />
+                    <Grid Grid.Row="3"
+                           Grid.ColumnSpan="2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50" />
+                            <RowDefinition Height="50" />
+                        </Grid.RowDefinitions>
+                        <ActivityIndicator IsVisible="{Binding IsBusy}"
+                                    IsRunning="{Binding IsBusy}"
+                                    Color="#607D8B"
+                                    Grid.Row="0">
+                        </ActivityIndicator>
+                    </Grid>
                 </Grid>
             </StackLayout>
         </ScrollView>

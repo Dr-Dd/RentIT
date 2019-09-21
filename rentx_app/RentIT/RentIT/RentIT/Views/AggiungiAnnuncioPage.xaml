@@ -98,6 +98,11 @@
                     Margin="70,0,70,0"
                     BackgroundColor="WhiteSmoke"
                     Command="{Binding AggiungiAnnuncioCommand}" />
+            <ActivityIndicator IsVisible="{Binding IsBusy}"
+                           IsRunning="{Binding IsBusy}"
+                           Color="#607D8B"
+                           >
+            </ActivityIndicator>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

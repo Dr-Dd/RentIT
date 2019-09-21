@@ -83,6 +83,7 @@ namespace RentIT.ViewModels
 
         public async override Task Init(Ad annuncio)
         {
+            IsBusy = true;
             Annuncio = annuncio;
 
             Immagini = await LoadAdImages();
@@ -90,6 +91,7 @@ namespace RentIT.ViewModels
             // setto lo stato di prenotazione dell'annuncio
             IsPrenotato = await _annuncioService.isAdBooked(Annuncio.id);
             IsNotPrenotato = !IsPrenotato;
+            IsBusy = false;
         }
 
         public async Task<List<Image>> LoadAdImages()
@@ -119,9 +121,7 @@ namespace RentIT.ViewModels
         }
 
         async Task ExecuteEliminaAnnuncioCommand()
-        {
-            IsBusy = true;
-            
+        {            
             var response = await _annuncioService.DeleteAdAsync(Annuncio.id);
             if (response.hasSucceded)
             {
@@ -134,8 +134,6 @@ namespace RentIT.ViewModels
             {
                 await App.Current.MainPage.DisplayAlert("Errore", response.responseMessage, "Ok");
             }
-
-            IsBusy = false;
         }
 
         bool EmptyFields()
@@ -199,15 +197,12 @@ namespace RentIT.ViewModels
 
         async Task ExecutePrenotaAnnuncioCommand()
         {
-            IsBusy = true;
             await _annuncioService.prenotaAd(Annuncio.id);
                 
             StringBuilder successo = new StringBuilder();
             successo.Append("Annuncio prenotato con successo!");
             await App.Current.MainPage.DisplayAlert("RentIT", successo.ToString(), "ok");
             await NavService.NavigateToMainPage();
-
-            IsBusy = false;
         }
 
         /*Comando per liberare l'annuncio prenotato*/
@@ -223,15 +218,11 @@ namespace RentIT.ViewModels
 
         async Task ExecuteLiberaAnnuncioCommand()
         {
-            IsBusy = true;
-
             await _annuncioService.liberaAd(Annuncio.id);
             StringBuilder successo = new StringBuilder();
             successo.Append("Annuncio liberato con successo!");
             await App.Current.MainPage.DisplayAlert("RentIT", successo.ToString(), "ok");
             await NavService.NavigateToMainPage();
-
-            IsBusy = false;
         }
     }
 }

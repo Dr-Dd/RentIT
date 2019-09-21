@@ -76,6 +76,22 @@
                         Font="micro"
                         FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
                         BackgroundColor="Transparent" />
+                <Button Text="Reset Password"
+                        TextColor="#607D8B"
+                        Grid.Row="4"
+                        Margin="0,0,0,10"
+                        Grid.Column="2"
+                        VerticalOptions="StartAndExpand"
+                        Command="{Binding ResetPasswordCommand}"
+                        Font="micro"
+                        FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
+                        BackgroundColor="Transparent" />
+                <ActivityIndicator IsVisible="{Binding IsBusy}"
+                           IsRunning="{Binding IsBusy}"
+                           Color="#607D8B"
+                           Grid.Row="4"
+                           >
+                </ActivityIndicator>
             </Grid>
         </ScrollView>
     </ContentPage.Content>

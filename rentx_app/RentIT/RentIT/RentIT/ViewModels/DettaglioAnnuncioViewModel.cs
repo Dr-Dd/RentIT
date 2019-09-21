@@ -91,12 +91,13 @@ namespace RentIT.ViewModels
 
         public async override Task Init(Ad annuncio)
         {
+            IsBusy = true;
             Annuncio = annuncio;
             Immagini = await LoadAdImages();
             Affittuario = await _userService.GetUserByIdAsync(Annuncio.AffittuarioId);
             ImmagineUtente = await getPropic();
             NomeAffittuario = String.Format("{0} {1}", Affittuario.name, Affittuario.surname);
-
+            IsBusy = false;
         }
 
         public async Task<List<Image>> LoadAdImages()
