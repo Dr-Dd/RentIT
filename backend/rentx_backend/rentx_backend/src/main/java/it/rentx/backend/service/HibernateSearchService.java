@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.NoResultException;
+import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 
 import org.apache.lucene.search.Query;
@@ -19,8 +20,9 @@ import it.rentx.backend.models.Annuncio;
 @Service
 public class HibernateSearchService {
 	
+	@PersistenceContext
 	private final EntityManager centityManager;
-	
+
 	@Autowired
 	public HibernateSearchService(final EntityManagerFactory entityManager) {
 		super();
@@ -40,7 +42,9 @@ public class HibernateSearchService {
 	@Transactional
 	public List<Annuncio> fuzzySearch(String searchTerm) {
 		FullTextEntityManager fullTextEntityManager = Search.getFullTextEntityManager(centityManager);
+		
 		QueryBuilder qb = fullTextEntityManager.getSearchFactory().buildQueryBuilder().forEntity(Annuncio.class).get();
+		
 		Query luceneQuery = qb.keyword().fuzzy().withEditDistanceUpTo(1).withPrefixLength(1).onFields("nomeOggetto", "descrizione").matching(searchTerm).createQuery();
 		
 		javax.persistence.Query jpaQuery = fullTextEntityManager.createFullTextQuery(luceneQuery, Annuncio.class);
@@ -53,13 +57,8 @@ public class HibernateSearchService {
 		} catch (NoResultException nre) {
 			nre.printStackTrace();
 		}
-		// Per testing, togliere il commento se necessario
-		/*for(Annuncio a : listaAnnuncio) {
-			System.out.println("[DEBUG] Trovato l'elemento: ");
-			System.out.println("[DEBUG] \t" + a.getNomeOggetto());
-			System.out.println("[DEBUG] con descrizione: " );
-			System.out.println("[DEBUG] \t" + a.getDescrizione());
-		}*/
+		
+		
 		return listaAnnuncio;
 	}
 }
