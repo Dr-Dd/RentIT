@@ -7,10 +7,11 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using RentIT.Services.Foto;
 using System;
+using RentIT.Models.User;
 
 namespace RentIT.ViewModels
 {
-    public class AnnunciUtenteViewModel : BaseViewModel<ObservableCollection<Ad>>
+    public class AnnunciUtenteViewModel : BaseViewModel
     {
         ObservableCollection<Ad> _annunciNonPrenotati;
         public ObservableCollection<Ad> AnnunciNonPrenotati
@@ -44,6 +45,25 @@ namespace RentIT.ViewModels
             AnnunciNonPrenotati = new ObservableCollection<Ad>();
         }
 
+        public async override Task Init()
+        {
+            AnnunciNonPrenotati.Clear();
+            AnnunciNonPrenotati = await _annuncioService.GetMyNotBookedAds();
+            await LoadImages(AnnunciNonPrenotati);
+            AnnunciPrenotati.Clear();
+            AnnunciPrenotati = await _annuncioService.GetMyBookedAds();
+            await LoadImages(AnnunciPrenotati);
+            
+        }
+
+        private async Task LoadImages(ObservableCollection<Ad> Annunci)
+        {
+            foreach (var annuncio in Annunci)
+            {
+                annuncio.anteprimaImgXam = _fotoService.fromStringToImage(annuncio.anteprimaImg);
+            }
+        }
+
         Command<Ad> _viewGestioneAnnuncio;
         public Command<Ad> ViewGestioneAnnuncio
         {
@@ -57,42 +77,6 @@ namespace RentIT.ViewModels
         async Task ExecuteViewGestioneAnnuncio(Ad annuncio)
         {
             await NavService.NavigateTo<GestioneAnnuncioViewModel, Ad>(annuncio);
-        }
-
-        public async override Task Init(ObservableCollection<Ad> annunciNonPrenotati)
-        {
-            AnnunciNonPrenotati = annunciNonPrenotati;
-
-            await LoadEntries();
-
-            foreach (var annuncio in AnnunciNonPrenotati)
-            {
-                annuncio.anteprimaImgXam = _fotoService.fromStringToImage(annuncio.anteprimaImg);
-                Console.WriteLine("[DEBUG-AnnunciUtente] Annuncio nome: " + annuncio.nomeOggetto);
-                Console.WriteLine("[DEBUG-AnnunciUtente] Annuncio descrizione: " + annuncio.descrizione);
-            }
-
-            foreach (var annuncio in AnnunciPrenotati)
-            {
-                annuncio.anteprimaImgXam = _fotoService.fromStringToImage(annuncio.anteprimaImg);
-                Console.WriteLine("[DEBUG-AnnunciUtente] Annuncio nome: " + annuncio.nomeOggetto);
-                Console.WriteLine("[DEBUG-AnnunciUtente] Annuncio descrizione: " + annuncio.descrizione);
-            }
-        }
-
-        async Task LoadEntries()
-        {
-            if (IsBusy)
-            {
-                return;
-            }
-
-            IsBusy = true;
-
-            AnnunciPrenotati.Clear();
-            AnnunciPrenotati =  await _annuncioService.GetMyBookedAds();
-
-            IsBusy = false;
         }
     }
 }

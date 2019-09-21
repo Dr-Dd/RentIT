@@ -104,8 +104,7 @@ namespace RentIT.ViewModels
         //da implementare
         async Task ExecuteAnnunciUtenteCommandAsync()
         {
-            var annunciNonPrenotati = await _annuncioService.GetMyNotBookedAds();
-            await NavService.NavigateTo<AnnunciUtenteViewModel, ObservableCollection<Ad>>(annunciNonPrenotati);
+            await NavService.NavigateTo<AnnunciUtenteViewModel>();
         }
 
         //Comando per eseguire il log out
@@ -126,9 +125,7 @@ namespace RentIT.ViewModels
             var response = await _authService.LogoutAsync();
             if (response)
             {
-                // Dovrebbe essere più corretta la soluzione sotto, testiamola
-                //await NavService.NavigateToMainPage();
-                await NavService.NavigateTo<SearchPageViewModel>();
+                await NavService.NavigateToMainPage();
             }
             else
             {
