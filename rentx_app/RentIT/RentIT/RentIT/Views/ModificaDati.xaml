@@ -81,15 +81,22 @@
                                    FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
                                    HorizontalOptions="FillAndExpand"
                                    IsPassword="True" />
-                            <Entry Grid.Row="4"
-                                   Placeholder="Città"
-                                   Grid.Column="0"
-                                   Grid.ColumnSpan="2"
-                                   x:Name="nuovoIndirizzo"
-                                   Text="{Binding Utente.citta}"
-                                   TextColor="#607D8B"
-                                   PlaceholderColor="#BDBDBD"
-                                   FontFamily="Quicksand-Bold.ttf#Quicksand-Bold" />
+                            <StackLayout Orientation="Horizontal"
+                                    Grid.Row="4"
+                                    Grid.Column="0"
+                                    Grid.ColumnSpan="2"
+                                    HorizontalOptions="FillAndExpand">
+                                <Label Text="CITTÀ" 
+                                       VerticalOptions="Center"/>
+                                <Picker Title="{Binding Utente.citta}"
+                                    SelectedItem="{Binding Utente.citta}"
+                                    FontFamily="Quicksand-Light.ttf#Quicksand-Light"
+                                    x:Name="Utente_citta"
+                                    x:FieldModifier="public"
+                                    ItemsSource="{Binding ListaCitta}"
+                                    HorizontalOptions="FillAndExpand"
+                                    />
+                            </StackLayout>
                             <Entry Grid.Row="5"
                                    Grid.Column="0"
                                    Grid.ColumnSpan="2"

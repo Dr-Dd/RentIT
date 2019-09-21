@@ -45,11 +45,17 @@
                                FontFamily="Quicksand-Light.ttf#Quicksand-Light"
                                PlaceholderColor="#BDBDBD" 
                                Text="{Binding Oggetto}"/>
-                    <SearchBar x:Name="citySearchBar"
-                               Placeholder="Città"
-                               FontFamily="Quicksand-Light.ttf#Quicksand-Light"
-                               PlaceholderColor="#BDBDBD" 
-                               Text="{Binding Citta}"/>
+                    <StackLayout Orientation="Horizontal"
+                                 HorizontalOptions="FillAndExpand">
+                        <Label Text="CITTÀ" 
+                               TextColor="#607D8B" 
+                               VerticalOptions="Center"/>
+                        <Picker Title="{Binding Citta}"
+                            SelectedItem="{Binding Citta}"
+                            FontFamily="Quicksand-Light.ttf#Quicksand-Light"
+                            ItemsSource="{Binding ListaCitta}" 
+                                HorizontalOptions="FillAndExpand"/>
+                    </StackLayout>
                     <Button Text="CERCA"
                             CornerRadius="25"
                             TextColor="#607D8B"

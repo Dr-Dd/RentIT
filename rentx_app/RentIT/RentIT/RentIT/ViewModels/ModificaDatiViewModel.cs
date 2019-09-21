@@ -7,11 +7,24 @@ using RentIT.Models.User;
 using RentIT.Services.Foto;
 using RentIT.Models.Immagine;
 using System.Text;
+using System.Collections.Generic;
 
 namespace RentIT.ViewModels
 {
     public class ModificaDatiViewModel : BaseViewModel
 	{
+
+        List<string> _listaCitta;
+        public List<string> ListaCitta
+        {
+            get { return _listaCitta; }
+            set
+            {
+                _listaCitta = value;
+                OnPropertyChanged();
+            }
+        }
+
         Utente _utente;
         public Utente Utente
         {
@@ -64,12 +77,7 @@ namespace RentIT.ViewModels
             _userService = userService;
             _fotoService = fotoService;
             Immagine = new Image();
-        }
-
-        public override async Task Init()
-        {
-            Utente = await _userService.GetMyProfileAsync();
-            Immagine = await getPropic();
+            ListaCitta = MiscCostants.tutteCitta;
         }
 
         //Metodo per prendere l'immagine profilo dal database
@@ -212,6 +220,12 @@ namespace RentIT.ViewModels
                 await App.Current.MainPage.DisplayAlert("Errore", response.responseMessage, "Ok");
             }
             IsBusy = false;
+        }
+
+        public async override Task Init()
+        {
+            Utente = await _userService.GetMyProfileAsync();
+            Immagine = await getPropic();
         }
     }
 }

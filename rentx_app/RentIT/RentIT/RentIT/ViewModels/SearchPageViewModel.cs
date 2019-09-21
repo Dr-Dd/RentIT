@@ -15,6 +15,18 @@ namespace RentIT.ViewModels
 {
     public class SearchPageViewModel : BaseViewModel
     {
+
+        List<string> _listaCitta;
+        public List<string> ListaCitta
+        {
+            get { return _listaCitta; }
+            set
+            {
+                _listaCitta = value;
+                OnPropertyChanged();
+            }
+        }
+
         string _oggetto;
         public string Oggetto
         {
@@ -41,11 +53,12 @@ namespace RentIT.ViewModels
         public SearchPageViewModel(INavService navService, AnnuncioService annuncioService) : base(navService)
         {
             _annuncioService = annuncioService;
+            ListaCitta = MiscCostants.tutteCitta;
         }
 
-        public override async Task Init()
+        /*public override async Task Init()
         {
-        }
+        }*/
 
         bool IsLogged()
         {
@@ -191,6 +204,10 @@ namespace RentIT.ViewModels
                 return;
             }
             await NavService.NavigateTo<AggiungiAnnuncioViewModel>();
+        }
+
+        public async override Task Init()
+        {
         }
     }
 }
