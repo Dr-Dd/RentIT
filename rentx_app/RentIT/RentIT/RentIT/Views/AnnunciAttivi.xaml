@@ -17,6 +17,14 @@
                            Grid.Row="1"
                            >
             </ActivityIndicator>
+            <Label Text="Al momento non hai annunci attivi, prova ad aggiungerne uno!"
+                   IsVisible="{Binding HasNotAnnunciNonPrenotatiVar}"
+                   FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
+                   TextColor="#607D8B"
+                   Margin="7,7,7,0"
+                   FontSize="18"
+                   HorizontalTextAlignment="Center"
+                   Grid.Row="0"/>
             <ListView x:Uid="listaAnnunci"
                 x:Name="listaAnnunci"
                       ItemsSource="{Binding AnnunciNonPrenotati}"

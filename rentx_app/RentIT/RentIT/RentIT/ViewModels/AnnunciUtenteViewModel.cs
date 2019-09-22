@@ -24,6 +24,28 @@ namespace RentIT.ViewModels
             }
         }
 
+        bool _hasAnnunciNonPrenotatiVar;
+        public bool HasNotAnnunciNonPrenotatiVar
+        {
+            get { return _hasAnnunciNonPrenotatiVar; }
+            set
+            {
+                _hasAnnunciNonPrenotatiVar = value;
+                OnPropertyChanged();
+            }
+        }
+
+        bool _hasAnnunciPrenotatiVar;
+        public bool HasNotAnnunciPrenotatiVar
+        {
+            get { return _hasAnnunciPrenotatiVar; }
+            set
+            {
+                _hasAnnunciPrenotatiVar = value;
+                OnPropertyChanged();
+            }
+        }
+
         ObservableCollection<Ad> _annunciPrenotati;
         public ObservableCollection<Ad> AnnunciPrenotati
         {
@@ -34,7 +56,7 @@ namespace RentIT.ViewModels
                 OnPropertyChanged();
             }
         }
-
+        
         readonly FotoService _fotoService;
         readonly IAnnuncioService _annuncioService;
         public AnnunciUtenteViewModel(INavService navService, AnnuncioService annuncioService, FotoService fotoService) : base(navService)
@@ -48,12 +70,29 @@ namespace RentIT.ViewModels
         public async override Task Init()
         {
             IsBusy = true;
+
             AnnunciNonPrenotati.Clear();
             AnnunciNonPrenotati = await _annuncioService.GetMyNotBookedAds();
+            if(AnnunciNonPrenotati.Count == 0)
+            {
+                HasNotAnnunciNonPrenotatiVar = true;
+            } else
+            {
+                HasNotAnnunciNonPrenotatiVar = false;
+            }
             await LoadImages(AnnunciNonPrenotati);
+
             AnnunciPrenotati.Clear();
             AnnunciPrenotati = await _annuncioService.GetMyBookedAds();
+            if(AnnunciPrenotati.Count == 0)
+            {
+                HasNotAnnunciPrenotatiVar = true;
+            } else
+            {
+                HasNotAnnunciPrenotatiVar = false;
+            }
             await LoadImages(AnnunciPrenotati);
+
             IsBusy = false;
         }
 

@@ -16,6 +16,14 @@
                            Grid.Row="1"
                            >
         </ActivityIndicator>
+        <Label Text="Al momento non hai annunci affittati."
+               IsVisible="{Binding HasNotAnnunciPrenotatiVar}"
+               FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
+               TextColor="#607D8B" 
+               FontSize="18"
+               Margin="7,7,7,0"
+               HorizontalTextAlignment="Center" 
+               Grid.Row="0"/>
         <ListView x:Name="listaAnnunciPrenotati"
 			  ItemsSource="{Binding AnnunciPrenotati}"
 			  RowHeight="150"
