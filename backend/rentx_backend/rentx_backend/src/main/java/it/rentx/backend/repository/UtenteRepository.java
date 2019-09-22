@@ -9,4 +9,6 @@ import it.rentx.backend.models.Utente;
 public interface UtenteRepository extends CrudRepository<Utente, Long>{
 	
 	public Utente findByEmail(String email);
+	
+	public boolean existsByEmail(String email);
 }

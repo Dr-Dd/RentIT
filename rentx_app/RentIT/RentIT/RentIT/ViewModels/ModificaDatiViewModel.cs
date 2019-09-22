@@ -181,6 +181,7 @@ namespace RentIT.ViewModels
                 if (!PasswordsAreTheSame())
                 {
                     await App.Current.MainPage.DisplayAlert("Errore", "Le due password non corrispondono", "Ok");
+                    IsBusy = false;
                     return;
                 }
                 Utente.password = Password.Trim();
@@ -217,6 +218,7 @@ namespace RentIT.ViewModels
             var response = await _userService.DeleteAccount();
             if(response.hasSucceded)
             {
+                IsBusy = false;
                 StringBuilder successo = new StringBuilder();
                 successo.AppendLine("Ci dispiace che tu te ne vada!");
                 successo.Append("I tuoi dati sono stati eliminati correttamente");

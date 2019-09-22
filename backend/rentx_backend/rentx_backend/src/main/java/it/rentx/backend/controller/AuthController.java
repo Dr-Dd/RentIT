@@ -27,10 +27,15 @@ public class AuthController {
 
 	@Autowired
 	public JavaMailSender emailSender;
+	
+	@Autowired 
+	public SimpleMailMessage smm;
 
 	@Autowired
 	public AuthService authService;
+	
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
+	
 
 	public AuthController(BCryptPasswordEncoder bCryptPasswordEncoder) {
 		this.bCryptPasswordEncoder = bCryptPasswordEncoder;
@@ -43,12 +48,11 @@ public class AuthController {
 
 	@PostMapping("/resetPwd")
 	public ResponseEntity<Risposta> resetPassword(@RequestBody Richiesta request) {
-		Utente u = this.utenteService.getUtenteByEmail(request.getS());
-		System.out.println(u);
-		if (this.utenteService.esiste(u.getId())) {
+		if (this.utenteService.esisteByEmail(request.getS())) {
+			//prendo l'utente
+			Utente u = this.utenteService.getUtenteByEmail(request.getS());
 			// Genero la password
 			String password_provvisoria = this.authService.randomPassword(10);
-			System.out.println(password_provvisoria);
 			// Setto l'email provvisoria all'utente
 			u.setPassword(bCryptPasswordEncoder.encode(password_provvisoria));
 			// Persistenza
@@ -56,9 +60,11 @@ public class AuthController {
 
 			// Invio per email la password provvisoria
 			SimpleMailMessage message = new SimpleMailMessage();
+			message.setFrom("RentIT");
 			message.setTo(u.getEmail());
-			message.setSubject("Password provvisoria per accedere a RentIT");
-			message.setText("La tua password provvisoria è: " + password_provvisoria+ ". Ricorda di cambiarla appena accedi al tuo profilo.");
+			message.setSubject("RentIT:modifche al tuo account");
+			String msg=String.format(smm.getText(),u.getName(),password_provvisoria);
+			message.setText(msg);
 			emailSender.send(message);
 			return ResponseEntity.ok().body(new Risposta("true", "Password provvisoria inviata alla tua email."));
 			

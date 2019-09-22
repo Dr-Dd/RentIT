@@ -41,6 +41,11 @@ public class UtenteService {
 	 }
 	 
 	 @Transactional
+	 public boolean esisteByEmail(String email) {
+		 return this.utenteRepo.existsByEmail(email);
+	 }
+	 
+	 @Transactional
 	 public Utente inserisci(Utente u) {
 		 return this.utenteRepo.save(u);
 	 }

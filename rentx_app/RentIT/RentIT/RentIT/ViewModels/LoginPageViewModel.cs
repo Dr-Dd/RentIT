@@ -131,6 +131,7 @@ namespace RentIT.ViewModels
                 StringBuilder benvenuto = new StringBuilder();
                 benvenuto.AppendLine("Inserisci la mail nel form qui sopra");
                 await App.Current.MainPage.DisplayAlert("RentIT", benvenuto.ToString(), "Ok");
+                IsBusy = false;
                 return;
             }
 
