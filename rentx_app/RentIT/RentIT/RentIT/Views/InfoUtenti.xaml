@@ -6,11 +6,6 @@
              x:Class="RentIT.Views.InfoUtenti">
     <ContentPage.Content>
         <Grid>
-            <ActivityIndicator IsVisible="{Binding IsBusy}"
-                           IsRunning="{Binding IsBusy}"
-                           Color="#607D8B"
-                           >
-            </ActivityIndicator>
             <Grid BackgroundColor="WhiteSmoke"
               VerticalOptions="FillAndExpand"
               HorizontalOptions="FillAndExpand">

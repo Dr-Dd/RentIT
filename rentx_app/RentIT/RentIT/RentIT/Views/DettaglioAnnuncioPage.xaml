@@ -7,19 +7,6 @@
              x:Class="RentIT.Views.DettaglioAnnuncioPage">
     <ContentPage.Content>
         <Grid>
-            <!--<ActivityIndicator IsVisible="{Binding IsBusy}"
-                           IsRunning="{Binding IsBusy}"
-                           Color="#607D8B"
-                           >
-            </ActivityIndicator>-->
-            <ActivityIndicator IsVisible="{Binding IsBusy}"
-                           IsRunning="{Binding IsBusy}"
-                           Color="#607D8B"
-                           Grid.Row="0"
-                           Grid.Column="0"
-                           Grid.ColumnSpan="3"
-                           Margin="70,70,70,70">
-            </ActivityIndicator>
             <ScrollView>
             <Grid Margin="20,20,20,20">
                 <Grid.RowDefinitions>
