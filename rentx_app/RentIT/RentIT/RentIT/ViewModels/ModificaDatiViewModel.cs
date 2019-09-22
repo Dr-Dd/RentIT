@@ -12,7 +12,7 @@ using System.Collections.Generic;
 namespace RentIT.ViewModels
 {
     public class ModificaDatiViewModel : BaseViewModel
-	{
+    {
 
         List<string> _listaCitta;
         public List<string> ListaCitta
@@ -68,12 +68,12 @@ namespace RentIT.ViewModels
                 _confermaPassword = value;
                 OnPropertyChanged();
             }
-        }                                                         
+        }
 
         readonly IUserService _userService;
         readonly FotoService _fotoService;
-        public ModificaDatiViewModel (INavService navService, UserService userService, FotoService fotoService) : base(navService)
-		{
+        public ModificaDatiViewModel(INavService navService, UserService userService, FotoService fotoService) : base(navService)
+        {
             _userService = userService;
             _fotoService = fotoService;
             Immagine = new Image();
@@ -164,7 +164,7 @@ namespace RentIT.ViewModels
         async Task ExecuteModificaDatiCommand()
         {
             IsBusy = true;
-            
+
             if (EmptyFields())
             {
                 await App.Current.MainPage.DisplayAlert("Errore", "Devi inserire sia il numero che la città", "Ok");
@@ -176,7 +176,7 @@ namespace RentIT.ViewModels
             Utente.surname = Utente.surname.Trim();
             Utente.citta = Utente.citta.Trim();
             Utente.numeroTel = Utente.numeroTel.Trim();
-            
+
             if (!string.IsNullOrWhiteSpace(Password))
             {
                 if (!PasswordsAreTheSame())
@@ -187,7 +187,7 @@ namespace RentIT.ViewModels
                 }
                 Utente.password = Password.Trim();
             }
-                
+
             var response = await _userService.ModifyUserData(Utente);
             if (response.hasSucceded)
             {
@@ -216,19 +216,23 @@ namespace RentIT.ViewModels
         async Task ExecuteEliminaCommand()
         {
             IsBusy = true;
-            var response = await _userService.DeleteAccount();
-            if(response.hasSucceded)
+            var choice = await App.Current.MainPage.DisplayAlert("Attenzione!", "Sei sicuro di voler eliminare il tuo account? L'operazione è irreversibile ed eliminerà anche tutti i tuoi annunci.", "Si", "No");
+            if(choice)
             {
-                IsBusy = false;
-                StringBuilder successo = new StringBuilder();
-                successo.AppendLine("Ci dispiace che tu te ne vada!");
-                successo.Append("I tuoi dati sono stati eliminati correttamente");
-                await App.Current.MainPage.DisplayAlert("RentIT", successo.ToString(), "ok");
-                await NavService.NavigateToMainPage();
-            }
-            else
-            {
-                await App.Current.MainPage.DisplayAlert("Errore", response.responseMessage, "Ok");
+                var response = await _userService.DeleteAccount();
+                if (response.hasSucceded)
+                {
+                    IsBusy = false;
+                    StringBuilder successo = new StringBuilder();
+                    successo.AppendLine("Ci dispiace che tu te ne vada!");
+                    successo.Append("I tuoi dati sono stati eliminati correttamente");
+                    await App.Current.MainPage.DisplayAlert("RentIT", successo.ToString(), "ok");
+                    await NavService.NavigateToMainPage();
+                }
+                else
+                {
+                    await App.Current.MainPage.DisplayAlert("Errore", response.responseMessage, "Ok");
+                }
             }
             IsBusy = false;
         }
