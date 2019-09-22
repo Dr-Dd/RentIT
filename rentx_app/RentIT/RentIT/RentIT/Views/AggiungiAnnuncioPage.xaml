@@ -21,14 +21,14 @@
                     <Grid.RowDefinitions>
                         <RowDefinition Height="10*" />
                         <RowDefinition Height="10*" />
-                        <RowDefinition Height="10*" />
+                        <RowDefinition Height="20*" />
                         <RowDefinition Height="10*" />
                         <RowDefinition Height="50*" />
                         <RowDefinition Height="10*" />
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="95*" />
-                        <ColumnDefinition Width="5*" />
+                        <ColumnDefinition Width="35*" />
+                        <ColumnDefinition Width="65*" />
                     </Grid.ColumnDefinitions>
                     <Label Grid.Row="0"
                            Grid.ColumnSpan="2"
@@ -54,7 +54,7 @@
                            Placeholder="prezzo"
                            Text="{Binding Path=Prezzo}"
                            FontFamily="Quicksand-Light.ttf#Quicksand-Light" />
-                    <Label Text="€"
+                    <Label Text="€ al giorno"
                            Grid.Row="3"
                            Grid.Column="1"
                            FontFamily="Quicksand-Light.ttf#Quicksand-Light" 

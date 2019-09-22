@@ -307,7 +307,7 @@ namespace RentIT.ViewModels
             if (IsLoggedVar)
             {
                 Utente = await _userService.GetMyProfileAsync();
-                Titolo = "Benvenuto " + Utente.name + "!";
+                Titolo = "Ciao " + Utente.name ;
             }
         }
     }

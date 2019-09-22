@@ -8,19 +8,19 @@
     <ContentPage.Content>
         <Grid>
             <StackLayout>
-            <Grid Margin="20,10,20,20">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="30" />
-                    <RowDefinition Height="4*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="6*" />
-                    <RowDefinition Height="*" />
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="31*" />
-                    <ColumnDefinition Width="38*" />
-                    <ColumnDefinition Width="31*" />
-                </Grid.ColumnDefinitions>
+                <Grid Margin="20,10,20,20">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="4*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="6*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="31*" />
+                        <ColumnDefinition Width="38*" />
+                        <ColumnDefinition Width="31*" />
+                    </Grid.ColumnDefinitions>
                     <ActivityIndicator IsVisible="{Binding IsBusy}"
                            IsRunning="{Binding IsBusy}"
                            Color="#607D8B"
@@ -29,6 +29,15 @@
                            Grid.ColumnSpan="3"
                            >
                     </ActivityIndicator>
+                    <!--da inserire nella barra-->
+                    <!--<Label Text="Opzioni annuncio"
+                           TextColor="#607D8B"
+                           FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
+                           HorizontalOptions="Center"
+                           Grid.ColumnSpan="2"
+                           Grid.Column="0"
+                           Grid.Row="0">
+                    </Label>-->
                     <ContentView Grid.Row="1"
                              Grid.Column="0"
                              Grid.ColumnSpan="3"
@@ -75,7 +84,7 @@
                         TextColor="#85bb65"
                         FontSize="Medium"
                         Margin="40,0,5,0"/>
-                <Label Text="€"
+                <Label Text="€/gg"
                        Grid.Row="2"
                        Grid.Column="2"
                        VerticalOptions="Center"
@@ -98,7 +107,8 @@
                             TextColor="#607D8B"
                             FontSize="Medium" />
                 </Frame>
-                <Button Text="MODIFICA"
+                <Button Margin="0,10,0,0"
+                        Text="MODIFICA"
                         Command="{Binding ModificaAnnuncioCommand}"
                         CornerRadius="25"
                         Grid.Row="4"
@@ -110,7 +120,7 @@
                         BorderWidth="1"
                         BorderColor="#607D8B" />
                 <Button Margin="0,10,0,0"
-                        Text="PRENOTALO"
+                        Text=" È PRENOTATO"
                         IsVisible="{Binding IsNotPrenotato}"
                         CornerRadius="25"
                         Grid.Row="4"
@@ -123,7 +133,7 @@
                         BorderColor="#607D8B"
                         Command="{Binding PrenotaAnnuncioCommand}"/>
                 <Button Margin="0,10,0,0"
-                        Text="LIBERA"
+                        Text="È DISPONIBILE"
                         IsVisible="{Binding IsPrenotato}"
                         CornerRadius="25"
                         Grid.Row="4"

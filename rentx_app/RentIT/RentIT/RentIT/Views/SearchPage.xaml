@@ -15,15 +15,15 @@
         <ContentPage Title="Menu"
                      BackgroundColor="#607D8B">
             <StackLayout Orientation="Vertical">
-                <StackLayout>
+                <StackLayout Padding="45,45,45,45">
                     <Image Source="RentBanner.png" Aspect="AspectFit" Margin="10,20,10,20"/>
                 </StackLayout>
                 <Label Margin="6,0,0,0"
                        IsVisible="{Binding IsLoggedVar}"
                        Text="{Binding Titolo}"
-                       TextColor="Black" 
-                       FontSize="21"
-                       FontFamily="Quicksand-Light.ttf#Quicksand-Light" />
+                       TextColor="White" 
+                       FontSize="25"
+                       FontFamily="Quicksand-Bold.ttf#Quicksand-Light" />
                 <!-- TableView LOGGATO -->
                 <TableView IsVisible="{Binding IsLoggedVar}"
                           RowHeight="55"
@@ -33,22 +33,24 @@
                             <ViewCell Tapped="IMieiAnnunciPage_Tapped" >
                                 <StackLayout Orientation="Horizontal"
                                              Margin="3,0,0,0">
-                                    <Image HeightRequest="28"
+                                    <!--<Image HeightRequest="28"
                                        WidthRequest="28"
-                                       Source="baseline_attach_money_black_24.png" VerticalOptions="Center"/>
+                                       Source="baseline_attach_money_black_24.png" VerticalOptions="Center"/>-->
                                     <Label Text="I Miei Annunci" 
-                                       TextColor="Black" 
+                                       TextColor="#CDDC39" 
                                        FontSize="21"
                                        VerticalOptions="Center"
-                                       HorizontalOptions="Start"/>
+                                       HorizontalOptions="Start"
+                                       FontFamily="Quicksand-Bold.ttf#Quicksand-Light"/>
                                 </StackLayout>
                             </ViewCell>
                             <ViewCell Tapped="Logout_Tapped">
                                 <Label Text="Logout"
-                                    TextColor="Black" 
+                                    TextColor="#CDDC39" 
                                     FontSize="21" 
                                        VerticalOptions="Center"
-                                       Margin="38,0,0,0"/>
+                                       FontFamily="Quicksand-Bold.ttf#Quicksand-Light"
+                                       Margin="3,0,0,0"/>
                             </ViewCell>
                         </TableSection>
                     </TableRoot>
@@ -64,13 +66,15 @@
                                              Margin="3,0,0,0">
                                     <Image HeightRequest="28"
                                        WidthRequest="28"
-                                       Source="baseline_person_pin_black_24.png" 
+                                       Source="accountButton1.png" 
                                        VerticalOptions="Center"/>
+                                    <!--baseline_person_pin_black_24-->
                                     <Label Text="Login" 
-                                       TextColor="Black" 
+                                       TextColor="#CDDC39" 
                                        FontSize="21"
                                        VerticalOptions="Center"
-                                       HorizontalOptions="Start"/>
+                                       HorizontalOptions="Start"
+                                       FontFamily="Quicksand-Bold.ttf#Quicksand-Light"/>
                                 </StackLayout>
                             </ViewCell>
                         </TableSection>

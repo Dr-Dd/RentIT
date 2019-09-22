@@ -90,7 +90,8 @@
                                        VerticalOptions="Center"/>
                                 <Picker Title="{Binding Utente.citta}"
                                     SelectedItem="{Binding Utente.citta}"
-                                    FontFamily="Quicksand-Light.ttf#Quicksand-Light"
+                                    TextColor="#607D8B"
+                                    FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
                                     x:Name="Utente_citta"
                                     x:FieldModifier="public"
                                     ItemsSource="{Binding ListaCitta}"
