@@ -38,7 +38,7 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
 				.antMatchers("/annuncio/newAnnuncio").authenticated()
 				.antMatchers("/annuncio/elimina/**").authenticated()
 				.antMatchers("/annuncio/modifica/**").authenticated()
-				.antMatchers("/annuncio/annunci/**").authenticated()
+				.antMatchers("/annuncio/annunci/**").permitAll()
 				.antMatchers("/annuncio/addImage/**").authenticated()
 				.antMatchers("/annuncio/prenota/**").authenticated()
 				.antMatchers("/annuncio/libera/**").authenticated()

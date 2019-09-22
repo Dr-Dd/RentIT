@@ -101,15 +101,12 @@ public class AnnuncioController {
 	
 	
 	@PostMapping("/annunci/{id}")
-	public List<AnnuncioModel> AnnunciUtente(@RequestHeader("Authorization") String token, @PathVariable("id") Long id,@RequestBody Richiesta r) {
+	public List<AnnuncioModel> AnnunciUtente( @PathVariable("id") Long id,@RequestBody Richiesta r) {
 		List<Annuncio> lista;
 		if(r.isB()) {	
-			if(id == this.utenteService.getUtenteByEmail(this.utenteService.estrazioneEmailDaToken(token)).getId()) {
-					lista=this.annuncioService.annunciBookedPerUtente(id);
-					return this.annuncioService.parseToAnnuncioList(lista);
-				}
-				else return Collections.emptyList();
-			} 
+			lista=this.annuncioService.annunciBookedPerUtente(id);
+			return this.annuncioService.parseToAnnuncioList(lista);
+		}
 		else {
 			lista=this.annuncioService.annunciNotBookedPerUtente(id);
 			return this.annuncioService.parseToAnnuncioList(lista);

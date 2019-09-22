@@ -55,7 +55,7 @@
                                    Text="{Binding nomeOggetto}"
                                    VerticalTextAlignment="End"
                                    FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
-                                   FontSize="Medium"
+                                   FontSize="21"
                                    TextColor="#607D8B" />
                                 <Label Grid.Row="0"
                                    Grid.Column="2"
@@ -63,6 +63,7 @@
                                    HorizontalTextAlignment="End"
                                    VerticalTextAlignment="End"
                                    FontFamily="Quicksand-Regular.ttf#Quicksand-Medium"
+                                   FontSize="19"
                                    TextColor="#607D8B"
                                    Margin="0,0,20,0" />
                                 <Label Text="{Binding descrizione}"
@@ -76,14 +77,16 @@
                                    Text="{Binding posizione}"
                                    VerticalTextAlignment="Center"
                                    TextColor="#607D8B"
-                                   FontFamily="Quicksand-Medium.ttf#Quicksand-Medium" />
+                                   FontFamily="Quicksand-Medium.ttf#Quicksand-Medium" 
+                                   FontSize="18"/>
                                 <Label Grid.Row="2"
                                    Grid.Column="2"
                                    Text="{Binding prezzo, StringFormat='{0:F0}€'}"
                                    HorizontalTextAlignment="End"
                                    VerticalTextAlignment="Center"
                                    FontFamily="Quicksand-Medium.ttf#Quicksand-Medium"
-                                   TextColor="#607D8B"
+                                   TextColor="Green"
+                                   FontSize="22"
                                    Margin="0,0,20,0" />
                             </Grid>
                         </ViewCell>
