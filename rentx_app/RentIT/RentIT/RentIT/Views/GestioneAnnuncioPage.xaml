@@ -28,6 +28,8 @@
                            Grid.Row="1"
                            Grid.Column="0"
                            Grid.ColumnSpan="3"
+                           Margin="70,70,70,70"
+                           
                            >
                     </ActivityIndicator>
                     <ContentView Grid.Row="1"
@@ -61,8 +63,8 @@
                       Grid.Column="0"
                       Grid.ColumnSpan="3">
                       <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="60*" />
-                        <ColumnDefinition Width="40*" />
+                        <ColumnDefinition Width="50*" />
+                        <ColumnDefinition Width="50*" />
                       </Grid.ColumnDefinitions>
                         <Entry Text="{Binding Annuncio.nomeOggetto}"
 			    	         Grid.Column="0"
@@ -84,7 +86,7 @@
 						            TextColor="#85bb65"
 						            FontSize="Medium"
                                     />
-                        <Label Text="€/giorno"
+                        <Label Text="€ al giorno"
                                    Grid.Column="1"
 					               VerticalOptions="Center"
 					               FontAttributes="Bold"
