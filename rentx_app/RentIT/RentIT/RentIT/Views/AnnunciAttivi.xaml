@@ -5,9 +5,16 @@
              Title="ATTIVI">
     <ContentPage.Content>
         <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="300" />
+                <RowDefinition Height="10*" />
+                <RowDefinition Height="40*" />
+            </Grid.RowDefinitions>
             <ActivityIndicator IsVisible="{Binding IsBusy}"
                            IsRunning="{Binding IsBusy}"
+                           Margin="50,0,50,10"
                            Color="#607D8B"
+                           Grid.Row="1"
                            >
             </ActivityIndicator>
             <ListView x:Uid="listaAnnunci"
