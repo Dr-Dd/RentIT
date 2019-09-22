@@ -44,6 +44,7 @@
                                    VerticalTextAlignment="End"
                                    FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
                                    FontSize="21"
+                                   LineBreakMode="TailTruncation"
                                    TextColor="#607D8B" />
                                 <Label Text="{Binding descrizione}"
                                    Grid.Row="1"
