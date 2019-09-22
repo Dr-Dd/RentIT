@@ -61,13 +61,26 @@ namespace RentIT.ViewModels
 
         async Task ExecuteLogInCommand()
         {
-            IsBusy = true;
+            if (string.IsNullOrWhiteSpace(Email))
+            {
+                StringBuilder benvenuto = new StringBuilder();
+                benvenuto.Append("Non hai inserito l'email");
+                await App.Current.MainPage.DisplayAlert("Fai attenzione:", benvenuto.ToString(), "Ok");
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(Password))
+            {
+                StringBuilder benvenuto = new StringBuilder();
+                benvenuto.Append("Non hai inserito la password");
+                await App.Current.MainPage.DisplayAlert("Fai attenzione:", benvenuto.ToString(), "Ok");
+                return;
+            }
 
             Email = Email.Trim();
+            Password = Password.Trim();
 
-            if(!string.IsNullOrWhiteSpace(Password))
-                Password = Password.Trim();
-
+            IsBusy = true;
             var authResponse = await _authService.LoginAsync(Email, Password);
             if (authResponse.hasSucceded)
             {
