@@ -168,6 +168,7 @@ namespace RentIT.ViewModels
             if (EmptyFields())
             {
                 await App.Current.MainPage.DisplayAlert("Errore", "Devi inserire sia il numero che la città", "Ok");
+                IsBusy = false;
                 return;
             }
 
