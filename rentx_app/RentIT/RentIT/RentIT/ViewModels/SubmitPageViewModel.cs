@@ -123,7 +123,6 @@ namespace RentIT.ViewModels
         
         async Task ExecuteSignInCommand()
         {
-            IsBusy = true;
             
             if (!IsValidEmail(Email))
             {
@@ -150,6 +149,9 @@ namespace RentIT.ViewModels
                 email = Email.Trim(),
                 password = Password.Trim()
             };
+
+            IsBusy = true;
+
             var signUpResponse = await _userService.SignUpAsync(signUpRequest);
             if (signUpResponse.hasSucceded)
             {

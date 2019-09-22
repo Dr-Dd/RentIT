@@ -191,6 +191,7 @@ namespace RentIT.ViewModels
             var response = await _userService.ModifyUserData(Utente);
             if (response.hasSucceded)
             {
+                IsBusy = false;
                 AppSettings.NewProfile = false;
                 await App.Current.MainPage.DisplayAlert("RentIT", response.responseMessage, "Ok");
                 await NavService.NavigateToMainPage();
