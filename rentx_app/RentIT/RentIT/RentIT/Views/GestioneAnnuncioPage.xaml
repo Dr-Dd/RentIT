@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:carousel="clr-namespace:CarouselView.FormsPlugin.Abstractions;assembly=CarouselView.FormsPlugin.Abstractions"
              x:Class="RentIT.Views.GestioneAnnuncioPage"
+             Title="Opzioni annuncio"
              xmlns:local="clr-namespace:XamarinImageSlider"
              xmlns:controls="clr-namespace:Xamd.ImageCarousel.Forms.Plugin.Abstractions;assembly=Xamd.ImageCarousel.Forms.Plugin.Abstractions">
     <ContentPage.Content>
@@ -29,72 +30,71 @@
                            Grid.ColumnSpan="3"
                            >
                     </ActivityIndicator>
-                    <!--da inserire nella barra-->
-                    <!--<Label Text="Opzioni annuncio"
-                           TextColor="#607D8B"
-                           FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
-                           HorizontalOptions="Center"
-                           Grid.ColumnSpan="2"
-                           Grid.Column="0"
-                           Grid.Row="0">
-                    </Label>-->
                     <ContentView Grid.Row="1"
                              Grid.Column="0"
                              Grid.ColumnSpan="3"
                              HorizontalOptions="Center"
                              VerticalOptions="End">
-                    <carousel:CarouselViewControl ItemsSource="{Binding Immagini}"
+                        <carousel:CarouselViewControl ItemsSource="{Binding Immagini}"
                                                   VerticalOptions="FillAndExpand"
                                                   HorizontalOptions="FillAndExpand"
                                                   Position="0"
                                                   IndicatorsTintColor="#F0F4C3"
                                                   CurrentPageIndicatorTintColor="#4CAF50"
                                                   ShowIndicators="True">
-                        <carousel:CarouselViewControl.ItemTemplate>
-                            <DataTemplate>
-                                <Grid>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="*" />
-                                        <RowDefinition Height="40" />
-                                    </Grid.RowDefinitions>
-                                    <Image Grid.Row="0"
+                            <carousel:CarouselViewControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*" />
+                                            <RowDefinition Height="40" />
+                                        </Grid.RowDefinitions>
+                                        <Image Grid.Row="0"
                                            Aspect="AspectFit"
                                            Source="{Binding Source}" />
-                                </Grid>
-                            </DataTemplate>
-                        </carousel:CarouselViewControl.ItemTemplate>
-                    </carousel:CarouselViewControl>
-
-                </ContentView>
-                <Entry Text="{Binding Annuncio.nomeOggetto}"
-                       Grid.Row="2"
-                       Grid.Column="0"
-                       Grid.ColumnSpan="2"
-                       FontAttributes="Bold"
-                       VerticalOptions="Center"
-                       FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
-                       TextColor="#607D8B"
-                       FontSize="Medium" />
-                <Editor Text="{Binding Annuncio.prezzo, StringFormat='{0:F0}'}"
-                        Grid.Row="2"
-                        Grid.Column="2"
-                        VerticalOptions="Center"
-                        FontAttributes="Bold"
-                        FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
-                        TextColor="#85bb65"
-                        FontSize="Medium"
-                        Margin="40,0,5,0"/>
-                <Label Text="€/gg"
-                       Grid.Row="2"
-                       Grid.Column="2"
-                       VerticalOptions="Center"
-                       FontAttributes="Bold"
-                       FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
-                       TextColor="#85bb65"
-                       FontSize="Medium"
-                        Margin="40,0,5,0"
-                       HorizontalTextAlignment="End"
-                       HorizontalOptions="End"/>
+                                    </Grid>
+                                </DataTemplate>
+                            </carousel:CarouselViewControl.ItemTemplate>
+                        </carousel:CarouselViewControl>
+                    </ContentView>
+                    <Grid Grid.Row="2"
+                      Grid.Column="0"
+                      Grid.ColumnSpan="3">
+                      <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="60*" />
+                        <ColumnDefinition Width="40*" />
+                      </Grid.ColumnDefinitions>
+                        <Entry Text="{Binding Annuncio.nomeOggetto}"
+			    	         Grid.Column="0"
+					         FontAttributes="Bold"
+					         VerticalOptions="Center"
+					         FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
+					         TextColor="#607D8B"
+					         FontSize="Medium" />
+                        <Grid Grid.Column="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="40*" />
+                                <ColumnDefinition Width="60*" />
+                            </Grid.ColumnDefinitions>
+                        <Editor Text="{Binding Annuncio.prezzo, StringFormat='{0:F0}'}"
+                                    Grid.Column="0"
+						            VerticalOptions="Center"
+						            FontAttributes="Bold"
+						            FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
+						            TextColor="#85bb65"
+						            FontSize="Medium"
+                                    />
+                        <Label Text="€/giorno"
+                                   Grid.Column="1"
+					               VerticalOptions="Center"
+					               FontAttributes="Bold"
+					               FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
+					               TextColor="#85bb65"
+					               FontSize="Medium"
+					               HorizontalTextAlignment="End"
+					               HorizontalOptions="End"/>
+                        </Grid>
+                    </Grid>
                 <Frame BorderColor="#607D8B"
                        Grid.Row="3"
                        CornerRadius="25"
