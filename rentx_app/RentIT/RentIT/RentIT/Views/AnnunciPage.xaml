@@ -46,12 +46,13 @@
                                    Text="{Binding nomeOggetto}"
                                    VerticalTextAlignment="End"
                                    FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"
-                                   FontSize="Medium"
+                                   FontSize="18"
                                    TextColor="#607D8B" />
                                 <Label Grid.Row="0"
                                    Grid.Column="2"
                                    Text="{Binding data, StringFormat='{0:dd/MM/yyyy}'}"
                                    HorizontalTextAlignment="End"
+                                   FontSize="18"
                                    VerticalTextAlignment="End"
                                    FontFamily="Quicksand-Regular.ttf#Quicksand-Medium"
                                    TextColor="#607D8B"
@@ -66,6 +67,7 @@
                                    Grid.Column="1"
                                    Text="{Binding posizione}"
                                    VerticalTextAlignment="Center"
+                                   FontSize="18"
                                    TextColor="#607D8B"
                                    FontFamily="Quicksand-Medium.ttf#Quicksand-Medium" />
                                 <Label Grid.Row="2"
@@ -73,6 +75,7 @@
                                    Text="{Binding prezzo, StringFormat='{0:F0}€'}"
                                    HorizontalTextAlignment="End"
                                    VerticalTextAlignment="Center"
+                                   FontSize="18"
                                    FontFamily="Quicksand-Medium.ttf#Quicksand-Medium"
                                    TextColor="#607D8B"
                                    Margin="0,0,20,0" />
