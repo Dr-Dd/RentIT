@@ -19,12 +19,16 @@ public class DBpopulation implements ApplicationRunner {
 
 	@Autowired
 	private UtenteRepository utenteRepository;
+	
 	@Autowired
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
 	
 	@Autowired
 	private AnnuncioService annuncioService;
 
+	@Autowired 
+	private ImageService imageService;
+	
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
 		this.deleteAll();

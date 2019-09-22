@@ -10,9 +10,9 @@
             <ScrollView>
             <Grid Margin="20,20,20,20">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="60" />
-                    <RowDefinition Height="2*" />
-                    <RowDefinition Height="50" />
+                    <RowDefinition Height="55" />
+                    <RowDefinition Height="1.2*" />
+                    <RowDefinition Height="70" />
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="50" />
                 </Grid.RowDefinitions>
