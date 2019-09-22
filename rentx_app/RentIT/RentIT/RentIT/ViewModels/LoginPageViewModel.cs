@@ -64,7 +64,9 @@ namespace RentIT.ViewModels
             IsBusy = true;
 
             Email = Email.Trim();
-            Password = Password.Trim();
+
+            if(!string.IsNullOrWhiteSpace(Password))
+                Password = Password.Trim();
 
             var authResponse = await _authService.LoginAsync(Email, Password);
             if (authResponse.hasSucceded)

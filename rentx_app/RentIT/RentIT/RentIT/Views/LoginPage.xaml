@@ -67,11 +67,17 @@
                         BorderWidth="1"
                         BorderColor="#607D8B"
                         Command="{Binding LogInCommand}" />
-                <Button Text="Password Dimenticata?"
+                <Grid Grid.Row="3"
+                      Grid.Column="2"
+                      Grid.RowSpan="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50" />
+                        <RowDefinition Height="50" />
+                    </Grid.RowDefinitions>
+                    <Button Text="Password Dimenticata?"
+                        Grid.Row="0"
                         TextColor="#607D8B"
-                        Grid.Row="3"
                         Margin="0,0,0,10"
-                        Grid.Column="2"
                         VerticalOptions="StartAndExpand"
                         Command="{Binding ResetPasswordCommand}"
                         Font="micro"
@@ -81,9 +87,10 @@
                            IsRunning="{Binding IsBusy}"
                            Margin="0,0,0,10"
                            Color="#607D8B"
-                           Grid.Row="4"
+                           Grid.Row="1"
                            >
                 </ActivityIndicator>
+                </Grid>
                 <Button Text="Iscriviti"
                         TextColor="#607D8B"
                         Grid.Row="5"
