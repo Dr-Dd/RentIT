@@ -100,7 +100,7 @@ namespace RentIT.ViewModels
             else
             {
                 Image img = new Image();
-                img.Source = "meme.png";  //modificare
+                img.Source = "userImg.png";  //modificare
                 return img;
             }
         }
